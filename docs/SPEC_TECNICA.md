@@ -55,7 +55,7 @@ Segue PRD §5.2. Dependências apontam sempre para a direita do pipeline → nun
 |---|---|---|
 | Unidade | `tests/unit/test_<modulo>.py` | Um arquivo por módulo; regex com linhas reais. |
 | Aceite | `tests/aceite/test_a<NN>_<nome>.py` | Um teste por caso A1–A14, marcador `aceite`. |
-| Regressão | `tests/regressao/` + `tests/fixtures/snapshots/` | Marcador `regressao`; regravar snapshot exige registro em `revisao.md`. |
+| Regressão | `tests/regressao/` + `tests/fixtures/snapshots/` | Marcador `regressao`; regravar snapshot exige registro em `.claude/processo/REVISAO.md`. |
 | Rede | qualquer | Marcador `rede`; fora do CI padrão (`-m "not rede"`). |
 
 ## 6. Decisões técnicas em aberto

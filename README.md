@@ -31,7 +31,7 @@ ruff check . && ruff format --check .
 pytest
 ```
 
-Fases e status: [`.claude/desenvolvimento/fase.md`](.claude/desenvolvimento/fase.md).
+Fases e status: [`docs/PENDENCIAS.md`](docs/PENDENCIAS.md).
 
 ## Licença
 

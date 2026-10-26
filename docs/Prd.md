@@ -120,7 +120,7 @@ class LinhaFonte:
 
 ### 5.2 Módulos
 
-Caminhos relativos a `src/vademecum/`. Contratos e dependências entre módulos: `.claude/desenvolvimento/spec.md` §2.
+Caminhos relativos a `src/vademecum/`. Contratos e dependências entre módulos: `docs/SPEC_TECNICA.md` §2.
 
 | Módulo | Responsabilidade |
 |---|---|
@@ -370,7 +370,7 @@ python -m vademecum recortar --base dados/cp/base.json --artigos "1-12; 100-120;
 
 ## 14. Sequência de implementação
 
-Acompanhamento da execução: `.claude/desenvolvimento/fase.md` (fase 0 = setup do projeto).
+Acompanhamento da execução: `docs/PENDENCIAS.md` (fase 0 = setup do projeto).
 
 1. `modelo.py` + chave de ordenação + `recorte.py`, com testes de unidade e sem depender de fonte.
 2. `fontes/html.py` (`.mht` e arquivo local) + `normalizador.py`.

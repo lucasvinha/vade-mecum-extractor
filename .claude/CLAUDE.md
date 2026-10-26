@@ -9,9 +9,11 @@ Etapa 1 de 2; a Etapa 2 (material de estudo) está fora de escopo.
 | Arquivo | Papel |
 |---|---|
 | `docs/Prd.md` | Requisitos: **o quê** e **por quê**. Fonte da verdade para regras (H*, P*, RF*, D*, A*). |
-| `.claude/desenvolvimento/spec.md` | Especificação técnica: **como** (contratos, módulos, convenções). |
-| `.claude/desenvolvimento/fase.md` | Fase atual, checklist e critério de saída de cada fase. |
-| `.claude/desenvolvimento/revisao.md` | Checklist de revisão e log de revisões por fase. |
+| `docs/SPEC_TECNICA.md` | Especificação técnica: **como** (contratos, módulos, convenções). |
+| `docs/README.md` | README técnico e Parâmetros do processo. |
+| `docs/PENDENCIAS.md` | Fila e fases de implementação (1–7), com critério de saída. |
+| `.claude/processo/REVISAO.md` | Checklist de revisão e log de revisões por fase. |
+| `.claude/processo/SPEC.md`, `FASE.md` | Roteiros de `/spec` e `/fase`. |
 
 Ao citar uma regra em código, teste ou commit, use o ID do PRD (ex.: `# H15`, `test_a2_...`).
 
@@ -29,7 +31,7 @@ python -m vademecum recortar --base dados/cp/base.json --artigos "121-130" --sai
 ## Estrutura
 
 ```
-src/vademecum/        pacote (layout src); módulos listados em spec.md §2
+src/vademecum/        pacote (layout src); módulos listados em SPEC_TECNICA.md §2
   fontes/             leitores HTML/PDF → list[LinhaFonte]
   perfis/*.toml       regras por norma (D2) — nunca lógica específica de norma no parser
 tests/                pytest; fixtures/ = trechos reais, snapshots/ = regressão
@@ -39,20 +41,20 @@ dados/                fontes brutas e saídas geradas (não versionado)
 
 ## Regras do projeto
 
-- **Python 3.12**, ruff (config em `pyproject.toml`), pytest. Sem dependência nova sem registrar em `spec.md`.
+- **Python 3.12**, ruff (config em `pyproject.toml`), pytest. Sem dependência nova sem registrar em `SPEC_TECNICA.md`.
 - **Identificadores em português**, alinhados ao vocabulário do PRD (`LinhaFonte`, `artigo`, `rubrica`, `nota`).
 - **Parser genérico (D2):** nada de `if norma == "cp"`. Diferenças vão para o perfil `.toml`.
 - **Nenhuma perda silenciosa (RNF04):** todo texto entra na árvore ou no relatório, com `origem`.
 - **Determinismo (RNF03):** JSON com chaves ordenadas, sem timestamp dentro de `artigos`.
 - **Windows sem WSL (RNF02):** `pathlib`, `encoding="utf-8"` explícito em toda leitura/escrita.
 - **Regex só muda com teste:** toda alteração de padrão (PRD §8) vem com o caso real que a motivou.
-- **Snapshot de regressão** só é regravado com justificativa registrada em `revisao.md`.
+- **Snapshot de regressão** só é regravado com justificativa registrada em `REVISAO.md`.
 - Texto legal é **literal** (inclusive "alguem", "conseqüências"); não corrigir ortografia.
 
 ## Fluxo de trabalho
 
-1. Ler a fase atual em `fase.md`; trabalhar só no escopo dela.
+1. Ler a fase atual em `docs/PENDENCIAS.md` ("Agora"); trabalhar só no escopo dela.
 2. Teste primeiro, com fixture real, citando o ID do PRD.
 3. `ruff check . && ruff format --check . && pytest` verdes antes de commit.
-4. Ao fechar uma fase: preencher o log em `revisao.md` e avançar `fase.md`.
+4. Ao fechar uma fase: preencher o log em `REVISAO.md` e avançar `PENDENCIAS.md`.
 5. Descobriu algo que contradiz o PRD? Registrar em `docs/Prd.md` §12 (pendências) e perguntar — não decidir sozinho.
