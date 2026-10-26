@@ -1,0 +1,25 @@
+# Perfil padrão (PRD §5.3). Perfis específicos sobrescrevem só as chaves que mudam.
+# Esqueleto inicial: as chaves são preenchidas e validadas na fase 3.
+
+id = "padrao"
+
+[artigo]
+prefixos = ["Art.", "Art", "Artigo"]
+
+[hierarquia]
+niveis = ["PARTE", "LIVRO", "TÍTULO", "CAPÍTULO", "Seção", "Subseção"]
+
+[dispositivos]
+rubrica = true
+pena = true
+
+[validacao]
+lacunas = true   # V2: desligar em PDF-recorte
+
+[notas]
+redacao = ["Redação dada", "NR"]
+inclusao = ["Incluído", "Incluída"]
+revogacao = ["Revogado", "Revogada", "Revogados"]
+veto = ["VETADO", "Vetado"]
+vigencia = ["Vigência"]
+remissao = ["Vide"]
