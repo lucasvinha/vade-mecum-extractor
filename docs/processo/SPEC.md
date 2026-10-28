@@ -30,11 +30,12 @@ precisava existir.**
 
 Obrigatória, e declarada: antes de perguntar qualquer coisa, diga em uma linha o que leu.
 
-1. O [README técnico](../../docs/README.md), em especial `§ Parâmetros do processo`, e o
-   [CLAUDE.md](../CLAUDE.md) do projeto.
-2. O item de [PENDENCIAS](../../docs/PENDENCIAS.md), **pelo número**. Não achou? Ou a spec nasce de um
+1. O [README técnico](../README.md), em especial `§ Parâmetros do processo` e o
+   [PADRAO_OURO](../PADRAO_OURO.md).
+2. O item de [PENDENCIAS](../PENDENCIAS.md), **pelo número**. Não achou? Ou a spec nasce de um
    item novo, ou o operador confirma que a mudança não estava na fila. Diga qual dos dois.
-3. As regras do PRD (`docs/Prd.md`) e a spec técnica do assunto.
+3. Os ADRs e os documentos de [negocio/](../negocio/) do assunto, pelas regras que a mudança toca
+   (IDs H*, P*, RF*, D*, A*).
 4. O código afetado e as fixtures reais que cobrem o caso.
 
 **Proibido perguntar o que o código responde.** A entrevista existe para o que só o operador
@@ -59,8 +60,8 @@ motivo. **Pergunte primeiro o que decide as outras:** o eixo 8 e o 3 costumam vi
 | 4 | **Consumidores** | Quem lê a saída? O esquema do JSON e a CLI mudam? A Etapa 2 é afetada? |
 | 5 | **Contrato** | O que muda de comportamento visível: esquema do JSON, relatório, opção da CLI, código de saída |
 | 6 | **Compatibilidade** | Snapshot que muda, base já gerada que perde validade |
-| 7 | **Fontes** | Qual fixture real prova o caso? Depende de fonte que não está no repositório (T1)? |
-| 8 | **Decisão** | Contradiz ou completa o PRD? Se sim, **o PRD §12 vem primeiro** e a spec o executa |
+| 7 | **Fontes** | Qual fixture real prova o caso? Depende de fonte que não está no repositório? |
+| 8 | **Decisão** | Contradiz ou completa uma regra de negócio ou um ADR? Se sim, **o ADR (ou o item em PENDENCIAS) vem primeiro** e a spec o executa |
 
 Nenhum eixo é opcional: o que não se aplica é dito na spec, não omitido.
 **Spec não decide, spec executa decisão.**
@@ -76,12 +77,12 @@ responder e o que está parado, e bloqueia **só a fase que depende dela**.
 
 ## §4. O molde
 
-Arquivo: `.claude/processo/specs/<slug>.md`. **Teto: 200 linhas.** Passou disso, são duas specs.
+Arquivo: `docs/processo/specs/<slug>.md`. **Teto: 200 linhas.** Passou disso, são duas specs.
 
 ```markdown
 # Spec — <título>
 
-> Decisão que executa: Prd §N / pendência P0N — ou "nenhuma decisão nova". Item: PENDENCIAS #N.
+> Decisão que executa: ADR-0NN ou regra de negocio/<assunto> — ou "nenhuma decisão nova". Item: PENDENCIAS #N.
 > Escrita em <AAAA-MM-DD> contra `<sha>`, branch `<branch>`.
 > Fechada a última fase, este arquivo é apagado (o git preserva).
 
@@ -93,8 +94,8 @@ Arquivo: `.claude/processo/specs/<slug>.md`. **Teto: 200 linhas.** Passou disso,
 ## Em aberto
 ```
 
-**A spec não vira diário.** O que sobrevive à execução vai para o PRD, a spec técnica ou o
-README técnico; o resto morre com o arquivo.
+**A spec não vira diário.** O que sobrevive à execução vai para o ADR, o README técnico ou o
+documento de negócio; o resto morre com o arquivo.
 
 ---
 
@@ -108,14 +109,15 @@ README técnico; o resto morre com o arquivo.
 6. **Teto de ~10 arquivos ou ~200 linhas de diff**, salvo exceção declarada (renomeação
    mecânica, fixture grande).
 7. **Teste e documentação vão na fase que os gera.** A última fase é sempre a de fechamento:
-   risca o item em PENDENCIAS, atualiza "Agora", ajusta PRD, spec técnica e `revisao.md` e
-   **apaga a spec**.
+   risca o item em PENDENCIAS, atualiza "Agora", ajusta ADR e docs afetados e **apaga a spec**.
 8. Fase que depende de uma pergunta do §3 nasce marcada **bloqueada**.
-9. **A spec basta a cada fase.** O `/fase` lê só a spec, os arquivos da fase e o CLAUDE.md.
-   O que a fase precisa a mais (`arquivo:linha`, regra do PRD) está citado na linha dela.
-10. **Regex só muda com teste.** Fase que altera padrão (PRD §8) traz o caso real na mesma fase.
-11. **Snapshot** só é regravado em fase própria ou com justificativa em `revisao.md`.
-12. **Norma nova** entra por perfil `.toml` (D2); fase que precisaria de `if norma == ...` no
+9. **A spec basta a cada fase.** O `/fase` lê só a spec, os arquivos da fase e o PADRAO_OURO.
+   O que a fase precisa a mais (`arquivo:linha`, regra de negócio, ADR) está citado na linha dela.
+10. **Regex só muda com teste.** Fase que altera padrão (`negocio/parsing.md`) traz o caso real na
+    mesma fase.
+11. **Snapshot** só é regravado em fase própria, com a justificativa no corpo da mensagem do
+    commit que o regrava.
+12. **Norma nova** entra por perfil `.toml` (ADR-002); fase que precisaria de `if norma == ...` no
     parser volta para a spec.
 
 ```markdown
@@ -139,4 +141,7 @@ decide algo que a spec não fixou (ver "Fase pede Opus quando" nos Parâmetros d
 2. **Não cria branch, não indexa, não commita.** Ao terminar, `git status --short` tem
    exatamente um arquivo a mais: a spec.
 3. **Respeita o "Proibido" dos Parâmetros do processo.**
-4. **Não decide pelo PRD.** Contradição ou lacuna vai para `docs/Prd.md` §12, ou para "Em aberto".
+4. **Não decide pela regra de negócio.** Contradição ou lacuna vai para "Em aberto" e para um
+   item em PENDENCIAS; decisão nova vira ADR antes da spec.
+5. **Não reserva número de ADR sozinho.** Ou o ADR é escrito, ou a spec registra o adiamento
+   em "Em aberto".

@@ -26,3 +26,6 @@ cache/
 Thumbs.db
 .vscode/
 .idea/
+
+# Relatórios de revisão, auditoria e regressão (efêmeros)
+docs/processo/relatorios/

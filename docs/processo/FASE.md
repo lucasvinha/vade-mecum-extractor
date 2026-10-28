@@ -25,15 +25,16 @@ Sem spec, não há o que executar: diga isso e proponha o `/spec`.
 
 1. A spec ativa, inteira.
 2. Os arquivos da coluna "Toca" e os `arquivo:linha` que a spec cita para esta fase.
-3. O [CLAUDE.md](../CLAUDE.md) do projeto e `docs/README.md § Parâmetros do processo`.
-4. O PRD (`docs/Prd.md`) ou a spec técnica **só na regra que a linha da fase citar** (ID H*, P*, RF*…).
+3. O [PADRAO_OURO](../PADRAO_OURO.md) e `docs/README.md § Parâmetros do processo`.
+4. ADR ou documento de [negocio/](../negocio/) **só na regra que a linha da fase citar** (ID H*,
+   P*, RF*…).
 
 Se faltar contexto, o defeito é da spec: complete-a em vez de sair lendo a documentação.
 
 ```bash
-git status --short                                                 # worktree limpa
-git log --oneline --grep "de .claude/processo/specs/<slug>.md"     # fases que já entraram
-git ls-files --others --exclude-standard                           # untracked que sobraram
+git status --short                                             # worktree limpa
+git log --oneline --grep "de docs/processo/specs/<slug>.md"    # fases que já entraram
+git ls-files --others --exclude-standard                       # untracked que sobraram
 ```
 
 O `--grep` casa com o corpo que o §4 põe em todo commit de fase.
@@ -51,11 +52,12 @@ O `--grep` casa com o corpo que o §4 põe em todo commit de fase.
 
 ## §2. Implementação
 
-**Só esta fase.** Nada da seguinte, mesmo que sejam três linhas. Vale o CLAUDE.md do projeto
-(parser genérico, nenhuma perda silenciosa, determinismo, texto legal literal).
+**Só esta fase.** Nada da seguinte, mesmo que sejam três linhas. Vale o PADRAO_OURO e as regras
+invioláveis do `CLAUDE.md` (parser genérico, nenhuma perda silenciosa, determinismo, texto legal
+literal).
 
-Se a fase revelar que a spec está errada, **pare, relate e corrija a spec.** Se contradisser o PRD,
-registre em `docs/Prd.md` §12 e pergunte: não decida sozinho.
+Se a fase revelar que a spec está errada, **pare, relate e corrija a spec.** Se contradisser uma
+regra de negócio ou um ADR, registre em PENDENCIAS e pergunte: não decida sozinho.
 
 ---
 
@@ -70,7 +72,7 @@ Os de `docs/README.md § Parâmetros do processo`, a partir da raiz.
 - Aviso de lint em arquivo que a fase editou se corrige no arquivo inteiro. Diga qual regra aplicou.
 - Diff sem código: rode a suíte assim mesmo.
 - Caiu na "Conferência manual" dos parâmetros: faça e mostre o resultado.
-- **Regra do PRD citada:** cada regra que a fase tocou aparece pelo ID no teste ou no comentário, e
+- **Regra citada:** cada regra que a fase tocou aparece pelo ID no teste ou no comentário, e
   mudança de regex traz o caso real que a motivou. Faltando, volta para esta fase.
 
 ---
@@ -86,7 +88,7 @@ Os de `docs/README.md § Parâmetros do processo`, a partir da raiz.
    ```
    <tipo>(<escopo>): <descrição>
 
-   Fase N de .claude/processo/specs/<slug>.md.
+   Fase N de docs/processo/specs/<slug>.md.
    ```
 
 5. **O comando** para o operador revisar:
