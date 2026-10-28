@@ -16,7 +16,7 @@ uv.lock
 .coverage
 htmlcov/
 
-# Fontes brutas e saídas geradas (não versionar; ver docs/Prd.md §10)
+# Fontes brutas e saídas geradas (não versionar; ver docs/negocio/recorte-e-cli.md)
 dados/*
 !dados/.gitkeep
 cache/

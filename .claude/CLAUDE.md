@@ -8,7 +8,6 @@ Etapa 1 de 2; a Etapa 2 (material de estudo) está fora de escopo.
 
 | Arquivo | Papel |
 |---|---|
-| `docs/Prd.md` | Requisitos: **o quê** e **por quê**. Fonte da verdade para regras (H*, P*, RF*, D*, A*). |
 | `docs/README.md` | README técnico: **como** (stack, contratos, mapa do código, Parâmetros do processo). |
 | `docs/PENDENCIAS.md` | Fila e fases de implementação (1–7), com critério de saída. |
 | `docs/processo/REVISAO.md` | Roteiro de `/revisao`. |
@@ -46,7 +45,7 @@ dados/                fontes brutas e saídas geradas (não versionado)
 - **Nenhuma perda silenciosa (RNF04):** todo texto entra na árvore ou no relatório, com `origem`.
 - **Determinismo (RNF03):** JSON com chaves ordenadas, sem timestamp dentro de `artigos`.
 - **Windows sem WSL (RNF02):** `pathlib`, `encoding="utf-8"` explícito em toda leitura/escrita.
-- **Regex só muda com teste:** toda alteração de padrão (PRD §8) vem com o caso real que a motivou.
+- **Regex só muda com teste:** toda alteração de padrão (`docs/negocio/parsing.md`) vem com o caso real que a motivou.
 - **Snapshot de regressão** só é regravado com justificativa registrada em `REVISAO.md`.
 - Texto legal é **literal** (inclusive "alguem", "conseqüências"); não corrigir ortografia.
 
@@ -56,4 +55,4 @@ dados/                fontes brutas e saídas geradas (não versionado)
 2. Teste primeiro, com fixture real, citando o ID do PRD.
 3. `ruff check . && ruff format --check . && pytest` verdes antes de commit.
 4. Ao fechar uma fase: preencher o log em `REVISAO.md` e avançar `PENDENCIAS.md`.
-5. Descobriu algo que contradiz o PRD? Registrar em `docs/Prd.md` §12 (pendências) e perguntar — não decidir sozinho.
+5. Descobriu algo que contradiz o PRD? Registrar em `docs/PENDENCIAS.md` e perguntar — não decidir sozinho.

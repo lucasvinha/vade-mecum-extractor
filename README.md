@@ -4,7 +4,7 @@ Converte legislação bruta (HTML do Planalto, `.mht` salvo, PDF com texto) em u
 hierárquica — artigo › parágrafo › inciso › alínea, com rubricas, penas e notas — e gera
 recortes de artigos a partir dela.
 
-Requisitos completos: [`docs/Prd.md`](docs/Prd.md).
+Documentação técnica: [`docs/README.md`](docs/README.md).
 
 ## Instalação
 

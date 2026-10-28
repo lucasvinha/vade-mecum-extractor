@@ -1,4 +1,4 @@
-# Perfil padrão (PRD §5.3). Perfis específicos sobrescrevem só as chaves que mudam.
+# Perfil padrão (ver docs/negocio/pipeline-e-perfis.md, ADR-002). Perfis específicos sobrescrevem só as chaves que mudam.
 # Esqueleto inicial: as chaves são preenchidas e validadas na fase 3.
 
 id = "padrao"

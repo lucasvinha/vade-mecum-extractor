@@ -1,6 +1,6 @@
 # Fixtures
 
-Trechos **reais** das fontes, nunca o arquivo inteiro (PRD §11.3).
+Trechos **reais** das fontes, nunca o arquivo inteiro (ver `docs/PADRAO_OURO.md`).
 
 - `html/` — trechos do HTML do Planalto (ex.: `cp_art121.html`), já em UTF-8.
 - `pdf/` — PDFs pequenos recortados do PDF montado (ex.: `nscgj_art196.pdf`).

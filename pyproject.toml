@@ -55,7 +55,7 @@ ignore = ["RUF001", "RUF002", "RUF003"]
 
 [tool.ruff.format]
 quote-style = "double"
-exclude = ["*.md"]   # snippets do PRD são ilustrativos
+exclude = ["*.md"]   # snippets dos docs são ilustrativos
 
 # ---------------------------------------------------------------- pytest
 [tool.pytest.ini_options]
@@ -63,7 +63,7 @@ minversion = "8.0"
 testpaths = ["tests"]
 addopts = ["-ra", "--strict-markers", "--import-mode=importlib"]
 markers = [
-    "aceite: casos de aceite do PRD §11.2 (A1–A14)",
-    "regressao: comparação com snapshot JSON versionado (PRD §11.3)",
+    "aceite: casos de aceite A1–A14 (ver docs/PADRAO_OURO.md)",
+    "regressao: comparação com snapshot JSON versionado (ver docs/PADRAO_OURO.md)",
     "rede: depende de acesso à internet (download do Planalto)",
 ]
