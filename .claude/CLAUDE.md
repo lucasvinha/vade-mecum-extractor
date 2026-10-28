@@ -9,11 +9,10 @@ Etapa 1 de 2; a Etapa 2 (material de estudo) está fora de escopo.
 | Arquivo | Papel |
 |---|---|
 | `docs/Prd.md` | Requisitos: **o quê** e **por quê**. Fonte da verdade para regras (H*, P*, RF*, D*, A*). |
-| `docs/SPEC_TECNICA.md` | Especificação técnica: **como** (contratos, módulos, convenções). |
-| `docs/README.md` | README técnico e Parâmetros do processo. |
+| `docs/README.md` | README técnico: **como** (stack, contratos, mapa do código, Parâmetros do processo). |
 | `docs/PENDENCIAS.md` | Fila e fases de implementação (1–7), com critério de saída. |
-| `.claude/processo/REVISAO.md` | Checklist de revisão e log de revisões por fase. |
-| `.claude/processo/SPEC.md`, `FASE.md` | Roteiros de `/spec` e `/fase`. |
+| `docs/processo/REVISAO.md` | Roteiro de `/revisao`. |
+| `docs/processo/SPEC.md`, `FASE.md` | Roteiros de `/spec` e `/fase`. |
 
 Ao citar uma regra em código, teste ou commit, use o ID do PRD (ex.: `# H15`, `test_a2_...`).
 
@@ -31,7 +30,7 @@ python -m vademecum recortar --base dados/cp/base.json --artigos "121-130" --sai
 ## Estrutura
 
 ```
-src/vademecum/        pacote (layout src); módulos listados em SPEC_TECNICA.md §2
+src/vademecum/        pacote (layout src); módulos listados em docs/README.md § Mapa do código
   fontes/             leitores HTML/PDF → list[LinhaFonte]
   perfis/*.toml       regras por norma (D2) — nunca lógica específica de norma no parser
 tests/                pytest; fixtures/ = trechos reais, snapshots/ = regressão
@@ -41,7 +40,7 @@ dados/                fontes brutas e saídas geradas (não versionado)
 
 ## Regras do projeto
 
-- **Python 3.12**, ruff (config em `pyproject.toml`), pytest. Sem dependência nova sem registrar em `SPEC_TECNICA.md`.
+- **Python 3.12**, ruff (config em `pyproject.toml`), pytest. Sem dependência nova sem registrar em `docs/README.md § Stack`.
 - **Identificadores em português**, alinhados ao vocabulário do PRD (`LinhaFonte`, `artigo`, `rubrica`, `nota`).
 - **Parser genérico (D2):** nada de `if norma == "cp"`. Diferenças vão para o perfil `.toml`.
 - **Nenhuma perda silenciosa (RNF04):** todo texto entra na árvore ou no relatório, com `origem`.

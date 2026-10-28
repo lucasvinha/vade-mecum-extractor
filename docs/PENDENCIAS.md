@@ -21,7 +21,7 @@ riscos de requisito (P1–P7) seguem no PRD §12, de onde este arquivo só apont
       Versionar em `tests/fixtures/` se o tamanho for aceitável; senão, o teste `regressao` pula
       quando o arquivo não existe. Decidir antes da fase 3.
 - [ ] **3. Formato do relatório (T2).** Gerar `base.relatorio.json` e `base.relatorio.md`
-      (proposta de SPEC_TECNICA.md §6). Confirmar com o PRD RF17 e P4 antes da fase 4.
+      (proposta da antiga spec técnica). Confirmar com o PRD RF17 e P4 antes da fase 4.
 - [ ] **4. Confirmar P1 e P2 do PRD §12.** Artigo avulso inclui só ele (assumido); recorte
       sub-artigo (`196, inciso XX`) fica fora da Etapa 1. Confirmar antes da fase 1 fechar o `recorte`.
 - [ ] **5. Ponto de atenção P3 (regra temporal do edital).** Número e ano de cada nota ficam na

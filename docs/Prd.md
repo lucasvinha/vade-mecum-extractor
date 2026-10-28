@@ -120,7 +120,7 @@ class LinhaFonte:
 
 ### 5.2 Módulos
 
-Caminhos relativos a `src/vademecum/`. Contratos e dependências entre módulos: `docs/SPEC_TECNICA.md` §2.
+Caminhos relativos a `src/vademecum/`. Contratos e dependências entre módulos: `docs/README.md § Mapa do código`.
 
 | Módulo | Responsabilidade |
 |---|---|
