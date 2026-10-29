@@ -29,3 +29,6 @@ Thumbs.db
 
 # Relatórios de revisão, auditoria e regressão (efêmeros)
 docs/processo/relatorios/
+
+# Configuração pessoal do Claude Code
+.claude/settings.local.json
