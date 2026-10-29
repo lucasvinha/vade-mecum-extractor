@@ -87,6 +87,15 @@ pytest -m aceite                                      # só os casos de aceite A
 
 Config do ruff e dos marcadores em `pyproject.toml`; linha de 100 colunas.
 
+```bash
+python scripts/verificar_docs.py   # sai 0 sem achado; 1 com a lista em arquivo:linha: mensagem
+```
+
+`scripts/verificar_docs.py` confere os docs contra as Regras de manutenção (tetos, `arquivo:linha`
+fora de spec, links relativos) e o código versionado (ADR citado que não existe, seção ou item
+de documento citado por número). Vem do molde e é recopiado sem edição, por isso fica fora do
+`ruff format`.
+
 ## Contratos
 
 - `LinhaFonte` é `frozen=True, slots=True`, com os campos descritos em

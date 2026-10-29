@@ -9,14 +9,12 @@ As pendências e riscos de requisito (P1–P7) estão nos itens 4 e 5 e em "Risc
 
 ## Agora
 
-- **Em curso:** item 12, pela spec `processo/specs/estrutura-docs.md`.
+- **Em curso:** nada.
 - **Próximo sugerido:** item 1 (modelo, ordenação e recorte), pelo `/spec` se passar de
   um commit.
 
 ## Fila
 
-- [ ] **12. Estrutura da documentação.** Migrar a documentação para o molde padrão (README
-      técnico, PADRAO_OURO, ADRs, `negocio/`, `processo/`). Spec: `processo/specs/estrutura-docs.md`.
 - [ ] **1. Fase 1: modelo, ordenação e recorte.** `modelo.py`, `chave_ordenacao()`,
       `recorte.py`. Aceite: A13 com base sintética. `/spec`.
 - [ ] **2. Fontes brutas no repositório.** A1 e o snapshot precisam do `.mht` do CP e de PDF.
@@ -67,4 +65,5 @@ Não são itens de trabalho: cada um é tratado pelo item citado.
 
 Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
 
+- ~~**12. Estrutura da documentação**~~ — 2026-10-28, fechado pelo commit que apagou a spec
 - ~~**0. Setup do projeto (fase 0)**~~ — 2026-10-26, `f088e51`

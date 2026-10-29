@@ -55,7 +55,8 @@ ignore = ["RUF001", "RUF002", "RUF003"]
 
 [tool.ruff.format]
 quote-style = "double"
-exclude = ["*.md"]   # snippets dos docs são ilustrativos
+# Snippets dos docs são ilustrativos. O verificar_docs.py vem do molde e é recopiado sem edição.
+exclude = ["*.md", "scripts/verificar_docs.py"]
 
 # ---------------------------------------------------------------- pytest
 [tool.pytest.ini_options]
