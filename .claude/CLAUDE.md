@@ -1,58 +1,38 @@
 # vade-mecum-extractor
 
-Parser genérico que converte legislação bruta (HTML do Planalto, `.mht`, PDF com texto) em
-**base JSON hierárquica** (artigo › parágrafo › inciso › alínea) e gera **recortes** de artigos.
-Etapa 1 de 2; a Etapa 2 (material de estudo) está fora de escopo.
+Parser genérico que converte legislação bruta (HTML do Planalto, `.mht`, PDF com texto) em base
+JSON hierárquica e gera recortes de artigos; o JSON é o contrato lido pela Etapa 2.
 
-## Documentos de referência (leia antes de mudar comportamento)
+**Comece por [docs/README.md](../docs/README.md)**: stack, contratos, testes, lint, commits,
+mapa do código e `§ Parâmetros do processo`. Este arquivo só guarda o que é regra inviolável e o
+que é específico do Claude.
 
-| Arquivo | Papel |
-|---|---|
-| `docs/README.md` | README técnico: **como** (stack, contratos, mapa do código, Parâmetros do processo). |
-| `docs/PENDENCIAS.md` | Fila e fases de implementação (1–7), com critério de saída. |
-| `docs/processo/REVISAO.md` | Roteiro de `/revisao`. |
-| `docs/processo/SPEC.md`, `FASE.md` | Roteiros de `/spec` e `/fase`. |
-
-Ao citar uma regra em código, teste ou commit, use o ID do PRD (ex.: `# H15`, `test_a2_...`).
-
-## Comandos
-
-```bash
-uv venv --python 3.12 && uv pip install -e ".[dev]"   # ambiente
-ruff check . && ruff format --check .                 # lint + formato (obrigatório antes de commit)
-pytest                                                # testes
-pytest -m aceite                                      # só casos de aceite A1–A14
-python -m vademecum extrair --fonte <fonte> --perfil cp --saida dados/cp/base.json
-python -m vademecum recortar --base dados/cp/base.json --artigos "121-130" --saida dados/cp/r.json
-```
-
-## Estrutura
-
-```
-src/vademecum/        pacote (layout src); módulos listados em docs/README.md § Mapa do código
-  fontes/             leitores HTML/PDF → list[LinhaFonte]
-  perfis/*.toml       regras por norma (D2) — nunca lógica específica de norma no parser
-tests/                pytest; fixtures/ = trechos reais, snapshots/ = regressão
-docs/                 PRD e decisões
-dados/                fontes brutas e saídas geradas (não versionado)
-```
-
-## Regras do projeto
-
-- **Python 3.12**, ruff (config em `pyproject.toml`), pytest. Sem dependência nova sem registrar em `docs/README.md § Stack`.
-- **Identificadores em português**, alinhados ao vocabulário do PRD (`LinhaFonte`, `artigo`, `rubrica`, `nota`).
-- **Parser genérico (D2):** nada de `if norma == "cp"`. Diferenças vão para o perfil `.toml`.
+## Regras invioláveis
+- **Parser genérico (ADR-002):** nada de `if norma == "cp"`; diferença entre normas vai para o
+  perfil `.toml`.
 - **Nenhuma perda silenciosa (RNF04):** todo texto entra na árvore ou no relatório, com `origem`.
 - **Determinismo (RNF03):** JSON com chaves ordenadas, sem timestamp dentro de `artigos`.
-- **Windows sem WSL (RNF02):** `pathlib`, `encoding="utf-8"` explícito em toda leitura/escrita.
-- **Regex só muda com teste:** toda alteração de padrão (`docs/negocio/parsing.md`) vem com o caso real que a motivou.
-- **Snapshot de regressão** só é regravado com justificativa registrada em `REVISAO.md`.
-- Texto legal é **literal** (inclusive "alguem", "conseqüências"); não corrigir ortografia.
+- **Windows sem WSL (RNF02):** `pathlib` e `encoding="utf-8"` explícito em toda leitura e escrita.
+- Texto legal é **literal** (inclusive "alguem", "conseqüências"); não se corrige ortografia.
+- **Regex só muda com teste**, com o caso real que motivou a mudança.
+- **Snapshot de regressão** só é regravado com a justificativa no corpo da mensagem do commit.
+- Regra citada em código, teste ou commit usa o ID (`# H15`, `test_a2_...`, `ADR-001`).
+- Siga o [PADRAO_OURO](../docs/PADRAO_OURO.md).
 
-## Fluxo de trabalho
+## Comandos
+- Testes: `pytest` (só aceite: `pytest -m aceite`)
+- Lint: `ruff check . && ruff format --check .`
+- Rodar local: `python -m vademecum extrair --fonte <fonte> --perfil cp --saida dados/cp/base.json`
 
-1. Ler a fase atual em `docs/PENDENCIAS.md` ("Agora"); trabalhar só no escopo dela.
-2. Teste primeiro, com fixture real, citando o ID do PRD.
-3. `ruff check . && ruff format --check . && pytest` verdes antes de commit.
-4. Ao fechar uma fase: preencher o log em `REVISAO.md` e avançar `PENDENCIAS.md`.
-5. Descobriu algo que contradiz o PRD? Registrar em `docs/PENDENCIAS.md` e perguntar — não decidir sozinho.
+## Fluxo
+Mudança que vale mais de um commit começa por `/spec`, nunca pela implementação inteira.
+`/spec` → `/fase` (uma por vez; para e espera o commit) → `/revisao` → `/regressao`, quando
+couber. Módulo herdado ou antes de refatorar: `/auditoria <módulo>`.
+Defeito (teste vermelho, traceback, achado de revisão ou regressão):
+skill `depuracao-sistematica`, causa raiz antes da correção.
+Contradição com regra de negócio ou ADR: registre em PENDENCIAS e pergunte; não decida sozinho.
+Roteiros em [docs/processo/](../docs/processo/README.md).
+
+## Específico do Claude
+- `.claude/CLAUDE.md` e `.claude/commands/` são versionados; os comandos só carregam os roteiros
+  de `docs/processo/`. `settings.local.json` é pessoal e fica fora do git.
