@@ -1,5 +1,5 @@
 # Perfil padrão (ver docs/negocio/pipeline-e-perfis.md, ADR-002). Perfis específicos sobrescrevem só as chaves que mudam.
-# Esqueleto inicial: as chaves são preenchidas e validadas na fase 3.
+# Esqueleto inicial: as chaves são preenchidas e validadas no marco M3 (docs/PENDENCIAS.md).
 
 id = "padrao"
 

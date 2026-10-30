@@ -18,7 +18,9 @@ vade mecum em HTML, convertido depois em PDF. O consumidor do JSON é, portanto,
   filtro de vigência; exportação da base e do recorte em JSON; relatório de extração (avisos,
   descartes, inconsistências).
 - **Fora:** OCR de PDF escaneado; material de estudo (Etapa 2); reconstrução de redações
-  anteriores; resolução automática da data exata de leis alteradoras (ver PENDENCIAS).
+  anteriores; resolução automática da data exata de leis alteradoras (ver PENDENCIAS); por ora, o
+  extrator de questões de concurso (marco M9 em PENDENCIAS; contrato em
+  [schema-questoes-json.md](schema-questoes-json.md)).
 
 Ordem de leitura: este arquivo → o documento que o problema pede (tabela abaixo) → o código.
 Em divergência com o código, **vale o código**, e o documento é corrigido.
