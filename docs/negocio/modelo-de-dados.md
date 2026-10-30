@@ -16,7 +16,7 @@ Formato canônico de saída: **JSON hierárquico**, UTF-8. CSV é rejeitado porq
 ## §2. Saída
 
 - **RF13** — Segmentar PDF multi-norma e identificar cada norma por título, número e data (P5).
-- **RF17** — Gerar base completa em JSON e relatório de extração em JSON ou Markdown.
+- **RF17** — Gerar base completa em JSON e relatório de extração em JSON (`base.relatorio.json`, [recorte-e-cli.md](recorte-e-cli.md)).
 - **RF19** — Cada nó guarda `origem` ([pipeline-e-perfis.md](pipeline-e-perfis.md)), para depurar o parser.
 
 ## §3. Envelope
