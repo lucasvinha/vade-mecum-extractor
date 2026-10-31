@@ -307,3 +307,76 @@ def test_h5_text_align_center_no_style_centraliza(tmp_path):
         ("(Incluído pela Lei 12.550. de 2011)", True),
         ("Fraudes", False),
     ]
+
+
+def test_h8_strike_vazio_do_cp_nao_muda_nada(fixtures_dir: Path):
+    # A fixture traz 3 dos 6 `<strike>` do CP, todos com só `<br>` (arts. 187 a 191): as linhas
+    # são as do teste da H4, sem lacuna na `origem`, e nada vai ao relatório.
+    relatorio = Relatorio()
+    cp = ler_html(fixtures_dir / "html" / "cp_enxertos.mht", relatorio)
+    assert b"<strike><br>" in (fixtures_dir / "html" / "cp_enxertos.mht").read_bytes()
+    assert [linha.origem for linha in cp.linhas] == [
+        f"html:p#{i}" for i in range(1, len(cp.linhas) + 1)
+    ]
+    assert relatorio.entradas == ()
+
+
+@pytest.fixture
+def lei8429(fixtures_dir: Path):
+    relatorio = Relatorio()
+    return ler_html(fixtures_dir / "html" / "lei8429_tachado.htm", relatorio), relatorio
+
+
+def test_h8_tachado_com_resto_so_nota_sai_como_descarte(lei8429):
+    _, relatorio = lei8429
+    descartes = [e for e in relatorio.entradas if e.tipo == "descarte"]
+    assert [e.origem for e in descartes] == ["html:p#1", "html:p#2"]
+    # O texto completo vai ao relatório, tachado e nota juntos (RNF04).
+    assert descartes[0].texto.startswith("Art. 4° Os agentes públicos de qualquer nível")
+    assert descartes[0].texto.endswith("(Revogado pela Lei nº 14.230, de 2021)")
+    assert descartes[1].texto.startswith("IV - utilizar, em obra ou serviço particular, veículos")
+
+
+def test_h8_redacao_nova_fica_e_origem_conta_o_descarte(lei8429):
+    fonte, _ = lei8429
+    [linha] = fonte.linhas
+    assert linha.origem == "html:p#3"
+    assert linha.texto.startswith(
+        "IV - utilizar, em obra ou serviço particular, qualquer bem móvel"
+    )
+
+
+def test_h8_tachado_parcial_fica_literal_e_gera_aviso(fixtures_dir: Path):
+    # CPP, art. 336, parágrafo único: apagar o tachado adulteraria a frase vigente.
+    relatorio = Relatorio()
+    [linha] = ler_html(fixtures_dir / "html" / "cpp_art336.htm", relatorio).linhas
+    assert linha.texto == (
+        "Parágrafo único. Este dispositivo terá aplicação ainda no caso da prescrição depois da "
+        "sentença condenatória (art. 110 do Código Penal). (Redação dada pela Lei nº 12.403, de "
+        "2011)."
+    )
+    [aviso] = relatorio.entradas
+    assert (aviso.tipo, aviso.origem, aviso.texto) == (
+        "aviso",
+        "html:p#1",
+        "art. 110 do Código Penal",
+    )
+
+
+@pytest.mark.parametrize(
+    "resto",
+    ["", "(Revogado pela Lei nº 14.230, de 2021)", "(Redação dada pela Lei nº 12.403, de 2011)."],
+)
+def test_h8_so_notas_casa_as_notas_reais(tmp_path, resto):
+    html = f"<p><s>IV - texto antigo;</s> {resto}</p>".encode("cp1252")
+    relatorio = Relatorio()
+    assert ler_html(_htm(tmp_path, html), relatorio).linhas == ()
+    assert [e.tipo for e in relatorio.entradas] == ["descarte"]
+
+
+def test_h8_del_com_texto_fora_de_nota_fica_e_avisa(tmp_path):
+    html = b"<p>condenat\xf3ria (<del>art. 110</del>). (Reda\xe7\xe3o dada)</p>"
+    relatorio = Relatorio()
+    [linha] = ler_html(_htm(tmp_path, html), relatorio).linhas
+    assert linha.texto == "condenatória (art. 110). (Redação dada)"
+    assert [(e.tipo, e.texto) for e in relatorio.entradas] == [("aviso", "art. 110")]
