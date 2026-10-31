@@ -33,6 +33,49 @@ def chave_de_texto(s: str) -> tuple[int, tuple[str, ...]]:
     return chave_ordenacao(numero, sufixo)
 
 
+# Romano canônico do inciso (`I` a `LXXVIII` na CF); forma não canônica (`IIII`, `VX`) é erro.
+_ROMANO = re.compile(r"(?=[MDCLXVI])M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})")
+_VALOR_ROMANO = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
+
+def _numero_com_sufixo(numero: int, sufixo: tuple[str, ...]) -> str:
+    return "-".join((str(numero), *sufixo))
+
+
+def id_artigo(numero: int, sufixo: tuple[str, ...] = ()) -> str:
+    """`art121`, `art359-M-A`; o número já vem sem separador de milhar (`art1091-A`, P13)."""
+    return f"art{_numero_com_sufixo(numero, sufixo)}"
+
+
+def id_paragrafo(pai: str, numero: int | None, sufixo: tuple[str, ...] = ()) -> str:
+    """`<pai>.p2`, `<pai>.p2-B`; `numero` é `None` no parágrafo único (`<pai>.pu`)."""
+    if numero is None:
+        return f"{pai}.pu"
+    return f"{pai}.p{_numero_com_sufixo(numero, sufixo)}"
+
+
+def id_inciso(pai: str, romano: str) -> str:
+    """`<pai>.i7` para o inciso `VII`: o romano vira inteiro."""
+    if _ROMANO.fullmatch(romano) is None:
+        raise ValueError(f"inciso romano inválido: {romano!r}")
+    valores = [_VALOR_ROMANO[c] for c in romano]
+    # Algarismo menor antes de um maior subtrai (`IV`, `XL`).
+    numero = sum(-v if v < prox else v for v, prox in zip(valores, [*valores[1:], 0], strict=True))
+    return f"{pai}.i{numero}"
+
+
+def id_alinea(pai: str, letra: str) -> str:
+    """`<pai>.a`."""
+    return f"{pai}.{letra}"
+
+
+def id_pena(pai: str, ordem: int) -> str:
+    """`<pai>.pena1`; `ordem` conta só as penas do mesmo pai, a partir de 1."""
+    if ordem < 1:
+        raise ValueError(f"ordem da pena começa em 1: {ordem}")
+    return f"{pai}.pena{ordem}"
+
+
 class ErroFonte(Exception):
     """Erro de entrada (arquivo inexistente, PDF sem texto; RF06); a CLI devolve código 2."""
 
