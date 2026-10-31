@@ -105,7 +105,7 @@ I/O; quem grava é a `cli.py`.
 
 | # | Fase | Toca | Aceite | Modelo | Feito |
 |---|---|---|---|---|---|
-| 1 | Docs do contrato: esquema estável por tipo, `id` com milhar, `Nota.data` em ISO, `ErroFonte` em `modelo` | `negocio/modelo-de-dados.md`, `docs/README.md` (§ Contratos) | o exemplo do art. 121 tem as chaves da tabela do Contrato; `python scripts/verificar_docs.py` sai 0; portões verdes | Opus | |
+| 1 | Docs do contrato: esquema estável por tipo, `id` com milhar, `Nota.data` em ISO, `ErroFonte` em `modelo` | `negocio/modelo-de-dados.md`, `docs/README.md` (§ Contratos) | o exemplo do art. 121 tem as chaves da tabela do Contrato; `python scripts/verificar_docs.py` sai 0; portões verdes | Opus | 2026-10-31 `682784b` |
 | 2 | Chaves de ordenação: `chave_ordenacao` e `chave_de_texto` (H11, H12, P13) | `modelo.py`, `tests/unit/test_modelo.py` | as duas cadeias de ordenação do Estado final; `1º`→`(1, ())`; `1.091-A`→`(1091, ("A",))`; `ValueError` para `Art. 121` e `121-a`; portões verdes | Sonnet | |
 | 3 | Dataclasses da árvore e da base: `LinhaFonte`, `Nota`, `Local`, `No`, `Norma`, `Metadados`, `Base`, `ErroFonte` | `modelo.py`, `tests/unit/test_modelo.py` | todas frozen+slots; atribuir campo levanta `FrozenInstanceError`; `filhos`/`notas` são `tuple`; campos de `LinhaFonte` iguais aos de `negocio/pipeline-e-perfis`; portões verdes | Sonnet | |
 | 4 | Relatório: `EntradaRelatorio` e `Relatorio.registrar` | `modelo.py`, `tests/unit/test_modelo.py` | tipo fora dos cinco levanta `ValueError`; entradas guardadas na ordem em que foram registradas; portões verdes | Sonnet | |
