@@ -9,9 +9,11 @@ alínea, com rubricas, penas e notas legislativas. Sobre essa base, um segundo c
 
 Este projeto é a **Etapa 1 de 2**. A Etapa 2 (material de estudo: realces, quadros comparativos,
 pontos de atenção) consome a base e está fora de escopo, mas a Etapa 1 preserva o que ela vai
-precisar (notas, penas e o relatório de descartes). A Etapa 2 roda no Claude (Opus): o operador
-sobe as bases JSON num projeto do Claude.ai, e o modelo escolhe os artigos do edital e monta o
-vade mecum em HTML, convertido depois em PDF. O consumidor do JSON é, portanto, um LLM.
+precisar (notas, penas e o relatório de descartes). A Etapa 2 roda no Claude (Opus): o `recortar`
+separa os artigos do edital, o operador sobe só os recortes JSON num projeto do Claude.ai, e o
+modelo monta o vade mecum em HTML, convertido depois em PDF. O consumidor do JSON é, portanto, um
+LLM. Os artigos de cada tópico do edital estão em
+[claude/topicos-oj2026.json](../claude/topicos-oj2026.json) (schema `topicos-oj/1`).
 
 - **Dentro:** leitura de HTML do Planalto (URL, `.htm`/`.html` ou `.mht`) e de PDF com texto,
   inclusive PDF com várias normas; normalização, parsing hierárquico, classificação de notas,

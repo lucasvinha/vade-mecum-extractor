@@ -13,8 +13,10 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 
 - **Em curso:** nada.
 - **Próximo sugerido:** M1 (item 1), pelo `/spec`.
-- **Meta:** a base do CP no M4 e as cinco normas do edital no M6. Prova em 14/03/2027; normas:
-  CP, CPP, CC, CPC e CF, todas do HTML do Planalto.
+- **Meta:** a base do CP no M4 e as normas do edital que estão no Planalto no M6. Prova em
+  14/03/2027. Do Planalto: CP, CPP, CPC, CC, LINDB, CF e Leis 9.099, 8.429, 6.830 e 13.146. Fora
+  dele, no M8: NSCGJ, Leis SP 10.261 e 11.608 e Res. CNJ 354. Os artigos de cada tópico estão em
+  [claude/topicos-oj2026.json](../claude/topicos-oj2026.json).
 
 ## Fila
 
@@ -25,6 +27,8 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 - [ ] **M2 · 6. Leitor HTML + normalizador.** `fontes/html.py` (`.mht` e arquivo local; RF03,
       RF04; H1–H4) e `normalizador.py` (ordinais, travessões; H11, H13). Aceite: trecho do
       art. 121 vira linhas lógicas corretas; A8. Antes da spec, o risco "H8 em outras normas".
+      Enxertos: o operador traz da máquina dele, ou libera `www.planalto.gov.br` na rede do
+      ambiente de nuvem (em 2026-10-31 o proxy recusou o domínio com 403).
 - [ ] **M3 · 7. Parser (perfil `cp`) + `extrair`.** `perfil.py`, `perfis/cp.toml`, `parser.py`
       (hierarquia, dispositivos, rubricas, penas; RF07–RF11) e o subcomando `extrair`, com
       código de saída 2 para erro de entrada. Aceite: A1–A8, exceto vigência.
@@ -33,24 +37,27 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
       RF14–RF16), `validador.py` (V1–V7) e `base.relatorio.json`. Aceite: A1–A8 completos;
       snapshot dos enxertos do CP. **Entrega a primeira base usável: o CP.**
 - [ ] **M5 · 15. Recorte + `recortar`.** `recorte.py` e o subcomando (RF18, ADR-004, P1, P2).
-      Aceite: A13. **Bloqueado:** em 2026-10-30 o operador disse que o Claude filtra o que
-      interessa, o que põe em dúvida o recorte em Python (RF18, ADR-003). As cinco normas passam
-      de 4.500 artigos na numeração-base (CC 2.046, CPC 1.072, CPP 811, CP 361, CF 250, fora o
-      ADCT), e a base inteira no projeto do Claude.ai pode não caber no contexto. Decidir com a
-      base do CP do M4: medir o tamanho e testar no projeto. Se o filtro ficar no Claude, este
-      item é apagado e RF18 e ADR-003 são revistos.
-- [ ] **M6 · 13. Perfis `cpp`, `cpc`, `cc` e `cf`.** Um perfil por fase, cada um com casos de
+      Aceite: A13. Em 2026-10-31 o operador decidiu: o Python recorta e o Claude recebe só o
+      recorte (RF18 e ADR-003 mantidos). Nas cinco normas maiores, o edital cobra 686 dos 4.540
+      artigos da numeração-base, uns 15%. Casos reais do `arts` dos tópicos para a spec: ordinal
+      (`1º a 12`, `8º; 9º`), milhar (`1.169 a 1.173`) e letra (`396-A`, `798-A`). A conferir na
+      spec: se a entrada sai direto do `arts` dos tópicos.
+- [ ] **M6 · 13. Perfis das normas do Planalto.** `cpp`, `cpc`, `cc` (com a LINDB, DL 4.657),
+      `cf` e as Leis 9.099, 8.429, 6.830 e 13.146. Um perfil por fase, cada um com casos de
       aceite novos e enxerto real. A conferir na spec: milhar no HTML (`Art. 1.072`, P13), a CF
-      com o ADCT na mesma página (a numeração recomeça), normas sem rubrica e sem pena.
+      com o ADCT na mesma página (a numeração recomeça), normas sem rubrica e sem pena, e se as
+      leis menores cabem no perfil `padrao` (ADR-002).
 - [ ] **M7 · 10. URL com cache.** Download + cache com data e SHA-256 (RF02). Aceite: A14.
-      Opcional: o `.mht` salvo à mão já cobre as cinco normas.
+      Opcional: o `.mht` salvo à mão já cobre as normas do Planalto.
 - [ ] **M8 · 9. PDF.** `fontes/pdf.py`, `segmentador.py`, perfis `nscgj` e `lei_sp`. Aceite:
-      A9–A12. Nenhuma norma do edital vem em PDF; o leitor é pré-requisito do M9 e fica genérico.
+      A9–A12. NSCGJ e Lei SP 10.261 vêm em PDF, com o recorte trazido pelo operador
+      (2026-10-31). Lei SP 11.608 e Res. CNJ 354 também não estão no Planalto e já estão no PDF
+      analisado (P5 de [negocio/fontes.md](negocio/fontes.md)); origem a confirmar. O leitor é
+      também pré-requisito do M9.
 - [ ] **M9 · 14. Extrator de questões.** PDF de cursinho (questão, alternativas, gabarito embaixo
       ou em anexo) → `questoes-oj/1` ([schema-questoes-json.md](schema-questoes-json.md)).
       Fixture: enxerto de duas páginas. Antes da spec: ADR de escopo (subpacote neste repositório
-      ou repositório próprio) e o arquivo de tópicos do edital, que o contrato cita e o operador
-      vai juntar.
+      ou repositório próprio).
 
 ## Perguntas em aberto
 

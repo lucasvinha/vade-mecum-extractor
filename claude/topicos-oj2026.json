@@ -1,0 +1,1267 @@
+{
+ "schema": "topicos-oj/1",
+ "edital": "TJSP Oficial de Justiça 2026 — Edital de Abertura n.º 01/2026, Anexo VIII",
+ "gerado_em": "2026-10-27",
+ "materias": [
+  {
+   "id": "penal",
+   "nome": "Direito Penal",
+   "bloco": "II",
+   "tipo": "lei",
+   "total": 87,
+   "grupos": [
+    {
+     "titulo": "Código Penal · Parte Geral",
+     "itens": [
+      {
+       "id": "penal:aplicacao",
+       "rubrica": "Título I — Da aplicação da lei penal",
+       "arts": "1º a 12",
+       "n": 12
+      },
+      {
+       "id": "penal:acao-penal",
+       "rubrica": "Título VII — Da ação penal",
+       "arts": "100 a 106",
+       "n": 7
+      },
+      {
+       "id": "penal:extincao",
+       "rubrica": "Título VIII — Da extinção da punibilidade",
+       "arts": "107 a 120",
+       "n": 14,
+       "nota": "O edital rotula a faixa como 107 a 121; o art. 121 é homicídio."
+      }
+     ]
+    },
+    {
+     "titulo": "Código Penal · Parte Especial · Título I — Dos crimes contra a pessoa",
+     "itens": [
+      {
+       "id": "penal:vida-lesoes",
+       "rubrica": "Caps. I e II — Dos crimes contra a vida; das lesões corporais",
+       "arts": "121; 129",
+       "n": 2
+      },
+      {
+       "id": "penal:liberdade",
+       "rubrica": "Cap. VI — Dos crimes contra a liberdade individual",
+       "arts": "150; 154",
+       "n": 2,
+       "nota": "Inviolabilidade do domicílio e dos segredos"
+      }
+     ]
+    },
+    {
+     "titulo": "Código Penal · Parte Especial · Título X — Dos crimes contra a fé pública",
+     "itens": [
+      {
+       "id": "penal:falsidade-papeis",
+       "rubrica": "Cap. II — Da falsidade de títulos e outros papéis públicos",
+       "arts": "293 a 295",
+       "n": 3
+      },
+      {
+       "id": "penal:falsidade-doc",
+       "rubrica": "Cap. III — Da falsidade documental",
+       "arts": "296 a 305",
+       "n": 10
+      },
+      {
+       "id": "penal:outras-falsidades",
+       "rubrica": "Caps. IV e V — De outras falsidades; das fraudes em certames de interesse público",
+       "arts": "307; 308; 311-A",
+       "n": 3,
+       "nota": "306 e 309 a 311 ficam fora do edital"
+      }
+     ]
+    },
+    {
+     "titulo": "Código Penal · Parte Especial · Título XI — Dos crimes contra a administração pública",
+     "itens": [
+      {
+       "id": "penal:func-publico",
+       "rubrica": "Cap. I — Crimes praticados por funcionário público contra a administração em geral",
+       "arts": "312 a 317; 319 a 327",
+       "n": 15,
+       "nota": "318 fica fora do edital"
+      },
+      {
+       "id": "penal:particular",
+       "rubrica": "Cap. II — Crimes praticados por particular contra a administração em geral",
+       "arts": "328 a 333; 336; 337",
+       "n": 8,
+       "oj": true,
+       "nota": "Resistência, desobediência e desacato; 334 a 335 ficam fora"
+      },
+      {
+       "id": "penal:adm-justica",
+       "rubrica": "Cap. III — Dos crimes contra a administração da justiça",
+       "arts": "339 a 347; 357; 359",
+       "n": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "proc-penal",
+   "nome": "Direito Processual Penal",
+   "bloco": "II",
+   "tipo": "lei",
+   "total": 156,
+   "grupos": [
+    {
+     "titulo": "CPP · Livro I — Do processo em geral",
+     "itens": [
+      {
+       "id": "pp:acao-penal",
+       "rubrica": "Título III — Da ação penal",
+       "arts": "24 a 42; 61; 62",
+       "n": 21
+      },
+      {
+       "id": "pp:acao-civil",
+       "rubrica": "Título IV — Da ação civil",
+       "arts": "63 a 68",
+       "n": 6
+      },
+      {
+       "id": "pp:competencia",
+       "rubrica": "Título V — Da competência",
+       "arts": "69 a 74",
+       "n": 6,
+       "nota": "Art. 69 e Caps. I a III: lugar da infração, domicílio do réu, natureza da infração"
+      }
+     ]
+    },
+    {
+     "titulo": "CPP · Livro I · Título VI — Das questões e processos incidentes",
+     "itens": [
+      {
+       "id": "pp:impedimentos",
+       "rubrica": "Cap. IV — Das incompatibilidades e impedimentos",
+       "arts": "112",
+       "n": 1
+      },
+      {
+       "id": "pp:assecuratorias",
+       "rubrica": "Cap. VI — Das medidas assecuratórias",
+       "arts": "125 a 131",
+       "n": 7
+      }
+     ]
+    },
+    {
+     "titulo": "CPP · Livro I · Título VII — Da prova",
+     "itens": [
+      {
+       "id": "pp:prova-geral",
+       "rubrica": "Cap. I — Disposições gerais",
+       "arts": "156",
+       "n": 1
+      },
+      {
+       "id": "pp:interrogatorio",
+       "rubrica": "Cap. III — Do interrogatório do acusado",
+       "arts": "185",
+       "n": 1
+      },
+      {
+       "id": "pp:testemunhas",
+       "rubrica": "Cap. VI — Das testemunhas",
+       "arts": "202 a 204; 218 a 225",
+       "n": 11
+      },
+      {
+       "id": "pp:busca",
+       "rubrica": "Cap. XI — Da busca e da apreensão",
+       "arts": "240 a 250",
+       "n": 11,
+       "oj": true
+      }
+     ]
+    },
+    {
+     "titulo": "CPP · Livro I · Título VIII — Do juiz, do MP, do acusado e defensor, dos assistentes e auxiliares da justiça",
+     "itens": [
+      {
+       "id": "pp:funcionarios",
+       "rubrica": "Cap. V — Dos funcionários da justiça",
+       "arts": "274",
+       "n": 1,
+       "oj": true
+      }
+     ]
+    },
+    {
+     "titulo": "CPP · Livro I · Título IX — Da prisão, das medidas cautelares e da liberdade provisória",
+     "itens": [
+      {
+       "id": "pp:prisao-geral",
+       "rubrica": "Cap. I — Disposições gerais",
+       "arts": "283 a 300",
+       "n": 18
+      },
+      {
+       "id": "pp:flagrante",
+       "rubrica": "Cap. II — Da prisão em flagrante",
+       "arts": "301 a 303",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "titulo": "CPP · Livro I · Título X — Das citações e intimações",
+     "itens": [
+      {
+       "id": "pp:citacoes",
+       "rubrica": "Cap. I — Das citações",
+       "arts": "351 a 363",
+       "n": 13,
+       "oj": true
+      },
+      {
+       "id": "pp:intimacoes",
+       "rubrica": "Cap. II — Das intimações",
+       "arts": "370 a 372",
+       "n": 3,
+       "oj": true
+      }
+     ]
+    },
+    {
+     "titulo": "CPP · Livro II — Dos processos em espécie",
+     "itens": [
+      {
+       "id": "pp:instrucao",
+       "rubrica": "Título I, Cap. I — Da instrução criminal",
+       "arts": "396; 396-A",
+       "n": 2
+      },
+      {
+       "id": "pp:juri",
+       "rubrica": "Título I, Cap. II — Do procedimento do Tribunal do Júri",
+       "arts": "406; 436 a 446; 485 a 487",
+       "n": 15,
+       "nota": "Acusação e instrução preliminar; função do jurado; questionário e votação"
+      },
+      {
+       "id": "pp:resp-funcionarios",
+       "rubrica": "Título II, Cap. II — Dos crimes de responsabilidade dos funcionários públicos",
+       "arts": "513 a 518",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "titulo": "CPP · Livro III — Das nulidades e dos recursos em geral",
+     "itens": [
+      {
+       "id": "pp:nulidades",
+       "rubrica": "Título I — Das nulidades",
+       "arts": "563 a 570",
+       "n": 8
+      },
+      {
+       "id": "pp:apelacao",
+       "rubrica": "Título II, Cap. III — Da apelação",
+       "arts": "593",
+       "n": 1
+      },
+      {
+       "id": "pp:hc",
+       "rubrica": "Título II, Cap. X — Do habeas corpus e seu processo",
+       "arts": "647 a 654",
+       "n": 8
+      }
+     ]
+    },
+    {
+     "titulo": "CPP · Livros IV e VI",
+     "itens": [
+      {
+       "id": "pp:medidas-seg",
+       "rubrica": "Livro IV, Título VI — Da execução das medidas de segurança",
+       "arts": "762; 763",
+       "n": 2
+      },
+      {
+       "id": "pp:disp-gerais",
+       "rubrica": "Livro VI — Disposições gerais",
+       "arts": "792; 798; 798-A",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "titulo": "Lei n.º 9.099/1995 — Juizados Especiais Criminais",
+     "itens": [
+      {
+       "id": "pp:jecrim-geral",
+       "rubrica": "Cap. I — Disposições gerais",
+       "arts": "1º; 2º",
+       "n": 2
+      },
+      {
+       "id": "pp:jecrim",
+       "rubrica": "Cap. III — Dos Juizados Especiais Criminais",
+       "arts": "60 a 62; 66 a 68",
+       "n": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "proc-civil",
+   "nome": "Direito Processual Civil",
+   "bloco": "II",
+   "tipo": "lei",
+   "total": 236,
+   "grupos": [
+    {
+     "titulo": "CPC · Parte Geral · Livro I — Das normas processuais civis",
+     "itens": [
+      {
+       "id": "pc:normas-fund",
+       "rubrica": "Cap. I — Das normas fundamentais do processo civil",
+       "arts": "1º a 11",
+       "n": 11
+      },
+      {
+       "id": "pc:aplicacao",
+       "rubrica": "Cap. II — Da aplicação das normas processuais",
+       "arts": "13 a 15",
+       "n": 3
+      }
+     ]
+    },
+    {
+     "titulo": "CPC · Parte Geral · Livro II — Da função jurisdicional",
+     "itens": [
+      {
+       "id": "pc:jurisdicao",
+       "rubrica": "Título I — Da jurisdição e da ação",
+       "arts": "16 a 18",
+       "n": 3
+      },
+      {
+       "id": "pc:limites",
+       "rubrica": "Título II, Cap. I — Dos limites da jurisdição nacional",
+       "arts": "21 a 25",
+       "n": 5
+      },
+      {
+       "id": "pc:cooperacao",
+       "rubrica": "Título II, Cap. II — Da cooperação internacional",
+       "arts": "26; 27; 36",
+       "n": 3,
+       "nota": "Art. 36: carta rogatória"
+      },
+      {
+       "id": "pc:competencia",
+       "rubrica": "Título III, Cap. I — Da competência",
+       "arts": "42 a 53; 64 a 66",
+       "n": 15,
+       "nota": "Disposições gerais e incompetência"
+      }
+     ]
+    },
+    {
+     "titulo": "CPC · Parte Geral · Livro III — Dos sujeitos do processo",
+     "itens": [
+      {
+       "id": "pc:capacidade",
+       "rubrica": "Título I, Cap. I — Da capacidade processual",
+       "arts": "70 a 76",
+       "n": 7
+      },
+      {
+       "id": "pc:deveres",
+       "rubrica": "Título I, Cap. II — Dos deveres das partes e de seus procuradores",
+       "arts": "77 a 85; 98 a 102",
+       "n": 14,
+       "nota": "Inclui despesas e honorários (82 a 85) e gratuidade da justiça (98 a 102)"
+      },
+      {
+       "id": "pc:sucessao",
+       "rubrica": "Título I, Cap. IV — Da sucessão das partes e dos procuradores",
+       "arts": "110; 111",
+       "n": 2
+      },
+      {
+       "id": "pc:denunciacao",
+       "rubrica": "Título III, Cap. II — Da denunciação da lide",
+       "arts": "125 a 129",
+       "n": 5
+      },
+      {
+       "id": "pc:chamamento",
+       "rubrica": "Título III, Caps. III e IV — Do chamamento ao processo; da desconsideração da personalidade jurídica",
+       "arts": "130 a 135",
+       "n": 6
+      },
+      {
+       "id": "pc:juiz",
+       "rubrica": "Título IV, Cap. I — Dos poderes, dos deveres e da responsabilidade do juiz",
+       "arts": "139 a 143",
+       "n": 5
+      },
+      {
+       "id": "pc:auxiliares",
+       "rubrica": "Título IV, Cap. III — Dos auxiliares da justiça",
+       "arts": "149 a 155; 159 a 161",
+       "n": 10,
+       "oj": true,
+       "nota": "Escrivão, chefe de secretaria e oficial de justiça; depositário e administrador"
+      },
+      {
+       "id": "pc:mp",
+       "rubrica": "Título V — Do Ministério Público",
+       "arts": "176 a 181",
+       "n": 6
+      },
+      {
+       "id": "pc:adv-defensoria",
+       "rubrica": "Títulos VI e VII — Da Advocacia Pública; da Defensoria Pública",
+       "arts": "182 a 187",
+       "n": 6,
+       "nota": "O resumo do curso chama a faixa 176 a 187 inteira de Ministério Público"
+      }
+     ]
+    },
+    {
+     "titulo": "CPC · Parte Geral · Livro IV — Dos atos processuais",
+     "itens": [
+      {
+       "id": "pc:forma-atos",
+       "rubrica": "Título I, Cap. I — Da forma dos atos processuais",
+       "arts": "188 a 199; 203 a 211",
+       "n": 21,
+       "nota": "Atos em geral, prática eletrônica, pronunciamentos do juiz, atos do escrivão"
+      },
+      {
+       "id": "pc:tempo-lugar",
+       "rubrica": "Título I, Cap. II — Do tempo e do lugar dos atos processuais",
+       "arts": "212 a 217",
+       "n": 6,
+       "oj": true
+      },
+      {
+       "id": "pc:prazos",
+       "rubrica": "Título I, Cap. III — Dos prazos",
+       "arts": "218 a 235",
+       "n": 18
+      },
+      {
+       "id": "pc:comunicacao",
+       "rubrica": "Título II, Cap. I — Da comunicação dos atos processuais: disposições gerais",
+       "arts": "236; 237",
+       "n": 2,
+       "oj": true
+      },
+      {
+       "id": "pc:citacao",
+       "rubrica": "Título II, Cap. II — Da citação",
+       "arts": "238 a 259",
+       "n": 22,
+       "oj": true
+      },
+      {
+       "id": "pc:intimacoes",
+       "rubrica": "Título II, Cap. IV — Das intimações",
+       "arts": "269 a 275",
+       "n": 7,
+       "oj": true
+      }
+     ]
+    },
+    {
+     "titulo": "CPC · Parte Especial · Livro I — Do processo de conhecimento e do cumprimento de sentença",
+     "itens": [
+      {
+       "id": "pc:testemunhal",
+       "rubrica": "Título I, Cap. XII — Das provas: prova testemunhal",
+       "arts": "447 a 449; 453; 454",
+       "n": 5
+      },
+      {
+       "id": "pc:coisa-julgada",
+       "rubrica": "Título I, Cap. XIII — Da sentença e da coisa julgada",
+       "arts": "502",
+       "n": 1
+      },
+      {
+       "id": "pc:cumprimento",
+       "rubrica": "Título II, Caps. IV a VI — Do cumprimento da sentença",
+       "arts": "528; 535; 536; 538",
+       "n": 4,
+       "nota": "Alimentos; Fazenda Pública; fazer ou não fazer; entregar coisa"
+      },
+      {
+       "id": "pc:possessorias",
+       "rubrica": "Título III, Cap. III — Das ações possessórias",
+       "arts": "554; 560 a 563",
+       "n": 5,
+       "oj": true
+      },
+      {
+       "id": "pc:inventario",
+       "rubrica": "Título III, Cap. VI — Do inventário e da partilha",
+       "arts": "626",
+       "n": 1
+      },
+      {
+       "id": "pc:familia",
+       "rubrica": "Título III, Cap. X — Das ações de família",
+       "arts": "695",
+       "n": 1
+      },
+      {
+       "id": "pc:interdicao",
+       "rubrica": "Título III, Cap. XV — Da jurisdição voluntária: interdição",
+       "arts": "751",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "titulo": "CPC · Parte Especial · Livro II — Do processo de execução",
+     "itens": [
+      {
+       "id": "pc:exec-competencia",
+       "rubrica": "Título I, Cap. III — Da competência",
+       "arts": "782",
+       "n": 1,
+       "oj": true
+      },
+      {
+       "id": "pc:resp-patrimonial",
+       "rubrica": "Título I, Cap. V — Da responsabilidade patrimonial",
+       "arts": "795",
+       "n": 1
+      },
+      {
+       "id": "pc:entrega-coisa",
+       "rubrica": "Título II, Cap. II — Da execução para a entrega de coisa",
+       "arts": "806; 807",
+       "n": 2,
+       "oj": true
+      },
+      {
+       "id": "pc:quantia-certa",
+       "rubrica": "Título II, Cap. IV — Da execução por quantia certa",
+       "arts": "827 a 846; 870 a 875",
+       "n": 26,
+       "oj": true,
+       "nota": "Citação do executado, arresto, penhora, depósito, avaliação"
+      }
+     ]
+    },
+    {
+     "titulo": "CPC · Parte Especial · Livro III — Dos processos nos tribunais e dos meios de impugnação",
+     "itens": [
+      {
+       "id": "pc:recursos",
+       "rubrica": "Título II, Caps. I a III — Dos recursos: disposições gerais, apelação, agravo de instrumento",
+       "arts": "994; 1.001; 1.003; 1.009; 1.010; 1.015",
+       "n": 6
+      },
+      {
+       "id": "pc:embargos",
+       "rubrica": "Título II, Cap. V — Dos embargos de declaração",
+       "arts": "1.022",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "titulo": "Lei n.º 9.099/1995 — Juizados Especiais Cíveis",
+     "itens": [
+      {
+       "id": "pc:jec",
+       "rubrica": "Cap. II — Dos Juizados Especiais Cíveis",
+       "arts": "8º; 9º; 18; 19",
+       "n": 4,
+       "nota": "Das partes; das citações e intimações"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "constitucional",
+   "nome": "Direito Constitucional",
+   "bloco": "II",
+   "tipo": "lei",
+   "total": 33,
+   "grupos": [
+    {
+     "titulo": "Constituição Federal · Títulos I e II",
+     "itens": [
+      {
+       "id": "cf:principios",
+       "rubrica": "Título I — Dos princípios fundamentais",
+       "arts": "1º a 4º",
+       "n": 4
+      },
+      {
+       "id": "cf:art5",
+       "rubrica": "Título II, Cap. I — Dos direitos e deveres individuais e coletivos",
+       "arts": "5º",
+       "n": 1,
+       "nota": "Um artigo só, mas é o mais extenso do recorte"
+      },
+      {
+       "id": "cf:sociais",
+       "rubrica": "Título II, Cap. II — Dos direitos sociais",
+       "arts": "6º a 11",
+       "n": 6
+      },
+      {
+       "id": "cf:nacionalidade-politicos",
+       "rubrica": "Título II, Caps. III e IV — Da nacionalidade; dos direitos políticos",
+       "arts": "12 a 16",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "titulo": "Constituição Federal · Título III — Da organização do Estado",
+     "itens": [
+      {
+       "id": "cf:organizacao",
+       "rubrica": "Cap. I — Da organização político-administrativa",
+       "arts": "18",
+       "n": 1
+      },
+      {
+       "id": "cf:adm-publica",
+       "rubrica": "Cap. VII — Da administração pública",
+       "arts": "37 a 41",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "titulo": "Constituição Federal · Título IV — Da organização dos Poderes",
+     "itens": [
+      {
+       "id": "cf:judiciario",
+       "rubrica": "Cap. III — Do Poder Judiciário",
+       "arts": "92 a 99; 125",
+       "n": 9,
+       "nota": "Disposições gerais; tribunais e juízes dos estados"
+      },
+      {
+       "id": "cf:funcoes-essenciais",
+       "rubrica": "Cap. IV — Das funções essenciais à justiça",
+       "arts": "127; 134",
+       "n": 2,
+       "nota": "Ministério Público; Defensoria Pública"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "administrativo",
+   "nome": "Direito Administrativo",
+   "bloco": "II",
+   "tipo": "lei",
+   "total": 20,
+   "grupos": [
+    {
+     "titulo": "Lei Estadual n.º 10.261/1968 — Estatuto dos Funcionários Públicos Civis de SP",
+     "itens": [
+      {
+       "id": "adm:preliminares",
+       "rubrica": "Disposições preliminares",
+       "arts": "1º; 3º; 4º",
+       "n": 3
+      },
+      {
+       "id": "adm:provimento",
+       "rubrica": "Do provimento; formas de nomeação; do concurso",
+       "arts": "11; 13; 14",
+       "n": 3
+      },
+      {
+       "id": "adm:posse-exercicio",
+       "rubrica": "Da posse; do exercício",
+       "arts": "46; 47; 57",
+       "n": 3
+      },
+      {
+       "id": "adm:tempo-servico",
+       "rubrica": "Da contagem de tempo de serviço",
+       "arts": "78",
+       "n": 1
+      },
+      {
+       "id": "adm:vencimento",
+       "rubrica": "Vencimento e remuneração; horário e ponto; adicionais por tempo de serviço",
+       "arts": "110; 120; 127",
+       "n": 3
+      },
+      {
+       "id": "adm:ferias",
+       "rubrica": "Das férias",
+       "arts": "176",
+       "n": 1
+      },
+      {
+       "id": "adm:deveres",
+       "rubrica": "Dos deveres; das proibições; das penalidades",
+       "arts": "241 a 243; 251",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "titulo": "Lei Federal n.º 8.429/1992 — Improbidade administrativa",
+     "itens": [
+      {
+       "id": "adm:improbidade",
+       "rubrica": "Enriquecimento ilícito; declaração de bens",
+       "arts": "9º; 13",
+       "n": 2,
+       "nota": "Dois artigos que caíram 3 vezes em 2023 e 1 em 2024"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "civil",
+   "nome": "Direito Civil",
+   "bloco": "II",
+   "tipo": "lei",
+   "total": 216,
+   "grupos": [
+    {
+     "titulo": "Código Civil · Parte Geral · Livro I — Das pessoas",
+     "itens": [
+      {
+       "id": "cc:personalidade",
+       "rubrica": "Título I, Cap. I — Da personalidade e da capacidade",
+       "arts": "1º a 10",
+       "n": 10
+      },
+      {
+       "id": "cc:direitos-pers",
+       "rubrica": "Título I, Cap. II — Dos direitos da personalidade",
+       "arts": "11 a 21",
+       "n": 11
+      },
+      {
+       "id": "cc:ausencia",
+       "rubrica": "Título I, Cap. III — Da ausência: curadoria dos bens do ausente",
+       "arts": "22 a 25",
+       "n": 4
+      },
+      {
+       "id": "cc:pj",
+       "rubrica": "Título II, Cap. I — Das pessoas jurídicas: disposições gerais",
+       "arts": "40 a 45; 49; 50",
+       "n": 8
+      },
+      {
+       "id": "cc:assoc-fund",
+       "rubrica": "Título II, Caps. II e III — Das associações; das fundações",
+       "arts": "53; 62",
+       "n": 2
+      },
+      {
+       "id": "cc:domicilio",
+       "rubrica": "Título III — Do domicílio",
+       "arts": "70 a 78",
+       "n": 9
+      }
+     ]
+    },
+    {
+     "titulo": "Código Civil · Parte Geral · Livro II — Dos bens",
+     "itens": [
+      {
+       "id": "cc:bens-si",
+       "rubrica": "Cap. I — Dos bens considerados em si mesmos",
+       "arts": "79 a 91",
+       "n": 13
+      },
+      {
+       "id": "cc:bens-reciprocos",
+       "rubrica": "Cap. II — Dos bens reciprocamente considerados",
+       "arts": "92 a 97",
+       "n": 6
+      },
+      {
+       "id": "cc:bens-publicos",
+       "rubrica": "Cap. III — Dos bens públicos",
+       "arts": "98 a 103",
+       "n": 6
+      }
+     ]
+    },
+    {
+     "titulo": "Código Civil · Parte Geral · Livro III — Dos fatos jurídicos",
+     "itens": [
+      {
+       "id": "cc:representacao",
+       "rubrica": "Título I, Cap. II — Da representação",
+       "arts": "115 a 120",
+       "n": 6
+      },
+      {
+       "id": "cc:defeitos",
+       "rubrica": "Título I, Cap. IV — Dos defeitos do negócio jurídico",
+       "arts": "138 a 159",
+       "n": 22,
+       "nota": "Erro, dolo, coação, estado de perigo, lesão, fraude contra credores"
+      },
+      {
+       "id": "cc:invalidade",
+       "rubrica": "Título I, Cap. V — Da invalidade do negócio jurídico",
+       "arts": "166 a 184",
+       "n": 19
+      },
+      {
+       "id": "cc:atos",
+       "rubrica": "Títulos II e III — Dos atos jurídicos lícitos; dos atos ilícitos",
+       "arts": "185 a 188",
+       "n": 4
+      },
+      {
+       "id": "cc:prescricao",
+       "rubrica": "Título IV, Cap. I — Da prescrição",
+       "arts": "189 a 201",
+       "n": 13
+      },
+      {
+       "id": "cc:prova",
+       "rubrica": "Título V — Da prova",
+       "arts": "212 a 215",
+       "n": 4
+      }
+     ]
+    },
+    {
+     "titulo": "Código Civil · Parte Especial",
+     "itens": [
+      {
+       "id": "cc:mandato",
+       "rubrica": "Livro I, Título VI, Cap. X — Do mandato: disposições gerais",
+       "arts": "653 a 666",
+       "n": 14
+      },
+      {
+       "id": "cc:prepostos",
+       "rubrica": "Livro II, Título IV, Cap. III — Dos prepostos",
+       "arts": "1.169 a 1.173",
+       "n": 5
+      },
+      {
+       "id": "cc:posse",
+       "rubrica": "Livro III, Título I, Cap. I — Da posse e sua classificação",
+       "arts": "1.196 a 1.203",
+       "n": 8
+      },
+      {
+       "id": "cc:penhor",
+       "rubrica": "Livro III, Título X, Cap. II — Do penhor",
+       "arts": "1.431; 1.432; 1.442; 1.444 a 1.447; 1.451; 1.461; 1.467 a 1.472",
+       "n": 15,
+       "nota": "Constituição; penhor agrícola, pecuário, industrial, de direitos, de veículos; penhor legal"
+      },
+      {
+       "id": "cc:tutores",
+       "rubrica": "Livro IV, Título IV, Cap. I — Da tutela: dos tutores",
+       "arts": "1.728",
+       "n": 1
+      },
+      {
+       "id": "cc:interditos",
+       "rubrica": "Livro IV, Título IV, Cap. II — Da curatela: dos interditos",
+       "arts": "1.767; 1.775 a 1.778",
+       "n": 5
+      },
+      {
+       "id": "cc:dividas",
+       "rubrica": "Livro V, Título IV — Do inventário e da partilha: do pagamento das dívidas",
+       "arts": "1.997",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "titulo": "Decreto-Lei n.º 4.657/1942 — LINDB, cobrada integralmente",
+     "itens": [
+      {
+       "id": "cc:lindb-vigencia",
+       "rubrica": "Vigência, aplicação e interpretação da lei",
+       "arts": "1º a 6º",
+       "n": 6
+      },
+      {
+       "id": "cc:lindb-dip",
+       "rubrica": "Direito internacional privado e atos consulares",
+       "arts": "7º a 19",
+       "n": 13
+      },
+      {
+       "id": "cc:lindb-seguranca",
+       "rubrica": "Segurança jurídica na aplicação do direito público",
+       "arts": "20 a 30",
+       "n": 11,
+       "nota": "Contagem estimada; conferir no texto vigente"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "leg-especial",
+   "nome": "Legislação Especial",
+   "bloco": "II",
+   "tipo": "lei",
+   "total": 148,
+   "grupos": [
+    {
+     "titulo": "NSCGJ — Normas de Serviço da Corregedoria Geral da Justiça, Tomo I",
+     "itens": [
+      {
+       "id": "le:nscgj-cap1",
+       "rubrica": "Cap. I",
+       "arts": "1º a 4º",
+       "n": 4
+      },
+      {
+       "id": "le:nscgj-cap3",
+       "rubrica": "Cap. III — Seções III, V e XI",
+       "arts": "33; 47; 49; 105 a 110",
+       "n": 9
+      },
+      {
+       "id": "le:nscgj-cap4",
+       "rubrica": "Cap. IV — Seções III, IV, VI, XII, XIII e XIV",
+       "arts": "196, XX; 282, § 1º; 310; 315; 410; 436; 436-A; 439; 440; 440-A",
+       "n": 10
+      },
+      {
+       "id": "le:nscgj-cap7",
+       "rubrica": "Cap. VII",
+       "arts": "994 a 1.091; 1.091-A",
+       "n": 99,
+       "oj": true,
+       "nota": "Sozinho, cerca de 11% de todo o conteúdo legal do edital"
+      },
+      {
+       "id": "le:nscgj-cap10-11",
+       "rubrica": "Caps. X e XI — Cap. X, Seção III; Cap. XI, Seção VII",
+       "arts": "1.137 a 1.139; 1.245; 1.247",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "titulo": "Demais normas",
+     "itens": [
+      {
+       "id": "le:taxa",
+       "rubrica": "Lei n.º 11.608/2003 — Taxa judiciária",
+       "arts": "integral",
+       "n": 11,
+       "nota": "Cobrada integralmente; contagem estimada"
+      },
+      {
+       "id": "le:lef",
+       "rubrica": "Lei n.º 6.830/1980 — Execução fiscal",
+       "arts": "1º; 2º; 7º; 8º; 11; 37",
+       "n": 6,
+       "oj": true
+      },
+      {
+       "id": "le:cnj354",
+       "rubrica": "Resolução CNJ n.º 354/2020 — Cumprimento digital de ato processual e de ordem judicial",
+       "arts": "1º; 8º a 10",
+       "n": 4,
+       "oj": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "portugues",
+   "nome": "Língua Portuguesa",
+   "bloco": "I",
+   "tipo": "conteudo",
+   "questoes": 15,
+   "grupos": [
+    {
+     "titulo": "Leitura e interpretação",
+     "itens": [
+      {
+       "id": "pt:interpretacao",
+       "rubrica": "Análise, compreensão e interpretação de textos verbais, não verbais, literários e não literários"
+      },
+      {
+       "id": "pt:inferencias",
+       "rubrica": "Informações literais e inferências possíveis"
+      },
+      {
+       "id": "pt:ponto-de-vista",
+       "rubrica": "Ponto de vista do autor"
+      },
+      {
+       "id": "pt:coesao",
+       "rubrica": "Estruturação do texto: relações entre ideias; recursos de coesão"
+      },
+      {
+       "id": "pt:significacao",
+       "rubrica": "Significação contextual de palavras e expressões"
+      },
+      {
+       "id": "pt:sinonimos",
+       "rubrica": "Sinônimos e antônimos"
+      },
+      {
+       "id": "pt:sentido-figurado",
+       "rubrica": "Sentido próprio e figurado das palavras"
+      }
+     ]
+    },
+    {
+     "titulo": "Gramática",
+     "itens": [
+      {
+       "id": "pt:classes",
+       "rubrica": "Classes de palavras: emprego e sentido nas relações que estabelecem"
+      },
+      {
+       "id": "pt:concordancia",
+       "rubrica": "Concordância verbal e nominal"
+      },
+      {
+       "id": "pt:regencia",
+       "rubrica": "Regência verbal e nominal"
+      },
+      {
+       "id": "pt:colocacao",
+       "rubrica": "Colocação pronominal"
+      },
+      {
+       "id": "pt:crase",
+       "rubrica": "Crase"
+      },
+      {
+       "id": "pt:pontuacao",
+       "rubrica": "Pontuação"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "atualidades",
+   "nome": "Atualidades e Estatuto da PcD",
+   "bloco": "III",
+   "tipo": "lei",
+   "questoes": 3,
+   "total": 27,
+   "grupos": [
+    {
+     "titulo": "Atualidades",
+     "itens": [
+      {
+       "id": "at:atualidades",
+       "rubrica": "Fatos políticos, econômicos, sociais e culturais a partir do 1º semestre de 2026"
+      }
+     ]
+    },
+    {
+     "titulo": "Lei n.º 13.146/2015 — Estatuto da Pessoa com Deficiência",
+     "itens": [
+      {
+       "id": "at:pcd-gerais",
+       "rubrica": "Livro I, Título I, Cap. I — Disposições gerais",
+       "arts": "1º a 3º",
+       "n": 3
+      },
+      {
+       "id": "at:pcd-igualdade",
+       "rubrica": "Livro I, Título I, Cap. II — Da igualdade e da não discriminação",
+       "arts": "4º a 9º",
+       "n": 6,
+       "nota": "Inclui o atendimento prioritário (art. 9º)"
+      },
+      {
+       "id": "at:pcd-vida",
+       "rubrica": "Livro I, Título II, Cap. I — Do direito à vida",
+       "arts": "10 a 13",
+       "n": 4
+      },
+      {
+       "id": "at:pcd-trabalho",
+       "rubrica": "Livro I, Título II, Cap. VI — Do direito ao trabalho",
+       "arts": "34 a 38",
+       "n": 5
+      },
+      {
+       "id": "at:pcd-justica",
+       "rubrica": "Livro II, Título I, Cap. I — Do acesso à justiça: disposições gerais",
+       "arts": "79 a 83",
+       "n": 5
+      },
+      {
+       "id": "at:pcd-reconhecimento",
+       "rubrica": "Livro II, Título I, Cap. II — Do reconhecimento igual perante a lei",
+       "arts": "84 a 87",
+       "n": 4,
+       "nota": "Curatela e tomada de decisão apoiada"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "matematica",
+   "nome": "Matemática",
+   "bloco": "III",
+   "tipo": "conteudo",
+   "questoes": 3,
+   "grupos": [
+    {
+     "titulo": "Conteúdo do edital",
+     "itens": [
+      {
+       "id": "mat:reais",
+       "rubrica": "Operações com números reais"
+      },
+      {
+       "id": "mat:mmc-mdc",
+       "rubrica": "Mínimo múltiplo comum e máximo divisor comum"
+      },
+      {
+       "id": "mat:razao",
+       "rubrica": "Razão e proporção"
+      },
+      {
+       "id": "mat:porcentagem",
+       "rubrica": "Porcentagem"
+      },
+      {
+       "id": "mat:regra-tres",
+       "rubrica": "Regra de três simples e composta"
+      },
+      {
+       "id": "mat:media",
+       "rubrica": "Média aritmética simples e ponderada"
+      },
+      {
+       "id": "mat:juros",
+       "rubrica": "Juros simples"
+      },
+      {
+       "id": "mat:equacoes",
+       "rubrica": "Equação do 1º e 2º graus"
+      },
+      {
+       "id": "mat:sistemas",
+       "rubrica": "Sistema de equações do 1º grau"
+      },
+      {
+       "id": "mat:grandezas",
+       "rubrica": "Relação entre grandezas: tabelas e gráficos"
+      },
+      {
+       "id": "mat:medidas",
+       "rubrica": "Sistemas de medidas usuais"
+      },
+      {
+       "id": "mat:geometria",
+       "rubrica": "Noções de geometria: forma, perímetro, área, volume, ângulo, teorema de Pitágoras"
+      },
+      {
+       "id": "mat:problemas",
+       "rubrica": "Resolução de situações-problema"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "raciocinio",
+   "nome": "Raciocínio Lógico",
+   "bloco": "III",
+   "tipo": "conteudo",
+   "questoes": 4,
+   "grupos": [
+    {
+     "titulo": "Conteúdo do edital",
+     "itens": [
+      {
+       "id": "rl:estruturas",
+       "rubrica": "Estruturas lógicas"
+      },
+      {
+       "id": "rl:argumentacao",
+       "rubrica": "Lógica de argumentação"
+      },
+      {
+       "id": "rl:diagramas",
+       "rubrica": "Diagramas lógicos"
+      },
+      {
+       "id": "rl:sequencias",
+       "rubrica": "Sequências numéricas e figurais"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "informatica",
+   "nome": "Informática",
+   "bloco": "III",
+   "tipo": "conteudo",
+   "questoes": 5,
+   "grupos": [
+    {
+     "titulo": "Conteúdo do edital",
+     "itens": [
+      {
+       "id": "inf:windows",
+       "rubrica": "MS-Windows 10 ou superior"
+      },
+      {
+       "id": "inf:word",
+       "rubrica": "MS-Word"
+      },
+      {
+       "id": "inf:excel",
+       "rubrica": "MS-Excel"
+      },
+      {
+       "id": "inf:teams",
+       "rubrica": "MS-Teams"
+      },
+      {
+       "id": "inf:onedrive",
+       "rubrica": "OneDrive"
+      },
+      {
+       "id": "inf:email",
+       "rubrica": "Correio eletrônico"
+      },
+      {
+       "id": "inf:internet",
+       "rubrica": "Internet: navegação, URL, links, busca"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
