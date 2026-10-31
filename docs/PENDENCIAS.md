@@ -66,6 +66,8 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
       as notas trazem só o ano. Número e ano de cada nota ficam na base; a conferência de data
       contra o corte é da Etapa 2 ou lista manual de leis posteriores ao corte no perfil.
       Decidir no M4.
+- [ ] **16. RF19 × esquema por tipo.** `No.origem` fica fora do JSON (operador, 2026-10-31):
+      RF19 passa a dizer isso, ou `origem` entra no esquema? Decidir no M3.
 
 ## Riscos acompanhados
 

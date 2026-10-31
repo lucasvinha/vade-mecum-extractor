@@ -5,6 +5,7 @@ negocio/modelo-de-dados e a ordenação em negocio/recorte-e-cli.
 """
 
 import re
+from dataclasses import dataclass
 
 # H11, H12, P13: milhar opcional (`1.091`), ordinal opcional (`1º`, `2°`, `4o`) e sufixos
 # maiúsculos de um ou mais níveis (`121-A`, `359-M-A`). O prefixo `Art.` é do perfil (ADR-002).
@@ -30,3 +31,105 @@ def chave_de_texto(s: str) -> tuple[int, tuple[str, ...]]:
     numero = int(casamento["numero"].replace(".", ""))  # P13
     sufixo = tuple(casamento["sufixo"].split("-")[1:])
     return chave_ordenacao(numero, sufixo)
+
+
+class ErroFonte(Exception):
+    """Erro de entrada (arquivo inexistente, PDF sem texto; RF06); a CLI devolve código 2."""
+
+
+@dataclass(frozen=True, slots=True)
+class LinhaFonte:
+    """Linha lida da fonte; o contrato central do pipeline (ver negocio/pipeline-e-perfis)."""
+
+    texto: str  # já com espaços colapsados
+    negrito: bool  # linha inteiramente em negrito
+    rotulo_negrito: bool  # só o início da linha em negrito (padrão do PDF)
+    centralizado: bool
+    cor: str | None  # útil para notas e títulos no PDF
+    origem: str  # "html:p#123" | "pdf:p3:col2:l14" (rastreabilidade)
+
+
+@dataclass(frozen=True, slots=True)
+class Nota:
+    """Nota legislativa de um nó (ver negocio/vigencia-e-notas)."""
+
+    tipo: str
+    bruto: str  # texto original da nota
+    norma: str | None = None
+    ano: int | None = None
+    data: str | None = None  # ISO `AAAA-MM-DD`; `None` quando a fonte só traz o ano
+
+
+@dataclass(frozen=True, slots=True)
+class Local:
+    """Posição do artigo na hierarquia da norma; nível ausente fica `None` (P8)."""
+
+    parte: str | None = None
+    livro: str | None = None
+    titulo: str | None = None
+    capitulo: str | None = None
+    secao: str | None = None
+    subsecao: str | None = None
+    rotulo_livre: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class No:
+    """Nó da árvore de dispositivos; as chaves emitidas por `tipo` estão em negocio/modelo-de-dados.
+
+    `filhos` preserva a ordem do texto, com penas e dispositivos intercalados (H14). `origem`
+    fica só na memória, para depurar o parser (RF19); não entra no JSON.
+    """
+
+    id: str
+    tipo: str
+    texto: str
+    origem: str
+    rotulo: str | None = None
+    numero: int | None = None  # só no artigo, sem separador de milhar (P13)
+    sufixo: tuple[str, ...] = ()  # só no artigo, letras na ordem do rótulo (H11, H12)
+    rubrica: str | None = None
+    local: Local | None = None  # só no artigo
+    notas: tuple[Nota, ...] = ()
+    parcial: bool = False  # só no artigo: a fonte o traz incompleto (P7)
+    filhos: tuple["No", ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class Norma:
+    """Identificação da norma e da captura; `capturado_em` e `sha256` só aqui (RNF03)."""
+
+    id: str
+    titulo: str
+    ementa: str | None
+    tipo_fonte: str  # "html" | "pdf"
+    fonte: str
+    capturado_em: str
+    sha256: str
+    perfil: str
+
+
+@dataclass(frozen=True, slots=True)
+class Metadados:
+    """O que fica fora da árvore de artigos (H17); único bloco que pode diferir na A14."""
+
+    preambulo: str | None = None
+    rodape: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class Recorte:
+    """Expressão que gerou o recorte e a base de onde ele saiu (ver negocio/recorte-e-cli)."""
+
+    expressao: str
+    origem: str
+
+
+@dataclass(frozen=True, slots=True)
+class Base:
+    """Envelope da base ou do recorte; `recorte` é `None` na base completa."""
+
+    norma: Norma
+    metadados: Metadados
+    artigos: tuple[No, ...] = ()
+    recorte: Recorte | None = None

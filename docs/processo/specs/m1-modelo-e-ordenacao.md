@@ -25,7 +25,7 @@ Evidência dos formatos de número: H11, H12 e P13 (`negocio/fontes`), e o `arts
 ## Estado final
 
 - `src/vademecum/modelo.py` existe, sem dependência interna, e traz: `LinhaFonte`, `Nota`,
-  `Local`, `No`, `Norma`, `Metadados`, `Base`, `EntradaRelatorio`, `Relatorio`, `ErroFonte`,
+  `Local`, `No`, `Norma`, `Metadados`, `Recorte`, `Base`, `EntradaRelatorio`, `Relatorio`, `ErroFonte`,
   `chave_ordenacao()`, `chave_de_texto()`, as funções de `id` e `para_json()`.
 - `tests/unit/test_modelo.py` prova:
   - `121 < 121-A < 121-B < 122`;
@@ -106,7 +106,7 @@ I/O; quem grava é a `cli.py`.
 | # | Fase | Toca | Aceite | Modelo | Feito |
 |---|---|---|---|---|---|
 | 1 | Docs do contrato: esquema estável por tipo, `id` com milhar, `Nota.data` em ISO, `ErroFonte` em `modelo` | `negocio/modelo-de-dados.md`, `docs/README.md` (§ Contratos) | o exemplo do art. 121 tem as chaves da tabela do Contrato; `python scripts/verificar_docs.py` sai 0; portões verdes | Opus | 2026-10-31 `682784b` |
-| 2 | Chaves de ordenação: `chave_ordenacao` e `chave_de_texto` (H11, H12, P13) | `modelo.py`, `tests/unit/test_modelo.py` | as duas cadeias de ordenação do Estado final; `1º`→`(1, ())`; `1.091-A`→`(1091, ("A",))`; `ValueError` para `Art. 121` e `121-a`; portões verdes | Sonnet | |
+| 2 | Chaves de ordenação: `chave_ordenacao` e `chave_de_texto` (H11, H12, P13) | `modelo.py`, `tests/unit/test_modelo.py` | as duas cadeias de ordenação do Estado final; `1º`→`(1, ())`; `1.091-A`→`(1091, ("A",))`; `ValueError` para `Art. 121` e `121-a`; portões verdes | Sonnet | 2026-10-31 `f756f34` |
 | 3 | Dataclasses da árvore e da base: `LinhaFonte`, `Nota`, `Local`, `No`, `Norma`, `Metadados`, `Base`, `ErroFonte` | `modelo.py`, `tests/unit/test_modelo.py` | todas frozen+slots; atribuir campo levanta `FrozenInstanceError`; `filhos`/`notas` são `tuple`; campos de `LinhaFonte` iguais aos de `negocio/pipeline-e-perfis`; portões verdes | Sonnet | |
 | 4 | Relatório: `EntradaRelatorio` e `Relatorio.registrar` | `modelo.py`, `tests/unit/test_modelo.py` | tipo fora dos cinco levanta `ValueError`; entradas guardadas na ordem em que foram registradas; portões verdes | Sonnet | |
 | 5 | Derivação do `id` | `modelo.py`, `tests/unit/test_modelo.py` | todos os exemplos de `id` do Contrato, inclusive `art1091-A`, `art121.pu` e `art121.pena2`; portões verdes | Sonnet | |
@@ -121,6 +121,8 @@ Notas por fase:
 - **Fase 2**: `chave_de_texto` é regex, e a regra é "regex só muda com teste" (CLAUDE.md). O teste
   cita H11, H12 e P13 e usa as formas reais do `arts` dos tópicos.
 - **Fase 3**: a `LinhaFonte` copia os campos de `docs/negocio/pipeline-e-perfis.md:25-34`.
+  Na execução (2026-10-31) o operador decidiu: `No.origem` existe na memória e não sai no
+  JSON (RF19 × esquema por tipo, PENDENCIAS #16); `Base.recorte` é `Recorte | None`.
 - **Fase 6**: `para_json` escolhe as chaves pelo `tipo` do nó. Os `id` do teste vêm da fase 5.
 
 ## Em aberto
