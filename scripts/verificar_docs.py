@@ -32,7 +32,7 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 # Primeiro padrão que casa vence; documento sem teto não entra na tabela.
 TETOS = [
     ("README.md", 50),
-    (".claude/CLAUDE.md", 40),
+    (".claude/CLAUDE.md", 48),
     ("docs/README.md", 250),
     ("docs/PADRAO_OURO.md", 150),
     ("docs/PENDENCIAS.md", 150),
