@@ -16,7 +16,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-from vademecum.modelo import ErroFonte, FonteLida, LinhaFonte, Relatorio
+from vademecum.modelo import EntradaRelatorio, ErroFonte, FonteLida, LinhaFonte, Relatorio
 
 _EXTENSOES_MHT = frozenset({".mht", ".mhtml"})
 _EXTENSOES_HTM = frozenset({".htm", ".html"})
@@ -38,6 +38,11 @@ _FONT_WEIGHT = re.compile(r"font-weight\s*:\s*(\w+)", re.IGNORECASE)
 _PESOS_NEGRITO = frozenset({"bold", "bolder"})
 # H5: o CP também centraliza só pelo `style` (`text-align:center`, no CAPÍTULO V do Título X).
 _TEXT_ALIGN_CENTRO = re.compile(r"text-align\s*:\s*center", re.IGNORECASE)
+# H8: tachado é redação que não vale mais. Linha cujo resto, fora do tachado, é vazio ou só notas
+# sai inteira: `<strike>Art. 4° Os agentes…</strike> (Revogado pela Lei nº 14.230, de 2021)`
+# (Lei 8.429) e `(Redação dada pela Lei nº 12.403, de 2011).` (CPP, art. 336) são as notas reais.
+_TACHADO = frozenset({"strike", "s", "del"})
+_SO_NOTAS = re.compile(r"(?: ?\([^()]*\)\.?)*")
 _FIM_DE_BLOCO = object()
 _ESPACO = re.compile(r"\s+")  # em `str`, `\s` inclui o `\xa0` do `&nbsp;`
 
@@ -66,7 +71,7 @@ def ler_html(caminho: Path, relatorio: Relatorio) -> FonteLida:
         conteudo, charset_mime, fonte, data = dados, None, str(caminho), None
     charset = _charset(conteudo, charset_mime, caminho)
     return FonteLida(
-        linhas=_linhas_logicas(conteudo, charset),
+        linhas=_linhas_logicas(conteudo, charset, relatorio),
         tipo_fonte="html",
         fonte=fonte,
         capturado_em=_capturado_em(data, caminho),
@@ -112,6 +117,7 @@ class _Pedaco:
     texto: str
     negrito: bool
     centralizado: bool
+    tachado: bool
 
 
 def _pedaco(no: NavigableString) -> _Pedaco:
@@ -122,6 +128,7 @@ def _pedaco(no: NavigableString) -> _Pedaco:
         texto=no,
         negrito=next((peso for peso in pesos if peso is not None), False),
         centralizado=any(pai.name in _BLOCOS and _bloco_centralizado(pai) for pai in ancestrais),
+        tachado=any(pai.name in _TACHADO for pai in ancestrais),
     )
 
 
@@ -147,7 +154,11 @@ def _bloco_centralizado(bloco: Tag) -> bool:
     )
 
 
-def _linhas_logicas(conteudo: bytes, charset: str) -> tuple[LinhaFonte, ...]:
+def _colar(partes: list[_Pedaco]) -> str:
+    return _ESPACO.sub(" ", "".join(p.texto for p in partes)).strip()
+
+
+def _linhas_logicas(conteudo: bytes, charset: str, relatorio: Relatorio) -> tuple[LinhaFonte, ...]:
     """Uma linha por bloco ou `<br>` (H3, H4), com os nós de texto colados sem separador.
 
     Colar sem separador mantém `4<sup>o</sup>` como `4o` (H11). O parser é o do HTML5, o mesmo
@@ -156,17 +167,33 @@ def _linhas_logicas(conteudo: bytes, charset: str) -> tuple[LinhaFonte, ...]:
     `<p>`. Ela também lê `&#150;` pelo windows-1252 (`–`) e não para no `</html>` solto do CC.
     O parser recebe bytes e o charset, nunca `str`, para o `<meta charset>` não trocar a
     codificação no meio do documento.
+
+    A `origem` conta também as linhas que saem pelo tachado (H8), para o descarte apontar o
+    lugar exato; a saída pode ter lacunas na numeração.
     """
     linhas: list[LinhaFonte] = []
     partes: list[_Pedaco] = []
+    posicao = 0
 
     def quebrar() -> None:
-        linha = _ESPACO.sub(" ", "".join(p.texto for p in partes)).strip()
+        nonlocal posicao
+        linha = _colar(partes)
         # Só o caractere visível decide a flag: o `<b>` com espaço não marca a linha (H6).
         visiveis = [p for p in partes if p.texto.strip()]
         partes.clear()
         if not linha:
             return
+        posicao += 1
+        origem = f"html:p#{posicao}"
+        tachado = _colar([p for p in visiveis if p.tachado])
+        if tachado:  # H8; tachado só com espaço (os 6 do CP) não muda nada
+            resto = _colar([p for p in visiveis if not p.tachado])
+            if _SO_NOTAS.fullmatch(resto):
+                # A linha sai com a nota: sozinha, o parser a colaria no dispositivo anterior.
+                relatorio.registrar(EntradaRelatorio(tipo="descarte", origem=origem, texto=linha))
+                return
+            # Apagar o trecho adulteraria a frase vigente (CPP, art. 336, parágrafo único).
+            relatorio.registrar(EntradaRelatorio(tipo="aviso", origem=origem, texto=tachado))
         negrito = all(p.negrito for p in visiveis)
         linhas.append(
             LinhaFonte(
@@ -175,7 +202,7 @@ def _linhas_logicas(conteudo: bytes, charset: str) -> tuple[LinhaFonte, ...]:
                 rotulo_negrito=visiveis[0].negrito and not negrito,
                 centralizado=any(p.centralizado for p in visiveis),
                 cor=None,
-                origem=f"html:p#{len(linhas) + 1}",
+                origem=origem,
             )
         )
 

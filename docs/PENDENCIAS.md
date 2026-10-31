@@ -70,6 +70,12 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
       RNF01; medir a RNF05) e quebra o A14 enquanto não vier. (b) 24 negritos do CP vêm por
       `font-weight: 700` no `style` (rubrica do art. 311-A). Decidido pelo operador em
       2026-10-31: `html5lib` e peso pelo CSS, na fase 3b da spec do M2.
+- [ ] **18. H8: tachado só pelo CSS.** Achado na fase 4 do M2 (2026-10-31). A H8 lista
+      `<strike>`, `<s>` e `<del>`, mas 55 tachados vêm por `text-decoration: line-through` no
+      `style`, sem tag: 35 no CPC, 16 na Lei 8.429 (art. 12, IV antigo) e 4 na Lei 13.146. O
+      leitor deixa essa redação como vigente (ADR-001). Na Lei 8.429, art. 17, § 3º, o `<strike>`
+      fecha antes do `)` da nota, tachado por CSS, e a linha inteira vira `aviso` em vez de
+      `descarte`. A decidir pelo operador: o CSS conta como tachado (fase 4b, como a 3b)?
 
 ## Riscos acompanhados
 
