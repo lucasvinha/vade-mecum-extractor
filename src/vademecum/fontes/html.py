@@ -8,6 +8,7 @@ import email
 import email.policy
 import hashlib
 import re
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from email.headerregistry import DateHeader
 from email.message import EmailMessage
@@ -30,6 +31,9 @@ _BLOCOS = frozenset(
     {"p", "div", "blockquote", "tr", "center", "li", "h1", "h2", "h3", "h4", "h5", "h6"}
 )
 _FORA_DO_TEXTO = frozenset({"head", "script", "style"})
+_NEGRITO = frozenset({"b", "strong"})  # H5, H6
+# H5: o CP também centraliza só pelo `style` (`text-align:center`, no CAPÍTULO V do Título X).
+_TEXT_ALIGN_CENTRO = re.compile(r"text-align\s*:\s*center", re.IGNORECASE)
 _FIM_DE_BLOCO = object()
 _ESPACO = re.compile(r"\s+")  # em `str`, `\s` inclui o `\xa0` do `&nbsp;`
 
@@ -64,19 +68,8 @@ def ler_html(caminho: Path, relatorio: Relatorio) -> FonteLida:
     else:
         conteudo, charset_mime, fonte, data = dados, None, str(caminho), None
     charset = _charset(conteudo, charset_mime, caminho)
-    linhas = tuple(
-        LinhaFonte(
-            texto=t,
-            negrito=False,
-            rotulo_negrito=False,
-            centralizado=False,
-            cor=None,
-            origem=f"html:p#{n}",
-        )
-        for n, t in enumerate(_linhas_logicas(conteudo, charset), start=1)
-    )
     return FonteLida(
-        linhas=linhas,
+        linhas=_linhas_logicas(conteudo, charset),
         tipo_fonte="html",
         fonte=fonte,
         capturado_em=_capturado_em(data, caminho),
@@ -124,21 +117,62 @@ def _referencia_windows_1252(referencia: re.Match[bytes]) -> bytes:
     return b"&#%d;" % ord(caractere)
 
 
-def _linhas_logicas(conteudo: bytes, charset: str) -> list[str]:
+@dataclass(frozen=True, slots=True)
+class _Pedaco:
+    """Nó de texto com o contexto de formatação de onde ele está no documento."""
+
+    texto: str
+    negrito: bool
+    centralizado: bool
+
+
+def _pedaco(no: NavigableString) -> _Pedaco:
+    ancestrais = [pai for pai in no.parents if isinstance(pai, Tag)]
+    return _Pedaco(
+        texto=no,
+        negrito=any(pai.name in _NEGRITO for pai in ancestrais),
+        centralizado=any(pai.name in _BLOCOS and _bloco_centralizado(pai) for pai in ancestrais),
+    )
+
+
+def _bloco_centralizado(bloco: Tag) -> bool:
+    """H5: `align="center"` em qualquer caixa, `text-align: center` no `style` ou `<center>`."""
+    alinhamento = str(bloco.get("align", "")).lower()
+    return (
+        bloco.name == "center"
+        or alinhamento == "center"
+        or bool(_TEXT_ALIGN_CENTRO.search(str(bloco.get("style", ""))))
+    )
+
+
+def _linhas_logicas(conteudo: bytes, charset: str) -> tuple[LinhaFonte, ...]:
     """Uma linha por bloco ou `<br>` (H3, H4), com os nós de texto colados sem separador.
 
     Colar sem separador mantém `4<sup>o</sup>` como `4o` (H11). O lxml recebe bytes e o charset,
     nunca `str`: com `str`, o `<meta charset>` o faz trocar de codificação no meio do documento
     (mojibake e texto truncado no CP inteiro a partir do art. 266).
     """
-    linhas: list[str] = []
-    partes: list[str] = []
+    linhas: list[LinhaFonte] = []
+    partes: list[_Pedaco] = []
 
     def quebrar() -> None:
-        linha = _ESPACO.sub(" ", "".join(partes)).strip()
+        linha = _ESPACO.sub(" ", "".join(p.texto for p in partes)).strip()
+        # Só o caractere visível decide a flag: o `<b>` com espaço não marca a linha (H6).
+        visiveis = [p for p in partes if p.texto.strip()]
         partes.clear()
-        if linha:
-            linhas.append(linha)
+        if not linha:
+            return
+        negrito = all(p.negrito for p in visiveis)
+        linhas.append(
+            LinhaFonte(
+                texto=linha,
+                negrito=negrito,
+                rotulo_negrito=visiveis[0].negrito and not negrito,
+                centralizado=any(p.centralizado for p in visiveis),
+                cor=None,
+                origem=f"html:p#{len(linhas) + 1}",
+            )
+        )
 
     conteudo = _REFERENCIA_C1.sub(_referencia_windows_1252, _FECHO_DE_DOCUMENTO.sub(b"", conteudo))
     pilha: list[object] = [BeautifulSoup(conteudo, "lxml", from_encoding=charset)]
@@ -157,6 +191,6 @@ def _linhas_logicas(conteudo: bytes, charset: str) -> list[str]:
                 pilha.append(_FIM_DE_BLOCO)
             pilha.extend(reversed(item.contents))
         elif type(item) is NavigableString:  # comentário e doctype não são texto da norma
-            partes.append(item)
+            partes.append(_pedaco(item))
     quebrar()
-    return linhas
+    return tuple(linhas)

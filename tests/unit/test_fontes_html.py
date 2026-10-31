@@ -219,3 +219,60 @@ def test_extensao_desconhecida_levanta_erro_fonte(tmp_path):
     caminho.write_bytes(b"Art. 1")
     with pytest.raises(ErroFonte, match="extensão não suportada"):
         ler_html(caminho, Relatorio())
+
+
+def _linha(fonte, inicio: str):
+    return next(linha for linha in fonte.linhas if linha.texto.startswith(inicio))
+
+
+def test_h5_titulo_e_nome_do_nivel_saem_centralizados_e_em_negrito(cp):
+    # `<p align="CENTER"><strong>…TÍTULO I<br>\nDOS CRIMES CONTRA A PESSOA…</strong></p>`.
+    titulos = ["TÍTULO I", "DOS CRIMES CONTRA A PESSOA", "CAPÍTULO I", "DOS CRIMES CONTRA A VIDA"]
+    for texto in titulos:
+        linha = _linha(cp, texto)
+        assert (linha.texto, linha.centralizado, linha.negrito) == (texto, True, True)
+
+
+def test_h6_rubrica_em_negrito_nao_centralizada(cp):
+    rubrica = _linha(cp, "Homicídio simples")
+    assert (rubrica.negrito, rubrica.rotulo_negrito, rubrica.centralizado) == (True, False, False)
+
+
+def test_h6_b_so_com_espaco_nao_marca_a_linha_seguinte(cp):
+    # Na fonte: `<b>\n\n</b><p align="left"><b></b><font …>&nbsp;…\nArt. 121. Matar alguem:`.
+    artigo = _linha(cp, "Art. 121. Matar alguem:")
+    assert (artigo.negrito, artigo.rotulo_negrito, artigo.centralizado) == (False, False, False)
+
+
+def test_linha_sem_negrito_nem_centro_fica_sem_flag(cp):
+    assert not any(linha.negrito or linha.rotulo_negrito for linha in cp.linhas[:5])
+    assert not any(linha.centralizado for linha in cp.linhas[:5])
+
+
+def test_rotulo_em_strong_marca_rotulo_negrito(tmp_path):
+    # Bytes reais do CP, art. 9º, parágrafo único: só o rótulo está em `<strong>`.
+    html = (
+        b'<p ALIGN="JUSTIFY"><font SIZE="2" FACE="Arial"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+        b"&nbsp;&nbsp;\r\nPar\xe1grafo \xfanico</strong> - A homologa\xe7\xe3o depende: <a\r\n"
+        b'href="../LEIS/1980-1988/L7209.htm#art9">(Inclu\xeddo pela Lei n\xba 7.209, de 11.7.1984)'
+        b"</a></font></p>"
+    )
+    [linha] = ler_html(_htm(tmp_path, html), Relatorio()).linhas
+    assert linha.texto.startswith("Parágrafo único - A homologação depende:")
+    assert (linha.negrito, linha.rotulo_negrito) == (False, True)
+
+
+def test_h5_text_align_center_no_style_centraliza(tmp_path):
+    # Bytes reais do CP, CAPÍTULO V do Título X: centralizado só pelo `style`, sem `align`.
+    html = (
+        b'<p class="cabea2" style="text-indent: 0; margin-left: 0cm; text-align:center">\r\n\t\t'
+        b'<span style="color: black; font-weight: 700">CAP\xcdTULO V<br>\r\n\t\t</span><a href="'
+        b'../_Ato2011-2014/2011/Lei/L12550.htm#art19">(Inclu\xeddo \r\n\t\tpela Lei 12.550. de '
+        b'2011)</a></p>\r\n\t\t<p class="texto3" style="text-indent: 1cm">Fraudes</p>'
+    )
+    linhas = ler_html(_htm(tmp_path, html), Relatorio()).linhas
+    assert [(linha.texto, linha.centralizado) for linha in linhas] == [
+        ("CAPÍTULO V", True),
+        ("(Incluído pela Lei 12.550. de 2011)", True),
+        ("Fraudes", False),
+    ]

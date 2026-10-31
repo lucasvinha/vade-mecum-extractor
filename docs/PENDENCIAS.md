@@ -63,6 +63,12 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
       Decidir no M4.
 - [ ] **16. RF19 × esquema por tipo.** `No.origem` fica fora do JSON (operador, 2026-10-31):
       RF19 passa a dizer isso, ou `origem` entra no esquema? Decidir no M3.
+- [ ] **17. H6: negrito que o leitor HTML não vê.** Achado no M2 (2026-10-31), com o `<b>`
+      contado só como ancestral. (a) No `.htm` do CP, `<b><i><p></i>…</b></p>` tira o negrito
+      de 288 rubricas: o navegador reabre o `<b>` pela regra do HTML5 e o `.mht` vem
+      consertado; o libxml2, não. Corrigir pede parser HTML5 (`html5lib`, dependência nova,
+      RNF01; medir a RNF05) e quebra o A14 enquanto não vier. (b) 24 negritos do CP vêm por
+      `font-weight: 700` no `style` (rubrica do art. 311-A). Decidir antes do M3.
 
 ## Riscos acompanhados
 
