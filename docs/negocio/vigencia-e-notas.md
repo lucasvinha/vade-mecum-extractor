@@ -35,7 +35,9 @@ O vocabulário de cada tipo vem do perfil da norma ([pipeline-e-perfis.md](pipel
 - **RF15** — Revogação em faixa (`Art. X a Art. Y. Revogados.`) não gera artigo; vai para o relatório (P11).
 - **RF16** — Todo descarte é registrado no relatório com rótulo, motivo e nota de origem.
 
-A revogação é identificada pela **nota** e pelo conteúdo vazio, nunca pela formatação (H8).
+A revogação é identificada pela **nota** e pelo conteúdo vazio. A única formatação que conta é
+o tachado, que o leitor HTML já tira da linha (H8). `Art. 4° (Revogado…)` com o texto tachado
+sai inteiro no leitor e não chega aqui.
 
 ## §4. Armadilhas e limites conhecidos
 

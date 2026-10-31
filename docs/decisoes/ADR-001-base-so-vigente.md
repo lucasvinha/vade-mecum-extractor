@@ -33,3 +33,6 @@ entrem na base.
 - Reconstruir redações anteriores fica fora do escopo.
 
 ## Histórico
+
+- 2026-10-31: no HTML do Planalto, o texto tachado é redação que não vale mais e sai da base
+  (H8 revista pelo operador). A decisão não muda.
