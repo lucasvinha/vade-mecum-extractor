@@ -120,7 +120,7 @@ Decisões que a spec fixa, para as fases não decidirem:
 | # | Fase | Toca | Aceite | Modelo | Feito |
 |---|---|---|---|---|---|
 | 1 | Fixture real + leitor `.mht`: texto, quebra e `origem` | `modelo.py`, `fontes/html.py`, `tests/unit/test_fontes_html.py`, `tests/fixtures/html/cp_enxertos.mht`, `tests/fixtures/README.md` | portões verdes; linhas do art. 121 na ordem; `4<sup>o</sup>` vira `§ 4o`; `Art\n187.` vira `Art 187.`; os três artigos do `<p>` dos arts. 187–191 saem em linhas separadas (H4); byte inválido levanta `ErroFonte` | Sonnet | 2026-10-31, `b894418` |
-| 2 | Leitor `.htm`/`.html` local | `fontes/html.py`, teste, `tests/fixtures/html/cp_art78.htm` | portões verdes; mesmas linhas do `.mht` para o mesmo trecho; sem charset declarado, lê em windows-1252 (H1); `capturado_em` pelo `mtime`; extensão desconhecida levanta `ErroFonte` | Sonnet | |
+| 2 | Leitor `.htm`/`.html` local | `fontes/html.py`, teste, `tests/fixtures/html/cp_art78.htm` | portões verdes; mesmas linhas do `.mht` para o mesmo trecho; sem charset declarado, lê em windows-1252 (H1); `capturado_em` pelo `mtime`; extensão desconhecida levanta `ErroFonte` | Sonnet | 2026-10-31, `2d81874` |
 | 3 | Flags de negrito e centralizado | `fontes/html.py`, teste | portões verdes; `TÍTULO I` e `DOS CRIMES CONTRA A PESSOA` centralizados (H5); `Homicídio simples` com `negrito` (H6); `Parágrafo único</strong> - …` com `rotulo_negrito`; `<b>` vazio não marca a linha seguinte | Sonnet | |
 | 4 | Tachado (H8): descarte ou aviso | `fontes/html.py`, teste, `tests/fixtures/html/lei8429_tachado.htm`, `tests/fixtures/html/cpp_art336.htm` | portões verdes; os 6 `<strike>` vazios do CP não mudam nada; na Lei 8.429, `Art. 4°…(Revogado…)` e o inciso IV antigo do art. 9º saem como `descarte` com `origem`, e o IV novo fica; no CPP, o art. 336, parágrafo único, fica literal e gera um `aviso` | Opus | |
 | 5 | Normalizador: ordinal e travessão no rótulo + aceite A8 | `normalizador.py`, `tests/unit/test_normalizador.py`, `tests/aceite/test_a08_ordinais.py` | portões verdes; `§ 4o` → `§ 4º`, `§ 2°` → `§ 2º` (art. 78), `§ 2o-A` → `§ 2º-A`, `VII – contra:` → `VII - contra:`; `art. 121, § 2o` no corpo fica igual; `Artigo 1°` com o prefixo passado | Sonnet | |
@@ -164,3 +164,7 @@ Notas por fase, para o `/fase` não precisar de outro documento:
 ## Em aberto
 
 Nada. O tachado nas outras normas foi conferido e decidido em 2026-10-31 (H8).
+
+- **Negrito fora do `<b>` (fase 3, 2026-10-31):** o `.htm` do CP perde o negrito de 288
+  rubricas por HTML mal aninhado, e 24 negritos vêm por `font-weight: 700`. A fase 3 fechou
+  com a definição desta spec; a decisão está em PENDENCIAS #17 e não bloqueia as fases 4–6.
