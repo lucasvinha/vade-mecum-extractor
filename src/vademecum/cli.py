@@ -1,7 +1,7 @@
 """Interface de linha de comando (ver docs/negocio/recorte-e-cli.md).
 
-Os subcomandos já têm a assinatura definitiva; a implementação entra com a fase
-da CLI, na fila de docs/PENDENCIAS.md.
+Os subcomandos já têm a assinatura definitiva; cada um é ligado ao pipeline no
+marco que o implementa, na fila de docs/PENDENCIAS.md.
 """
 
 from __future__ import annotations

@@ -23,7 +23,7 @@ e [parsing.md](parsing.md).
 O contrato central é `LinhaFonte`. Tudo à direita dele independe da fonte, e isso é o que torna o parser genérico.
 
 ```python
-@dataclass
+@dataclass(frozen=True, slots=True)
 class LinhaFonte:
     texto: str              # texto já com espaços colapsados
     negrito: bool           # linha inteiramente em negrito

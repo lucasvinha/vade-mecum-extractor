@@ -9,14 +9,20 @@ alínea, com rubricas, penas e notas legislativas. Sobre essa base, um segundo c
 
 Este projeto é a **Etapa 1 de 2**. A Etapa 2 (material de estudo: realces, quadros comparativos,
 pontos de atenção) consome a base e está fora de escopo, mas a Etapa 1 preserva o que ela vai
-precisar (notas, penas e o relatório de descartes).
+precisar (notas, penas e o relatório de descartes). A Etapa 2 roda no Claude (Opus): o `recortar`
+separa os artigos do edital, o operador sobe só os recortes JSON num projeto do Claude.ai, e o
+modelo monta o vade mecum em HTML, convertido depois em PDF. O consumidor do JSON é, portanto, um
+LLM. Os artigos de cada tópico do edital estão em
+[claude/topicos-oj2026.json](../claude/topicos-oj2026.json) (schema `topicos-oj/1`).
 
 - **Dentro:** leitura de HTML do Planalto (URL, `.htm`/`.html` ou `.mht`) e de PDF com texto,
   inclusive PDF com várias normas; normalização, parsing hierárquico, classificação de notas,
   filtro de vigência; exportação da base e do recorte em JSON; relatório de extração (avisos,
   descartes, inconsistências).
 - **Fora:** OCR de PDF escaneado; material de estudo (Etapa 2); reconstrução de redações
-  anteriores; resolução automática da data exata de leis alteradoras (ver PENDENCIAS).
+  anteriores; resolução automática da data exata de leis alteradoras (ver PENDENCIAS); por ora, o
+  extrator de questões de concurso (marco M9 em PENDENCIAS; contrato em
+  [schema-questoes-json.md](schema-questoes-json.md)).
 
 Ordem de leitura: este arquivo → o documento que o problema pede (tabela abaixo) → o código.
 Em divergência com o código, **vale o código**, e o documento é corrigido.
@@ -104,14 +110,16 @@ de documento citado por número). Vem do molde e é recopiado sem edição, por 
   Só `cli.py` e `fontes/*` fazem I/O.
 - `Relatorio` acumula entradas tipadas: `descarte`, `aviso`, `nao_classificada`, `nota_outra`,
   `faixa_revogada`, cada uma com `origem`.
-- Erros de entrada (arquivo inexistente, PDF sem texto — RF06) levantam `ErroFonte(Exception)` com
-  mensagem para o usuário; a CLI converte em código de saída 2.
+- Erros de entrada (arquivo inexistente, PDF sem texto — RF06) levantam `ErroFonte(Exception)`,
+  definido em `modelo.py`, com mensagem para o usuário; a CLI converte em código de saída 2.
 - Chave de ordenação: `(numero: int, sufixo: tuple[str, ...])`; tupla vazia ordena antes de
   qualquer letra (ver [negocio/recorte-e-cli.md](negocio/recorte-e-cli.md)).
 - Serialização (RNF03): `json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=True)` + `\n`
   final, gravado com `encoding="utf-8"` e `newline="\n"`. `capturado_em` e `sha256` ficam só em
-  `norma`/`metadados`, nunca em `artigos`. Campo opcional ausente sai como `null` (esquema
-  estável); lista vazia, como `[]`.
+  `norma`/`metadados`, nunca em `artigos`.
+- Esquema estável **por tipo**: cada `tipo` de nó tem um conjunto fixo de chaves, listado em
+  [negocio/modelo-de-dados.md](negocio/modelo-de-dados.md). Dentro dele, opcional ausente sai
+  como `null` e lista vazia como `[]`; chave de outro tipo não aparece.
 
 ## Commits
 

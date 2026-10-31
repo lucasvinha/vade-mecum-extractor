@@ -26,9 +26,9 @@ Segue a notação do edital: itens separados por `;` ou `,`; faixa com `-`, `–
 
 - **Chave de ordenação:** `(numero, sufixo)`, com sufixo como tupla e sufixo vazio antes de qualquer letra. Assim: `121 < 121-A < 121-B < 122` e `359-M < 359-M-A < 359-M-B < 359-N`.
 - **Faixa `a–b`:** inclui todo artigo com `chave(a) ≤ chave ≤ chave(b)` (ADR-004). Consequência: `121–130` inclui 121-A e 121-B, mas **não** 130-A, que vem depois de `130`. Esse comportamento bate com o edital, que cita `1.091-A` à parte da faixa `994–1.091`.
-- **Artigo avulso `121`:** inclui só o art. 121. Artigo com letra entra se for citado (`311-A`) ou se estiver dentro de uma faixa. (Ver pendência P1 em [PENDENCIAS.md](../PENDENCIAS.md).)
+- **Artigo avulso `121`:** inclui só o art. 121. Artigo com letra entra se for citado (`311-A`) ou se estiver dentro de uma faixa. (P1, confirmada pelo operador em 2026-10-30.)
 - Item do recorte que **não existe** na base gera aviso, não erro.
-- Granularidade sub-artigo (`196, inciso XX`; `282, § 1º`) **não** é recortada na Etapa 1: o artigo inteiro entra. Ver pendência P2.
+- Granularidade sub-artigo (`196, inciso XX`; `282, § 1º`) **não** é recortada na Etapa 1: o artigo inteiro entra. (P2, confirmada pelo operador em 2026-10-30.)
 
 ## §4. Interface de linha de comando (proposta)
 
@@ -39,7 +39,8 @@ python -m vademecum extrair --fonte "https://www.planalto.gov.br/ccivil_03/decre
 - `--fonte` aceita URL, `.htm`, `.mht` ou `.pdf`.
 - `--perfil` escolhe as regras da norma ([pipeline-e-perfis.md](pipeline-e-perfis.md)); se omitido, usa `padrao`.
 - `--saida` é o caminho do JSON.
-- O relatório é gravado ao lado, como `base.relatorio.md`.
+- O relatório é gravado ao lado, como `base.relatorio.json`. Não há versão em Markdown: quem lê
+  é um LLM (Etapa 2), e o JSON guarda os descartes de forma estruturada (ADR-001).
 
 ```bash
 python -m vademecum extrair --fonte LEI_SECA_OJ26.pdf --perfil-auto --saida-dir dados/legislacao_especial/

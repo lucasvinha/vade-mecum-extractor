@@ -26,8 +26,10 @@ vem depois de `130`.
 
 - A ordenação e o recorte dependem da mesma chave; ver
   [negocio/recorte-e-cli.md](../negocio/recorte-e-cli.md).
-- Artigo avulso (`121`) não é coberto por esta decisão: o comportamento assumido é a pendência P1
-  de [PENDENCIAS.md](../PENDENCIAS.md).
+- Artigo avulso (`121`) não é coberto por esta decisão: inclui só ele (P1, confirmada pelo
+  operador), regra em [negocio/recorte-e-cli.md](../negocio/recorte-e-cli.md).
 - Caso de aceite: A13.
 
 ## Histórico
+
+- 2026-10-30: P1 confirmada; a consequência sobre artigo avulso passa a apontar para a regra.

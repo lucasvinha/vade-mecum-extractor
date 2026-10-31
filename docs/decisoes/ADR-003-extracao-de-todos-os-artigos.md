@@ -28,3 +28,6 @@ O recorte é um comando à parte (`recortar`), que filtra a base pronta sem rele
   lacunas é desligada pelo perfil.
 
 ## Histórico
+
+- 2026-10-31: reafirmado. Em 2026-10-30 o operador cogitou deixar o filtro para o Claude; decidiu
+  que o Python recorta e o Claude recebe só o recorte.

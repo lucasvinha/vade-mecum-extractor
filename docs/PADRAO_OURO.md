@@ -82,7 +82,9 @@ Identificadores em português, no vocabulário das regras de negócio (`LinhaFon
 ### Testes
 
 - `pytest` com fixtures de **trechos reais** das fontes (não o arquivo inteiro), um teste por caso de aceite.
-- Teste de regressão: base completa do CP gerada e comparada com um snapshot JSON versionado. Qualquer mudança no parser que altere o snapshot precisa ser revisada, e o commit que o regrava traz a justificativa no corpo.
+- No git entram só **enxertos**: poucas páginas reais da fonte (o art. 121 do CP, duas páginas de questões). A fonte inteira e toda extração gerada ficam em `dados/`, fora do git, porque o repositório é público.
+- Caso que exige a fonte inteira (A1) lê de `dados/` e é pulado, com o motivo, quando ela não está lá.
+- Teste de regressão: a base gerada dos enxertos é comparada com um snapshot JSON versionado. Qualquer mudança no parser que altere o snapshot precisa ser revisada, e o commit que o regrava traz a justificativa no corpo. A base completa é comparada antes e depois, localmente, pelo `/regressao`.
 - Regex só muda com o caso real que motivou a mudança, no mesmo commit.
 
 ## §7. Checklist de revisão
