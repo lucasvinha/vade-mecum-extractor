@@ -42,7 +42,7 @@ Identificadores em português, no vocabulário das regras de negócio (`LinhaFon
 
 ## §5. Requisitos não funcionais
 
-- **RNF01** — Python 3.12. Dependências: `requests`, `beautifulsoup4`, `lxml`, `pdfplumber`. Desenvolvimento: `pytest`, `pytest-cov`, `ruff` (lint e formatação; configuração em `pyproject.toml`).
+- **RNF01** — Python 3.12. Dependências: `requests`, `beautifulsoup4`, `html5lib`, `pdfplumber`. Desenvolvimento: `pytest`, `pytest-cov`, `ruff` (lint e formatação; configuração em `pyproject.toml`).
 - **RNF02** — Rodar em Windows sem WSL (caminhos via `pathlib`, saída UTF-8 explícita).
 - **RNF03** — Determinismo: mesma fonte e mesmo perfil geram JSON idêntico, byte a byte (chaves ordenadas, sem timestamp dentro de `artigos`).
 - **RNF04** — Nenhuma perda silenciosa: todo texto da fonte entra na árvore ou aparece no relatório.
