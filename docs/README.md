@@ -57,7 +57,7 @@ Saída determinística (RNF03) e nenhuma perda silenciosa (RNF04): ver
 | Empacotamento | `pyproject.toml` + hatchling, layout `src/` | instalação editável: `uv pip install -e ".[dev]"` |
 | Lint/format | ruff (`E,W,F,I,B,UP,SIM,RUF,PTH`), linha 100 | `RUF001-003` desligados: º, °, –, § são do domínio |
 | Testes | pytest (+ pytest-cov) | marcadores `aceite`, `regressao`, `rede` |
-| HTML | `beautifulsoup4` + `lxml` | `email` (stdlib) para `.mht` |
+| HTML | `beautifulsoup4` + `html5lib` | parser do HTML5, o do navegador; `email` (stdlib) para `.mht` |
 | PDF | `pdfplumber` | recorte por coluna, mapa de fontes por documento |
 | HTTP | `requests` | só em `fontes/html.py`, com cache (RF02) |
 | CI | GitHub Actions: ruff + pytest em 3.12 (Ubuntu e Windows) | Windows cobre RNF02 |

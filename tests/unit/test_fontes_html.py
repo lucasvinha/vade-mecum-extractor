@@ -111,7 +111,7 @@ def test_head_e_comentario_nao_sao_texto_da_norma(textos):
 
 def test_h1_meta_charset_nao_corrompe_documento_grande(tmp_path):
     # Caso real: no `.mht` inteiro do CP (769 KB), a leitura virava mojibake no art. 266, § 2º
-    # (`Â§ 2Âº`), e o texto parava ali, sem o art. 361. O `<meta charset>` faz o libxml2 trocar
+    # (`Â§ 2Âº`), e o texto parava ali, sem o art. 361. O `<meta charset>` fazia o libxml2 trocar
     # de codificação no meio do texto, e o defeito só aparece a partir de ~540 KB. Por isso o
     # teste é sintético: a fixture real tem 35 KB.
     meta = b'<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">'
@@ -260,6 +260,37 @@ def test_rotulo_em_strong_marca_rotulo_negrito(tmp_path):
     [linha] = ler_html(_htm(tmp_path, html), Relatorio()).linhas
     assert linha.texto.startswith("Parágrafo único - A homologação depende:")
     assert (linha.negrito, linha.rotulo_negrito) == (False, True)
+
+
+@pytest.fixture
+def cp_negrito(fixtures_dir: Path):
+    return ler_html(fixtures_dir / "html" / "cp_negrito.htm", Relatorio())
+
+
+def test_h6_b_fechado_fora_de_ordem_reabre_no_paragrafo_como_no_navegador(cp_negrito):
+    # `<b><i>\r\n\r\n<p ALIGN="JUSTIFY"></i>…Tempo do crime</font></b></p>`: pela regra do HTML5,
+    # o `<b>` reabre dentro do `<p>`, e o `.mht` salvo pelo navegador traz a rubrica em negrito.
+    # O libxml2 não reabria, e 288 rubricas do `.htm` do CP saíam sem negrito (A14).
+    rubrica = _linha(cp_negrito, "Tempo do crime")
+    assert (rubrica.texto, rubrica.negrito, rubrica.rotulo_negrito) == (
+        "Tempo do crime",
+        True,
+        False,
+    )
+
+
+def test_h6_font_weight_700_no_style_e_negrito(cp_negrito):
+    # Rubrica do art. 311-A: `<span style="color: black; font-weight: 700">Fraudes em certames…`,
+    # sem `<b>`; a nota `(Incluído…)` vem fora do `<span>`, sem negrito.
+    rubrica = _linha(cp_negrito, "Fraudes em certames de interesse público")
+    assert (rubrica.negrito, rubrica.rotulo_negrito) == (False, True)
+
+
+def test_h6_font_weight_normal_tira_o_negrito_do_b(cp_negrito):
+    # Art. 298, parágrafo único: `<b><span style="…font-weight: normal">Parágrafo único.` O
+    # navegador mostra o rótulo sem negrito; só o `caput`, num `<span>` sem peso, fica no `<b>`.
+    paragrafo = _linha(cp_negrito, "Parágrafo único. Para fins do disposto no caput")
+    assert (paragrafo.negrito, paragrafo.rotulo_negrito) == (False, False)
 
 
 def test_h5_text_align_center_no_style_centraliza(tmp_path):

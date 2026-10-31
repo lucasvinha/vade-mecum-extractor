@@ -32,17 +32,14 @@ _BLOCOS = frozenset(
 )
 _FORA_DO_TEXTO = frozenset({"head", "script", "style"})
 _NEGRITO = frozenset({"b", "strong"})  # H5, H6
+# H6: o CP também põe negrito só pelo `style` (`font-weight: 700`, rubrica do art. 311-A) e o
+# tira dentro do `<b>` (`font-weight: normal`, art. 298, parágrafo único).
+_FONT_WEIGHT = re.compile(r"font-weight\s*:\s*(\w+)", re.IGNORECASE)
+_PESOS_NEGRITO = frozenset({"bold", "bolder"})
 # H5: o CP também centraliza só pelo `style` (`text-align:center`, no CAPÍTULO V do Título X).
 _TEXT_ALIGN_CENTRO = re.compile(r"text-align\s*:\s*center", re.IGNORECASE)
 _FIM_DE_BLOCO = object()
 _ESPACO = re.compile(r"\s+")  # em `str`, `\s` inclui o `\xa0` do `&nbsp;`
-
-# O libxml2 lê `&#150;` como o controle U+0096; o navegador, pela regra do HTML5, lê o byte em
-# windows-1252 (`–`). É o que o `.mht` traz, e o `.htm` tem de dar as mesmas linhas.
-_REFERENCIA_C1 = re.compile(rb"&#(1[2-5]\d);")
-# O libxml2 descarta o que vem depois de `</html>`, e o CC tem um logo após o preâmbulo (RNF04).
-# Os dois fechos não têm texto: tirá-los não perde nada.
-_FECHO_DE_DOCUMENTO = re.compile(rb"</(?:body|html)\s*>", re.IGNORECASE)
 
 
 def ler_html(caminho: Path, relatorio: Relatorio) -> FonteLida:
@@ -108,15 +105,6 @@ def _capturado_em(data: DateHeader | None, caminho: Path) -> str:
     return instante.astimezone(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def _referencia_windows_1252(referencia: re.Match[bytes]) -> bytes:
-    """`&#150;` → `&#8211;`. Os 5 bytes sem caractere no windows-1252 ficam como estão (HTML5)."""
-    try:
-        caractere = bytes([int(referencia[1])]).decode("windows-1252")
-    except UnicodeDecodeError:
-        return referencia[0]
-    return b"&#%d;" % ord(caractere)
-
-
 @dataclass(frozen=True, slots=True)
 class _Pedaco:
     """Nó de texto com o contexto de formatação de onde ele está no documento."""
@@ -128,11 +116,25 @@ class _Pedaco:
 
 def _pedaco(no: NavigableString) -> _Pedaco:
     ancestrais = [pai for pai in no.parents if isinstance(pai, Tag)]
+    # Como o CSS herda: decide o ancestral mais próximo que define o peso (H6).
+    pesos = (_negrito_proprio(pai) for pai in ancestrais)
     return _Pedaco(
         texto=no,
-        negrito=any(pai.name in _NEGRITO for pai in ancestrais),
+        negrito=next((peso for peso in pesos if peso is not None), False),
         centralizado=any(pai.name in _BLOCOS and _bloco_centralizado(pai) for pai in ancestrais),
     )
+
+
+def _negrito_proprio(tag: Tag) -> bool | None:
+    """Peso que a própria tag define: `font-weight` no `style`, senão `<b>`/`<strong>`.
+
+    `None` quando ela não define e o peso vem de fora. No CSS, número ≥ 600 é negrito.
+    """
+    peso = _FONT_WEIGHT.search(str(tag.get("style", "")))
+    if peso:
+        valor = peso[1].lower()
+        return valor in _PESOS_NEGRITO or (valor.isdigit() and int(valor) >= 600)
+    return True if tag.name in _NEGRITO else None
 
 
 def _bloco_centralizado(bloco: Tag) -> bool:
@@ -148,9 +150,12 @@ def _bloco_centralizado(bloco: Tag) -> bool:
 def _linhas_logicas(conteudo: bytes, charset: str) -> tuple[LinhaFonte, ...]:
     """Uma linha por bloco ou `<br>` (H3, H4), com os nós de texto colados sem separador.
 
-    Colar sem separador mantém `4<sup>o</sup>` como `4o` (H11). O lxml recebe bytes e o charset,
-    nunca `str`: com `str`, o `<meta charset>` o faz trocar de codificação no meio do documento
-    (mojibake e texto truncado no CP inteiro a partir do art. 266).
+    Colar sem separador mantém `4<sup>o</sup>` como `4o` (H11). O parser é o do HTML5, o mesmo
+    do navegador que salva o `.mht`: o Planalto fecha tags fora de ordem
+    (`<b><i><p></i>Tempo do crime</b></p>`), e só a regra do HTML5 reabre o `<b>` dentro do
+    `<p>`. Ela também lê `&#150;` pelo windows-1252 (`–`) e não para no `</html>` solto do CC.
+    O parser recebe bytes e o charset, nunca `str`, para o `<meta charset>` não trocar a
+    codificação no meio do documento.
     """
     linhas: list[LinhaFonte] = []
     partes: list[_Pedaco] = []
@@ -174,8 +179,7 @@ def _linhas_logicas(conteudo: bytes, charset: str) -> tuple[LinhaFonte, ...]:
             )
         )
 
-    conteudo = _REFERENCIA_C1.sub(_referencia_windows_1252, _FECHO_DE_DOCUMENTO.sub(b"", conteudo))
-    pilha: list[object] = [BeautifulSoup(conteudo, "lxml", from_encoding=charset)]
+    pilha: list[object] = [BeautifulSoup(conteudo, "html5lib", from_encoding=charset)]
     while pilha:
         item = pilha.pop()
         if item is _FIM_DE_BLOCO:
