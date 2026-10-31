@@ -110,14 +110,16 @@ de documento citado por número). Vem do molde e é recopiado sem edição, por 
   Só `cli.py` e `fontes/*` fazem I/O.
 - `Relatorio` acumula entradas tipadas: `descarte`, `aviso`, `nao_classificada`, `nota_outra`,
   `faixa_revogada`, cada uma com `origem`.
-- Erros de entrada (arquivo inexistente, PDF sem texto — RF06) levantam `ErroFonte(Exception)` com
-  mensagem para o usuário; a CLI converte em código de saída 2.
+- Erros de entrada (arquivo inexistente, PDF sem texto — RF06) levantam `ErroFonte(Exception)`,
+  definido em `modelo.py`, com mensagem para o usuário; a CLI converte em código de saída 2.
 - Chave de ordenação: `(numero: int, sufixo: tuple[str, ...])`; tupla vazia ordena antes de
   qualquer letra (ver [negocio/recorte-e-cli.md](negocio/recorte-e-cli.md)).
 - Serialização (RNF03): `json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=True)` + `\n`
   final, gravado com `encoding="utf-8"` e `newline="\n"`. `capturado_em` e `sha256` ficam só em
-  `norma`/`metadados`, nunca em `artigos`. Campo opcional ausente sai como `null` (esquema
-  estável); lista vazia, como `[]`.
+  `norma`/`metadados`, nunca em `artigos`.
+- Esquema estável **por tipo**: cada `tipo` de nó tem um conjunto fixo de chaves, listado em
+  [negocio/modelo-de-dados.md](negocio/modelo-de-dados.md). Dentro dele, opcional ausente sai
+  como `null` e lista vazia como `[]`; chave de outro tipo não aparece.
 
 ## Commits
 
