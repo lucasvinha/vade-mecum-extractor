@@ -4,7 +4,9 @@ import typing
 import pytest
 
 from vademecum.modelo import (
+    TIPOS_ENTRADA,
     Base,
+    EntradaRelatorio,
     ErroFonte,
     LinhaFonte,
     Local,
@@ -13,6 +15,7 @@ from vademecum.modelo import (
     Norma,
     Nota,
     Recorte,
+    Relatorio,
     chave_de_texto,
     chave_ordenacao,
 )
@@ -89,6 +92,7 @@ _INSTANCIAS = [
     Metadados(),
     Recorte(expressao="121-130; 311-A", origem="base_cp.json"),
     Base(norma=_NORMA, metadados=Metadados(), artigos=(_ALINEA,)),
+    EntradaRelatorio(tipo="aviso", origem="pdf:p3:col2:l14", texto="Parágrafo único."),
 ]
 
 
@@ -143,3 +147,42 @@ def test_rf06_erro_fonte_e_exception():
     with pytest.raises(ErroFonte, match="PDF sem texto"):
         raise ErroFonte("PDF sem texto")
     assert issubclass(ErroFonte, Exception)
+
+
+def test_rnf04_tipos_de_entrada_sao_os_do_contrato():
+    esperados = {"descarte", "aviso", "nao_classificada", "nota_outra", "faixa_revogada"}
+    assert esperados == TIPOS_ENTRADA
+
+
+@pytest.mark.parametrize("tipo", sorted(TIPOS_ENTRADA))
+def test_rnf04_entrada_aceita_os_cinco_tipos(tipo):
+    entrada = EntradaRelatorio(tipo=tipo, origem="html:p#1", texto="VI - (Revogado)")
+    assert entrada.tipo == tipo
+
+
+@pytest.mark.parametrize("tipo", ["outra", "Aviso", "revogado", ""])
+def test_rnf04_entrada_rejeita_tipo_fora_dos_cinco(tipo):
+    with pytest.raises(ValueError, match="tipo de entrada"):
+        EntradaRelatorio(tipo=tipo, origem="html:p#1", texto="x")
+
+
+def test_rnf04_relatorio_guarda_na_ordem_do_registro():
+    relatorio = Relatorio()
+    assert relatorio.entradas == ()
+    # P11 e P15: os dois casos reais que motivam faixa_revogada e aviso.
+    faixa = EntradaRelatorio(
+        tipo="faixa_revogada", origem="pdf:p40:col1:l3", texto="Art. 1.054 a Art. 1091. Revogados."
+    )
+    aviso = EntradaRelatorio(tipo="aviso", origem="pdf:p7:col2:l9", texto="Parágrafo único.")
+    descarte = EntradaRelatorio(tipo="descarte", origem="html:p#12", texto="Feminicídio")
+    for entrada in (faixa, aviso, descarte):
+        relatorio.registrar(entrada)
+    assert relatorio.entradas == (faixa, aviso, descarte)
+
+
+def test_relatorio_so_muda_por_registrar():
+    relatorio = Relatorio()
+    assert not hasattr(relatorio, "__dict__")
+    assert isinstance(relatorio.entradas, tuple)
+    with pytest.raises(AttributeError):
+        relatorio.entradas = ()  # type: ignore[misc]

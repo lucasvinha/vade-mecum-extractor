@@ -5,7 +5,7 @@ negocio/modelo-de-dados e a ordenação em negocio/recorte-e-cli.
 """
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 # H11, H12, P13: milhar opcional (`1.091`), ordinal opcional (`1º`, `2°`, `4o`) e sufixos
 # maiúsculos de um ou mais níveis (`121-A`, `359-M-A`). O prefixo `Art.` é do perfil (ADR-002).
@@ -133,3 +133,39 @@ class Base:
     metadados: Metadados
     artigos: tuple[No, ...] = ()
     recorte: Recorte | None = None
+
+
+# RNF04: todo texto fora da árvore cai num destes tipos (ver docs/README.md, Contratos).
+TIPOS_ENTRADA = frozenset({"descarte", "aviso", "nao_classificada", "nota_outra", "faixa_revogada"})
+
+
+@dataclass(frozen=True, slots=True)
+class EntradaRelatorio:
+    """Texto que não entrou na árvore, com a `origem` de onde saiu (RNF04).
+
+    Os campos próprios de cada tipo (motivo do descarte, faixa revogada) chegam com a etapa que
+    gera a entrada.
+    """
+
+    tipo: str
+    origem: str
+    texto: str
+
+    def __post_init__(self) -> None:
+        if self.tipo not in TIPOS_ENTRADA:
+            raise ValueError(f"tipo de entrada do relatório inválido: {self.tipo!r}")
+
+
+@dataclass(slots=True)
+class Relatorio:
+    """Acumulador das entradas do relatório; `registrar` é o único método de escrita."""
+
+    _entradas: list[EntradaRelatorio] = field(default_factory=list, init=False, repr=False)
+
+    def registrar(self, entrada: EntradaRelatorio) -> None:
+        self._entradas.append(entrada)
+
+    @property
+    def entradas(self) -> tuple[EntradaRelatorio, ...]:
+        """Entradas na ordem em que foram registradas."""
+        return tuple(self._entradas)
