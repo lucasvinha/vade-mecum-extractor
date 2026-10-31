@@ -144,7 +144,7 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 
 | Módulo | Entrada → Saída | Depende de |
 |---|---|---|
-| `modelo.py` | dataclasses `LinhaFonte`, `No`, `Nota`, `Local`, `Norma`, `Base`, `Relatorio`; `chave_ordenacao()`; `para_json()` | — |
+| `modelo.py` | dataclasses `LinhaFonte`, `No`, `Nota`, `Local`, `Norma`, `Base`, `Relatorio`; `ErroFonte`; `chave_ordenacao()`, `chave_de_texto()`; funções de `id`; `para_json()` | — |
 | `perfil.py` | `carregar_perfil(nome) -> Perfil` (merge `padrao.toml` + específico) | `modelo` |
 | `fontes/html.py` | URL/`.htm`/`.mht` → `list[LinhaFonte]` + metadados | `modelo` |
 | `fontes/pdf.py` | `.pdf` → `list[LinhaFonte]` | `modelo`, `perfil` |
