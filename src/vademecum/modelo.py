@@ -1,11 +1,14 @@
-"""Modelo de dados da base e chave de ordenação dos dispositivos.
+"""Modelo de dados da base, chave de ordenação dos dispositivos e serialização (RNF03).
 
 Sem dependência interna: toda etapa do pipeline importa daqui. O esquema está em
 negocio/modelo-de-dados e a ordenação em negocio/recorte-e-cli.
 """
 
+import json
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields, is_dataclass
+
+from vademecum import SCHEMA_VERSION
 
 # H11, H12, P13: milhar opcional (`1.091`), ordinal opcional (`1º`, `2°`, `4o`) e sufixos
 # maiúsculos de um ou mais níveis (`121-A`, `359-M-A`). O prefixo `Art.` é do perfil (ADR-002).
@@ -212,3 +215,35 @@ class Relatorio:
     def entradas(self) -> tuple[EntradaRelatorio, ...]:
         """Entradas na ordem em que foram registradas."""
         return tuple(self._entradas)
+
+
+# Esquema estável por tipo (ver negocio/modelo-de-dados): chave de outro tipo não sai, e `origem`
+# fica só na memória (RF19).
+_CHAVES_DISPOSITIVO = ("id", "tipo", "rotulo", "rubrica", "texto", "notas", "filhos")
+_CHAVES_POR_TIPO = {
+    "artigo": (*_CHAVES_DISPOSITIVO, "numero", "sufixo", "local", "parcial"),
+    **dict.fromkeys(("paragrafo", "inciso", "alinea", "item"), _CHAVES_DISPOSITIVO),
+    "pena": ("id", "tipo", "texto", "notas"),
+}
+
+
+def _para_dict(valor):
+    if isinstance(valor, No):
+        chaves = _CHAVES_POR_TIPO.get(valor.tipo)
+        if chaves is None:
+            raise ValueError(f"tipo de nó sem esquema: {valor.tipo!r} em {valor.id!r}")
+        return {chave: _para_dict(getattr(valor, chave)) for chave in chaves}
+    if is_dataclass(valor):
+        return {f.name: _para_dict(getattr(valor, f.name)) for f in fields(valor)}
+    if isinstance(valor, tuple):
+        return [_para_dict(item) for item in valor]
+    return valor
+
+
+def para_json(obj: Base | Relatorio) -> str:
+    """Texto JSON determinístico da base ou do relatório (RNF03); quem grava é a `cli.py`."""
+    if isinstance(obj, Relatorio):
+        dados = {"entradas": _para_dict(obj.entradas)}
+    else:
+        dados = {"schema_version": SCHEMA_VERSION, **_para_dict(obj)}
+    return json.dumps(dados, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
