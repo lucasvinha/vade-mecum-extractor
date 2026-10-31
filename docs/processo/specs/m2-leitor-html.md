@@ -133,7 +133,10 @@ Notas por fase, para o `/fase` não precisar de outro documento:
   as fixtures HTML estão em UTF-8: corrigir para "no charset original da fonte". Origem e data
   da captura no topo da parte HTML, em comentário `<!-- -->`. O art. 121 tem ~29 KB; a fixture
   inteira fica abaixo de 60 KB (exceção de tamanho declarada: fixture real). Parser:
-  `BeautifulSoup(texto, "lxml")`; o `.mht` lido com
+  `BeautifulSoup(conteudo, "lxml", from_encoding=charset)`, com bytes e nunca com `str`: com
+  `str`, o `<meta charset>` faz o libxml2 trocar de codificação no meio do texto, e o CP inteiro
+  vira mojibake e para no art. 266. A decodificação estrita roda antes, só para validar. O
+  `.mht` é lido com
   `email.message_from_bytes(..., policy=email.policy.default)` e
   `get_payload(decode=True)`. I/O com `pathlib`; os bytes são lidos com `read_bytes()`.
 - **Fase 2.** A fixture `.htm` é o trecho do art. 78 recortado em bytes de
