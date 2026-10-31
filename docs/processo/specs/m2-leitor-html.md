@@ -89,6 +89,10 @@ Decisões que a spec fixa, para as fases não decidirem:
 - **Quebra de linha:** abertura e fechamento de `<p>`, `<div>`, `<blockquote>`, `<tr>`,
   `<center>`, `<h1>`–`<h6>` e `<li>`, e cada `<br>` (RF04). Texto fora de bloco também vira
   linha. `<script>`, `<style>` e `<head>` não são texto da norma e não são lidos.
+- **Bytes antes do lxml** (achado na fase 2, operador, 2026-10-31): `&#128;`–`&#159;` viram
+  o caractere do windows-1252 (regra do HTML5; o libxml2 dava U+0096 em 61 travessões do CP), e
+  `</body>`/`</html>` saem (o libxml2 parava no `</html>` solto após o preâmbulo do CC). Com
+  isso, o `.htm` do CP dá as mesmas 2397 linhas do `.mht`.
 - **Flags:** `negrito` = todo caractere visível da linha está dentro de `<b>`/`<strong>`;
   `rotulo_negrito` = a linha começa em negrito e não é toda negrito; `centralizado` = algum
   ancestral de bloco tem `align="center"` (qualquer caixa), `text-align: center` no `style`,
@@ -115,7 +119,7 @@ Decisões que a spec fixa, para as fases não decidirem:
 
 | # | Fase | Toca | Aceite | Modelo | Feito |
 |---|---|---|---|---|---|
-| 1 | Fixture real + leitor `.mht`: texto, quebra e `origem` | `modelo.py`, `fontes/html.py`, `tests/unit/test_fontes_html.py`, `tests/fixtures/html/cp_enxertos.mht`, `tests/fixtures/README.md` | portões verdes; linhas do art. 121 na ordem; `4<sup>o</sup>` vira `§ 4o`; `Art\n187.` vira `Art 187.`; os três artigos do `<p>` dos arts. 187–191 saem em linhas separadas (H4); byte inválido levanta `ErroFonte` | Sonnet | |
+| 1 | Fixture real + leitor `.mht`: texto, quebra e `origem` | `modelo.py`, `fontes/html.py`, `tests/unit/test_fontes_html.py`, `tests/fixtures/html/cp_enxertos.mht`, `tests/fixtures/README.md` | portões verdes; linhas do art. 121 na ordem; `4<sup>o</sup>` vira `§ 4o`; `Art\n187.` vira `Art 187.`; os três artigos do `<p>` dos arts. 187–191 saem em linhas separadas (H4); byte inválido levanta `ErroFonte` | Sonnet | 2026-10-31, `b894418` |
 | 2 | Leitor `.htm`/`.html` local | `fontes/html.py`, teste, `tests/fixtures/html/cp_art78.htm` | portões verdes; mesmas linhas do `.mht` para o mesmo trecho; sem charset declarado, lê em windows-1252 (H1); `capturado_em` pelo `mtime`; extensão desconhecida levanta `ErroFonte` | Sonnet | |
 | 3 | Flags de negrito e centralizado | `fontes/html.py`, teste | portões verdes; `TÍTULO I` e `DOS CRIMES CONTRA A PESSOA` centralizados (H5); `Homicídio simples` com `negrito` (H6); `Parágrafo único</strong> - …` com `rotulo_negrito`; `<b>` vazio não marca a linha seguinte | Sonnet | |
 | 4 | Tachado (H8): descarte ou aviso | `fontes/html.py`, teste, `tests/fixtures/html/lei8429_tachado.htm`, `tests/fixtures/html/cpp_art336.htm` | portões verdes; os 6 `<strike>` vazios do CP não mudam nada; na Lei 8.429, `Art. 4°…(Revogado…)` e o inciso IV antigo do art. 9º saem como `descarte` com `origem`, e o IV novo fica; no CPP, o art. 336, parágrafo único, fica literal e gera um `aviso` | Opus | |

@@ -1,4 +1,4 @@
-"""Leitor do HTML do Planalto: `.mht` salvo pelo navegador → `FonteLida` (ver negocio/fontes).
+"""Leitor do HTML do Planalto: `.mht` do navegador ou `.htm` → `FonteLida` (ver negocio/fontes).
 
 Único lugar, com a `cli.py`, que lê arquivo (PADRAO_OURO). A unidade de saída é a linha lógica,
 não o parágrafo HTML (H4).
@@ -9,6 +9,7 @@ import email.policy
 import hashlib
 import re
 from datetime import UTC, datetime
+from email.headerregistry import DateHeader
 from email.message import EmailMessage
 from pathlib import Path
 
@@ -17,6 +18,7 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 from vademecum.modelo import ErroFonte, FonteLida, LinhaFonte, Relatorio
 
 _EXTENSOES_MHT = frozenset({".mht", ".mhtml"})
+_EXTENSOES_HTM = frozenset({".htm", ".html"})
 
 # H1: o `.htm` do Planalto não declara charset; quem declara no `.mht` é o `<meta>` do navegador
 # (`<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">`).
@@ -31,6 +33,13 @@ _FORA_DO_TEXTO = frozenset({"head", "script", "style"})
 _FIM_DE_BLOCO = object()
 _ESPACO = re.compile(r"\s+")  # em `str`, `\s` inclui o `\xa0` do `&nbsp;`
 
+# O libxml2 lê `&#150;` como o controle U+0096; o navegador, pela regra do HTML5, lê o byte em
+# windows-1252 (`–`). É o que o `.mht` traz, e o `.htm` tem de dar as mesmas linhas.
+_REFERENCIA_C1 = re.compile(rb"&#(1[2-5]\d);")
+# O libxml2 descarta o que vem depois de `</html>`, e o CC tem um logo após o preâmbulo (RNF04).
+# Os dois fechos não têm texto: tirá-los não perde nada.
+_FECHO_DE_DOCUMENTO = re.compile(rb"</(?:body|html)\s*>", re.IGNORECASE)
+
 
 def ler_html(caminho: Path, relatorio: Relatorio) -> FonteLida:
     """Lê a fonte HTML local e devolve as linhas lógicas na ordem do texto.
@@ -38,16 +47,23 @@ def ler_html(caminho: Path, relatorio: Relatorio) -> FonteLida:
     `relatorio` recebe o texto da leitura que não vira linha (RNF04). Levanta `ErroFonte` para
     arquivo inexistente, extensão não suportada, `.mht` sem parte HTML e byte inválido.
     """
-    if caminho.suffix.lower() not in _EXTENSOES_MHT:
+    extensao = caminho.suffix.lower()
+    if extensao not in _EXTENSOES_MHT | _EXTENSOES_HTM:
         raise ErroFonte(f"extensão não suportada pelo leitor HTML: {caminho}")
     try:
         dados = caminho.read_bytes()
     except FileNotFoundError:
         raise ErroFonte(f"arquivo não encontrado: {caminho}") from None
-    mensagem = email.message_from_bytes(dados, policy=email.policy.default)
-    parte = _parte_html(mensagem, caminho)
-    conteudo = parte.get_payload(decode=True)
-    charset = _charset(conteudo, parte.get_content_charset(), caminho)
+    if extensao in _EXTENSOES_MHT:
+        mensagem = email.message_from_bytes(dados, policy=email.policy.default)
+        parte = _parte_html(mensagem, caminho)
+        conteudo = parte.get_payload(decode=True)
+        charset_mime = parte.get_content_charset()
+        fonte = mensagem.get("Snapshot-Content-Location") or str(caminho)
+        data = mensagem.get("Date")
+    else:
+        conteudo, charset_mime, fonte, data = dados, None, str(caminho), None
+    charset = _charset(conteudo, charset_mime, caminho)
     linhas = tuple(
         LinhaFonte(
             texto=t,
@@ -62,8 +78,8 @@ def ler_html(caminho: Path, relatorio: Relatorio) -> FonteLida:
     return FonteLida(
         linhas=linhas,
         tipo_fonte="html",
-        fonte=mensagem.get("Snapshot-Content-Location") or str(caminho),
-        capturado_em=_capturado_em(mensagem, caminho),
+        fonte=fonte,
+        capturado_em=_capturado_em(data, caminho),
         sha256=hashlib.sha256(conteudo).hexdigest(),
     )
 
@@ -93,11 +109,19 @@ def _charset(conteudo: bytes, charset_mime: str | None, caminho: Path) -> str:
     return charset
 
 
-def _capturado_em(mensagem: EmailMessage, caminho: Path) -> str:
-    """Cabeçalho `Date` do `.mht`; sem ele, o `mtime` do arquivo. Sempre em UTC."""
-    data = mensagem.get("Date")
+def _capturado_em(data: DateHeader | None, caminho: Path) -> str:
+    """Cabeçalho `Date` do `.mht`; sem ele (e sempre no `.htm`), o `mtime` do arquivo. Em UTC."""
     instante = data.datetime if data else datetime.fromtimestamp(caminho.stat().st_mtime, tz=UTC)
     return instante.astimezone(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _referencia_windows_1252(referencia: re.Match[bytes]) -> bytes:
+    """`&#150;` → `&#8211;`. Os 5 bytes sem caractere no windows-1252 ficam como estão (HTML5)."""
+    try:
+        caractere = bytes([int(referencia[1])]).decode("windows-1252")
+    except UnicodeDecodeError:
+        return referencia[0]
+    return b"&#%d;" % ord(caractere)
 
 
 def _linhas_logicas(conteudo: bytes, charset: str) -> list[str]:
@@ -116,6 +140,7 @@ def _linhas_logicas(conteudo: bytes, charset: str) -> list[str]:
         if linha:
             linhas.append(linha)
 
+    conteudo = _REFERENCIA_C1.sub(_referencia_windows_1252, _FECHO_DE_DOCUMENTO.sub(b"", conteudo))
     pilha: list[object] = [BeautifulSoup(conteudo, "lxml", from_encoding=charset)]
     while pilha:
         item = pilha.pop()
