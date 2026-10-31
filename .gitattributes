@@ -1,0 +1,5 @@
+# Enxertos e snapshots são bytes da fonte ou da saída: o git não converte as quebras de linha.
+# A fonte do Planalto mistura CRLF e LF, e o enxerto tem de sair igual a ela no checkout.
+tests/fixtures/** -text
+# O README das fixtures é texto comum e segue a normalização do resto do repositório.
+tests/fixtures/README.md text
