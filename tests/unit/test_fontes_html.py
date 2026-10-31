@@ -1,3 +1,4 @@
+import hashlib
 import os
 from datetime import UTC, datetime
 from pathlib import Path
@@ -149,6 +150,68 @@ def test_mht_sem_parte_html_levanta_erro_fonte(tmp_path):
 def test_arquivo_inexistente_levanta_erro_fonte(tmp_path):
     with pytest.raises(ErroFonte, match="não encontrado"):
         ler_html(tmp_path / "nao_existe.mht", Relatorio())
+
+
+@pytest.fixture
+def cp_htm(fixtures_dir: Path) -> Path:
+    return fixtures_dir / "html" / "cp_art78.htm"
+
+
+def test_htm_le_as_mesmas_linhas_do_mht_no_mesmo_trecho(cp, cp_htm):
+    # O art. 78 abre os dois enxertos: as linhas, flags e `origem` têm de coincidir.
+    htm = ler_html(cp_htm, Relatorio())
+    assert htm.linhas[0].texto.startswith("Art. 78 - Durante o prazo da suspensão")
+    assert htm.linhas == cp.linhas[: len(htm.linhas)]
+    assert htm.linhas[-1].texto.startswith("c) comparecimento pessoal")
+
+
+def test_h1_htm_sem_charset_declarado_le_em_windows_1252(cp_htm):
+    # O `.htm` como o Planalto serve: nem MIME nem `<meta>` declaram o charset.
+    assert b"charset=" not in cp_htm.read_bytes().lower()
+    textos = [linha.texto for linha in ler_html(cp_htm, Relatorio()).linhas]
+    assert any(t.startswith("§ 2° Se o condenado houver reparado o dano") for t in textos)
+    assert any(t.startswith("a) proibição de freqüentar determinados lugares;") for t in textos)
+
+
+def test_htm_captura_vem_do_arquivo(tmp_path, cp_htm):
+    caminho = tmp_path / "norma.HTML"
+    caminho.write_bytes(cp_htm.read_bytes())
+    instante = datetime(2026, 10, 31, 11, 2, 25, tzinfo=UTC).timestamp()
+    os.utime(caminho, (instante, instante))
+    fonte = ler_html(caminho, Relatorio())
+    assert fonte.tipo_fonte == "html"
+    assert fonte.fonte == str(caminho)
+    assert fonte.capturado_em == "2026-10-31T11:02:25Z"
+    assert fonte.sha256 == hashlib.sha256(cp_htm.read_bytes()).hexdigest()
+
+
+def _htm(pasta: Path, html: bytes) -> Path:
+    caminho = pasta / "trecho.htm"
+    caminho.write_bytes(html)
+    return caminho
+
+
+def test_referencia_128_a_159_segue_o_windows_1252_como_no_navegador(tmp_path):
+    # Bytes reais do CP, art. 77, I, e da CF: o libxml2 lia `&#150;` como o controle U+0096, e o
+    # `.mht` (já resolvido pelo navegador) trazia `–`. Regra do HTML5 para essas referências.
+    html = (
+        b'<p ALIGN="JUSTIFY"><font face="Arial" size="2">&nbsp;&nbsp;\r\nI &#150; aplicada pena'
+        b" privativa de liberdade</font></p>\r\n<p>d&#146;Oeste</p>"
+    )
+    textos = [linha.texto for linha in ler_html(_htm(tmp_path, html), Relatorio()).linhas]
+    assert textos == ["I – aplicada pena privativa de liberdade", "d’Oeste"]
+
+
+def test_rnf04_fecho_de_html_no_meio_nao_trunca_o_documento(tmp_path):
+    # Bytes reais do CC (l10406compilada.htm), logo depois do preâmbulo: o libxml2 descartava
+    # tudo depois do `</html>`, e o Código inteiro sumia sem erro.
+    html = (
+        b"<html><body><p>Fa\xe7o saber que o Congresso Nacional decreta e eu sanciono a seguinte"
+        b' Lei:</font></body></html></p>\n<p align="CENTER">\n <font face="Arial" size="2">\n'
+        b"  P A R T E\r\n\xa0\xa0 G E R A L</font></p>"
+    )
+    textos = [linha.texto for linha in ler_html(_htm(tmp_path, html), Relatorio()).linhas]
+    assert textos[-1] == "P A R T E G E R A L"
 
 
 def test_extensao_desconhecida_levanta_erro_fonte(tmp_path):
