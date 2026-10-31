@@ -22,9 +22,8 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 
 - [ ] **M2 · 6. Leitor HTML + normalizador.** `fontes/html.py` (`.mht` e arquivo local; RF03,
       RF04; H1–H4) e `normalizador.py` (ordinais, travessões; H11, H13). Aceite: trecho do
-      art. 121 vira linhas lógicas corretas; A8. Antes da spec, o risco "H8 em outras normas".
-      Enxertos: o operador traz da máquina dele, ou libera `www.planalto.gov.br` na rede do
-      ambiente de nuvem (em 2026-10-31 o proxy recusou o domínio com 403).
+      art. 121 vira linhas lógicas corretas; A8. Fontes de todas as normas do Planalto em
+      `dados/<sigla>/` (2026-10-31): o Planalto só responde com User-Agent de navegador.
 - [ ] **M3 · 7. Parser (perfil `cp`) + `extrair`.** `perfil.py`, `perfis/cp.toml`, `parser.py`
       (hierarquia, dispositivos, rubricas, penas; RF07–RF11) e o subcomando `extrair`, com
       código de saída 2 para erro de entrada. Aceite: A1–A8, exceto vigência.
@@ -74,15 +73,11 @@ Não são itens de trabalho: cada um é tratado pelo item citado.
 - **P5 — rubrica no PDF** (sem rubricas na amostra atual; normas penais em PDF terão).
   Heurística em [negocio/parsing.md](negocio/parsing.md); validar quando houver PDF de norma
   penal. Item 9.
-- **P6 — mudança de layout do Planalto.** O leitor depende só de negrito e alinhamento. O
+- **P6 — mudança de layout do Planalto.** O leitor depende só de negrito, alinhamento e tachado (H8). O
   snapshot é dos enxertos e não vê a página nova: a quebra aparece nos avisos do validador e no
   antes e depois local do `/regressao`. Item 8.
 - **P7 — PDFs de outras origens** (Senado, editoras). O leitor PDF expõe colunas, zonas de
   cabeçalho e rodapé e mapa de fontes no perfil. Item 9.
-- **H8 em outras normas.** O `<strike>` vazio foi verificado só no CP; em outras páginas
-  compiladas do Planalto a redação antiga pode vir tachada (não verificado). Ignorar o
-  `<strike>` poria texto revogado na base (ADR-001). Conferir num enxerto do CPP ou da CF antes
-  da spec do M2. Itens 6 e 13.
 
 ## Concluídos recentes
 

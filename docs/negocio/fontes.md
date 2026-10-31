@@ -8,8 +8,9 @@ O que se observou nas fontes reais e como cada leitor as transforma em `LinhaFon
 `fontes/html.py`, `fontes/pdf.py` e `segmentador.py`. Vizinhos: [parsing.md](parsing.md) (o que se
 faz com as linhas) e [pipeline-e-perfis.md](pipeline-e-perfis.md).
 
-Fontes analisadas: `DEL2848compilado_2.mht` (Planalto, salvo em 26/10/2026) e
-`LEI_SECA_OJ26_Legislacao_Especial.17.10.pdf` (18 p.).
+Fontes analisadas: `DEL2848compilado_2.mht` (Planalto, salvo em 26/10/2026),
+`LEI_SECA_OJ26_Legislacao_Especial.17.10.pdf` (18 p.) e, para H1 e H8, os `.htm` do CP, CPP,
+CPC, CC, LINDB, CF e Leis 9.099, 8.429, 6.830 e 13.146 (baixados em 31/10/2026).
 
 **Legenda de evidência:** **[Verificado]** = conferido nas fontes anexadas · **[Inferido]** =
 dedução a partir das amostras, a confirmar na implementação.
@@ -31,14 +32,14 @@ O PDF é tratado como fonte **já estruturada**: montado no Word, com texto sele
 
 | # | Característica | Evidência | Consequência |
 |---|---|---|---|
-| H1 | Codificação **windows-1252** declarada em `<meta>`. | [Verificado] | Decodificar pelo charset declarado e emitir UTF-8. |
+| H1 | Codificação **windows-1252**. O `.htm` não declara charset nem no `<meta>` nem no HTTP (`Content-Type: text/html`); o `<meta>` do `.mht` foi o navegador que pôs. Há bytes 0x80–0x9F (81 no CP, 104 no CPP), que o latin-1 não cobre. | [Verificado] | Decodificar pelo charset declarado; sem declaração, windows-1252, sempre estrito. Emitir UTF-8. |
 | H2 | **Sem marcação semântica.** Só `<p>`, `<b>`/`<strong>`, `<font>`, `<a>`, `<span>`. Só existem 8 âncoras `name="art…"` em todo o documento. | [Verificado] | O parse é **por texto + regex**, não por DOM ou âncoras. |
 | H3 | O código-fonte tem quebras de linha **no meio das frases** (ex.: `§` numa linha e `1º Se o agente…` na seguinte). As quebras reais são `<p>` e `<br>`. | [Verificado] | Colapsar espaços em branco **antes** de quebrar em blocos; quebrar só em `<p>`/`<br>`/`<div>`/`<blockquote>`. |
 | H4 | Um mesmo `<p>` pode conter **vários artigos** separados por `<br>` (ex.: arts. 187, 189 e 191). | [Verificado] | A unidade de parse é a **linha lógica**, não o parágrafo HTML. |
 | H5 | Títulos estruturais ficam em `<p align="CENTER"><strong>` (ex.: `TÍTULO I<br>DOS CRIMES CONTRA A PESSOA`). | [Verificado] | Centralizado + negrito + palavra-chave identifica um nível hierárquico. A linha seguinte é o nome do nível. |
 | H6 | Rubricas ("Homicídio simples", "Caso de diminuição de pena") ficam em `<p align="left"><b>`, isoladas. Também aparecem **antes de parágrafos e incisos**, não só antes de artigos (ex.: "Homicídio contra menor de 14 anos" antes do inciso IX do art. 121, § 2º). | [Verificado] | Rubrica = bloco 100% negrito, não centralizado, sem padrão de dispositivo. Ela se liga ao **próximo dispositivo de qualquer nível**. |
 | H7 | Rubricas podem carregar nota: `Feminicídio (Incluído pela Lei nº 14.994, de 2024)`. | [Verificado] | Separar a nota do texto da rubrica. |
-| H8 | **`<strike>` não marca texto revogado.** As 6 ocorrências estão vazias (só envolvem `<br>` ou espaço). | [Verificado] | Ignorar `<strike>`. A revogação é identificada pela **nota**, não pela formatação. |
+| H8 | **Texto tachado (`<strike>`, `<s>`, `<del>`) é redação que não vale mais.** No CP e na LINDB ele está vazio (só `<br>` ou espaço). Nas demais normas, a redação antiga vem tachada, inclusive o rótulo: `<strike>Art. 4° Os agentes…</strike> (Revogado pela Lei nº 14.230, de 2021)` (Lei 8.429). Há um tachado no meio de uma frase vigente: `condenatória (<strike>art. 110 do Código Penal</strike>).` (CPP, art. 336, parágrafo único). | [Verificado] | Linha cujo texto fora do tachado é vazio ou só nota sai inteira e vai como `descarte` para o relatório (ADR-001, RNF04). Tachado parcial fica na linha e gera `aviso`. Tachado vazio é ignorado. Operador, 2026-10-31. |
 | H9 | Notas aparecem inline, entre parênteses, em geral como link: Incluído (610), Redação dada (480), Vigência (74), Revogado (47), Vide (34), Vetado (17). | [Verificado] | Extrair todas e classificar por tipo ([vigencia-e-notas.md](vigencia-e-notas.md)). |
 | H10 | "Vigência" aparece **com e sem parênteses** (25 linhas terminam em `) Vigência`). | [Verificado] | O regex de notas deve aceitar as duas formas. |
 | H11 | Variações de numeração: `Art. 1º -`, `Art. 10 -`, `Art. 121.`, `Art 187.` (sem ponto), `§ 2°` (grau), `§ 4o` (letra "o"), `§ 2o-A`, `§ 2º-B.` | [Verificado] | Normalizar `º`/`°`/`o` como ordinal; aceitar `Art` com ou sem ponto e `-`, `–` ou `.` como separador. |
@@ -77,7 +78,9 @@ Os IDs P1–P16 desta tabela são características do PDF; as pendências P1–P
 
 ## §5. Armadilhas e limites conhecidos
 
-- `<strike>` e atributos de estilo não dizem nada sobre vigência (H8); o leitor não deve depender
-  deles, só de negrito e alinhamento.
+- Fora o tachado (H8), atributos de estilo não dizem nada sobre vigência. O leitor depende só
+  de negrito, alinhamento e tachado.
+- O tachado também erra: no CPP, art. 336, o Planalto tachou parte de uma frase vigente. Por
+  isso o tachado parcial não é apagado (H8).
 - O layout do Planalto muda: HTML antigo do FrontPage convive com trechos novos em
   `<p style="text-align: justify">`.
