@@ -18,6 +18,11 @@ from vademecum.modelo import (
     Relatorio,
     chave_de_texto,
     chave_ordenacao,
+    id_alinea,
+    id_artigo,
+    id_inciso,
+    id_paragrafo,
+    id_pena,
 )
 
 
@@ -62,6 +67,64 @@ def test_h11_h12_p13_chave_de_texto(texto, chave):
 def test_chave_de_texto_rejeita_forma_fora_do_fragmento(texto):
     with pytest.raises(ValueError):
         chave_de_texto(texto)
+
+
+@pytest.mark.parametrize(
+    ("rotulo", "esperado"),
+    [
+        ("121", "art121"),
+        ("121-A", "art121-A"),
+        ("359-M-A", "art359-M-A"),  # H12
+        ("1.091-A", "art1091-A"),  # P13: o id leva o número sem o ponto do milhar
+    ],
+)
+def test_p13_id_do_artigo_deriva_do_rotulo(rotulo, esperado):
+    assert id_artigo(*chave_de_texto(rotulo)) == esperado
+
+
+def test_id_do_artigo_sem_sufixo_por_padrao():
+    assert id_artigo(121) == "art121"
+
+
+@pytest.mark.parametrize(
+    ("rotulo", "esperado"),
+    [("2º", "art121.p2"), ("2º-B", "art121.p2-B"), ("4o", "art121.p4")],  # A3, A8
+)
+def test_id_do_paragrafo_numerado(rotulo, esperado):
+    assert id_paragrafo("art121", *chave_de_texto(rotulo)) == esperado
+
+
+def test_a7_id_do_paragrafo_unico():
+    assert id_paragrafo("art2", None) == "art2.pu"
+
+
+@pytest.mark.parametrize(
+    ("romano", "numero"),
+    [("I", 1), ("IV", 4), ("VII", 7), ("IX", 9), ("X", 10), ("XL", 40), ("LXXVIII", 78)],
+)
+def test_id_do_inciso_converte_o_romano(romano, numero):
+    assert id_inciso("art121.p2", romano) == f"art121.p2.i{numero}"
+
+
+@pytest.mark.parametrize("romano", ["", "IIII", "VX", "vii", "VII-A", "7"])
+def test_id_do_inciso_rejeita_romano_invalido(romano):
+    with pytest.raises(ValueError, match="inciso romano"):
+        id_inciso("art121.p2", romano)
+
+
+def test_id_encadeia_pai_e_segmento():
+    # O exemplo do art. 121 em negocio/modelo-de-dados.
+    paragrafo = id_paragrafo(id_artigo(121), 2)
+    assert id_alinea(id_inciso(paragrafo, "VII"), "a") == "art121.p2.i7.a"
+
+
+def test_a2_id_das_penas_conta_no_mesmo_pai():
+    assert [id_pena("art121", n) for n in (1, 2)] == ["art121.pena1", "art121.pena2"]
+
+
+def test_id_da_pena_comeca_em_1():
+    with pytest.raises(ValueError, match="pena"):
+        id_pena("art121", 0)
 
 
 _NOTA = Nota(tipo="redacao", bruto="(Redação dada pela Lei nº 15.134, de 2025)")
