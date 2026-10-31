@@ -96,6 +96,17 @@ class LinhaFonte:
 
 
 @dataclass(frozen=True, slots=True)
+class FonteLida:
+    """Saída de um leitor de fonte: as linhas e os campos de `Norma` que vêm da captura."""
+
+    linhas: tuple[LinhaFonte, ...]
+    tipo_fonte: str  # "html" | "pdf"
+    fonte: str  # URL da captura ou caminho do arquivo, como foi passado
+    capturado_em: str  # ISO `AAAA-MM-DDTHH:MM:SSZ`, em UTC
+    sha256: str  # dos bytes da fonte, antes de decodificar
+
+
+@dataclass(frozen=True, slots=True)
 class Nota:
     """Nota legislativa de um nó (ver negocio/vigencia-e-notas)."""
 
