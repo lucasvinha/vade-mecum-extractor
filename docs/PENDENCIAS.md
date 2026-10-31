@@ -39,9 +39,9 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 - [ ] **M5 · 15. Recorte + `recortar`.** `recorte.py` e o subcomando (RF18, ADR-004, P1, P2).
       Aceite: A13. Em 2026-10-31 o operador decidiu: o Python recorta e o Claude recebe só o
       recorte (RF18 e ADR-003 mantidos). Nas cinco normas maiores, o edital cobra 686 dos 4.540
-      artigos da numeração-base, uns 15%. Casos reais do `arts` dos tópicos para a spec: ordinal
-      (`1º a 12`, `8º; 9º`), milhar (`1.169 a 1.173`) e letra (`396-A`, `798-A`). A conferir na
-      spec: se a entrada sai direto do `arts` dos tópicos.
+      artigos da numeração-base, uns 15%. Casos reais do `arts` dos tópicos: ordinal (`1º a 12`,
+      `8º; 9º`), milhar (`1.169 a 1.173`) e letra (`396-A`, `798-A`). A conferir na spec: se a
+      entrada sai do `arts` e o §6 de [recorte-e-cli.md](negocio/recorte-e-cli.md) (2026-10-29).
 - [ ] **M6 · 13. Perfis das normas do Planalto.** `cpp`, `cpc`, `cc` (com a LINDB, DL 4.657),
       `cf` e as Leis 9.099, 8.429, 6.830 e 13.146. Um perfil por fase, cada um com casos de
       aceite novos e enxerto real. A conferir na spec: milhar no HTML (`Art. 1.072`, P13), a CF

@@ -62,3 +62,20 @@ Erro de entrada sai com código 2 ([docs/README.md § Contratos](../README.md#co
 ## §5. Armadilhas e limites conhecidos
 
 - `121–130` não traz 130-A (ADR-004); quem quiser 130-A cita à parte.
+
+## §6. A confirmar na spec do M5
+
+Respostas do operador na entrevista de 2026-10-29, feita quando o recorte ainda ia junto com o
+modelo. Ainda não são regra: a spec do M5 confirma ou descarta cada uma.
+
+- **Qualificador** (`196, inciso XX`; `282, § 1º`): fica preso ao item anterior e gera `aviso`
+  com o trecho ignorado (P2).
+- **Item ilegível** (`abc`, `121-`) ou **faixa invertida** (`130-121`): `ErroFonte` com o item na
+  mensagem; a CLI sai com código 2.
+- **Faixa que não alcança artigo nenhum:** `aviso`, como o item que não existe (§3).
+- **Ordem da saída:** a da base, cada artigo uma vez, mesmo coberto por mais de um item
+  (`120-125; 121`).
+- **Hífen:** depois de `-`, letra é sufixo e dígito é fim de faixa (`359-M-A`, `994-1.091`,
+  `121-A–130`).
+- **A13:** base sintética com 120, 121, 121-A, 121-B, 122…130, 130-A e 131.
+- **`de_json`:** se entra, com teste de ida e volta (`de_json(para_json(base)) == base`).
