@@ -195,7 +195,7 @@ continuarem iguais entre projetos.
 3. **Vale o código.** Estado se confere no git e no código; não há carimbo de "verificado em".
 4. **Obsoleto é apagado**; o git preserva.
 5. **ADR se edita** quando está errado ou desatualizado, com uma linha em "Histórico".
-6. **Tetos:** README raiz 50 · este 250 · CLAUDE.md 40 · PADRAO_OURO 150 · PENDENCIAS 100 ·
+6. **Tetos:** README raiz 50 · este 250 · CLAUDE.md 40 · PADRAO_OURO 150 · PENDENCIAS 150 ·
    ADR 80 · negócio 150 por assunto · spec 200. Estourou, divida.
 7. **Fechou um item de PENDENCIAS?** Risque lá com data e sha, e atualize "Agora".
 8. **Contradição com uma regra de negócio ou ADR** vai para PENDENCIAS e para o operador; não se

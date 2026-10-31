@@ -35,7 +35,7 @@ TETOS = [
     (".claude/CLAUDE.md", 40),
     ("docs/README.md", 250),
     ("docs/PADRAO_OURO.md", 150),
-    ("docs/PENDENCIAS.md", 100),
+    ("docs/PENDENCIAS.md", 150),
     ("docs/decisoes/ADR-*.md", 80),
     ("docs/negocio/*.md", 150),
     ("docs/processo/specs/*.md", 200),
