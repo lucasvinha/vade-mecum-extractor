@@ -12,7 +12,7 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 ## Agora
 
 - **Em curso:** nada.
-- **Próximo sugerido:** M1 (item 1), pelo `/spec`.
+- **Próximo sugerido:** M2 (item 6), pelo `/spec`.
 - **Meta:** a base do CP no M4 e as normas do edital que estão no Planalto no M6. Prova em
   14/03/2027. Do Planalto: CP, CPP, CPC, CC, LINDB, CF e Leis 9.099, 8.429, 6.830 e 13.146. Fora
   dele, no M8: NSCGJ, Leis SP 10.261 e 11.608 e Res. CNJ 354. Os artigos de cada tópico estão em
@@ -20,10 +20,6 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 
 ## Fila
 
-- [ ] **M1 · 1. Modelo e ordenação.** `modelo.py` (dataclasses e `para_json()`, RNF03) e
-      `chave_ordenacao()`. Aceite: a ordenação de [negocio/recorte-e-cli.md](negocio/recorte-e-cli.md)
-      (`121 < 121-A < 121-B < 122`; `359-M < 359-M-A < 359-M-B < 359-N`) e o mesmo JSON, byte a
-      byte, em duas serializações.
 - [ ] **M2 · 6. Leitor HTML + normalizador.** `fontes/html.py` (`.mht` e arquivo local; RF03,
       RF04; H1–H4) e `normalizador.py` (ordinais, travessões; H11, H13). Aceite: trecho do
       art. 121 vira linhas lógicas corretas; A8. Antes da spec, o risco "H8 em outras normas".
@@ -92,9 +88,10 @@ Não são itens de trabalho: cada um é tratado pelo item citado.
 
 Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
 
+- ~~**M1 · 1. Modelo e ordenação**~~ — 2026-10-31, `a5dd794`: `modelo.py` com esquema estável
+  por tipo
 - ~~**2. Fontes brutas no repositório**~~ — 2026-10-30, `04564d1`: só enxertos; fonte inteira e
   extrações em `dados/`
 - ~~**3. Formato do relatório**~~ — 2026-10-30, `04564d1`: só JSON
 - ~~**4. Confirmar P1 e P2**~~ — 2026-10-30, `04564d1`: mantidas como assumidas
 - ~~**12. Estrutura da documentação**~~ — 2026-10-28, `8d1fb45`
-- ~~**0. Setup do projeto**~~ — 2026-10-26, `f088e51`
