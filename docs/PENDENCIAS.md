@@ -68,7 +68,8 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
       de 288 rubricas: o navegador reabre o `<b>` pela regra do HTML5 e o `.mht` vem
       consertado; o libxml2, não. Corrigir pede parser HTML5 (`html5lib`, dependência nova,
       RNF01; medir a RNF05) e quebra o A14 enquanto não vier. (b) 24 negritos do CP vêm por
-      `font-weight: 700` no `style` (rubrica do art. 311-A). Decidir antes do M3.
+      `font-weight: 700` no `style` (rubrica do art. 311-A). Decidido pelo operador em
+      2026-10-31: `html5lib` e peso pelo CSS, na fase 3b da spec do M2.
 
 ## Riscos acompanhados
 

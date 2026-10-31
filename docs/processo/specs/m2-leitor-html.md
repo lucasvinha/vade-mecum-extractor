@@ -1,7 +1,8 @@
 # Spec — M2: leitor HTML e normalizador
 
 > Decisão que executa: H8 revista (o tachado sai da linha) e H1 sem charset declarado (operador,
-> 2026-10-31); aplica o ADR-001 no leitor.
+> 2026-10-31); aplica o ADR-001 no leitor; negrito como o navegador mostra, com parser HTML5
+> (PENDENCIAS #17, operador, 2026-10-31).
 > Item: PENDENCIAS #6.
 > Escrita em 2026-10-31 contra `ef01737`, branch `m2-leitor-html`.
 > Fechada a última fase, este arquivo é apagado (o git preserva).
@@ -89,11 +90,20 @@ Decisões que a spec fixa, para as fases não decidirem:
 - **Quebra de linha:** abertura e fechamento de `<p>`, `<div>`, `<blockquote>`, `<tr>`,
   `<center>`, `<h1>`–`<h6>` e `<li>`, e cada `<br>` (RF04). Texto fora de bloco também vira
   linha. `<script>`, `<style>` e `<head>` não são texto da norma e não são lidos.
-- **Bytes antes do lxml** (achado na fase 2, operador, 2026-10-31): `&#128;`–`&#159;` viram
-  o caractere do windows-1252 (regra do HTML5; o libxml2 dava U+0096 em 61 travessões do CP), e
-  `</body>`/`</html>` saem (o libxml2 parava no `</html>` solto após o preâmbulo do CC). Com
-  isso, o `.htm` do CP dá as mesmas 2397 linhas do `.mht`.
-- **Flags:** `negrito` = todo caractere visível da linha está dentro de `<b>`/`<strong>`;
+- **Parser HTML5** (fase 3b, PENDENCIAS #17, operador, 2026-10-31): `html5lib` no lugar do
+  `lxml`, que sai das dependências. O Planalto fecha tags fora de ordem
+  (`<b><i><p></i>Tempo do crime</b></p>`); o navegador reabre o `<b>` dentro do `<p>` pela
+  regra do HTML5 e salva o `.mht` já consertado, e o libxml2 não. Com o lxml, o `.htm` do CP
+  perdia o negrito de 288 rubricas e divergia do `.mht` nas flags de 325 das 2397 linhas
+  (A14). O html5lib também resolve `&#128;`–`&#159;` pelo windows-1252 e ignora o `</html>`
+  solto do CC, então os remendos de bytes da fase 2 saem. Medido em 2026-10-31 sobre os 10
+  `.htm` de `dados/`: texto concatenado igual ao do lxml em todos; o CP lê em 1,4 s (lxml:
+  0,4 s), o maior (CPC, 1,6 MB) em 2,7 s, dentro da RNF05. Na CF e no CPC, 39 linhas que o
+  libxml2 partia ao meio voltam a ser uma, como no navegador.
+- **Flags:** `negrito` = todo caractere visível da linha está em negrito, decidido pelo
+  ancestral mais próximo que define o peso, como o CSS herda: `font-weight` no `style`
+  (`bold`, `bolder` ou número ≥ 600 é negrito; `normal`, `lighter` ou número menor não é)
+  ou, sem `style` de peso, `<b>`/`<strong>`. Sem nenhum dos dois, não é negrito;
   `rotulo_negrito` = a linha começa em negrito e não é toda negrito; `centralizado` = algum
   ancestral de bloco tem `align="center"` (qualquer caixa), `text-align: center` no `style`,
   ou é `<center>`. `<b>` só com espaço não conta.
@@ -121,7 +131,8 @@ Decisões que a spec fixa, para as fases não decidirem:
 |---|---|---|---|---|---|
 | 1 | Fixture real + leitor `.mht`: texto, quebra e `origem` | `modelo.py`, `fontes/html.py`, `tests/unit/test_fontes_html.py`, `tests/fixtures/html/cp_enxertos.mht`, `tests/fixtures/README.md` | portões verdes; linhas do art. 121 na ordem; `4<sup>o</sup>` vira `§ 4o`; `Art\n187.` vira `Art 187.`; os três artigos do `<p>` dos arts. 187–191 saem em linhas separadas (H4); byte inválido levanta `ErroFonte` | Sonnet | 2026-10-31, `b894418` |
 | 2 | Leitor `.htm`/`.html` local | `fontes/html.py`, teste, `tests/fixtures/html/cp_art78.htm` | portões verdes; mesmas linhas do `.mht` para o mesmo trecho; sem charset declarado, lê em windows-1252 (H1); `capturado_em` pelo `mtime`; extensão desconhecida levanta `ErroFonte` | Sonnet | 2026-10-31, `2d81874` |
-| 3 | Flags de negrito e centralizado | `fontes/html.py`, teste | portões verdes; `TÍTULO I` e `DOS CRIMES CONTRA A PESSOA` centralizados (H5); `Homicídio simples` com `negrito` (H6); `Parágrafo único</strong> - …` com `rotulo_negrito`; `<b>` vazio não marca a linha seguinte | Sonnet | |
+| 3 | Flags de negrito e centralizado | `fontes/html.py`, teste | portões verdes; `TÍTULO I` e `DOS CRIMES CONTRA A PESSOA` centralizados (H5); `Homicídio simples` com `negrito` (H6); `Parágrafo único</strong> - …` com `rotulo_negrito`; `<b>` vazio não marca a linha seguinte | Sonnet | 2026-10-31, `0a5cef6` |
+| 3b | Parser HTML5 e negrito pelo `font-weight` (PENDENCIAS #17) | `pyproject.toml`, `fontes/html.py`, teste, `tests/fixtures/html/cp_negrito.htm`, `docs/README.md`, `docs/PADRAO_OURO.md`, `docs/PENDENCIAS.md` | portões verdes; no `.htm`, `Tempo do crime` (`<b><i><p></i>…</b></p>`) sai com `negrito`; `Fraudes em certames de interesse público` (`font-weight: 700`) com `negrito`; no art. 298, parágrafo único, `<b><span style="font-weight: normal">Parágrafo único.` não marca `rotulo_negrito`; os testes de `&#150;` e do `</html>` do CC passam sem os remendos de bytes | Opus | |
 | 4 | Tachado (H8): descarte ou aviso | `fontes/html.py`, teste, `tests/fixtures/html/lei8429_tachado.htm`, `tests/fixtures/html/cpp_art336.htm` | portões verdes; os 6 `<strike>` vazios do CP não mudam nada; na Lei 8.429, `Art. 4°…(Revogado…)` e o inciso IV antigo do art. 9º saem como `descarte` com `origem`, e o IV novo fica; no CPP, o art. 336, parágrafo único, fica literal e gera um `aviso` | Opus | |
 | 5 | Normalizador: ordinal e travessão no rótulo + aceite A8 | `normalizador.py`, `tests/unit/test_normalizador.py`, `tests/aceite/test_a08_ordinais.py` | portões verdes; `§ 4o` → `§ 4º`, `§ 2°` → `§ 2º` (art. 78), `§ 2o-A` → `§ 2º-A`, `VII – contra:` → `VII - contra:`; `art. 121, § 2o` no corpo fica igual; `Artigo 1°` com o prefixo passado | Sonnet | |
 | 6 | Fechamento | `docs/PENDENCIAS.md`, `docs/README.md`, `docs/negocio/pipeline-e-perfis.md`, `docs/negocio/fontes.md`, esta spec | — | Sonnet | |
@@ -137,9 +148,9 @@ Notas por fase, para o `/fase` não precisar de outro documento:
   as fixtures HTML estão em UTF-8: corrigir para "no charset original da fonte". Origem e data
   da captura no topo da parte HTML, em comentário `<!-- -->`. O art. 121 tem ~29 KB; a fixture
   inteira fica abaixo de 60 KB (exceção de tamanho declarada: fixture real). Parser:
-  `BeautifulSoup(conteudo, "lxml", from_encoding=charset)`, com bytes e nunca com `str`: com
-  `str`, o `<meta charset>` faz o libxml2 trocar de codificação no meio do texto, e o CP inteiro
-  vira mojibake e para no art. 266. A decodificação estrita roda antes, só para validar. O
+  `BeautifulSoup(conteudo, "html5lib", from_encoding=charset)` (era `"lxml"` até a fase 3b),
+  com bytes e nunca com `str`: com `str`, o `<meta charset>` fazia o libxml2 trocar de
+  codificação no meio do texto, e o CP inteiro virava mojibake e parava no art. 266. A decodificação estrita roda antes, só para validar. O
   `.mht` é lido com
   `email.message_from_bytes(..., policy=email.policy.default)` e
   `get_payload(decode=True)`. I/O com `pathlib`; os bytes são lidos com `read_bytes()`.
@@ -165,6 +176,6 @@ Notas por fase, para o `/fase` não precisar de outro documento:
 
 Nada. O tachado nas outras normas foi conferido e decidido em 2026-10-31 (H8).
 
-- **Negrito fora do `<b>` (fase 3, 2026-10-31):** o `.htm` do CP perde o negrito de 288
-  rubricas por HTML mal aninhado, e 24 negritos vêm por `font-weight: 700`. A fase 3 fechou
-  com a definição desta spec; a decisão está em PENDENCIAS #17 e não bloqueia as fases 4–6.
+- **Negrito fora do `<b>` (fase 3, 2026-10-31):** o `.htm` do CP perdia o negrito de 288
+  rubricas por HTML mal aninhado, e 24 negritos vêm por `font-weight: 700`. Decidido pelo
+  operador em 2026-10-31 (PENDENCIAS #17): fase 3b.
