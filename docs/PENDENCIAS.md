@@ -12,7 +12,7 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 ## Agora
 
 - **Em curso:** nada.
-- **Próximo sugerido:** M2 (item 6), pelo `/spec`.
+- **Próximo sugerido:** M3 (item 7), pelo `/spec`.
 - **Meta:** a base do CP no M4 e as normas do edital que estão no Planalto no M6. Prova em
   14/03/2027. Do Planalto: CP, CPP, CPC, CC, LINDB, CF e Leis 9.099, 8.429, 6.830 e 13.146. Fora
   dele, no M8: NSCGJ, Leis SP 10.261 e 11.608 e Res. CNJ 354. Os artigos de cada tópico estão em
@@ -20,10 +20,6 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 
 ## Fila
 
-- [ ] **M2 · 6. Leitor HTML + normalizador.** `fontes/html.py` (`.mht` e arquivo local; RF03,
-      RF04; H1–H4) e `normalizador.py` (ordinais, travessões; H11, H13). Aceite: trecho do
-      art. 121 vira linhas lógicas corretas; A8. Fontes de todas as normas do Planalto em
-      `dados/<sigla>/` (2026-10-31): o Planalto só responde com User-Agent de navegador.
 - [ ] **M3 · 7. Parser (perfil `cp`) + `extrair`.** `perfil.py`, `perfis/cp.toml`, `parser.py`
       (hierarquia, dispositivos, rubricas, penas; RF07–RF11) e o subcomando `extrair`, com
       código de saída 2 para erro de entrada. Aceite: A1–A8, exceto vigência.
@@ -43,7 +39,8 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
       com o ADCT na mesma página (a numeração recomeça), normas sem rubrica e sem pena, e se as
       leis menores cabem no perfil `padrao` (ADR-002).
 - [ ] **M7 · 10. URL com cache.** Download + cache com data e SHA-256 (RF02). Aceite: A14.
-      Opcional: o `.mht` salvo à mão já cobre as normas do Planalto.
+      Opcional: o `.mht` salvo à mão já cobre as normas do Planalto. O Planalto recusa cliente
+      sem User-Agent de navegador (visto no M2, 2026-10-31): a spec decide o cabeçalho.
 - [ ] **M8 · 9. PDF.** `fontes/pdf.py`, `segmentador.py`, perfis `nscgj` e `lei_sp`. Aceite:
       A9–A12. NSCGJ e Lei SP 10.261 vêm em PDF, com o recorte trazido pelo operador
       (2026-10-31). Lei SP 11.608 e Res. CNJ 354 também não estão no Planalto e já estão no PDF
@@ -63,13 +60,6 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
       Decidir no M4.
 - [ ] **16. RF19 × esquema por tipo.** `No.origem` fica fora do JSON (operador, 2026-10-31):
       RF19 passa a dizer isso, ou `origem` entra no esquema? Decidir no M3.
-- [ ] **17. H6: negrito que o leitor HTML não vê.** Achado no M2 (2026-10-31), com o `<b>`
-      contado só como ancestral. (a) No `.htm` do CP, `<b><i><p></i>…</b></p>` tira o negrito
-      de 288 rubricas: o navegador reabre o `<b>` pela regra do HTML5 e o `.mht` vem
-      consertado; o libxml2, não. Corrigir pede parser HTML5 (`html5lib`, dependência nova,
-      RNF01; medir a RNF05) e quebra o A14 enquanto não vier. (b) 24 negritos do CP vêm por
-      `font-weight: 700` no `style` (rubrica do art. 311-A). Decidido pelo operador em
-      2026-10-31: `html5lib` e peso pelo CSS, na fase 3b da spec do M2.
 - [ ] **18. H8: tachado só pelo CSS.** Achado na fase 4 do M2 (2026-10-31). A H8 lista
       `<strike>`, `<s>` e `<del>`, mas 55 tachados vêm por `text-decoration: line-through` no
       `style`, sem tag: 35 no CPC, 16 na Lei 8.429 (art. 12, IV antigo) e 4 na Lei 13.146. O
@@ -96,10 +86,12 @@ Não são itens de trabalho: cada um é tratado pelo item citado.
 
 Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
 
+- ~~**M2 · 6. Leitor HTML + normalizador**~~ — 2026-10-31, `ba7c3bd`: `ler_html` (`.mht` e
+  `.htm` locais → `FonteLida`, tachado pela H8) e `normalizar`; aceite A8
+- ~~**17. H6: negrito que o leitor HTML não vê**~~ — 2026-10-31, `c2cc27e`: `html5lib` e peso
+  pelo `font-weight`
 - ~~**M1 · 1. Modelo e ordenação**~~ — 2026-10-31, `a5dd794`: `modelo.py` com esquema estável
   por tipo
 - ~~**2. Fontes brutas no repositório**~~ — 2026-10-30, `04564d1`: só enxertos; fonte inteira e
   extrações em `dados/`
 - ~~**3. Formato do relatório**~~ — 2026-10-30, `04564d1`: só JSON
-- ~~**4. Confirmar P1 e P2**~~ — 2026-10-30, `04564d1`: mantidas como assumidas
-- ~~**12. Estrutura da documentação**~~ — 2026-10-28, `8d1fb45`
