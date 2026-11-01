@@ -1,3 +1,5 @@
+import re
+
 import pytest
 
 from vademecum.modelo import chave_de_texto
@@ -33,3 +35,15 @@ def test_a1_nenhuma_linha_sem_classificacao(cp_inteiro):
     # RNF04: toda linha está na árvore, nos metadados ou numa entrada tipada do relatório.
     _, relatorio = cp_inteiro
     assert [e for e in relatorio["entradas"] if e["tipo"] == "nao_classificada"] == []
+
+
+def test_a1_validador_so_acusa_o_art_272(cp_inteiro):
+    # V1–V6 no CP inteiro: o único aviso é a V4 do art. 272, cujo § 1º-A vem antes do § 1º na
+    # própria fonte (H20). A regra não se afrouxa: o aviso é o esperado.
+    _, relatorio = cp_inteiro
+    avisos = [
+        (e["texto"], e["origem"])
+        for e in relatorio["entradas"]
+        if e["tipo"] == "aviso" and re.match(r"V\d: ", e["texto"])
+    ]
+    assert avisos == [("V4: art272.p1 fora de ordem, depois de art272.p1-A", "html:p#1747")]

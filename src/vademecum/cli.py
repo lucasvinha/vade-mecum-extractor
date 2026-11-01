@@ -19,6 +19,7 @@ from vademecum.modelo import Base, EntradaRelatorio, ErroFonte, Norma, Relatorio
 from vademecum.normalizador import normalizar
 from vademecum.parser import analisar
 from vademecum.perfil import carregar_perfil
+from vademecum.validador import validar
 from vademecum.vigencia import filtrar_vigentes
 
 _URL = re.compile(r"^https?://", re.IGNORECASE)
@@ -93,6 +94,7 @@ def _extrair(args: argparse.Namespace) -> None:
         metadados=analise.metadados,
         artigos=filtrar_vigentes(analise.artigos, perfil, relatorio),  # ADR-001
     )
+    validar(base, perfil, relatorio)  # V1–V6: só avisa, não muda o código de saída
     saida: Path = args.saida
     saida.parent.mkdir(parents=True, exist_ok=True)
     saida.write_text(para_json(base), encoding="utf-8", newline="\n")

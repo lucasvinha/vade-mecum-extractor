@@ -19,8 +19,8 @@ Não existe validador: V1–V6 não rodam.
 ## Estado final
 
 - A2, A3 e A5 completos e A1 com a contagem nova, todos passando. A4, A6, A7 e A8 seguem verdes.
-- No CP inteiro: nenhum dos 58 nós na base, 58 + 4 descartes estruturados no relatório e nenhum
-  aviso V1–V6.
+- No CP inteiro: nenhum dos 58 nós na base, 58 + 4 descartes estruturados no relatório e só a V4
+  do art. 272 (H20) entre os avisos V1–V6.
 - Snapshot da base e do relatório de `cp_enxertos.mht`, com `pytest -m regressao` verde.
 - Pergunta 5 (P3) fechada em PENDENCIAS, com a decisão registrada em negocio/vigencia-e-notas.
 
@@ -81,8 +81,8 @@ Regras que as fases executam, decididas na entrevista de 2026-11-01:
 | 1 | Descarte estruturado no relatório | 8 arquivos | portões verdes; `para_json(Relatorio)` sai com esquema por tipo; os 4 `(VETADO)` com `motivo` `vetado` e `notas` | Opus | 2026-11-01, `e17189f` |
 | 2 | `vigencia.py`: filtro RF14 | 2 arquivos | portões verdes; unidade com linhas reais; nenhum chamador ainda | Opus | 2026-11-01, `001ff22` |
 | 3 | `extrair` aplica a vigência | 6 arquivos | portões verdes; A2, A3 e A5 completos; A1 com descartes | Sonnet | 2026-11-01, `87f315e` |
-| 4 | `validador.py`: V1–V6 | 2 arquivos | portões verdes; unidade com base sintética; nenhum chamador ainda | Sonnet | |
-| 5 | `extrair` roda o validador | 3 arquivos | portões verdes; CP inteiro sem aviso `V*` | Sonnet | |
+| 4 | `validador.py`: V1–V6 | 2 arquivos | portões verdes; unidade com base sintética; nenhum chamador ainda | Sonnet | 2026-11-01, `7396c30` |
+| 5 | `extrair` roda o validador | 3 arquivos | portões verdes; CP inteiro só com a V4 do art. 272 (H20) | Sonnet | |
 | 6 | Snapshot dos enxertos do CP | 3 arquivos | `pytest -m regressao` verde | Sonnet | |
 | 7 | Fechamento | docs | `scripts/verificar_docs.py` sai 0 | Sonnet | |
 
@@ -125,9 +125,10 @@ O comentário no módulo diz que a V7 é do parser. Testes em `tests/unit/test_v
 `Base` sintética, um caso positivo e um negativo por regra.
 
 **5. Ligar o validador.** `cli.py`: `validar` depois de montar a `Base`, antes de gravar.
-Aceite: em `test_a01_cp_completo.py`, nenhum `aviso` com texto que comece por `V` no CP
-inteiro. Em `test_cli.py`, aviso não muda o código de saída. Se a V2 ou a V4 acusarem algo no
-CP, a fase para e relata (`depuracao-sistematica`): não se afrouxa a regra.
+Aceite: em `test_a01_cp_completo.py`, o único `aviso` `V*` no CP inteiro é a V4 do `art272.p1`,
+cujo § 1º-A vem antes do § 1º na fonte (H20; operador, 2026-11-01, achado da fase 4). Em
+`test_cli.py`, aviso não muda o código de saída. Se a V2 ou a V4 acusarem outra coisa no CP, a
+fase para e relata (`depuracao-sistematica`): não se afrouxa a regra.
 
 **6. Snapshot.** `tests/regressao/test_snapshot_cp_enxertos.py` (marcador `regressao`) roda o
 `extrair` sobre `tests/fixtures/html/cp_enxertos.mht`, passado como caminho relativo à raiz
@@ -141,10 +142,6 @@ armadilha P3 registra a decisão (Etapa 2 confere, operador 2026-11-01). Em docs
 § Mapa do código, as assinaturas de `vigencia.py` e `validador.py`. Apaga esta spec.
 
 ## Em aberto
-
-- **V4 no art. 272 do CP (achado da fase 4):** a fonte traz o § 1º-A (`p#1746`) antes do § 1º
-  (`p#1747`), na ordem da Lei 9.677/1998. A V4 acusa `art272.p1` e o aceite da fase 5 (CP sem
-  aviso `V*`) não fecha sem decisão do operador. Bloqueia a fase 5.
 
 - **As 4 leis de 2026 no CP** (15.358, 15.384, 15.402, 15.425): o operador confere à mão se
   alguma é posterior a 19/10/2026. Não bloqueia fase nenhuma: a decisão P3 já tira isso do M4.

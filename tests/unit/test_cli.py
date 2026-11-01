@@ -78,3 +78,12 @@ def test_h17_titulo_ausente_sai_vazio_com_aviso(fixtures_dir, tmp_path):
     assert base["norma"]["titulo"] == ""
     assert relatorio["entradas"][0]["tipo"] == "aviso"
     assert relatorio["entradas"][0]["texto"] == "título da norma não encontrado no cabeçalho (H17)"
+
+
+def test_aviso_do_validador_nao_muda_o_codigo_de_saida(fixtures_dir, tmp_path):
+    # O enxerto começa no art. 78: a V2 acusa as lacunas de 1 a 77, e a extração sai com 0.
+    saida = tmp_path / "base.json"
+    assert _extrair(fixtures_dir / "html" / "cp_enxertos.mht", saida) == 0
+    relatorio = json.loads((tmp_path / "base.relatorio.json").read_text(encoding="utf-8"))
+    avisos = [e["texto"] for e in relatorio["entradas"] if e["tipo"] == "aviso"]
+    assert "V2: lacuna na numeração-base: art. 1" in avisos
