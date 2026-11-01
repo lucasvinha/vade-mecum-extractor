@@ -80,7 +80,7 @@ Regras que as fases executam, decididas na entrevista de 2026-11-01:
 |---|---|---|---|---|---|
 | 1 | Descarte estruturado no relatório | 8 arquivos | portões verdes; `para_json(Relatorio)` sai com esquema por tipo; os 4 `(VETADO)` com `motivo` `vetado` e `notas` | Opus | 2026-11-01, `e17189f` |
 | 2 | `vigencia.py`: filtro RF14 | 2 arquivos | portões verdes; unidade com linhas reais; nenhum chamador ainda | Opus | 2026-11-01, `001ff22` |
-| 3 | `extrair` aplica a vigência | 6 arquivos | portões verdes; A2, A3 e A5 completos; A1 com descartes | Sonnet | |
+| 3 | `extrair` aplica a vigência | 6 arquivos | portões verdes; A2, A3 e A5 completos; A1 com descartes | Sonnet | 2026-11-01, `87f315e` |
 | 4 | `validador.py`: V1–V6 | 2 arquivos | portões verdes; unidade com base sintética; nenhum chamador ainda | Sonnet | |
 | 5 | `extrair` roda o validador | 3 arquivos | portões verdes; CP inteiro sem aviso `V*` | Sonnet | |
 | 6 | Snapshot dos enxertos do CP | 3 arquivos | `pytest -m regressao` verde | Sonnet | |
@@ -117,7 +117,8 @@ em negocio/fontes passam a dizer "na base ou nos descartes".
 - V3: `id` duplicado na árvore inteira.
 - V4: entre irmãos do mesmo tipo (parágrafo numerado, inciso, alínea), rótulo menor depois de um
   maior.
-- V5: dispositivo não pena com texto vazio e sem filhos com texto.
+- V5: dispositivo não pena com texto vazio, mesmo com filho vigente (ADR-001; achado da fase 4:
+  o "sem filhos com texto" daqui contradizia a regra de descarte acima).
 - V6: nota `outra` na árvore sem `nota_outra` de mesmo `bruto` no relatório.
 
 O comentário no módulo diz que a V7 é do parser. Testes em `tests/unit/test_validador.py`, com
@@ -140,6 +141,10 @@ armadilha P3 registra a decisão (Etapa 2 confere, operador 2026-11-01). Em docs
 § Mapa do código, as assinaturas de `vigencia.py` e `validador.py`. Apaga esta spec.
 
 ## Em aberto
+
+- **V4 no art. 272 do CP (achado da fase 4):** a fonte traz o § 1º-A (`p#1746`) antes do § 1º
+  (`p#1747`), na ordem da Lei 9.677/1998. A V4 acusa `art272.p1` e o aceite da fase 5 (CP sem
+  aviso `V*`) não fecha sem decisão do operador. Bloqueia a fase 5.
 
 - **As 4 leis de 2026 no CP** (15.358, 15.384, 15.402, 15.425): o operador confere à mão se
   alguma é posterior a 19/10/2026. Não bloqueia fase nenhuma: a decisão P3 já tira isso do M4.
