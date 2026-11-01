@@ -23,12 +23,12 @@ Os regex abaixo são o **ponto de partida** e devem ser cobertos por testes com 
 
 | Elemento | Padrão |
 |---|---|
-| Artigo | `^(Art\.?\|Artigo)\s*(\d{1,3}(?:\.\d{3})*)\s*º?((?:-[A-Z])*)\s*[-.]?\s*(.*)$` |
+| Artigo | `^(<artigo.prefixos do perfil>)\s*(\d{1,3}(?:\.\d{3})+\|\d+)º?((?:-[A-Z])*)\s*[-.]?\s*(.*)$` (prefixo mais longo primeiro: `Artigo` antes de `Art`, P9) |
 | Parágrafo | `^§\s*(\d+)\s*º?((?:-[A-Z])*)\s*[-.]?\s*(.*)$` |
 | Parágrafo único | `^Parágrafo\s+único\s*[-.:]?\s*(.*)$` (sem diferenciar maiúsculas) |
-| Inciso | `^([IVXLCDM]+)\s*-\s*(.*)$` (no PDF, exigir rótulo em negrito para evitar falso positivo) |
+| Inciso | `^([IVXLCDM]+)(?:\s*-\s*\|\s+(?=[a-zà-ÿ]))(.*)$`, romano canônico (`III perda…`, CP, art. 129, § 2º, vem sem hífen; no PDF, exigir rótulo em negrito para evitar falso positivo) |
 | Alínea | `^([a-z])\)\s*(.*)$` |
-| Pena | `^Pena\s*-\s*(.*)$` |
+| Pena | `^Pena\s*[-:]\s*(.*)$` (`Pena:` no CP, art. 319-A; `Pena de multa` é rubrica) |
 | Nível | `^(PARTE\|LIVRO\|TÍTULO\|CAPÍTULO\|Seção\|Subseção)\b\s*([IVXLC\d]*)` (centralizado) |
 | Nota | `\s*\((?:<gatilhos de notas.<tipo> do perfil>)[^()]*\)` + `(?:^\|\s+)Vigência\s*$`; parêntese sem gatilho que cita `Lei nº` ou `Provimento` é nota `outra` |
 
