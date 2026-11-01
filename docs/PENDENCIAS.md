@@ -11,8 +11,8 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 
 ## Agora
 
-- **Em curso:** nada.
-- **Próximo sugerido:** M3 (item 7), pelo `/spec`.
+- **Em curso:** M3 (item 7), pela spec `docs/processo/specs/m3-parser-cp.md`.
+- **Próximo sugerido:** M4 (item 8), pelo `/spec`, quando o M3 fechar.
 - **Meta:** a base do CP no M4 e as normas do edital que estão no Planalto no M6. Prova em
   14/03/2027. Do Planalto: CP, CPP, CPC, CC, LINDB, CF e Leis 9.099, 8.429, 6.830 e 13.146. Fora
   dele, no M8: NSCGJ, Leis SP 10.261 e 11.608 e Res. CNJ 354. Os artigos de cada tópico estão em
@@ -20,12 +20,13 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 
 ## Fila
 
-- [ ] **M3 · 7. Parser (perfil `cp`) + `extrair`.** `perfil.py`, `perfis/cp.toml`, `parser.py`
-      (hierarquia, dispositivos, rubricas, penas; RF07–RF11) e o subcomando `extrair`, com
-      código de saída 2 para erro de entrada. Aceite: A1–A8, exceto vigência.
-- [ ] **M4 · 8. Notas, vigência e relatório.** `notas.py`
-      ([negocio/vigencia-e-notas.md](negocio/vigencia-e-notas.md)), `vigencia.py` (ADR-001,
-      RF14–RF16), `validador.py` (V1–V7) e `base.relatorio.json`. Aceite: A1–A8 completos;
+- [ ] **M3 · 7. Parser (perfil `cp`) + `extrair`.** `perfil.py`, `perfis/cp.toml`, `notas.py`
+      ([negocio/vigencia-e-notas.md](negocio/vigencia-e-notas.md)), `parser.py` (hierarquia,
+      dispositivos, rubricas, penas; RF07–RF11) e o subcomando `extrair`, que já grava o
+      relatório, com código de saída 2 para erro de entrada. Aceite: A1–A8, exceto vigência.
+      `notas.py` veio do M4 (2026-11-01): sem ele o parser não separa nota de texto.
+- [ ] **M4 · 8. Vigência e validação.** `vigencia.py` (ADR-001, RF14–RF16), `validador.py`
+      (V1–V7) e o motivo estruturado do descarte no relatório. Aceite: A1–A8 completos;
       snapshot dos enxertos do CP. **Entrega a primeira base usável: o CP.**
 - [ ] **M5 · 15. Recorte + `recortar`.** `recorte.py` e o subcomando (RF18, ADR-004, P1, P2).
       Aceite: A13. Em 2026-10-31 o operador decidiu: o Python recorta e o Claude recebe só o
@@ -58,8 +59,6 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
       as notas trazem só o ano. Número e ano de cada nota ficam na base; a conferência de data
       contra o corte é da Etapa 2 ou lista manual de leis posteriores ao corte no perfil.
       Decidir no M4.
-- [ ] **16. RF19 × esquema por tipo.** `No.origem` fica fora do JSON (operador, 2026-10-31):
-      RF19 passa a dizer isso, ou `origem` entra no esquema? Decidir no M3.
 - [ ] **18. H8: tachado só pelo CSS.** Achado na fase 4 do M2 (2026-10-31). A H8 lista
       `<strike>`, `<s>` e `<del>`, mas 55 tachados vêm por `text-decoration: line-through` no
       `style`, sem tag: 35 no CPC, 16 na Lei 8.429 (art. 12, IV antigo) e 4 na Lei 13.146. O
@@ -86,6 +85,8 @@ Não são itens de trabalho: cada um é tratado pelo item citado.
 
 Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
 
+- ~~**16. RF19 × esquema por tipo**~~ — 2026-11-01: `origem` fica na memória e no relatório,
+  fora do JSON da base
 - ~~**M2 · 6. Leitor HTML + normalizador**~~ — 2026-10-31, `ba7c3bd`: `ler_html` (`.mht` e
   `.htm` locais → `FonteLida`, tachado pela H8) e `normalizar`; aceite A8
 - ~~**17. H6: negrito que o leitor HTML não vê**~~ — 2026-10-31, `c2cc27e`: `html5lib` e peso
@@ -94,4 +95,3 @@ Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
   por tipo
 - ~~**2. Fontes brutas no repositório**~~ — 2026-10-30, `04564d1`: só enxertos; fonte inteira e
   extrações em `dados/`
-- ~~**3. Formato do relatório**~~ — 2026-10-30, `04564d1`: só JSON

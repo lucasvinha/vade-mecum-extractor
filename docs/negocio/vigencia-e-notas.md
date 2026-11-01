@@ -31,7 +31,7 @@ O vocabulário de cada tipo vem do perfil da norma ([pipeline-e-perfis.md](pipel
 
 ## §3. Vigência (ADR-001)
 
-- **RF14** — Descartar dispositivo cujo conteúdo, sem notas, é vazio, `Revogado(s).` ou `(VETADO)`. Descartar junto a rubrica órfã (H15, H16, P12).
+- **RF14** — Descartar dispositivo cujo conteúdo, sem notas, é vazio, `Revogado(s).` ou `(VETADO)`. Descartar junto a rubrica órfã (H15, H16, P12). A linha `(VETADO) (Incluído…)` sem rótulo (quatro no Título XII do CP) é `descarte` já no parser, sem virar nota do dispositivo anterior (RF11).
 - **RF15** — Revogação em faixa (`Art. X a Art. Y. Revogados.`) não gera artigo; vai para o relatório (P11).
 - **RF16** — Todo descarte é registrado no relatório com rótulo, motivo e nota de origem.
 

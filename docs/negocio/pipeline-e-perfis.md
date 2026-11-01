@@ -63,11 +63,18 @@ Caminhos relativos a `src/vademecum/`.
 
 O parser é um só. O que varia fica num arquivo de perfil, por exemplo `perfis/cp.toml`, `perfis/nscgj.toml`, `perfis/lei_sp.toml`:
 
-- prefixos de artigo (`Art.`, `Artigo`);
-- vocabulário de notas (`Redação dada`/`Incluído` × `Alterado`/`Acrescentado`);
-- níveis hierárquicos reconhecidos (`PARTE`, `LIVRO`, `TÍTULO`, `CAPÍTULO`, `Seção`, `Subseção`);
-- se existe rubrica e se existe linha de pena;
-- validação de lacunas: ligada para norma integral, desligada para PDF-recorte.
+| Chave | O que muda |
+|---|---|
+| `id` | `norma.id` da base (`cp`) |
+| `artigo.prefixos` | prefixos de artigo (`Art.`, `Art`, `Artigo`; P9) |
+| `hierarquia.niveis` | palavras-chave dos níveis, na ordem (`PARTE` … `Subseção`; H5) |
+| `dispositivos.rubrica`, `dispositivos.pena` | se a norma tem rubrica e linha de pena |
+| `rubrica.sem_negrito` | rubrica sem negrito pela heurística (c) da H6 |
+| `rodape.inicio` | regex da linha que abre o rodapé (local e data; H17) |
+| `validacao.lacunas` | V2: ligada para norma integral, desligada para PDF-recorte |
+| `notas.<tipo>` | vocabulário de cada tipo de nota (`Redação dada` × `Alterado`; P10) |
+
+Chave fora desta tabela é erro ao carregar o perfil.
 
 Um perfil `padrao` cobre os casos comuns. Os perfis específicos só sobrescrevem diferenças.
 

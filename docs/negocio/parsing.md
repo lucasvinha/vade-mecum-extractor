@@ -15,7 +15,7 @@ P*), [vigencia-e-notas.md](vigencia-e-notas.md) (notas e descartes) e
 - **RF08** — Reconhecer dispositivos: artigo (inclusive sufixos simples e compostos e milhar: H11, H12, P13), `§ n` e `Parágrafo único`, inciso romano, alínea `a)`, item numérico (`1.`, `2.`; reservado para outras normas).
 - **RF09** — Reconhecer a linha `Pena –` como nó posicional do dispositivo corrente (H14).
 - **RF10** — Reconhecer rubrica (bloco em negrito no HTML; heurística no PDF) e ligá-la ao próximo dispositivo de qualquer nível (H6).
-- **RF11** — Juntar continuação de linha ao dispositivo corrente: linha que não abre dispositivo, título, rubrica nem nota é continuação. No PDF, aplicar a regra do hífen (P14).
+- **RF11** — Juntar continuação de linha ao dispositivo corrente: linha que não abre dispositivo, título, rubrica nem nota é continuação. No PDF, aplicar a regra do hífen (P14). Linha só de nota: as notas vão para o elemento corrente. Se ela começa por `(VETADO)` e não há rótulo, é `descarte` (RF14), nunca nota de outro dispositivo.
 
 ## §2. Regras de reconhecimento (ponto de partida)
 
