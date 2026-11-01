@@ -33,7 +33,12 @@ O vocabulário de cada tipo vem do perfil da norma ([pipeline-e-perfis.md](pipel
 
 - **RF14** — Descartar dispositivo cujo conteúdo, sem notas, é vazio, `Revogado(s).` ou `(VETADO)`. Descartar junto a rubrica órfã (H15, H16, P12). A linha `(VETADO) (Incluído…)` sem rótulo (quatro no Título XII do CP) é `descarte` já no parser, sem virar nota do dispositivo anterior (RF11).
 - **RF15** — Revogação em faixa (`Art. X a Art. Y. Revogados.`) não gera artigo; vai para o relatório (P11).
-- **RF16** — Todo descarte é registrado no relatório com rótulo, motivo e nota de origem.
+- **RF16** — Todo descarte é registrado no relatório com rótulo, motivo e nota de origem. A
+  entrada `descarte` traz, além de `tipo`, `origem` e `texto`, as chaves `id`, `rotulo`,
+  `rubrica`, `motivo` (`revogado`, `vetado` ou `vazio`) e `notas` (a nota inteira, como na base).
+  Sem dispositivo (o `(VETADO)` solto do parser, a linha tachada do leitor HTML), `id`, `rotulo`
+  e `rubrica` saem `null`. O leitor HTML não classifica notas: a linha tachada sai com `motivo`
+  `vazio` (fora do tachado não sobra texto, H8), `notas` vazio e a nota inteira no `texto`.
 
 A revogação é identificada pela **nota** e pelo conteúdo vazio. A única formatação que conta é
 o tachado, que o leitor HTML já tira da linha (H8). `Art. 4° (Revogado…)` com o texto tachado

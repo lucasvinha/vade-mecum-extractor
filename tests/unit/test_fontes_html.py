@@ -335,6 +335,8 @@ def test_h8_tachado_com_resto_so_nota_sai_como_descarte(lei8429):
     assert descartes[0].texto.startswith("Art. 4° Os agentes públicos de qualquer nível")
     assert descartes[0].texto.endswith("(Revogado pela Lei nº 14.230, de 2021)")
     assert descartes[1].texto.startswith("IV - utilizar, em obra ou serviço particular, veículos")
+    # RF16: o leitor não classifica nota; fora do tachado não sobra texto, e o motivo é `vazio`.
+    assert {(e.motivo, e.id, e.notas) for e in descartes} == {("vazio", None, ())}
 
 
 def test_h8_redacao_nova_fica_e_origem_conta_o_descarte(lei8429):

@@ -509,6 +509,16 @@ def test_rf11_vetado_sem_rotulo_e_descarte(cp):
         ("descarte", "html:p#2367", vetado),
         ("descarte", "html:p#2388", vetado),
     ]
+    # RF16: sem rótulo, o descarte guarda o motivo e as notas já extraídas.
+    for descarte in relatorio.entradas:
+        assert (descarte.id, descarte.rotulo, descarte.rubrica, descarte.motivo) == (
+            None,
+            None,
+            None,
+            "vetado",
+        )
+        assert [n.tipo for n in descarte.notas] == ["veto", "inclusao", "vigencia"]
+        assert descarte.notas[1].norma == "Lei nº 14.197"
     assert art359n.filhos[0].notas == ()
     assert art359t.notas == ()
     # Com rótulo, o `(VETADO)` é nota do próprio artigo (o filtro de vigência é de outra etapa).

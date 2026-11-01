@@ -431,7 +431,13 @@ def _continuacao(linha: LinhaFonte, perfil: Perfil, estado: _Estado, relatorio: 
     if linha.texto.startswith("(") and notas and notas[0].tipo == _VETO:
         # Vale também logo depois de um nível (CP, `p#2383`), quando não há dispositivo corrente.
         relatorio.registrar(
-            EntradaRelatorio(tipo="descarte", origem=linha.origem, texto=linha.texto)
+            EntradaRelatorio(
+                tipo="descarte",
+                origem=linha.origem,
+                texto=linha.texto,
+                motivo="vetado",
+                notas=notas,
+            )
         )
     elif estado.corrente is None:
         relatorio.registrar(
