@@ -107,8 +107,12 @@ def _linhas(pares, perfil):
     return normalizar(brutas, perfil.prefixos_artigo)
 
 
-def _analisar(pares, perfil, relatorio=None):
+def _analise(pares, perfil, relatorio=None):
     return analisar(_linhas(pares, perfil), perfil, relatorio or Relatorio())
+
+
+def _analisar(pares, perfil, relatorio=None):
+    return _analise(pares, perfil, relatorio).artigos
 
 
 def _filho(no, id_):
@@ -316,13 +320,18 @@ def test_rf11_continuacao_e_linha_so_de_nota_vao_ao_corrente(cp):
     assert art.notas == ()
 
 
-def test_v7_linha_antes_do_primeiro_artigo_vai_ao_relatorio(cp):
+def test_v7_linha_sem_dispositivo_aberto_vai_ao_relatorio(cp):
+    # Depois do nível não há dispositivo corrente; o inciso sem artigo não tem pai.
     relatorio = Relatorio()
-    pares = [(6, "(Vide Lei nº 1.521, de 1951)"), (7, "I - solto"), (23, "Art. 1º - Não há crime.")]
+    pares = [
+        (19, "TÍTULO I", "negrito", "centro"),
+        (20, "DA APLICAÇÃO DA LEI PENAL", "negrito", "centro"),
+        (7, "I - solto"),
+        (23, "Art. 1º - Não há crime."),
+    ]
     [art] = _analisar(pares, cp, relatorio)
     assert art.id == "art1"
     assert [(e.tipo, e.origem, e.texto) for e in relatorio.entradas] == [
-        ("nao_classificada", "html:p#6", "(Vide Lei nº 1.521, de 1951)"),
         ("nao_classificada", "html:p#7", "I - solto"),
     ]
 
@@ -335,8 +344,10 @@ def test_p9_prefixo_de_artigo_vem_do_perfil():
 
 
 def test_h6a_rubrica_em_negrito_liga_ao_artigo_e_ao_paragrafo(cp):
-    # CP, art. 121 (`p#574`–`p#579`).
+    # CP, art. 121 (`p#572`–`p#579`); sem o nível antes, a rubrica seria cabeçalho (H17).
     pares = [
+        (572, "CAPÍTULO I", "negrito", "centro"),
+        (573, "DOS CRIMES CONTRA A VIDA", "negrito", "centro"),
         (574, "Homicídio simples", "negrito"),
         (575, "Art. 121. Matar alguem:"),
         (576, "Pena - reclusão, de seis a vinte anos."),
@@ -373,19 +384,15 @@ def test_h6b_h7_rubrica_com_nota_fora_do_negrito(cp):
 
 
 def test_h6b_inicio_em_negrito_sem_dispositivo_seguinte_nao_e_rubrica(cp):
-    # CP, preâmbulo (`p#17`): a fórmula começa em negrito, e o que vem depois é nível.
-    relatorio = Relatorio()
+    # Caso montado: a linha de `p#35` seguida de nível, e não do art. 6º, é continuação (RF11).
     pares = [
-        (
-            17,
-            "O PRESIDENTE DA REPÚBLICA, usando da atribuição que lhe confere o art. 180…",
-            "rotulo",
-        ),
-        (18, "PARTE GERAL", "negrito", "centro"),
+        (34, "Art. 5º - Aplica-se a lei brasileira…"),
+        (35, "Lugar do crime (Redação dada pela Lei nº 7.209, de 1984)", "rotulo"),
+        (570, "TÍTULO I", "negrito", "centro"),
     ]
-    assert _analisar(pares, cp, relatorio) == ()
-    # `PARTE GERAL` é nível (H5); só a fórmula fica sem classificação.
-    assert [(e.tipo, e.origem) for e in relatorio.entradas] == [("nao_classificada", "html:p#17")]
+    [art5] = _analisar(pares, cp)
+    assert art5.rubrica is None
+    assert art5.texto == "Aplica-se a lei brasileira… Lugar do crime"
 
 
 def test_h6c_rubrica_sem_negrito_com_nota(cp):
@@ -642,17 +649,70 @@ def test_p8_rotulo_livre_fecha_os_niveis_abaixo_da_parte(cp):
     assert [(e.tipo, e.origem) for e in relatorio.entradas] == [("descarte", "html:p#2383")]
 
 
-def test_h5_centralizada_em_negrito_antes_do_primeiro_artigo_nao_e_rotulo_livre(cp):
-    # CP, cabeçalho (`p#4`, `p#5`): o título da norma não é rótulo livre.
+CABECALHO = [
+    (1, "Presidência da República", "negrito", "centro"),
+    (2, "Casa Civil", "negrito", "centro"),
+    (3, "Subchefia para Assuntos Jurídicos", "negrito", "centro"),
+    (4, "DECRETO-LEI No 2.848, DE 7 DE DEZEMBRO DE 1940", "negrito", "centro"),
+    (5, "Vigência"),
+    (6, "(Vide Lei nº 1.521, de 1951)"),
+    (16, "Código Penal."),
+    (
+        17,
+        "O PRESIDENTE DA REPÚBLICA, usando da atribuição que lhe confere o art. 180 da "
+        "Constituição, decreta a seguinte lei:",
+        "rotulo",
+    ),
+]
+
+
+def test_h17_cabecalho_titulo_e_ementa(cp):
+    # CP, `p#1`–`p#23`: o cabeçalho vai até o primeiro nível; nada dele é linha não classificada.
     relatorio = Relatorio()
     pares = [
-        (4, "DECRETO-LEI No 2.848, DE 7 DE DEZEMBRO DE 1940", "negrito", "centro"),
-        (5, "Vigência"),
+        *CABECALHO,
+        (18, "PARTE GERAL", "negrito", "centro"),
+        (19, "TÍTULO I", "negrito", "centro"),
+        (20, "DA APLICAÇÃO DA LEI PENAL", "negrito", "centro"),
+        (21, "(Redação dada pela Lei nº 7.209, de 11.7.1984)", "centro"),
+        (22, "Anterioridade da Lei", "negrito"),
         (23, "Art. 1º - Não há crime sem lei anterior que o defina."),
     ]
-    [art] = _analisar(pares, cp, relatorio)
-    assert art.local == Local()
-    assert [(e.tipo, e.origem) for e in relatorio.entradas] == [
-        ("nao_classificada", "html:p#4"),
-        ("nao_classificada", "html:p#5"),
+    analise = _analise(pares, cp, relatorio)
+    assert analise.titulo == "DECRETO-LEI No 2.848, DE 7 DE DEZEMBRO DE 1940"
+    assert analise.ementa == "Código Penal."
+    assert analise.metadados.preambulo == "\n".join(par[1] for par in CABECALHO)
+    [art] = analise.artigos
+    assert (art.rubrica, art.local.parte) == ("Anterioridade da Lei", "PARTE GERAL")
+    assert [(e.tipo, e.origem) for e in relatorio.entradas] == [("aviso", "html:p#21")]
+
+
+def test_h17_rodape_sai_do_ultimo_artigo(cp):
+    # CP, `p#2392`–`p#2397`: o rodapé abre em `Rio de Janeiro, 7 de dezembro de 1940;`.
+    rodape = [
+        (2393, "Rio de Janeiro, 7 de dezembro de 1940; 119º da Independência e 52º da República."),
+        (2394, "GETÚLIO VARGAS"),
+        (2395, "Francisco Campos"),
+        (
+            2396,
+            "Este texto não substitui o publicado no DOU de 31.12.1940 e retificado em 3.1.1941",
+        ),
+        (2397, "*", "centro"),
     ]
+    relatorio = Relatorio()
+    pares = [
+        (2392, "Art. 361 - Este Código entrará em vigor no dia 1º de janeiro de 1942."),
+        *rodape,
+    ]
+    analise = _analise(pares, cp, relatorio)
+    [art] = analise.artigos
+    assert art.texto == "Este Código entrará em vigor no dia 1º de janeiro de 1942."
+    assert analise.metadados.rodape == "\n".join(par[1] for par in rodape)
+    assert relatorio.entradas == ()
+
+
+def test_h17_sem_cabecalho_nem_rodape(cp):
+    analise = _analise([(23, "Art. 1º - Não há crime sem lei anterior que o defina.")], cp)
+    assert (analise.titulo, analise.ementa) == (None, None)
+    assert (analise.metadados.preambulo, analise.metadados.rodape) == (None, None)
+    assert [art.id for art in analise.artigos] == ["art1"]

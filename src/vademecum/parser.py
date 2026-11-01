@@ -14,6 +14,7 @@ from vademecum.modelo import (
     EntradaRelatorio,
     LinhaFonte,
     Local,
+    Metadados,
     No,
     Nota,
     Relatorio,
@@ -45,6 +46,13 @@ _VETO = "veto"
 # H5: campos de `Local` que são nível; a palavra-chave do perfil, sem acento, dá o campo.
 _NIVEIS = tuple(f.name for f in fields(Local) if f.name != "rotulo_livre")
 _SEPARADOR_NOME = " — "  # `TÍTULO I — DOS CRIMES CONTRA A PESSOA`
+# H17: o título da norma abre com o tipo (`DECRETO-LEI No 2.848, DE 7 DE DEZEMBRO DE 1940`), e a
+# ementa é a linha antes da fórmula de promulgação.
+_TIPO_NORMA = re.compile(
+    r"^(?:DECRETO-LEI|DECRETO|LEI COMPLEMENTAR|LEI|MEDIDA PROVISÓRIA|EMENDA CONSTITUCIONAL"
+    r"|CONSTITUIÇÃO|RESOLUÇÃO|PROVIMENTO)\b"
+)
+_FORMULA = "O PRESIDENTE DA REPÚBLICA"
 
 
 @dataclass(slots=True)
@@ -103,15 +111,79 @@ class _Estado:
         return self.artigos[-1] if self.artigos else None
 
 
-def analisar(linhas: Iterable[LinhaFonte], perfil: Perfil, relatorio: Relatorio) -> tuple[No, ...]:
-    """Artigos na ordem da fonte, com `local`, parágrafos, incisos, alíneas, penas e rubricas.
+@dataclass(frozen=True, slots=True)
+class Analise:
+    """Saída do parser: o que da `Norma` vem do texto, os `Metadados` e os artigos (H17).
+
+    Os outros campos da `Norma` (fonte, captura, perfil) vêm de quem leu a fonte.
+    """
+
+    titulo: str | None
+    ementa: str | None
+    metadados: Metadados
+    artigos: tuple[No, ...]
+
+
+def analisar(linhas: Iterable[LinhaFonte], perfil: Perfil, relatorio: Relatorio) -> Analise:
+    """Cabeçalho, artigos e rodapé (H17); artigos com `local`, dispositivos, penas e rubricas.
 
     RF07–RF11, H5–H7, H14, H18. Linha sem dispositivo aberto que a receba vai ao relatório como
     `nao_classificada` (V7, RNF04).
     """
     artigo = _padrao_artigo(perfil.prefixos_artigo)
-    estado = _Estado()
     linhas = [linha for linha in linhas if linha.texto]
+    # H17: o cabeçalho vai até o primeiro nível ou artigo; o rodapé abre na linha de local e data.
+    inicio = next(
+        (
+            i
+            for i, linha in enumerate(linhas)
+            if artigo.match(linha.texto)
+            or (linha.centralizado and _campo_nivel(linha.texto, perfil.niveis))
+        ),
+        len(linhas),
+    )
+    rodape = [re.compile(padrao) for padrao in perfil.rodape_inicio]
+    fim = next(
+        (
+            i
+            for i in range(inicio, len(linhas))
+            if any(padrao.match(linhas[i].texto) for padrao in rodape)
+        ),
+        len(linhas),
+    )
+    cabecalho = linhas[:inicio]
+    return Analise(
+        titulo=next(
+            (
+                linha.texto
+                for linha in cabecalho
+                if linha.centralizado and _TIPO_NORMA.match(linha.texto)
+            ),
+            None,
+        ),
+        ementa=_ementa(cabecalho),
+        metadados=Metadados(preambulo=_juntar(cabecalho), rodape=_juntar(linhas[fim:])),
+        artigos=_corpo(linhas[inicio:fim], artigo, perfil, relatorio),
+    )
+
+
+def _ementa(cabecalho: list[LinhaFonte]) -> str | None:
+    """H17: a linha logo antes da fórmula de promulgação."""
+    for i, linha in enumerate(cabecalho):
+        if linha.texto.startswith(_FORMULA):
+            return cabecalho[i - 1].texto if i else None
+    return None
+
+
+def _juntar(linhas: list[LinhaFonte]) -> str | None:
+    return "\n".join(linha.texto for linha in linhas) or None
+
+
+def _corpo(
+    linhas: list[LinhaFonte], artigo: re.Pattern[str], perfil: Perfil, relatorio: Relatorio
+) -> tuple[No, ...]:
+    """Os artigos do trecho entre o cabeçalho e o rodapé."""
+    estado = _Estado()
     i = 0
     while i < len(linhas):
         linha = linhas[i]
