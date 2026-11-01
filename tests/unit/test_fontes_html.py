@@ -380,3 +380,35 @@ def test_h8_del_com_texto_fora_de_nota_fica_e_avisa(tmp_path):
     [linha] = ler_html(_htm(tmp_path, html), relatorio).linhas
     assert linha.texto == "condenatória (art. 110). (Redação dada)"
     assert [(e.tipo, e.texto) for e in relatorio.entradas] == [("aviso", "art. 110")]
+
+
+def test_h8_line_through_no_style_conta_como_tachado(fixtures_dir: Path):
+    # CPC, art. 63: o § 1º antigo vem num `<span style="…; text-decoration:line-through">`.
+    relatorio = Relatorio()
+    fonte = ler_html(fixtures_dir / "html" / "cpc_art63.htm", relatorio)
+    [descarte] = relatorio.entradas
+    assert (descarte.tipo, descarte.origem) == ("descarte", "html:p#2")
+    assert descarte.texto == (
+        "§ 1º A eleição de foro só produz efeito quando constar de instrumento escrito e aludir "
+        "expressamente a determinado negócio jurídico."
+    )
+    assert [linha.texto[:40] for linha in fonte.linhas] == [
+        "Art. 63. As partes podem modificar a com",
+        "§ 1º A eleição de foro somente produz ef",
+        "§ 2º O foro contratual obriga os herdeir",
+    ]
+    assert [linha.origem for linha in fonte.linhas] == ["html:p#1", "html:p#3", "html:p#4"]
+
+
+def test_h8_none_line_through_e_strike_juntos_saem_como_descarte(fixtures_dir: Path):
+    # Lei 8.429, art. 17, § 3º: as três redações antigas. Na primeira o tachado é só CSS; na
+    # terceira o `<strike>` fecha antes do `)` da nota, tachado por `none line-through`.
+    relatorio = Relatorio()
+    fonte = ler_html(fixtures_dir / "html" / "lei8429_art17.htm", relatorio)
+    assert fonte.linhas == ()
+    assert [(e.tipo, e.origem) for e in relatorio.entradas] == [
+        ("descarte", "html:p#1"),
+        ("descarte", "html:p#2"),
+        ("descarte", "html:p#3"),
+    ]
+    assert relatorio.entradas[2].texto.endswith("(Redação dada pela Lei nº 9.366, de 1996)")
