@@ -36,6 +36,10 @@ _INCISO = re.compile(r"^(?P<romano>[IVXLCDM]+)(?:\s*-\s*|\s+(?=[a-zà-ÿ]))(?P<t
 _ALINEA = re.compile(r"^(?P<letra>[a-z])\)\s*(?P<texto>.*)$")
 # RF09, H14: `Pena -` ou `Pena:` (CP, art. 319-A, `p#2032`); `Pena de multa` é rubrica.
 _PENA = re.compile(r"^Pena\s*[-:]\s*(?P<texto>.*)$")
+# H6 (c): o resto da rubrica sem negrito não termina em pontuação de frase.
+_PONTUADO = (".", ";", ":", ",")
+# RF11, RF14: o tipo de nota que, abrindo linha sem rótulo, a descarta.
+_VETO = "veto"
 
 
 @dataclass(slots=True)
@@ -46,6 +50,7 @@ class _Em:
     tipo: str
     origem: str
     rotulo: str | None = None
+    rubrica: str | None = None
     numero: int | None = None
     sufixo: tuple[str, ...] = ()
     textos: list[str] = field(default_factory=list)
@@ -65,6 +70,7 @@ class _Em:
             texto=" ".join(self.textos),
             origem=self.origem,
             rotulo=self.rotulo,
+            rubrica=self.rubrica,
             numero=self.numero,
             sufixo=self.sufixo,
             notas=tuple(self.notas),
@@ -81,6 +87,8 @@ class _Estado:
     inciso: _Em | None = None
     alinea: _Em | None = None
     corrente: _Em | None = None  # quem recebe a continuação (RF11)
+    # Rubrica à espera do dispositivo seguinte (H6, H7): a linha, o texto e as notas.
+    rubrica: tuple[LinhaFonte, str, tuple[Nota, ...]] | None = None
 
     @property
     def artigo(self) -> _Em | None:
@@ -88,17 +96,31 @@ class _Estado:
 
 
 def analisar(linhas: Iterable[LinhaFonte], perfil: Perfil, relatorio: Relatorio) -> tuple[No, ...]:
-    """Artigos na ordem da fonte, com parágrafos, incisos, alíneas e penas (RF08, RF09, RF11).
+    """Artigos na ordem da fonte, com parágrafos, incisos, alíneas, penas e rubricas.
 
-    Linha sem dispositivo aberto que a receba vai ao relatório como `nao_classificada` (V7, RNF04).
+    RF08–RF11, H6, H7, H14. Linha sem dispositivo aberto que a receba vai ao relatório como
+    `nao_classificada` (V7, RNF04).
     """
     artigo = _padrao_artigo(perfil.prefixos_artigo)
     estado = _Estado()
-    for linha in linhas:
-        if not linha.texto:
+    linhas = [linha for linha in linhas if linha.texto]
+    for i, linha in enumerate(linhas):
+        casado = _casar(linha.texto, artigo, perfil)
+        seguinte = linhas[i + 1] if i + 1 < len(linhas) else None
+        if casado is None and _e_rubrica(linha, seguinte, artigo, perfil):
+            _rubrica_sem_dispositivo(estado, relatorio)
+            estado.rubrica = (linha, *extrair_notas(linha.texto, perfil, linha.origem, relatorio))
             continue
-        if not _dispositivo(linha, artigo, perfil, estado, relatorio):
+        em = _abrir(casado, linha, perfil, estado, relatorio) if casado else None
+        if em is not None and em.tipo != "pena" and estado.rubrica is not None:
+            # H7: a nota da rubrica vem antes das notas do dispositivo.
+            _, em.rubrica, notas = estado.rubrica
+            em.notas[:0] = notas
+            estado.rubrica = None
+        _rubrica_sem_dispositivo(estado, relatorio)
+        if em is None:
             _continuacao(linha, perfil, estado, relatorio)
+    _rubrica_sem_dispositivo(estado, relatorio)
     return tuple(em.congelar() for em in estado.artigos)
 
 
@@ -108,20 +130,35 @@ def _padrao_artigo(prefixos: Iterable[str]) -> re.Pattern[str]:
     return re.compile(rf"^(?P<rotulo>(?:{alternativas})\s*{_NUMERO}){_RESTO}$")
 
 
-def _dispositivo(
+def _casar(texto: str, artigo: re.Pattern[str], perfil: Perfil) -> tuple[str, re.Match[str]] | None:
+    """O tipo de dispositivo que a linha começa, só pelo padrão, sem olhar o estado."""
+    if casamento := artigo.match(texto):
+        return "artigo", casamento
+    if casamento := _PARAGRAFO.match(texto) or _PARAGRAFO_UNICO.match(texto):
+        return "paragrafo", casamento
+    if (casamento := _INCISO.match(texto)) and _romano_valido(casamento["romano"]):
+        return "inciso", casamento
+    if casamento := _ALINEA.match(texto):
+        return "alinea", casamento
+    if perfil.pena and (casamento := _PENA.match(texto)):
+        return "pena", casamento
+    return None
+
+
+def _abrir(
+    casado: tuple[str, re.Match[str]],
     linha: LinhaFonte,
-    artigo: re.Pattern[str],
     perfil: Perfil,
     estado: _Estado,
     relatorio: Relatorio,
-) -> bool:
-    """Abre o dispositivo que a linha começa; `False` quando ela não começa nenhum."""
-    texto = linha.texto
-    if casamento := artigo.match(texto):
+) -> _Em | None:
+    """Abre o dispositivo casado; `None` quando não há artigo aberto que o receba."""
+    tipo, casamento = casado
+    if tipo == "artigo":
         numero, sufixo = chave_de_texto(casamento["numero"])
         em = _Em(
             id=id_artigo(numero, sufixo),
-            tipo="artigo",
+            tipo=tipo,
             origem=linha.origem,
             rotulo=casamento["rotulo"],
             numero=numero,
@@ -130,51 +167,49 @@ def _dispositivo(
         estado.artigos.append(em)
         estado.paragrafo = estado.inciso = estado.alinea = None
     elif estado.artigo is None:
-        return False
-    elif casamento := _PARAGRAFO.match(texto) or _PARAGRAFO_UNICO.match(texto):
+        return None
+    elif tipo == "paragrafo":
         pai = estado.artigo
         if "numero" in casamento.groupdict():
             numero, sufixo = chave_de_texto(casamento["numero"])
             id_ = id_paragrafo(pai.id, numero, sufixo)
         else:
             id_ = id_paragrafo(pai.id, None)
-        em = _Em(id=id_, tipo="paragrafo", origem=linha.origem, rotulo=casamento["rotulo"])
+        em = _Em(id=id_, tipo=tipo, origem=linha.origem, rotulo=casamento["rotulo"])
         pai.filhos.append(em)
         estado.paragrafo, estado.inciso, estado.alinea = em, None, None
-    elif (casamento := _INCISO.match(texto)) and _romano_valido(casamento["romano"]):
+    elif tipo == "inciso":
         pai = estado.paragrafo or estado.artigo
         em = _Em(
             id=id_inciso(pai.id, casamento["romano"]),
-            tipo="inciso",
+            tipo=tipo,
             origem=linha.origem,
             rotulo=casamento["romano"],
         )
         pai.filhos.append(em)
         estado.inciso, estado.alinea = em, None
-    elif casamento := _ALINEA.match(texto):
+    elif tipo == "alinea":
         # Sem inciso aberto, a alínea é do parágrafo ou do caput.
         pai = estado.inciso or estado.paragrafo or estado.artigo
         em = _Em(
             id=id_alinea(pai.id, casamento["letra"]),
-            tipo="alinea",
+            tipo=tipo,
             origem=linha.origem,
             rotulo=casamento["letra"],
         )
         pai.filhos.append(em)
         estado.alinea = em
-    elif perfil.pena and (casamento := _PENA.match(texto)):
+    else:
         # H14: a pena é do parágrafo ou do caput e não fecha o parágrafo; o inciso seguinte
         # (art. 121, § 2º, VII depois da pena do V) continua no mesmo pai.
         pai = estado.paragrafo or estado.artigo
         pai.penas += 1
-        em = _Em(id=id_pena(pai.id, pai.penas), tipo="pena", origem=linha.origem)
+        em = _Em(id=id_pena(pai.id, pai.penas), tipo=tipo, origem=linha.origem)
         pai.filhos.append(em)
         estado.inciso = estado.alinea = None
-    else:
-        return False
     em.acrescentar(*extrair_notas(casamento["texto"], perfil, linha.origem, relatorio))
     estado.corrente = em
-    return True
+    return em
 
 
 def _romano_valido(romano: str) -> bool:
@@ -185,11 +220,54 @@ def _romano_valido(romano: str) -> bool:
     return True
 
 
+def _e_rubrica(
+    linha: LinhaFonte, seguinte: LinhaFonte | None, artigo: re.Pattern[str], perfil: Perfil
+) -> bool:
+    """H6: linha não centralizada, sem padrão de dispositivo, numa das formas (a), (b) ou (c).
+
+    (a) 100% negrito; (b) só o início em negrito (`Lugar do crime (Redação dada…)`) e seguida de
+    dispositivo; (c) sem negrito, se o perfil ligar, com o resto sem notas não pontuado
+    (`Sabotagem`) e seguida de dispositivo. A pena não é dispositivo que receba rubrica.
+    """
+    if not perfil.rubrica or linha.centralizado:
+        return False
+    # Relatório descartável: aqui só se classifica.
+    # A nota `outra` entra no relatório de verdade quando a rubrica for aceita.
+    limpo, _ = extrair_notas(linha.texto, perfil, linha.origem, Relatorio())
+    if not limpo:
+        return False
+    if linha.negrito:
+        return True
+    casado = _casar(seguinte.texto, artigo, perfil) if seguinte else None
+    segue_dispositivo = casado is not None and casado[0] != "pena"
+    if linha.rotulo_negrito:
+        return segue_dispositivo
+    return perfil.rubrica_sem_negrito and not limpo.endswith(_PONTUADO) and segue_dispositivo
+
+
+def _rubrica_sem_dispositivo(estado: _Estado, relatorio: Relatorio) -> None:
+    """H7: rubrica que não chegou a um dispositivo (veio nível, pena ou o fim) vira `aviso`."""
+    if estado.rubrica is None:
+        return
+    linha, _, _ = estado.rubrica
+    relatorio.registrar(EntradaRelatorio(tipo="aviso", origem=linha.origem, texto=linha.texto))
+    estado.rubrica = None
+
+
 def _continuacao(linha: LinhaFonte, perfil: Perfil, estado: _Estado, relatorio: Relatorio) -> None:
-    """RF11: o texto e as notas da linha vão para o dispositivo corrente."""
+    """RF11: o texto e as notas da linha vão para o dispositivo corrente.
+
+    Linha sem rótulo que começa por `(VETADO)` é `descarte` (RF14): não é nota de outro dispositivo.
+    """
     if estado.corrente is None:
         relatorio.registrar(
             EntradaRelatorio(tipo="nao_classificada", origem=linha.origem, texto=linha.texto)
         )
         return
-    estado.corrente.acrescentar(*extrair_notas(linha.texto, perfil, linha.origem, relatorio))
+    limpo, notas = extrair_notas(linha.texto, perfil, linha.origem, relatorio)
+    if linha.texto.startswith("(") and notas and notas[0].tipo == _VETO:
+        relatorio.registrar(
+            EntradaRelatorio(tipo="descarte", origem=linha.origem, texto=linha.texto)
+        )
+        return
+    estado.corrente.acrescentar(limpo, notas)

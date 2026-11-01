@@ -92,16 +92,17 @@ def cp():
 
 
 def _linhas(pares, perfil):
+    """`(p, texto)` ou `(p, texto, marca)`; `marca` é `"negrito"`, `"rotulo"` ou `"centro"`."""
     brutas = [
         LinhaFonte(
-            texto=texto,
-            negrito=False,
-            rotulo_negrito=False,
-            centralizado=False,
+            texto=par[1],
+            negrito="negrito" in par[2:],
+            rotulo_negrito="rotulo" in par[2:],
+            centralizado="centro" in par[2:],
             cor=None,
-            origem=f"html:p#{p}",
+            origem=f"html:p#{par[0]}",
         )
-        for p, texto in pares
+        for par in pares
     ]
     return normalizar(brutas, perfil.prefixos_artigo)
 
@@ -331,3 +332,179 @@ def test_p9_prefixo_de_artigo_vem_do_perfil():
     padrao = carregar_perfil("padrao")
     [art] = _analisar([(1, "Artigo 1° - Esta lei dispõe…")], padrao)
     assert (art.id, art.rotulo, art.texto) == ("art1", "Artigo 1º", "Esta lei dispõe…")
+
+
+def test_h6a_rubrica_em_negrito_liga_ao_artigo_e_ao_paragrafo(cp):
+    # CP, art. 121 (`p#574`–`p#579`).
+    pares = [
+        (574, "Homicídio simples", "negrito"),
+        (575, "Art. 121. Matar alguem:"),
+        (576, "Pena - reclusão, de seis a vinte anos."),
+        (579, "Homicídio qualificado", "negrito"),
+        (580, "§ 2º Se o homicídio é cometido:"),
+    ]
+    [art] = _analisar(pares, cp)
+    assert (art.rubrica, art.texto) == ("Homicídio simples", "Matar alguem:")
+    assert _filho(art, "art121.p2").rubrica == "Homicídio qualificado"
+    assert _filho(art, "art121.pena1").texto == "reclusão, de seis a vinte anos."
+
+
+def test_h6b_h7_rubrica_com_nota_fora_do_negrito(cp):
+    # CP, art. 6º (`p#35`): só `Lugar do crime` está no `<b>`.
+    pares = [
+        (34, "Art. 5º - Aplica-se a lei brasileira…"),
+        (35, "Lugar do crime (Redação dada pela Lei nº 7.209, de 1984)", "rotulo"),
+        (
+            36,
+            "Art. 6º - Considera-se praticado o crime no lugar em que ocorreu a ação ou omissão, "
+            "no todo ou em parte, bem como onde se produziu ou deveria produzir-se o "
+            "resultado.(Redação dada pela Lei nº 7.209, de 1984)",
+        ),
+    ]
+    art5, art6 = _analisar(pares, cp)
+    assert art5.texto == "Aplica-se a lei brasileira…"
+    assert art6.rubrica == "Lugar do crime"
+    assert art6.texto.endswith("deveria produzir-se o resultado.")
+    # H7: a nota da rubrica vem antes da nota do próprio artigo.
+    assert [n.bruto for n in art6.notas] == [
+        "(Redação dada pela Lei nº 7.209, de 1984)",
+        "(Redação dada pela Lei nº 7.209, de 1984)",
+    ]
+
+
+def test_h6b_inicio_em_negrito_sem_dispositivo_seguinte_nao_e_rubrica(cp):
+    # CP, preâmbulo (`p#17`): a fórmula começa em negrito, e o que vem depois é nível.
+    relatorio = Relatorio()
+    pares = [
+        (
+            17,
+            "O PRESIDENTE DA REPÚBLICA, usando da atribuição que lhe confere o art. 180…",
+            "rotulo",
+        ),
+        (18, "PARTE GERAL", "negrito", "centro"),
+    ]
+    assert _analisar(pares, cp, relatorio) == ()
+    assert [e.tipo for e in relatorio.entradas] == ["nao_classificada", "nao_classificada"]
+
+
+def test_h6c_rubrica_sem_negrito_com_nota(cp):
+    # CP: `Feminicídio` (`p#615`) e `Sabotagem` (`p#2378`) vêm sem negrito nenhum.
+    pares = [
+        (614, "§ 7º (Revogado pela Lei nº 14.994, de 2024)"),
+        (615, "Feminicídio (Incluído pela Lei nº 14.994, de 2024)"),
+        (
+            616,
+            "Art. 121-A. Matar mulher por razões da condição do sexo feminino: (Incluído pela Lei "
+            "nº 14.994, de 2024)",
+        ),
+        (2378, "Sabotagem (Incluído pela Lei nº 14.197, de 2021) (Vigência)"),
+        (
+            2379,
+            "Art. 359-R. Destruir ou inutilizar meios de comunicação ao público… (Incluído pela "
+            "Lei nº 14.197, de 2021) (Vigência)",
+        ),
+    ]
+    art121a, art359r = _analisar([(575, "Art. 121. Matar alguem:"), *pares], cp)[1:]
+    assert (art121a.id, art121a.rubrica) == ("art121-A", "Feminicídio")
+    assert [n.bruto for n in art121a.notas] == [
+        "(Incluído pela Lei nº 14.994, de 2024)",
+        "(Incluído pela Lei nº 14.994, de 2024)",
+    ]
+    assert (art359r.id, art359r.rubrica) == ("art359-R", "Sabotagem")
+    assert [n.tipo for n in art359r.notas] == ["inclusao", "vigencia", "inclusao", "vigencia"]
+
+
+def test_h6c_rubrica_sem_negrito_antes_de_inciso(cp):
+    # CP, art. 121, § 2º (`p#593`): a rubrica do IX, com `Vigência` sem parênteses.
+    pares = [
+        (580, "§ 2º Se o homicídio é cometido:"),
+        (
+            593,
+            "Homicídio contra menor de 14 (quatorze) anos (Incluído pela Lei nº 14.344, de 2022) "
+            "Vigência",
+        ),
+        (
+            594,
+            "IX - contra menor de 14 (quatorze) anos: (Incluído pela Lei nº 14.344, de 2022) "
+            "Vigência",
+        ),
+    ]
+    [art] = _analisar([(575, "Art. 121. Matar alguem:"), *pares], cp)
+    ix = _filho(_filho(art, "art121.p2"), "art121.p2.i9")
+    assert ix.rubrica == "Homicídio contra menor de 14 (quatorze) anos"
+    assert ix.texto == "contra menor de 14 (quatorze) anos:"
+
+
+def test_h6c_linha_pontuada_ou_pena_nao_e_rubrica(cp):
+    # `III perda…;` (`p#684`) termina em `;`: é inciso, não rubrica do IV. `Pena - … anos (…)`
+    # (`p#1380`) não termina em ponto, mas tem padrão de pena.
+    pares = [
+        (668, "Art. 129. Ofender a integridade corporal ou a saúde de outrem:"),
+        (681, "§ 2º Se resulta:"),
+        (684, "III perda ou inutilização do membro, sentido ou função;"),
+        (685, "IV - deformidade permanente;"),
+        (1379, "Art. 213. Constranger alguém…"),
+        (
+            1380,
+            "Pena - reclusão, de 12 (doze) a 30 (trinta) anos (Incluído pela Lei nº 12.015, de "
+            "2009)",
+        ),
+        (1381, "Art. 214 - (Revogado pela Lei nº 12.015, de 2009)"),
+    ]
+    art129, art213, _ = _analisar(pares, cp)
+    assert [(f.rotulo, f.rubrica) for f in _filho(art129, "art129.p2").filhos] == [
+        ("III", None),
+        ("IV", None),
+    ]
+    assert [f.tipo for f in art213.filhos] == ["pena"]
+
+
+def test_h6c_rubrica_sem_negrito_desligada_no_padrao():
+    padrao = carregar_perfil("padrao")
+    pares = [(575, "Art. 121. Matar alguem:"), (2378, "Sabotagem"), (2379, "Art. 359-R. Destruir…")]
+    art121, art359r = _analisar(pares, padrao)
+    assert art359r.rubrica is None
+    assert art121.texto == "Matar alguem: Sabotagem"  # RF11: continuação
+
+
+def test_h7_rubrica_sem_dispositivo_seguinte_vira_aviso(cp):
+    relatorio = Relatorio()
+    pares = [
+        (575, "Art. 121. Matar alguem:"),
+        (576, "Pena - reclusão, de seis a vinte anos."),
+        (577, "Caso de diminuição de pena", "negrito"),
+    ]
+    [art] = _analisar(pares, cp, relatorio)
+    assert [(e.tipo, e.origem, e.texto) for e in relatorio.entradas] == [
+        ("aviso", "html:p#577", "Caso de diminuição de pena")
+    ]
+    assert _filho(art, "art121.pena1").texto == "reclusão, de seis a vinte anos."
+
+
+def test_rf11_vetado_sem_rotulo_e_descarte(cp):
+    # CP, art. 359-N (`p#2367`) e art. 359-T (`p#2388`): a linha não é nota do dispositivo anterior.
+    relatorio = Relatorio()
+    vetado = "(VETADO) (Incluído pela Lei nº 14.197, de 2021) (Vigência)"
+    pares = [
+        (
+            2365,
+            "Art. 359-N. Impedir ou perturbar a eleição… (Incluído pela Lei nº 14.197, de 2021)",
+        ),
+        (2366, "Pena - reclusão, de 3 (três) a 6 (seis) anos, e multa."),
+        (2367, vetado),
+        (2368, "Art. 359-O. (VETADO). (Incluído pela Lei nº 14.197, de 2021) (Vigência)"),
+        (2387, "Art. 359-T. Não constitui crime previsto neste Título a manifestação crítica…"),
+        (2388, vetado),
+    ]
+    art359n, art359o, art359t = _analisar(pares, cp, relatorio)
+    assert [(e.tipo, e.origem, e.texto) for e in relatorio.entradas] == [
+        ("descarte", "html:p#2367", vetado),
+        ("descarte", "html:p#2388", vetado),
+    ]
+    assert art359n.filhos[0].notas == ()
+    assert art359t.notas == ()
+    # Com rótulo, o `(VETADO)` é nota do próprio artigo (o filtro de vigência é de outra etapa).
+    assert (art359o.texto, [n.tipo for n in art359o.notas]) == (
+        "",
+        ["veto", "inclusao", "vigencia"],
+    )
