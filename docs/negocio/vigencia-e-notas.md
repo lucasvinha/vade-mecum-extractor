@@ -49,6 +49,7 @@ sai inteiro no leitor e não chega aqui.
 - **Falso positivo:** `Art. 88 - Revogado o livramento…` é texto vigente (H15, caso A4).
 - **Regra temporal do edital** (pendência P3): as notas trazem só o ano da lei alteradora, não a
   data. A base guarda número e ano de cada nota; a conferência de data contra o corte do edital
-  não é feita aqui.
+  (19/10/2026) é da Etapa 2, e o perfil não lista as leis posteriores ao corte (operador,
+  2026-11-01).
 - **Informação de deslocamento** (pendência P4): o descarte perde "este inciso foi revogado e
   virou outro artigo"; por isso o relatório guarda os descartes de forma estruturada.

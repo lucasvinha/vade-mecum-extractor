@@ -7,12 +7,12 @@ no git e no código. O número de um item nunca muda; o novo pega o próximo liv
 A implementação segue os **marcos** M1–M9, nesta ordem: cada um parte do anterior. Marco é um
 item grande da fila e vira uma spec (`/spec <item>`), fatiada em fases de um commit (`/fase`).
 O número do marco acompanha a ordem; o do item, não. Das pendências de requisito, P1 e P2 foram
-confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
+confirmadas, P3 foi decidida no M4 (pergunta 5) e P4–P7 estão em "Riscos acompanhados".
 
 ## Agora
 
-- **Em curso:** nenhum marco; o M3 fechou em 2026-11-01.
-- **Próximo sugerido:** M4 (item 8), pelo `/spec`.
+- **Em curso:** nenhum marco; o M4 fechou em 2026-11-01 e a base do CP já é usável.
+- **Próximo sugerido:** M5 (item 15), pelo `/spec`.
 - **Meta:** a base do CP no M4 e as normas do edital que estão no Planalto no M6. Prova em
   14/03/2027. Do Planalto: CP, CPP, CPC, CC, LINDB, CF e Leis 9.099, 8.429, 6.830 e 13.146. Fora
   dele, no M8: NSCGJ, Leis SP 10.261 e 11.608 e Res. CNJ 354. Os artigos de cada tópico estão em
@@ -20,11 +20,6 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 
 ## Fila
 
-- [ ] **M4 · 8. Vigência e validação.** `vigencia.py` (ADR-001, RF14–RF16), `validador.py`
-      (V1–V7) e o motivo estruturado do descarte no relatório. Aceite: A1–A8 completos;
-      snapshot dos enxertos do CP. **Entrega a primeira base usável: o CP.** A conferir na
-      spec, no relatório do CP inteiro: se o `descarte` do `(VETADO)` sem rótulo pede o motivo
-      estruturado do RF16 e se o `aviso` da nota de nível (H18) basta à Etapa 2.
 - [ ] **M5 · 15. Recorte + `recortar`.** `recorte.py` e o subcomando (RF18, ADR-004, P1, P2).
       Aceite: A13. Em 2026-10-31 o operador decidiu: o Python recorta e o Claude recebe só o
       recorte (RF18 e ADR-003 mantidos). Nas cinco normas maiores, o edital cobra 686 dos 4.540
@@ -53,30 +48,35 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 
 ## Perguntas em aberto
 
-- [ ] **5. Ponto de atenção P3 (regra temporal do edital).** Vigência até 19/10/2026 × captura do
-      HTML em 26/10/2026: há alterações "de 2026" no CP (Leis 15.358, 15.384, 15.402, 15.425) e
-      as notas trazem só o ano. Número e ano de cada nota ficam na base; a conferência de data
-      contra o corte é da Etapa 2 ou lista manual de leis posteriores ao corte no perfil.
-      Decidir no M4.
+Nenhuma. As 4 leis "de 2026" no CP (15.358, 15.384, 15.402, 15.425) ficam para o operador
+conferir à mão contra o corte de 19/10/2026; não bloqueiam marco nenhum (pergunta 5).
 
 ## Riscos acompanhados
 
 Não são itens de trabalho: cada um é tratado pelo item citado.
 
 - **P4 — perda do "revogado/deslocado" ao descartar (ADR-001).** O relatório JSON guarda os
-  descartes de forma estruturada, para a Etapa 2 consultar. Item 8.
+  descartes de forma estruturada (RF16: `id`, `rotulo`, `rubrica`, `motivo`, `notas`), para a
+  Etapa 2 consultar; o destino do dispositivo deslocado não é extraído. Coberto no M4.
 - **P5 — rubrica no PDF** (sem rubricas na amostra atual; normas penais em PDF terão).
   Heurística em [negocio/parsing.md](negocio/parsing.md); validar quando houver PDF de norma
   penal. Item 9.
 - **P6 — mudança de layout do Planalto.** O leitor depende só de negrito, alinhamento e tachado (H8). O
-  snapshot é dos enxertos e não vê a página nova: a quebra aparece nos avisos do validador e no
-  antes e depois local do `/regressao`. Item 8.
+  snapshot é dos enxertos e não vê a página nova: a quebra aparece nos avisos V1–V6 do validador
+  e no antes e depois local do `/regressao`. Coberto no M4.
 - **P7 — PDFs de outras origens** (Senado, editoras). O leitor PDF expõe colunas, zonas de
   cabeçalho e rodapé e mapa de fontes no perfil. Item 9.
 
 ## Concluídos recentes
 
 Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
+
+- ~~**M4 · 8. Vigência e validação**~~ — 2026-11-01, `d803051`: `vigencia.py`
+  (`filtrar_vigentes`), `validador.py` (V1–V6) e o `descarte` estruturado do RF16; aceite A1–A8
+  e snapshot dos enxertos. No CP, o único aviso V* é a V4 do art. 272 (H20). A nota de nível
+  segue `aviso` de texto livre (H18)
+- ~~**5. P3: regra temporal do edital**~~ — 2026-11-01, `d803051`: a base guarda norma e ano de
+  cada nota, e a conferência contra o corte é da Etapa 2 (negocio/vigencia-e-notas)
 
 - ~~**M3 · 7. Parser (perfil `cp`) + `extrair`**~~ — 2026-11-01, `cc3d6fd`: `perfil.py`,
   `notas.py`, `parser.py` (`analisar` → `Analise`) e `extrair`; aceite A1–A4, A6 e A7
@@ -85,7 +85,3 @@ Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
   qualquer ancestral conta como `<strike>`
 - ~~**16. RF19 × esquema por tipo**~~ — 2026-11-01, `9e441f2`: `origem` fica na memória e no
   relatório, fora do JSON da base
-- ~~**M2 · 6. Leitor HTML + normalizador**~~ — 2026-10-31, `ba7c3bd`: `ler_html` (`.mht` e
-  `.htm` locais → `FonteLida`, tachado pela H8) e `normalizar`; aceite A8
-- ~~**17. H6: negrito que o leitor HTML não vê**~~ — 2026-10-31, `c2cc27e`: `html5lib` e peso
-  pelo `font-weight`
