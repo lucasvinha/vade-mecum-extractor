@@ -1,6 +1,6 @@
 import pytest
 
-from vademecum.modelo import LinhaFonte, Nota, Relatorio
+from vademecum.modelo import LinhaFonte, Local, Nota, Relatorio
 from vademecum.normalizador import normalizar
 from vademecum.parser import analisar
 from vademecum.perfil import carregar_perfil
@@ -384,7 +384,8 @@ def test_h6b_inicio_em_negrito_sem_dispositivo_seguinte_nao_e_rubrica(cp):
         (18, "PARTE GERAL", "negrito", "centro"),
     ]
     assert _analisar(pares, cp, relatorio) == ()
-    assert [e.tipo for e in relatorio.entradas] == ["nao_classificada", "nao_classificada"]
+    # `PARTE GERAL` é nível (H5); só a fórmula fica sem classificação.
+    assert [(e.tipo, e.origem) for e in relatorio.entradas] == [("nao_classificada", "html:p#17")]
 
 
 def test_h6c_rubrica_sem_negrito_com_nota(cp):
@@ -508,3 +509,150 @@ def test_rf11_vetado_sem_rotulo_e_descarte(cp):
         "",
         ["veto", "inclusao", "vigencia"],
     )
+
+
+def test_h5_h18_art121_local_e_nota_de_nivel(cp):
+    # CP, `p#567`–`p#575`: a nota da PARTE ESPECIAL não tem nó e vira `aviso`.
+    relatorio = Relatorio()
+    pares = [
+        (567, "Art. 120 - A sentença que conceder perdão judicial não será considerada…"),
+        (568, "PARTE ESPECIAL", "negrito", "centro"),
+        (569, "(Vide Lei nº 7.209, de 1984)", "centro"),
+        (570, "TÍTULO I", "negrito", "centro"),
+        (571, "DOS CRIMES CONTRA A PESSOA", "negrito", "centro"),
+        (572, "CAPÍTULO I", "negrito", "centro"),
+        (573, "DOS CRIMES CONTRA A VIDA", "negrito", "centro"),
+        (574, "Homicídio simples", "negrito"),
+        (575, "Art. 121. Matar alguem:"),
+    ]
+    art120, art121 = _analisar(pares, cp, relatorio)
+    assert art120.local == Local()  # P8: hierarquia ausente
+    assert art120.texto.endswith("considerada…")
+    assert art121.local == Local(
+        parte="PARTE ESPECIAL",
+        titulo="TÍTULO I — DOS CRIMES CONTRA A PESSOA",
+        capitulo="CAPÍTULO I — DOS CRIMES CONTRA A VIDA",
+    )
+    assert art121.rubrica == "Homicídio simples"
+    assert [(e.tipo, e.origem) for e in relatorio.entradas] == [("aviso", "html:p#569")]
+
+
+def test_h5_nome_em_duas_linhas(cp):
+    # CP, Seção III do Capítulo VI do Título I (`p#918`–`p#922`).
+    pares = [
+        (570, "TÍTULO I", "negrito", "centro"),
+        (571, "DOS CRIMES CONTRA A PESSOA", "negrito", "centro"),
+        (918, "SEÇÃO III", "negrito", "centro"),
+        (919, "DOS CRIMES CONTRA A", "negrito", "centro"),
+        (920, "INVIOLABILIDADE DE CORRESPONDÊNCIA", "negrito", "centro"),
+        (921, "Violação de correspondência", "negrito"),
+        (922, "Art. 151 - Devassar indevidamente o conteúdo de correspondência fechada…"),
+    ]
+    [art] = _analisar(pares, cp)
+    assert art.local == Local(
+        titulo="TÍTULO I — DOS CRIMES CONTRA A PESSOA",
+        secao="SEÇÃO III — DOS CRIMES CONTRA A INVIOLABILIDADE DE CORRESPONDÊNCIA",
+    )
+    assert art.rubrica == "Violação de correspondência"
+
+
+def test_h5_nivel_sem_negrito_nota_antes_do_nome_e_nivel_novo_zera_os_de_baixo(cp):
+    # CP, Título XII: `CAPÍTULO IV` sem negrito, com a nota antes do nome (`p#2374`–`p#2379`).
+    relatorio = Relatorio()
+    pares = [
+        (2329, "CAPÍTULO I", "negrito", "centro"),
+        (2331, "DOS CRIMES CONTRA A SOBERANIA NACIONAL", "negrito", "centro"),
+        (2373, "Art. 359-Q. (VETADO). (Incluído pela Lei nº 14.197, de 2021) (Vigência)"),
+        (2374, "CAPÍTULO IV", "centro"),
+        (2375, "(Incluído pela Lei nº 14.197, de 2021) (Vigência)", "centro"),
+        (2376, "DOS CRIMES CONTRA O FUNCIONAMENTO", "centro"),
+        (2377, "DOS SERVIÇOS ESSENCIAIS", "centro"),
+        (2378, "Sabotagem (Incluído pela Lei nº 14.197, de 2021) (Vigência)"),
+        (2379, "Art. 359-R. Destruir ou inutilizar meios de comunicação ao público…"),
+        (9000, "TÍTULO XIII", "negrito", "centro"),
+        (9001, "Art. 999 - Linha inventada para o teste: o título novo fecha o capítulo."),
+    ]
+    art359q, art359r, art999 = _analisar(pares, cp, relatorio)
+    assert art359q.local == Local(capitulo="CAPÍTULO I — DOS CRIMES CONTRA A SOBERANIA NACIONAL")
+    assert art359r.local == Local(
+        capitulo="CAPÍTULO IV — DOS CRIMES CONTRA O FUNCIONAMENTO DOS SERVIÇOS ESSENCIAIS"
+    )
+    assert art359r.rubrica == "Sabotagem"
+    assert art999.local == Local(titulo="TÍTULO XIII")
+    assert [(e.tipo, e.origem) for e in relatorio.entradas] == [("aviso", "html:p#2375")]
+
+
+def test_h6d_rubrica_centralizada_em_caixa_mista_nao_e_nome(cp):
+    # CP, Capítulo I-A do Título VI (`p#1395`–`p#1399`).
+    pares = [
+        (1395, "CAPÍTULO I-A", "negrito", "centro"),
+        (1396, "(Incluído pela Lei nº 13.772, de 2018)", "centro"),
+        (1397, "DA EXPOSIÇÃO DA INTIMIDADE SEXUAL", "negrito", "centro"),
+        (1398, "Registro não autorizado da intimidade sexual", "negrito", "centro"),
+        (1399, "Art. 216-B. Produzir, fotografar, filmar ou registrar, por qualquer meio…"),
+    ]
+    [art] = _analisar(pares, cp)
+    assert art.local == Local(capitulo="CAPÍTULO I-A — DA EXPOSIÇÃO DA INTIMIDADE SEXUAL")
+    assert art.rubrica == "Registro não autorizado da intimidade sexual"
+
+
+def test_h5_nome_todo_em_minusculas_continua_nome(cp):
+    # CP, Capítulo V do Título X (`p#1966`–`p#1971`): o nome vem em minúsculas, entre notas.
+    pares = [
+        (1966, "CAPÍTULO V", "negrito", "centro"),
+        (1967, "(Incluído pela Lei 12.550. de 2011)", "centro"),
+        (1968, "das fraudes em certames de interesse público", "negrito", "centro"),
+        (1969, "(Incluído pela Lei 12.550. de 2011)", "centro"),
+        (
+            1970,
+            "Fraudes em certames de interesse público (Incluído pela Lei 12.550. de 2011)",
+            "rotulo",
+        ),
+        (1971, "Art. 311-A. Utilizar ou divulgar, indevidamente, com o fim de beneficiar a si…"),
+    ]
+    [art] = _analisar(pares, cp)
+    assert art.local == Local(capitulo="CAPÍTULO V — das fraudes em certames de interesse público")
+    assert art.rubrica == "Fraudes em certames de interesse público"
+
+
+def test_p8_rotulo_livre_fecha_os_niveis_abaixo_da_parte(cp):
+    # CP, `p#2381`–`p#2391`; o `(VETADO)` solto depois do nível também é descarte (RF11).
+    relatorio = Relatorio()
+    vetado = "(VETADO) (Incluído pela Lei nº 14.197, de 2021) (Vigência)"
+    pares = [
+        (568, "PARTE ESPECIAL", "negrito", "centro"),
+        (2325, "TÍTULO XII", "negrito", "centro"),
+        (2327, "DOS CRIMES CONTRA O ESTADO", "negrito", "centro"),
+        (2328, "DEMOCRÁTICO DE DIREITO", "centro"),
+        (2381, "CAPÍTULO V", "centro"),
+        (2383, vetado),
+        (2384, "CAPÍTULO VI", "centro"),
+        (2386, "DISPOSIÇÕES COMUNS", "centro"),
+        (2387, "Art. 359-T. Não constitui crime previsto neste Título a manifestação crítica…"),
+        (2390, "DISPOSIÇÕES FINAIS", "negrito", "centro"),
+        (2391, "Art. 360 - Ressalvada a legislação especial sobre os crimes contra a existência…"),
+    ]
+    art359t, art360 = _analisar(pares, cp, relatorio)
+    assert art359t.local == Local(
+        parte="PARTE ESPECIAL",
+        titulo="TÍTULO XII — DOS CRIMES CONTRA O ESTADO DEMOCRÁTICO DE DIREITO",
+        capitulo="CAPÍTULO VI — DISPOSIÇÕES COMUNS",
+    )
+    assert art360.local == Local(parte="PARTE ESPECIAL", rotulo_livre="DISPOSIÇÕES FINAIS")
+    assert [(e.tipo, e.origem) for e in relatorio.entradas] == [("descarte", "html:p#2383")]
+
+
+def test_h5_centralizada_em_negrito_antes_do_primeiro_artigo_nao_e_rotulo_livre(cp):
+    # CP, cabeçalho (`p#4`, `p#5`): o título da norma não é rótulo livre.
+    relatorio = Relatorio()
+    pares = [
+        (4, "DECRETO-LEI No 2.848, DE 7 DE DEZEMBRO DE 1940", "negrito", "centro"),
+        (5, "Vigência"),
+        (23, "Art. 1º - Não há crime sem lei anterior que o defina."),
+    ]
+    [art] = _analisar(pares, cp, relatorio)
+    assert art.local == Local()
+    assert [(e.tipo, e.origem) for e in relatorio.entradas] == [
+        ("nao_classificada", "html:p#4"),
+        ("nao_classificada", "html:p#5"),
+    ]

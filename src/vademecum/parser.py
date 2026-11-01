@@ -6,12 +6,14 @@ e separador em `-`. As notas saem do texto por `notas.extrair_notas` (RF12).
 """
 
 import re
+import unicodedata
 from collections.abc import Iterable
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields
 
 from vademecum.modelo import (
     EntradaRelatorio,
     LinhaFonte,
+    Local,
     No,
     Nota,
     Relatorio,
@@ -40,6 +42,9 @@ _PENA = re.compile(r"^Pena\s*[-:]\s*(?P<texto>.*)$")
 _PONTUADO = (".", ";", ":", ",")
 # RF11, RF14: o tipo de nota que, abrindo linha sem rótulo, a descarta.
 _VETO = "veto"
+# H5: campos de `Local` que são nível; a palavra-chave do perfil, sem acento, dá o campo.
+_NIVEIS = tuple(f.name for f in fields(Local) if f.name != "rotulo_livre")
+_SEPARADOR_NOME = " — "  # `TÍTULO I — DOS CRIMES CONTRA A PESSOA`
 
 
 @dataclass(slots=True)
@@ -51,6 +56,7 @@ class _Em:
     origem: str
     rotulo: str | None = None
     rubrica: str | None = None
+    local: Local | None = None
     numero: int | None = None
     sufixo: tuple[str, ...] = ()
     textos: list[str] = field(default_factory=list)
@@ -71,6 +77,7 @@ class _Em:
             origem=self.origem,
             rotulo=self.rotulo,
             rubrica=self.rubrica,
+            local=self.local,
             numero=self.numero,
             sufixo=self.sufixo,
             notas=tuple(self.notas),
@@ -89,6 +96,7 @@ class _Estado:
     corrente: _Em | None = None  # quem recebe a continuação (RF11)
     # Rubrica à espera do dispositivo seguinte (H6, H7): a linha, o texto e as notas.
     rubrica: tuple[LinhaFonte, str, tuple[Nota, ...]] | None = None
+    local: dict[str, str | None] = field(default_factory=dict)  # campos de `Local` (H5)
 
     @property
     def artigo(self) -> _Em | None:
@@ -96,20 +104,31 @@ class _Estado:
 
 
 def analisar(linhas: Iterable[LinhaFonte], perfil: Perfil, relatorio: Relatorio) -> tuple[No, ...]:
-    """Artigos na ordem da fonte, com parágrafos, incisos, alíneas, penas e rubricas.
+    """Artigos na ordem da fonte, com `local`, parágrafos, incisos, alíneas, penas e rubricas.
 
-    RF08–RF11, H6, H7, H14. Linha sem dispositivo aberto que a receba vai ao relatório como
+    RF07–RF11, H5–H7, H14, H18. Linha sem dispositivo aberto que a receba vai ao relatório como
     `nao_classificada` (V7, RNF04).
     """
     artigo = _padrao_artigo(perfil.prefixos_artigo)
     estado = _Estado()
     linhas = [linha for linha in linhas if linha.texto]
-    for i, linha in enumerate(linhas):
+    i = 0
+    while i < len(linhas):
+        linha = linhas[i]
+        if linha.centralizado and (campo := _campo_nivel(linha.texto, perfil.niveis)):
+            _rubrica_sem_dispositivo(estado, relatorio)
+            i = _nivel(linhas, i, campo, artigo, perfil, estado, relatorio)
+            continue
+        i += 1
         casado = _casar(linha.texto, artigo, perfil)
-        seguinte = linhas[i + 1] if i + 1 < len(linhas) else None
+        seguinte = linhas[i] if i < len(linhas) else None
         if casado is None and _e_rubrica(linha, seguinte, artigo, perfil):
             _rubrica_sem_dispositivo(estado, relatorio)
             estado.rubrica = (linha, *extrair_notas(linha.texto, perfil, linha.origem, relatorio))
+            continue
+        if casado is None and linha.centralizado and linha.negrito and estado.artigos:
+            _rubrica_sem_dispositivo(estado, relatorio)
+            _rotulo_livre(linha, perfil, estado, relatorio)
             continue
         em = _abrir(casado, linha, perfil, estado, relatorio) if casado else None
         if em is not None and em.tipo != "pena" and estado.rubrica is not None:
@@ -122,6 +141,73 @@ def analisar(linhas: Iterable[LinhaFonte], perfil: Perfil, relatorio: Relatorio)
             _continuacao(linha, perfil, estado, relatorio)
     _rubrica_sem_dispositivo(estado, relatorio)
     return tuple(em.congelar() for em in estado.artigos)
+
+
+def _campo_nivel(texto: str, niveis: Iterable[str]) -> str | None:
+    """H5: o campo de `Local` da palavra-chave que abre a linha, sem diferenciar maiúsculas."""
+    dobrado = texto.casefold()
+    for palavra in niveis:
+        chave = palavra.casefold()
+        if dobrado.startswith(chave) and not dobrado[len(chave) : len(chave) + 1].isalnum():
+            campo = "".join(
+                c for c in unicodedata.normalize("NFD", chave) if not unicodedata.combining(c)
+            )
+            if campo not in _NIVEIS:
+                raise ValueError(f"nível do perfil sem campo em `Local`: {palavra!r}")
+            return campo
+    return None
+
+
+def _nivel(
+    linhas: list[LinhaFonte],
+    i: int,
+    campo: str,
+    artigo: re.Pattern[str],
+    perfil: Perfil,
+    estado: _Estado,
+    relatorio: Relatorio,
+) -> int:
+    """Lê o nível em `linhas[i]` e o nome nas centralizadas seguintes; devolve a próxima linha.
+
+    H5: o nome são as centralizadas que não são nota, nível nem rubrica (H6 d), unidas por espaço
+    (`DOS CRIMES CONTRA A` / `INVIOLABILIDADE DE CORRESPONDÊNCIA`). H18: a nota do nível, antes ou
+    depois do nome, não tem nó onde ficar e vira `aviso`. O nível novo zera os de baixo.
+    """
+    rotulo = _sem_notas(linhas[i], perfil, relatorio)
+    nomes: list[str] = []
+    j = i + 1
+    while j < len(linhas) and linhas[j].centralizado:
+        linha = linhas[j]
+        seguinte = linhas[j + 1] if j + 1 < len(linhas) else None
+        if _campo_nivel(linha.texto, perfil.niveis) or _e_rubrica(linha, seguinte, artigo, perfil):
+            break
+        if nome := _sem_notas(linha, perfil, relatorio):
+            nomes.append(nome)
+        j += 1
+    abaixo = _NIVEIS[_NIVEIS.index(campo) + 1 :]
+    estado.local.update(dict.fromkeys(abaixo), rotulo_livre=None)
+    estado.local[campo] = _SEPARADOR_NOME.join([rotulo, " ".join(nomes)]) if nomes else rotulo
+    estado.corrente = None
+    return j
+
+
+def _rotulo_livre(linha: LinhaFonte, perfil: Perfil, estado: _Estado, relatorio: Relatorio) -> None:
+    """H5, P8: centralizada em negrito sem palavra-chave depois do primeiro artigo
+    (`DISPOSIÇÕES FINAIS`). Fecha os níveis abaixo da parte: não pertence ao título aberto
+    (operador, 2026-11-01).
+    """
+    estado.local.update(
+        dict.fromkeys(_NIVEIS[1:]), rotulo_livre=_sem_notas(linha, perfil, relatorio)
+    )
+    estado.corrente = None
+
+
+def _sem_notas(linha: LinhaFonte, perfil: Perfil, relatorio: Relatorio) -> str:
+    """Texto de linha de nível sem as notas; a linha que tinha nota vai ao relatório (H18)."""
+    limpo, notas = extrair_notas(linha.texto, perfil, linha.origem, relatorio)
+    if notas:
+        relatorio.registrar(EntradaRelatorio(tipo="aviso", origem=linha.origem, texto=linha.texto))
+    return limpo
 
 
 def _padrao_artigo(prefixos: Iterable[str]) -> re.Pattern[str]:
@@ -163,6 +249,7 @@ def _abrir(
             rotulo=casamento["rotulo"],
             numero=numero,
             sufixo=sufixo,
+            local=Local(**estado.local),
         )
         estado.artigos.append(em)
         estado.paragrafo = estado.inciso = estado.alinea = None
@@ -223,23 +310,29 @@ def _romano_valido(romano: str) -> bool:
 def _e_rubrica(
     linha: LinhaFonte, seguinte: LinhaFonte | None, artigo: re.Pattern[str], perfil: Perfil
 ) -> bool:
-    """H6: linha não centralizada, sem padrão de dispositivo, numa das formas (a), (b) ou (c).
+    """H6: linha sem padrão de dispositivo nem de nível, numa das formas (a) a (d).
 
-    (a) 100% negrito; (b) só o início em negrito (`Lugar do crime (Redação dada…)`) e seguida de
-    dispositivo; (c) sem negrito, se o perfil ligar, com o resto sem notas não pontuado
-    (`Sabotagem`) e seguida de dispositivo. A pena não é dispositivo que receba rubrica.
+    Não centralizada: (a) 100% negrito; (b) só o início em negrito (`Lugar do crime (Redação
+    dada…)`) e seguida de dispositivo; (c) sem negrito, se o perfil ligar, com o resto sem notas não
+    pontuado (`Sabotagem`) e seguida de dispositivo. Centralizada: (d) em caixa mista e seguida de
+    dispositivo (`Registro não autorizado da intimidade sexual`, CP, art. 216-B). A pena não é
+    dispositivo que receba rubrica.
     """
-    if not perfil.rubrica or linha.centralizado:
+    if not perfil.rubrica:
         return False
     # Relatório descartável: aqui só se classifica.
     # A nota `outra` entra no relatório de verdade quando a rubrica for aceita.
     limpo, _ = extrair_notas(linha.texto, perfil, linha.origem, Relatorio())
     if not limpo:
         return False
-    if linha.negrito:
-        return True
     casado = _casar(seguinte.texto, artigo, perfil) if seguinte else None
     segue_dispositivo = casado is not None and casado[0] != "pena"
+    if linha.centralizado:
+        # Nome de nível vem em maiúsculas ou todo em minúsculas (`das fraudes em certames…`).
+        caixa_mista = any(c.isupper() for c in limpo) and any(c.islower() for c in limpo)
+        return caixa_mista and segue_dispositivo
+    if linha.negrito:
+        return True
     if linha.rotulo_negrito:
         return segue_dispositivo
     return perfil.rubrica_sem_negrito and not limpo.endswith(_PONTUADO) and segue_dispositivo
@@ -259,15 +352,17 @@ def _continuacao(linha: LinhaFonte, perfil: Perfil, estado: _Estado, relatorio: 
 
     Linha sem rótulo que começa por `(VETADO)` é `descarte` (RF14): não é nota de outro dispositivo.
     """
-    if estado.corrente is None:
-        relatorio.registrar(
-            EntradaRelatorio(tipo="nao_classificada", origem=linha.origem, texto=linha.texto)
-        )
-        return
-    limpo, notas = extrair_notas(linha.texto, perfil, linha.origem, relatorio)
+    # Sem dispositivo corrente, a linha inteira vai ao relatório: a nota `outra` não conta à parte.
+    descartavel = Relatorio() if estado.corrente is None else relatorio
+    limpo, notas = extrair_notas(linha.texto, perfil, linha.origem, descartavel)
     if linha.texto.startswith("(") and notas and notas[0].tipo == _VETO:
+        # Vale também logo depois de um nível (CP, `p#2383`), quando não há dispositivo corrente.
         relatorio.registrar(
             EntradaRelatorio(tipo="descarte", origem=linha.origem, texto=linha.texto)
         )
-        return
-    estado.corrente.acrescentar(limpo, notas)
+    elif estado.corrente is None:
+        relatorio.registrar(
+            EntradaRelatorio(tipo="nao_classificada", origem=linha.origem, texto=linha.texto)
+        )
+    else:
+        estado.corrente.acrescentar(limpo, notas)
