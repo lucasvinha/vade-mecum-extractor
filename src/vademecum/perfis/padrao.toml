@@ -1,17 +1,24 @@
-# Perfil padrão (ver docs/negocio/pipeline-e-perfis.md, ADR-002). Perfis específicos sobrescrevem só as chaves que mudam.
-# Esqueleto inicial: as chaves são preenchidas e validadas no marco M3 (docs/PENDENCIAS.md).
+# Perfil padrão (ver docs/negocio/pipeline-e-perfis.md, ADR-002).
+# Perfis específicos sobrescrevem só as chaves que mudam; chave fora da lista do documento é erro.
 
 id = "padrao"
 
 [artigo]
-prefixos = ["Art.", "Art", "Artigo"]
+prefixos = ["Art.", "Art", "Artigo"]  # P9
 
 [hierarquia]
-niveis = ["PARTE", "LIVRO", "TÍTULO", "CAPÍTULO", "Seção", "Subseção"]
+niveis = ["PARTE", "LIVRO", "TÍTULO", "CAPÍTULO", "Seção", "Subseção"]  # H5, sem diferenciar maiúsculas
 
 [dispositivos]
 rubrica = true
 pena = true
+
+[rubrica]
+sem_negrito = false  # H6 (c): rubrica sem negrito, só onde a norma a usa
+
+[rodape]
+# H17: local e data da assinatura abrem o rodapé (`Brasília, 16 de março de 2015;`).
+inicio = ['^(?:Brasília|Rio de Janeiro), \d{1,2}º? de [a-zç]+ de \d{4}']
 
 [validacao]
 lacunas = true   # V2: desligar em PDF-recorte
