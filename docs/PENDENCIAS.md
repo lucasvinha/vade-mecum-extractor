@@ -11,8 +11,8 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 
 ## Agora
 
-- **Em curso:** M3 (item 7), pela spec `docs/processo/specs/m3-parser-cp.md`.
-- **Próximo sugerido:** M4 (item 8), pelo `/spec`, quando o M3 fechar.
+- **Em curso:** nenhum marco; o M3 fechou em 2026-11-01.
+- **Próximo sugerido:** M4 (item 8), pelo `/spec`.
 - **Meta:** a base do CP no M4 e as normas do edital que estão no Planalto no M6. Prova em
   14/03/2027. Do Planalto: CP, CPP, CPC, CC, LINDB, CF e Leis 9.099, 8.429, 6.830 e 13.146. Fora
   dele, no M8: NSCGJ, Leis SP 10.261 e 11.608 e Res. CNJ 354. Os artigos de cada tópico estão em
@@ -20,14 +20,11 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
 
 ## Fila
 
-- [ ] **M3 · 7. Parser (perfil `cp`) + `extrair`.** `perfil.py`, `perfis/cp.toml`, `notas.py`
-      ([negocio/vigencia-e-notas.md](negocio/vigencia-e-notas.md)), `parser.py` (hierarquia,
-      dispositivos, rubricas, penas; RF07–RF11) e o subcomando `extrair`, que já grava o
-      relatório, com código de saída 2 para erro de entrada. Aceite: A1–A8, exceto vigência.
-      `notas.py` veio do M4 (2026-11-01): sem ele o parser não separa nota de texto.
 - [ ] **M4 · 8. Vigência e validação.** `vigencia.py` (ADR-001, RF14–RF16), `validador.py`
       (V1–V7) e o motivo estruturado do descarte no relatório. Aceite: A1–A8 completos;
-      snapshot dos enxertos do CP. **Entrega a primeira base usável: o CP.**
+      snapshot dos enxertos do CP. **Entrega a primeira base usável: o CP.** A conferir na
+      spec, no relatório do CP inteiro: se o `descarte` do `(VETADO)` sem rótulo pede o motivo
+      estruturado do RF16 e se o `aviso` da nota de nível (H18) basta à Etapa 2.
 - [ ] **M5 · 15. Recorte + `recortar`.** `recorte.py` e o subcomando (RF18, ADR-004, P1, P2).
       Aceite: A13. Em 2026-10-31 o operador decidiu: o Python recorta e o Claude recebe só o
       recorte (RF18 e ADR-003 mantidos). Nas cinco normas maiores, o edital cobra 686 dos 4.540
@@ -38,7 +35,9 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
       `cf` e as Leis 9.099, 8.429, 6.830 e 13.146. Um perfil por fase, cada um com casos de
       aceite novos e enxerto real. A conferir na spec: milhar no HTML (`Art. 1.072`, P13), a CF
       com o ADCT na mesma página (a numeração recomeça), normas sem rubrica e sem pena, e se as
-      leis menores cabem no perfil `padrao` (ADR-002).
+      leis menores cabem no perfil `padrao` (ADR-002). Do M3: rubrica antes do primeiro
+      nível ou artigo cai no `preambulo` (H17), e cabeçalho sem tipo de norma deixa
+      `norma.titulo` vazio, com `aviso`.
 - [ ] **M7 · 10. URL com cache.** Download + cache com data e SHA-256 (RF02). Aceite: A14.
       Opcional: o `.mht` salvo à mão já cobre as normas do Planalto. O Planalto recusa cliente
       sem User-Agent de navegador (visto no M2, 2026-10-31): a spec decide o cabeçalho.
@@ -79,13 +78,14 @@ Não são itens de trabalho: cada um é tratado pelo item citado.
 
 Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
 
-- ~~**18. H8: tachado só pelo CSS**~~ — 2026-11-01: `line-through` no `style` de qualquer
-  ancestral conta como `<strike>`
+- ~~**M3 · 7. Parser (perfil `cp`) + `extrair`**~~ — 2026-11-01, `cc3d6fd`: `perfil.py`,
+  `notas.py`, `parser.py` (`analisar` → `Analise`) e `extrair`; aceite A1–A4, A6 e A7
+  estruturais, sem linha não classificada no CP
+- ~~**18. H8: tachado só pelo CSS**~~ — 2026-11-01, `12a1e6b`: `line-through` no `style` de
+  qualquer ancestral conta como `<strike>`
 - ~~**16. RF19 × esquema por tipo**~~ — 2026-11-01, `9e441f2`: `origem` fica na memória e no
   relatório, fora do JSON da base
 - ~~**M2 · 6. Leitor HTML + normalizador**~~ — 2026-10-31, `ba7c3bd`: `ler_html` (`.mht` e
   `.htm` locais → `FonteLida`, tachado pela H8) e `normalizar`; aceite A8
 - ~~**17. H6: negrito que o leitor HTML não vê**~~ — 2026-10-31, `c2cc27e`: `html5lib` e peso
   pelo `font-weight`
-- ~~**M1 · 1. Modelo e ordenação**~~ — 2026-10-31, `a5dd794`: `modelo.py` com esquema estável
-  por tipo

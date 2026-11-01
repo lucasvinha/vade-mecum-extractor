@@ -150,8 +150,8 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 | `fontes/pdf.py` | `.pdf` → `list[LinhaFonte]` | `modelo`, `perfil` |
 | `segmentador.py` | `list[LinhaFonte]` → `list[DocumentoFonte]` (P5) | `modelo`, `perfil` |
 | `normalizador.py` | `normalizar(linhas, prefixos_artigo) -> tuple[LinhaFonte, ...]`: ordinal e travessão do rótulo inicial | `modelo` |
-| `notas.py` | texto → `(texto_limpo, list[Nota])` | `modelo`, `perfil` |
-| `parser.py` | linhas → árvore `list[No]` (máquina de estados) | `modelo`, `notas`, `perfil` |
+| `notas.py` | `extrair_notas(texto, perfil, origem, relatorio)` → `(texto_limpo, tuple[Nota, ...])` | `modelo`, `perfil` |
+| `parser.py` | `analisar(linhas, perfil, relatorio) -> Analise`: título, ementa, `Metadados` e os artigos (máquina de estados) | `modelo`, `notas`, `perfil` |
 | `vigencia.py` | árvore → árvore vigente + descartes no relatório (ADR-001) | `modelo` |
 | `validador.py` | `Base` → avisos V1–V7 no relatório | `modelo`, `perfil` |
 | `recorte.py` | `Base` + expressão → `Base` recortada | `modelo` |
