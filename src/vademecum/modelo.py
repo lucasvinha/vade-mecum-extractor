@@ -194,23 +194,32 @@ class Base:
 
 # RNF04: todo texto fora da árvore cai num destes tipos (ver docs/README.md, Contratos).
 TIPOS_ENTRADA = frozenset({"descarte", "aviso", "nao_classificada", "nota_outra", "faixa_revogada"})
+# RF16: por que o dispositivo saiu da base (ver negocio/vigencia-e-notas).
+MOTIVOS_DESCARTE = frozenset({"revogado", "vetado", "vazio"})
 
 
 @dataclass(frozen=True, slots=True)
 class EntradaRelatorio:
     """Texto que não entrou na árvore, com a `origem` de onde saiu (RNF04).
 
-    Os campos próprios de cada tipo (motivo do descarte, faixa revogada) chegam com a etapa que
-    gera a entrada.
+    `id`, `rotulo`, `rubrica`, `motivo` e `notas` são só do `descarte` (RF16, P4), e `motivo` é
+    obrigatório nele; nos outros tipos ficam no padrão e não saem no JSON.
     """
 
     tipo: str
     origem: str
     texto: str
+    id: str | None = None
+    rotulo: str | None = None
+    rubrica: str | None = None
+    motivo: str | None = None
+    notas: tuple[Nota, ...] = ()
 
     def __post_init__(self) -> None:
         if self.tipo not in TIPOS_ENTRADA:
             raise ValueError(f"tipo de entrada do relatório inválido: {self.tipo!r}")
+        if self.tipo == "descarte" and self.motivo not in MOTIVOS_DESCARTE:
+            raise ValueError(f"motivo de descarte inválido: {self.motivo!r}")
 
 
 @dataclass(slots=True)
@@ -236,6 +245,9 @@ _CHAVES_POR_TIPO = {
     **dict.fromkeys(("paragrafo", "inciso", "alinea", "item"), _CHAVES_DISPOSITIVO),
     "pena": ("id", "tipo", "texto", "notas"),
 }
+# O mesmo vale para o relatório: só o `descarte` tem chaves além das três comuns (RF16).
+_CHAVES_ENTRADA = ("tipo", "origem", "texto")
+_CHAVES_DESCARTE = (*_CHAVES_ENTRADA, "id", "rotulo", "rubrica", "motivo", "notas")
 
 
 def _para_dict(valor):
@@ -243,6 +255,9 @@ def _para_dict(valor):
         chaves = _CHAVES_POR_TIPO.get(valor.tipo)
         if chaves is None:
             raise ValueError(f"tipo de nó sem esquema: {valor.tipo!r} em {valor.id!r}")
+        return {chave: _para_dict(getattr(valor, chave)) for chave in chaves}
+    if isinstance(valor, EntradaRelatorio):
+        chaves = _CHAVES_DESCARTE if valor.tipo == "descarte" else _CHAVES_ENTRADA
         return {chave: _para_dict(getattr(valor, chave)) for chave in chaves}
     if is_dataclass(valor):
         return {f.name: _para_dict(getattr(valor, f.name)) for f in fields(valor)}

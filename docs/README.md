@@ -109,7 +109,9 @@ de documento citado por número). Vem do molde e é recopiado sem edição, por 
 - Funções de etapa são **puras**: recebem dados + `Perfil` + `Relatorio` e devolvem dados novos.
   Só `cli.py` e `fontes/*` fazem I/O.
 - `Relatorio` acumula entradas tipadas: `descarte`, `aviso`, `nao_classificada`, `nota_outra`,
-  `faixa_revogada`, cada uma com `origem`.
+  `faixa_revogada`, cada uma com `tipo`, `origem` e `texto`. Só o `descarte` traz mais chaves
+  (`id`, `rotulo`, `rubrica`, `motivo`, `notas`; RF16 em
+  [negocio/vigencia-e-notas.md](negocio/vigencia-e-notas.md)): o esquema é estável por tipo.
 - Erros de entrada (arquivo inexistente, PDF sem texto — RF06) levantam `ErroFonte(Exception)`,
   definido em `modelo.py`, com mensagem para o usuário; a CLI converte em código de saída 2.
 - Chave de ordenação: `(numero: int, sufixo: tuple[str, ...])`; tupla vazia ordena antes de

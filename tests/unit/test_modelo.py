@@ -221,7 +221,8 @@ def test_rnf04_tipos_de_entrada_sao_os_do_contrato():
 
 @pytest.mark.parametrize("tipo", sorted(TIPOS_ENTRADA))
 def test_rnf04_entrada_aceita_os_cinco_tipos(tipo):
-    entrada = EntradaRelatorio(tipo=tipo, origem="html:p#1", texto="VI - (Revogado)")
+    motivo = "revogado" if tipo == "descarte" else None
+    entrada = EntradaRelatorio(tipo=tipo, origem="html:p#1", texto="VI - (Revogado)", motivo=motivo)
     assert entrada.tipo == tipo
 
 
@@ -239,7 +240,9 @@ def test_rnf04_relatorio_guarda_na_ordem_do_registro():
         tipo="faixa_revogada", origem="pdf:p40:col1:l3", texto="Art. 1.054 a Art. 1091. Revogados."
     )
     aviso = EntradaRelatorio(tipo="aviso", origem="pdf:p7:col2:l9", texto="Parágrafo único.")
-    descarte = EntradaRelatorio(tipo="descarte", origem="html:p#12", texto="Feminicídio")
+    descarte = EntradaRelatorio(
+        tipo="descarte", origem="html:p#12", texto="Feminicídio", motivo="revogado"
+    )
     for entrada in (faixa, aviso, descarte):
         relatorio.registrar(entrada)
     assert relatorio.entradas == (faixa, aviso, descarte)
@@ -449,9 +452,23 @@ def test_tipo_de_no_sem_esquema_levanta_value_error():
         para_json(Base(norma=_NORMA, metadados=Metadados(), artigos=(no,)))
 
 
-def test_rnf04_para_json_do_relatorio():
+def test_rnf04_rf16_para_json_do_relatorio_tem_esquema_por_tipo():
+    # CP, art. 121, § 2º, VI (H16): o descarte leva rótulo, rubrica, motivo e a nota inteira.
+    bruto = "(Revogado pela Lei nº 14.994, de 2024)"
+    nota = Nota(tipo="revogacao", bruto=bruto, norma="Lei nº 14.994", ano=2024)
     relatorio = Relatorio()
-    relatorio.registrar(EntradaRelatorio(tipo="descarte", origem="html:p#12", texto="Feminicídio"))
+    relatorio.registrar(
+        EntradaRelatorio(
+            tipo="descarte",
+            origem="html:p#594",
+            texto=f"VI - {bruto}",
+            id="art121.p2.i6",
+            rotulo="VI",
+            rubrica="Feminicídio",
+            motivo="revogado",
+            notas=(nota,),
+        )
+    )
     relatorio.registrar(
         EntradaRelatorio(tipo="aviso", origem="pdf:p7:col2:l9", texto="Parágrafo único.")
     )
@@ -460,7 +477,46 @@ def test_rnf04_para_json_do_relatorio():
     assert texto.endswith("\n")
     assert json.loads(texto) == {
         "entradas": [
-            {"tipo": "descarte", "origem": "html:p#12", "texto": "Feminicídio"},
+            {
+                "tipo": "descarte",
+                "origem": "html:p#594",
+                "texto": f"VI - {bruto}",
+                "id": "art121.p2.i6",
+                "rotulo": "VI",
+                "rubrica": "Feminicídio",
+                "motivo": "revogado",
+                "notas": [
+                    {
+                        "tipo": "revogacao",
+                        "bruto": bruto,
+                        "norma": "Lei nº 14.994",
+                        "ano": 2024,
+                        "data": None,
+                    }
+                ],
+            },
             {"tipo": "aviso", "origem": "pdf:p7:col2:l9", "texto": "Parágrafo único."},
         ]
     }
+
+
+def test_rf16_descarte_sem_rotulo_sai_com_nulos():
+    relatorio = Relatorio()
+    relatorio.registrar(
+        EntradaRelatorio(tipo="descarte", origem="html:p#1", texto="(VETADO)", motivo="vetado")
+    )
+    [dados] = json.loads(para_json(relatorio))["entradas"]
+    chaves = ("id", "rotulo", "rubrica", "notas")
+    assert [dados[chave] for chave in chaves] == [None, None, None, []]
+
+
+@pytest.mark.parametrize("motivo", ["revogado", "vetado", "vazio"])
+def test_rf16_descarte_aceita_os_tres_motivos(motivo):
+    entrada = EntradaRelatorio(tipo="descarte", origem="html:p#1", texto="x", motivo=motivo)
+    assert entrada.motivo == motivo
+
+
+@pytest.mark.parametrize("motivo", [None, "Revogado", "tachado", ""])
+def test_rf16_descarte_rejeita_motivo_fora_dos_tres(motivo):
+    with pytest.raises(ValueError, match="motivo de descarte"):
+        EntradaRelatorio(tipo="descarte", origem="html:p#1", texto="x", motivo=motivo)

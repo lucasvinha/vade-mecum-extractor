@@ -198,7 +198,10 @@ def _linhas_logicas(conteudo: bytes, charset: str, relatorio: Relatorio) -> tupl
             resto = _colar([p for p in visiveis if not p.tachado])
             if _SO_NOTAS.fullmatch(resto):
                 # A linha sai com a nota: sozinha, o parser a colaria no dispositivo anterior.
-                relatorio.registrar(EntradaRelatorio(tipo="descarte", origem=origem, texto=linha))
+                # `vazio`: fora do tachado não sobra texto; as notas seguem em `texto` (RF16).
+                relatorio.registrar(
+                    EntradaRelatorio(tipo="descarte", origem=origem, texto=linha, motivo="vazio")
+                )
                 return
             # Apagar o trecho adulteraria a frase vigente (CPP, art. 336, parágrafo único).
             relatorio.registrar(EntradaRelatorio(tipo="aviso", origem=origem, texto=tachado))
