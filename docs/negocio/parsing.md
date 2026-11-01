@@ -30,7 +30,7 @@ Os regex abaixo são o **ponto de partida** e devem ser cobertos por testes com 
 | Alínea | `^([a-z])\)\s*(.*)$` |
 | Pena | `^Pena\s*-\s*(.*)$` |
 | Nível | `^(PARTE\|LIVRO\|TÍTULO\|CAPÍTULO\|Seção\|Subseção)\b\s*([IVXLC\d]*)` (centralizado) |
-| Nota | `\((?:Redação dada\|Incluíd[oa]\|Revogad[oa]s?\|Vide\|Vigência\|VETADO\|Alterad[oa]\|Acrescentad[oa]\|NR)[^)]*\)` + `\bVigência\s*$` |
+| Nota | `\s*\((?:<gatilhos de notas.<tipo> do perfil>)[^()]*\)` + `(?:^\|\s+)Vigência\s*$`; parêntese sem gatilho que cita `Lei nº` ou `Provimento` é nota `outra` |
 
 **Regex só muda com teste:** toda alteração de padrão vem com o caso real que a motivou.
 
