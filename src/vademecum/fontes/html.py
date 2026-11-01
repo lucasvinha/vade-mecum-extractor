@@ -42,6 +42,9 @@ _TEXT_ALIGN_CENTRO = re.compile(r"text-align\s*:\s*center", re.IGNORECASE)
 # sai inteira: `<strike>Art. 4° Os agentes…</strike> (Revogado pela Lei nº 14.230, de 2021)`
 # (Lei 8.429) e `(Redação dada pela Lei nº 12.403, de 2011).` (CPP, art. 336) são as notas reais.
 _TACHADO = frozenset({"strike", "s", "del"})
+# H8: o tachado também vem só pelo CSS, em qualquer ancestral: `text-decoration:line-through`
+# (CPC, art. 63, § 1º antigo) e `text-decoration: none line-through` (Lei 8.429, art. 17, § 3º).
+_LINE_THROUGH = re.compile(r"text-decoration\s*:[^;]*\bline-through", re.IGNORECASE)
 _SO_NOTAS = re.compile(r"(?: ?\([^()]*\)\.?)*")
 _FIM_DE_BLOCO = object()
 _ESPACO = re.compile(r"\s+")  # em `str`, `\s` inclui o `\xa0` do `&nbsp;`
@@ -128,7 +131,7 @@ def _pedaco(no: NavigableString) -> _Pedaco:
         texto=no,
         negrito=next((peso for peso in pesos if peso is not None), False),
         centralizado=any(pai.name in _BLOCOS and _bloco_centralizado(pai) for pai in ancestrais),
-        tachado=any(pai.name in _TACHADO for pai in ancestrais),
+        tachado=any(_tachado_proprio(pai) for pai in ancestrais),
     )
 
 
@@ -142,6 +145,11 @@ def _negrito_proprio(tag: Tag) -> bool | None:
         valor = peso[1].lower()
         return valor in _PESOS_NEGRITO or (valor.isdigit() and int(valor) >= 600)
     return True if tag.name in _NEGRITO else None
+
+
+def _tachado_proprio(tag: Tag) -> bool:
+    """H8: `<strike>`, `<s>`, `<del>` ou `line-through` no `style` da própria tag."""
+    return tag.name in _TACHADO or bool(_LINE_THROUGH.search(str(tag.get("style", ""))))
 
 
 def _bloco_centralizado(bloco: Tag) -> bool:

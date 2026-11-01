@@ -59,12 +59,6 @@ confirmadas, P3 está no item 5 e P4–P7 em "Riscos acompanhados".
       as notas trazem só o ano. Número e ano de cada nota ficam na base; a conferência de data
       contra o corte é da Etapa 2 ou lista manual de leis posteriores ao corte no perfil.
       Decidir no M4.
-- [ ] **18. H8: tachado só pelo CSS.** Achado na fase 4 do M2 (2026-10-31). A H8 lista
-      `<strike>`, `<s>` e `<del>`, mas 55 tachados vêm por `text-decoration: line-through` no
-      `style`, sem tag: 35 no CPC, 16 na Lei 8.429 (art. 12, IV antigo) e 4 na Lei 13.146. O
-      leitor deixa essa redação como vigente (ADR-001). Na Lei 8.429, art. 17, § 3º, o `<strike>`
-      fecha antes do `)` da nota, tachado por CSS, e a linha inteira vira `aviso` em vez de
-      `descarte`. A decidir pelo operador: o CSS conta como tachado (fase 4b, como a 3b)?
 
 ## Riscos acompanhados
 
@@ -85,13 +79,13 @@ Não são itens de trabalho: cada um é tratado pelo item citado.
 
 Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
 
-- ~~**16. RF19 × esquema por tipo**~~ — 2026-11-01: `origem` fica na memória e no relatório,
-  fora do JSON da base
+- ~~**18. H8: tachado só pelo CSS**~~ — 2026-11-01: `line-through` no `style` de qualquer
+  ancestral conta como `<strike>`
+- ~~**16. RF19 × esquema por tipo**~~ — 2026-11-01, `9e441f2`: `origem` fica na memória e no
+  relatório, fora do JSON da base
 - ~~**M2 · 6. Leitor HTML + normalizador**~~ — 2026-10-31, `ba7c3bd`: `ler_html` (`.mht` e
   `.htm` locais → `FonteLida`, tachado pela H8) e `normalizar`; aceite A8
 - ~~**17. H6: negrito que o leitor HTML não vê**~~ — 2026-10-31, `c2cc27e`: `html5lib` e peso
   pelo `font-weight`
 - ~~**M1 · 1. Modelo e ordenação**~~ — 2026-10-31, `a5dd794`: `modelo.py` com esquema estável
   por tipo
-- ~~**2. Fontes brutas no repositório**~~ — 2026-10-30, `04564d1`: só enxertos; fonte inteira e
-  extrações em `dados/`
