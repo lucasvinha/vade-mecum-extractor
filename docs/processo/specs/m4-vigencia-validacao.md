@@ -82,7 +82,7 @@ Regras que as fases executam, decididas na entrevista de 2026-11-01:
 | 2 | `vigencia.py`: filtro RF14 | 2 arquivos | portões verdes; unidade com linhas reais; nenhum chamador ainda | Opus | 2026-11-01, `001ff22` |
 | 3 | `extrair` aplica a vigência | 6 arquivos | portões verdes; A2, A3 e A5 completos; A1 com descartes | Sonnet | 2026-11-01, `87f315e` |
 | 4 | `validador.py`: V1–V6 | 2 arquivos | portões verdes; unidade com base sintética; nenhum chamador ainda | Sonnet | 2026-11-01, `7396c30` |
-| 5 | `extrair` roda o validador | 3 arquivos | portões verdes; CP inteiro só com a V4 do art. 272 (H20) | Sonnet | |
+| 5 | `extrair` roda o validador | 3 arquivos | portões verdes; CP inteiro só com a V4 do art. 272 (H20) | Sonnet | 2026-11-01, `72ba8b0` |
 | 6 | Snapshot dos enxertos do CP | 3 arquivos | `pytest -m regressao` verde | Sonnet | |
 | 7 | Fechamento | docs | `scripts/verificar_docs.py` sai 0 | Sonnet | |
 
