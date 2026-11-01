@@ -78,7 +78,7 @@ Regras que as fases executam, decididas na entrevista de 2026-11-01:
 
 | # | Fase | Toca | Aceite | Modelo | Feito |
 |---|---|---|---|---|---|
-| 1 | Descarte estruturado no relatório | 8 arquivos | portões verdes; `para_json(Relatorio)` sai com esquema por tipo; os 4 `(VETADO)` com `motivo` `vetado` e `notas` | Opus | |
+| 1 | Descarte estruturado no relatório | 8 arquivos | portões verdes; `para_json(Relatorio)` sai com esquema por tipo; os 4 `(VETADO)` com `motivo` `vetado` e `notas` | Opus | 2026-11-01, `e17189f` |
 | 2 | `vigencia.py`: filtro RF14 | 2 arquivos | portões verdes; unidade com linhas reais; nenhum chamador ainda | Opus | |
 | 3 | `extrair` aplica a vigência | 6 arquivos | portões verdes; A2, A3 e A5 completos; A1 com descartes | Sonnet | |
 | 4 | `validador.py`: V1–V6 | 2 arquivos | portões verdes; unidade com base sintética; nenhum chamador ainda | Sonnet | |
