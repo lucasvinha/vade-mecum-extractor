@@ -79,7 +79,7 @@ Regras que as fases executam, decididas na entrevista de 2026-11-01:
 | # | Fase | Toca | Aceite | Modelo | Feito |
 |---|---|---|---|---|---|
 | 1 | Descarte estruturado no relatório | 8 arquivos | portões verdes; `para_json(Relatorio)` sai com esquema por tipo; os 4 `(VETADO)` com `motivo` `vetado` e `notas` | Opus | 2026-11-01, `e17189f` |
-| 2 | `vigencia.py`: filtro RF14 | 2 arquivos | portões verdes; unidade com linhas reais; nenhum chamador ainda | Opus | |
+| 2 | `vigencia.py`: filtro RF14 | 2 arquivos | portões verdes; unidade com linhas reais; nenhum chamador ainda | Opus | 2026-11-01, `001ff22` |
 | 3 | `extrair` aplica a vigência | 6 arquivos | portões verdes; A2, A3 e A5 completos; A1 com descartes | Sonnet | |
 | 4 | `validador.py`: V1–V6 | 2 arquivos | portões verdes; unidade com base sintética; nenhum chamador ainda | Sonnet | |
 | 5 | `extrair` roda o validador | 3 arquivos | portões verdes; CP inteiro sem aviso `V*` | Sonnet | |
@@ -105,8 +105,8 @@ Os ids e penas restantes não são renumerados.
 
 **3. Ligar a vigência.** `cli.py:76`: `filtrar_vigentes` sobre `analise.artigos` antes de
 montar a `Base`. Aceite: a A2 sem o VI, com a rubrica no descarte; a A3 sem o § 2º-A e o § 7º;
-`tests/aceite/test_a05_arts_187_196.py` novo (ausentes e com descarte `revogado` cada um, no
-`cp_enxertos`); a A1 (`test_a01_cp_completo.py:6`) conta `base ∪ descartes de artigo`. Saem os
+`tests/aceite/test_a05_arts_187_196.py` novo (ausentes e com descarte `revogado` cada um; o
+`cp_enxertos` só vai até o 191, então 187–191 nele e 187–196 no CP inteiro, achado da fase 3); a A1 (`test_a01_cp_completo.py:6`) conta `base ∪ descartes de artigo`. Saem os
 comentários de "ainda estão na árvore" da A2 e da A3. Docs: a linha A1 do PADRAO_OURO e a H19
 em negocio/fontes passam a dizer "na base ou nos descartes".
 

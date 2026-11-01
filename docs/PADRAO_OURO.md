@@ -64,7 +64,7 @@ Identificadores em português, no vocabulário das regras de negócio (`LinhaFon
 
 | # | Entrada | Resultado esperado |
 |---|---|---|
-| A1 | CP, base completa | Artigos 1 a 361 sem lacuna de numeração-base; último = art. 361; rodapé fora da árvore. |
+| A1 | CP, base completa | Artigos 1 a 361 sem lacuna de numeração-base, na base ou nos descartes de artigo do relatório; último = art. 361; rodapé fora da árvore. |
 | A2 | CP, art. 121, § 2º | Incisos I–V e VII–X; **VI ausente** (revogado); rubrica "Feminicídio" do VI descartada; VII com alíneas a e b; duas penas posicionais. |
 | A3 | CP, art. 121 | § 2º-A e § 7º ausentes; § 2º-B, § 2º-C e § 2º-D presentes; § 2º-D com pena própria. |
 | A4 | CP, art. 88 | **Presente** ("Revogado o livramento…" é texto vigente). |

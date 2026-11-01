@@ -48,7 +48,7 @@ def cp_parser(tmp_path_factory) -> tuple[dict, dict]:
 
 @pytest.fixture(scope="session")
 def cp_enxertos(tmp_path_factory) -> tuple[dict, dict]:
-    # Arts. 78, 121 a 121-B e 187 a 196, recortados do `.mht`.
+    # Arts. 78, 121 a 121-B e 187 a 191, recortados do `.mht`.
     fonte = RAIZ / "tests" / "fixtures" / "html" / "cp_enxertos.mht"
     return extrair(fonte, tmp_path_factory.mktemp("cp_enxertos"))
 
