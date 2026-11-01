@@ -1,0 +1,1080 @@
+{
+  "entradas": [
+    {
+      "origem": "html:p#1",
+      "texto": "título da norma não encontrado no cabeçalho (H17)",
+      "tipo": "aviso"
+    },
+    {
+      "id": "art121.p2.i6",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2015,
+          "bruto": "(Incluído pela Lei nº 13.104, de 2015)",
+          "data": null,
+          "norma": "Lei nº 13.104",
+          "tipo": "inclusao"
+        },
+        {
+          "ano": 2024,
+          "bruto": "(Revogado pela Lei nº 14.994, de 2024)",
+          "data": null,
+          "norma": "Lei nº 14.994",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#25",
+      "rotulo": "VI",
+      "rubrica": "Feminicídio",
+      "texto": "VI (Incluído pela Lei nº 13.104, de 2015) (Revogado pela Lei nº 14.994, de 2024)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art121.p2-A",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2024,
+          "bruto": "(Revogado pela Lei nº 14.994, de 2024)",
+          "data": null,
+          "norma": "Lei nº 14.994",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#34",
+      "rotulo": "§ 2º-A",
+      "rubrica": null,
+      "texto": "§ 2º-A (Revogado pela Lei nº 14.994, de 2024)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art121.p7",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2024,
+          "bruto": "(Revogado pela Lei nº 14.994, de 2024)",
+          "data": null,
+          "norma": "Lei nº 14.994",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#51",
+      "rotulo": "§ 7º",
+      "rubrica": null,
+      "texto": "§ 7º (Revogado pela Lei nº 14.994, de 2024)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art187",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#74",
+      "rotulo": "Art 187",
+      "rubrica": "Violação de privilégio de invenção",
+      "texto": "Art 187 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art188",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#76",
+      "rotulo": "Art 188",
+      "rubrica": "Falsa atribuição de privilégio",
+      "texto": "Art 188 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art189",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#78",
+      "rotulo": "Art. 189",
+      "rubrica": "Usurpação ou indevida exploração de modelo ou desenho privilegiado",
+      "texto": "Art. 189 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art190",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#80",
+      "rotulo": "Art. 190",
+      "rubrica": "Falsa declaração de depósito em modelo ou desenho",
+      "texto": "Art. 190 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art191",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#81",
+      "rotulo": "Art. 191",
+      "rubrica": null,
+      "texto": "Art. 191 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 1",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 2",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 3",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 4",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 5",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 6",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 7",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 8",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 9",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 10",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 11",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 12",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 13",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 14",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 15",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 16",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 17",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 18",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 19",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 20",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 21",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 22",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 23",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 24",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 25",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 26",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 27",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 28",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 29",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 30",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 31",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 32",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 33",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 34",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 35",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 36",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 37",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 38",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 39",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 40",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 41",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 42",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 43",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 44",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 45",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 46",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 47",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 48",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 49",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 50",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 51",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 52",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 53",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 54",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 55",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 56",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 57",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 58",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 59",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 60",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 61",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 62",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 63",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 64",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 65",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 66",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 67",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 68",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 69",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 70",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 71",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 72",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 73",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 74",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 75",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 76",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1",
+      "texto": "V2: lacuna na numeração-base: art. 77",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 79",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 80",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 81",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 82",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 83",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 84",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 85",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 86",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 87",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 88",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 89",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 90",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 91",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 92",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 93",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 94",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 95",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 96",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 97",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 98",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 99",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 100",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 101",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 102",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 103",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 104",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 105",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 106",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 107",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 108",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 109",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 110",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 111",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 112",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 113",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 114",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 115",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 116",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 117",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 118",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 119",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#12",
+      "texto": "V2: lacuna na numeração-base: art. 120",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 122",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 123",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 124",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 125",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 126",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 127",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 128",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 129",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 130",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 131",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 132",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 133",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 134",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 135",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 136",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 137",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 138",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 139",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 140",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 141",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 142",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 143",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 144",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 145",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 146",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 147",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 148",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 149",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 150",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 151",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 152",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 153",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 154",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 155",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 156",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 157",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 158",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 159",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 160",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 161",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 162",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 163",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 164",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 165",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 166",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 167",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 168",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 169",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 170",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 171",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 172",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 173",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 174",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 175",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 176",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 177",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 178",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 179",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 180",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 181",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 182",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 183",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 184",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 185",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#67",
+      "texto": "V2: lacuna na numeração-base: art. 186",
+      "tipo": "aviso"
+    }
+  ]
+}
