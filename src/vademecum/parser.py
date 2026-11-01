@@ -118,7 +118,7 @@ class Analise:
     Os outros campos da `Norma` (fonte, captura, perfil) vêm de quem leu a fonte.
     """
 
-    titulo: str | None
+    titulo: str | None  # `None` quando o cabeçalho não traz o tipo da norma
     ementa: str | None
     metadados: Metadados
     artigos: tuple[No, ...]
@@ -152,15 +152,16 @@ def analisar(linhas: Iterable[LinhaFonte], perfil: Perfil, relatorio: Relatorio)
         len(linhas),
     )
     cabecalho = linhas[:inicio]
-    return Analise(
-        titulo=next(
-            (
-                linha.texto
-                for linha in cabecalho
-                if linha.centralizado and _TIPO_NORMA.match(linha.texto)
-            ),
-            None,
+    titulo = next(
+        (
+            linha.texto
+            for linha in cabecalho
+            if linha.centralizado and _TIPO_NORMA.match(linha.texto)
         ),
+        None,
+    )
+    return Analise(
+        titulo=titulo,
         ementa=_ementa(cabecalho),
         metadados=Metadados(preambulo=_juntar(cabecalho), rodape=_juntar(linhas[fim:])),
         artigos=_corpo(linhas[inicio:fim], artigo, perfil, relatorio),
