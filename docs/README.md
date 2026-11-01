@@ -144,12 +144,12 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 
 | Módulo | Entrada → Saída | Depende de |
 |---|---|---|
-| `modelo.py` | dataclasses `LinhaFonte`, `No`, `Nota`, `Local`, `Norma`, `Base`, `Relatorio`; `ErroFonte`; `chave_ordenacao()`, `chave_de_texto()`; funções de `id`; `para_json()` | — |
+| `modelo.py` | dataclasses `LinhaFonte`, `FonteLida`, `No`, `Nota`, `Local`, `Norma`, `Base`, `Relatorio`; `ErroFonte`; `chave_ordenacao()`, `chave_de_texto()`; funções de `id`; `para_json()` | — |
 | `perfil.py` | `carregar_perfil(nome) -> Perfil` (merge `padrao.toml` + específico) | `modelo` |
-| `fontes/html.py` | URL/`.htm`/`.mht` → `list[LinhaFonte]` + metadados | `modelo` |
+| `fontes/html.py` | `ler_html(caminho, relatorio)`: `.htm`/`.mht` local → `FonteLida` (linhas + `tipo_fonte`, `fonte`, `capturado_em`, `sha256`); URL no M7 | `modelo` |
 | `fontes/pdf.py` | `.pdf` → `list[LinhaFonte]` | `modelo`, `perfil` |
 | `segmentador.py` | `list[LinhaFonte]` → `list[DocumentoFonte]` (P5) | `modelo`, `perfil` |
-| `normalizador.py` | linhas → linhas normalizadas (ordinal, travessão, junção) | `modelo`, `perfil` |
+| `normalizador.py` | `normalizar(linhas, prefixos_artigo) -> tuple[LinhaFonte, ...]`: ordinal e travessão do rótulo inicial | `modelo` |
 | `notas.py` | texto → `(texto_limpo, list[Nota])` | `modelo`, `perfil` |
 | `parser.py` | linhas → árvore `list[No]` (máquina de estados) | `modelo`, `notas`, `perfil` |
 | `vigencia.py` | árvore → árvore vigente + descartes no relatório (ADR-001) | `modelo` |

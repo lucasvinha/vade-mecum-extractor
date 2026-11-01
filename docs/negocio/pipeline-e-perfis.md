@@ -21,6 +21,8 @@ e [parsing.md](parsing.md).
 ```
 
 O contrato central é `LinhaFonte`. Tudo à direita dele independe da fonte, e isso é o que torna o parser genérico.
+O leitor devolve as linhas numa `FonteLida`, junto dos campos de `Norma` que vêm da captura
+(`tipo_fonte`, `fonte`, `capturado_em`, `sha256`).
 
 ```python
 @dataclass(frozen=True, slots=True)
@@ -33,6 +35,10 @@ class LinhaFonte:
     origem: str             # "html:p#123" | "pdf:p3:col2:l14"  (rastreabilidade)
 ```
 
+No HTML, a `origem` é `html:p#<n>`, com `n` a posição da linha lógica no documento (1, 2, 3…),
+contando as que saem pelo tachado (H8). A saída pode ter lacunas, e a `origem` do `descarte`
+no relatório aponta o lugar exato da linha que saiu.
+
 ## §2. Responsabilidade de cada etapa
 
 Caminhos relativos a `src/vademecum/`.
@@ -42,7 +48,7 @@ Caminhos relativos a `src/vademecum/`.
 | `fontes/html.py` | URL, `.htm` e `.mht` → `LinhaFonte` (decodificação, colapso de espaços, quebra por bloco, flags de negrito e centralizado). |
 | `fontes/pdf.py` | PDF → `LinhaFonte` (colunas, remoção de cabeçalho e rodapé, negrito pelo mapa de fontes, cor). |
 | `segmentador.py` | Divide o fluxo em normas (P5). |
-| `normalizador.py` | Ordinais, travessões, junção de linhas quebradas, separação de notas. |
+| `normalizador.py` | Ordinal e travessão do rótulo no início da linha (H11, H13); o corpo fica literal. A junção de linhas quebradas é do parser e do leitor PDF (P14); a separação de notas, de `notas.py`. |
 | `parser.py` | Máquina de estados: hierarquia, dispositivos, rubricas, penas. |
 | `notas.py` | Classificação de notas ([vigencia-e-notas.md](vigencia-e-notas.md)). |
 | `vigencia.py` | Aplica ADR-001 e alimenta o relatório. |
