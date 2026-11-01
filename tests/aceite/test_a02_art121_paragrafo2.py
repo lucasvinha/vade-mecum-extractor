@@ -2,9 +2,6 @@ import pytest
 
 pytestmark = pytest.mark.aceite
 
-# Parte estrutural da A2. O VI revogado e a rubrica `Feminicídio` dele ainda estão na árvore: a
-# ausência dos dois vem com o filtro de vigência (ADR-001, H16).
-
 
 def test_a2_paragrafo_2_com_incisos_e_duas_penas_posicionais(cp_enxertos, no):
     base, _ = cp_enxertos
@@ -16,7 +13,6 @@ def test_a2_paragrafo_2_com_incisos_e_duas_penas_posicionais(cp_enxertos, no):
         ("inciso", "IV"),
         ("inciso", "V"),
         ("pena", None),
-        ("inciso", "VI"),
         ("inciso", "VII"),
         ("inciso", "VIII"),
         ("inciso", "IX"),
@@ -27,6 +23,20 @@ def test_a2_paragrafo_2_com_incisos_e_duas_penas_posicionais(cp_enxertos, no):
         "art121.p2.pena1",
         "art121.p2.pena2",
     ]
+
+
+def test_a2_inciso_vi_ausente_e_rubrica_feminicidio_descartada(cp_enxertos, no):
+    # ADR-001, H16: o VI revogado sai com a rubrica, que fica registrada no descarte (RF16).
+    base, relatorio = cp_enxertos
+    with pytest.raises(KeyError):
+        no(base, "art121.p2.i6")
+    [descarte] = [e for e in relatorio["entradas"] if e.get("id") == "art121.p2.i6"]
+    assert (descarte["tipo"], descarte["rotulo"], descarte["rubrica"], descarte["motivo"]) == (
+        "descarte",
+        "VI",
+        "Feminicídio",
+        "revogado",
+    )
 
 
 def test_a2_inciso_vii_com_alineas_a_e_b(cp_enxertos, no):

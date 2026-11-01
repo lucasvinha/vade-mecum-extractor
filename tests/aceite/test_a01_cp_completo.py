@@ -1,12 +1,21 @@
 import pytest
 
+from vademecum.modelo import chave_de_texto
+
 pytestmark = pytest.mark.aceite
 
 
 def test_a1_numeracao_base_de_1_a_361_sem_lacuna(cp_inteiro):
-    base, _ = cp_inteiro
-    numeros = [artigo["numero"] for artigo in base["artigos"]]
-    assert sorted(set(numeros)) == list(range(1, 362))  # H19
+    # H19, ADR-003: o artigo revogado sai da base (ADR-001), mas conta pelo descarte de artigo.
+    base, relatorio = cp_inteiro
+    numeros = {artigo["numero"] for artigo in base["artigos"]}
+    descartados = {
+        chave_de_texto(e["id"].removeprefix("art"))[0]
+        for e in relatorio["entradas"]
+        if e["tipo"] == "descarte" and e["id"] is not None and "." not in e["id"]
+    }
+    assert sorted(numeros | descartados) == list(range(1, 362))
+    assert {185, 187, 196, 350} <= descartados - numeros
     assert base["artigos"][-1]["id"] == "art361"
 
 

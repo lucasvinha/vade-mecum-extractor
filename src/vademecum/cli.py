@@ -19,6 +19,7 @@ from vademecum.modelo import Base, EntradaRelatorio, ErroFonte, Norma, Relatorio
 from vademecum.normalizador import normalizar
 from vademecum.parser import analisar
 from vademecum.perfil import carregar_perfil
+from vademecum.vigencia import filtrar_vigentes
 
 _URL = re.compile(r"^https?://", re.IGNORECASE)
 _SUFIXO_RELATORIO = ".relatorio.json"  # `base.json` → `base.relatorio.json`
@@ -90,7 +91,7 @@ def _extrair(args: argparse.Namespace) -> None:
             perfil=args.perfil,
         ),
         metadados=analise.metadados,
-        artigos=analise.artigos,
+        artigos=filtrar_vigentes(analise.artigos, perfil, relatorio),  # ADR-001
     )
     saida: Path = args.saida
     saida.parent.mkdir(parents=True, exist_ok=True)
