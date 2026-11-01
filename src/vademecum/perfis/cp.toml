@@ -1,0 +1,7 @@
+# Código Penal, DL 2.848/1940 (ver docs/negocio/pipeline-e-perfis.md). Herda o resto do padrao.
+
+id = "cp"
+
+[rubrica]
+# H6 (c): 10 rubricas do CP vêm sem negrito (`Feminicídio (Incluído…)`, `Sabotagem`).
+sem_negrito = true
