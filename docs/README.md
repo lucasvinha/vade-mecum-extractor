@@ -8,11 +8,12 @@ alínea, com rubricas, penas e notas legislativas. Sobre essa base, um segundo c
 [negocio/modelo-de-dados.md](negocio/modelo-de-dados.md).
 
 O vade mecum sai em **três etapas**, todas neste repositório (ADR-005). **1** `extrair` e **2**
-`recortar` são determinísticas e versionadas em `dados/`. **3** é uma LLM gerando o HTML do
-material de estudo (realces, quadros comparativos, pontos de atenção) a partir dos recortes, dos
-relatórios e dos tópicos do edital; o `conferir`, também determinístico, garante que o texto legal
-do HTML é o dos recortes. O PDF sai do navegador. O consumidor do JSON é, portanto, um LLM: as
-etapas 1 e 2 preservam o que ele vai precisar (notas, penas e o relatório de descartes). Os
+`recortar` são determinísticas e versionadas em `dados/`. Na **3**, uma LLM escreve a curadoria
+em JSON (realces, quadros comparativos, pontos de atenção), e o `renderizar`, determinístico,
+gera o HTML a partir dela, dos recortes, dos relatórios e dos tópicos do edital (ADR-006); o
+`conferir` garante que o texto legal do HTML é o dos recortes. O PDF sai do navegador. O
+consumidor do JSON é, portanto, um LLM: as etapas 1 e 2 preservam o que ele vai precisar (notas,
+penas e o relatório de descartes). Os
 artigos de cada tópico do edital estão em
 [claude/topicos-oj2026.json](../claude/topicos-oj2026.json) (schema `topicos-oj/2`).
 
@@ -20,7 +21,8 @@ artigos de cada tópico do edital estão em
   inclusive PDF com várias normas; normalização, parsing hierárquico, classificação de notas,
   filtro de vigência; exportação da base e do recorte em JSON; relatório de extração (avisos,
   descartes, inconsistências).
-- **Fora:** OCR de PDF escaneado; layout do material de estudo em Python (é da LLM); reconstrução
+- **Fora:** OCR de PDF escaneado; anotações de estudo escritas em Python (são da curadoria, que a
+  LLM escreve); reconstrução
   de redações anteriores; resolução automática da data exata de leis alteradoras (ver
   PENDENCIAS); por ora, o extrator de questões de concurso (marco M10 em PENDENCIAS; contrato em
   [schema-questoes-json.md](schema-questoes-json.md)).
@@ -140,6 +142,7 @@ com até ~72 caracteres. Quebra de contrato (esquema do JSON, CLI) leva `!` depo
 | `vigencia` | `vigencia.py`, `validador.py`, relatório |
 | `recorte` | `recorte.py` |
 | `conferencia` | `conferencia.py` |
+| `render` | `curadoria.py`, `render.py`, `estilo/` |
 | `perfil` | `perfil.py`, `perfis/*.toml` |
 | `cli` | `cli.py` |
 | `docs` | documentação e roteiros |
@@ -168,10 +171,10 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 | Caminho | Papel |
 |---|---|
 | `tests/` | `unit/`, `aceite/`, `regressao/`; `fixtures/` com trechos reais e `snapshots/` |
-| `docs/` | este README, PADRAO_OURO, PENDENCIAS, `decisoes/`, `negocio/`, `processo/` e `etapa3/` (instruções da LLM) |
+| `docs/` | este README, PADRAO_OURO, PENDENCIAS, `decisoes/`, `negocio/`, `processo/` e `etapa3/` (instruções da LLM e estilo) |
 | `.claude/` | `CLAUDE.md`, `commands/` (carregadores dos roteiros de `docs/processo/`) e `skills/vade-mecum/` (carregador de `docs/etapa3/`) |
 | `scripts/` | utilitários fora da suíte |
-| `dados/` | versionado (ADR-005): `fontes/<norma>/` (originais), `bases/<norma>/`, `recortes/<edital>/<materia>/` e `vade-mecum/<edital>/` |
+| `dados/` | versionado (ADR-005): `fontes/<norma>/` (originais), `bases/<norma>/`, `recortes/<edital>/<materia>/`, `curadoria/<edital>/` (ADR-006) e `vade-mecum/<edital>/` |
 
 ## Parâmetros do processo
 

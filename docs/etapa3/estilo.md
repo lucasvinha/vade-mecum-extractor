@@ -11,7 +11,7 @@
 - **Nenhuma palavra do texto legal é alterada.** A intervenção é só de formatação. A VUNESP cobra a literalidade, e paráfrase treina o raciocínio certo com as palavras erradas.
 - A numeração do próprio Código vira **hierarquia visual**. Nada de reescrever a lei em bullets. Se um dia houver versão parafraseada, ela será outro documento.
 - Quadros, diagramas e cards são **curadoria**, não lei. No PDF, isso aparece rotulado ("material de apoio elaborado para estudo — não é texto de lei").
-- **Camadas separadas:** a curadoria fica em `dados/curadoria/<slug>.json`, com `ancora` apontando para o `id` do dispositivo, e nunca entra no `diploma.json`. Se a lei for capturada de novo, a curadoria se religa pelos ids.
+- **Camadas separadas:** a curadoria fica em `dados/curadoria/<edital>/<materia>.json`, com a chave `<norma>:<id>` do dispositivo, e nunca entra na base nem no recorte (ADR-006; esquema em [negocio/vade-mecum.md](../negocio/vade-mecum.md)). Se a lei for capturada de novo, a curadoria se religa pelos ids.
 
 ## 2. Layout da página
 
@@ -26,14 +26,25 @@
 | §§ | recuo 1 |
 | Incisos | recuo 2 |
 | Alíneas | recuo 3 |
-| **Pena** (preceito secundário) | **vermelho escuro (#9C0006), recuada, em linha própria**, separada do preceito primário |
-| Notas legislativas | cinza, corpo reduzido |
-| Saltos do edital | marcador "· · · arts. X a Y — fora do edital · · ·" |
+| **Pena** (preceito secundário) | **caixa âmbar com o rótulo "PENA"**, em linha própria, separada do preceito primário (a referência; a amostra do Word usava fonte vermelha #9C0006) |
+| Notas legislativas | compactas: ver "Notas legislativas", abaixo |
+| Saltos do edital | marcador "· · · arts. X a Y — fora do edital · · ·": ver "Saltos", abaixo |
 | Revogados dentro da faixa | mantidos com a redação do compilado ("Revogado pela Lei …"), para não parecer omissão |
+
+### Notas legislativas
+
+As de `redacao` e `inclusao` do artigo e dos filhos viram uma linha só no fim do artigo: "Alterações: Lei nº 7.209/1984 · Lei 12.550/2011". Cada par `norma`/`ano` aparece uma vez, por ano e, no mesmo ano, na ordem do texto; a `norma` sai como está na base (a 12.550 vem sem "nº", como na fonte). As demais (`remissao`, `vigencia`) ficam coladas ao dispositivo, com a `bruto`, em cinza e corpo menor, uma vez por nó. O detalhe de cada nota continua na base.
+
+### Saltos
+
+- Entre artigos seguidos da mesma norma, quando a numeração-base avança com buraco, inclusive na troca de grupo: a linha fecha o grupo anterior. Quando recua (a ordem é a dos tópicos), não há salto.
+- O artigo seguinte com letra põe o número-base dele no buraco: 308 → 311-A dá "arts. 309 a 311".
+- Buraco de um artigo só sai "art. X — fora do edital".
+- Artigo com letra logo depois do anterior (121-A e 121-B, 337-A a 337-P) não entra no salto: vai para os avisos da capa.
 
 **"Arte nos enumeradores"** (pedido original): na amostra, isso foi feito só com hierarquia de recuo. No HTML, os rótulos (`§ 1º`, `I`, `a`) podem virar uma marca visual discreta, como selo ou cor de rótulo, desde que o texto do rótulo continue literal.
 
-## 3. Marca-texto conceitual — paleta semântica (6 categorias)
+## 3. Marca-texto conceitual — paleta semântica (5 categorias e a pena)
 
 A cor marca a **função do trecho** no tipo penal, e não um grau genérico de "importância".
 
@@ -44,12 +55,14 @@ A cor marca a **função do trecho** no tipo penal, e não um grau genérico de 
 | `c` | **Ciano** | elemento especializante | *de que tem a guarda em razão do cargo*, *por erro de outrem*, *vantagem indevida* | o detalhe que separa o tipo do vizinho |
 | `m` | **Magenta** | prazos, frações e quantidades | *um terço até a metade*, *sexta parte*, *6 meses* | alvo clássico de prova |
 | `l` | **Cinza claro** | subsidiariedade e procedibilidade | *se o fato não constitui crime mais grave*, *somente se procede mediante representação* | muda o enquadramento ou a ação penal |
-| — | **Vermelho (fonte)** | pena | preceito secundário inteiro | leitura rápida da sanção |
+| — | **Caixa âmbar** | pena | preceito secundário inteiro | leitura rápida da sanção; não é marca |
+
+Na curadoria, as categorias são `verbo`, `sujeito`, `especializante`, `quantidade` e `condicao` (esta reúne subsidiariedade e procedibilidade).
 
 **Regras de aplicação:**
 - **Teto de cerca de 15% da mancha de texto por artigo.** Grifo que cobre tudo não destaca nada. Na amostra, o 313-A e o 316 §1º passaram do ponto, e esses casos devem ficar mais enxutos.
 - Densidade escolhida em 22/10: **o nível da amostra** (verbo + sujeito + especializante + condicionantes).
-- No Word havia o limite de 15 cores de `w:highlight`. **Em HTML esse limite não existe**, mas a semântica de 6 categorias continua sendo o teto: mais do que isso deixa de funcionar.
+- No Word havia o limite de 15 cores de `w:highlight`. **Em HTML esse limite não existe**, mas a semântica de 5 categorias continua sendo o teto: mais do que isso deixa de funcionar.
 - Uso permitido: material de estudo em casa. A vedação de marca-texto do edital vale só para o caderno de prova.
 - **Legenda obrigatória** no início ("Como ler os destaques"), com uma amostra de cada cor e a descrição da categoria.
 
@@ -61,19 +74,19 @@ D('Art. 314 -', [('Extraviar', 'y'), ('sonegá-lo ou inutilizá-lo', 'y'),
                  ('se o fato não constitui crime mais grave', 'l')])
 ```
 
-Para o JSON de curadoria, proposta equivalente:
+No `curadoria-vm/1` ([negocio/vade-mecum.md](../negocio/vade-mecum.md)):
 
 ```json
-{"ancora": "art314", "marcas": [
+{"cp:art314": {"marcas": [
   {"trecho": "Extraviar", "cat": "verbo"},
   {"trecho": "de que tem a guarda em razão do cargo", "cat": "especializante"},
-  {"trecho": "se o fato não constitui crime mais grave", "cat": "subsidiariedade"}
-]}
+  {"trecho": "se o fato não constitui crime mais grave", "cat": "condicao"}
+]}}
 ```
 
 - O casamento é por **substring exata** no `texto` do nó, depois de normalizar para **Unicode NFC**. A amostra quebrou com acentos NFD.
-- Trecho não encontrado deve **gerar aviso, nunca falhar em silêncio**. A amostra gerava uma lista `AVISOS` ao final.
-- No CSS, cada categoria vira uma classe (`.hl-verbo`, `.hl-sujeito`, `.hl-espec`, `.hl-quant`, `.hl-subsid`, `.pena`), com `-webkit-print-color-adjust: exact` para as cores saírem no PDF.
+- Trecho não encontrado **é erro** do `renderizar`, que sai 1 sem gravar o HTML. A amostra só gerava uma lista `AVISOS` ao final.
+- No CSS, cada categoria vira uma classe (`.hl-verbo`, `.hl-sujeito`, `.hl-especializante`, `.hl-quantidade`, `.hl-condicao`), com `print-color-adjust: exact` para as cores saírem no PDF.
 
 ## 4. Quadros comparativos
 
@@ -103,21 +116,11 @@ A amostra completa tinha **15 quadros**. Recuperei 11 do histórico:
 - prescrição retroativa × intercorrente (110 §1º × 117);
 - art. 327 (conceito de funcionário público).
 
-> ⚠️ As penas digitadas dentro dos quadros são **curadoria escrita à mão**, não texto extraído. Antes de reaproveitar, confira cada uma contra o `recorte_oj26.json`, de preferência com um teste automático que compare o quadro com o nó `pena` da âncora. Em especial, o art. 129 §9º e as penas alteradas pelas leis de 2024–2026.
+> ⚠️ As penas digitadas dentro dos quadros são **curadoria escrita à mão**, não texto extraído. Na curadoria, cada uma é ancorada no nó `pena` e conferida pelo `renderizar` (ADR-006). Em especial, o art. 129 §9º e as penas alteradas pelas leis de 2024–2026.
 
-## 5. Planejado e ainda não implementado (sessão de 22/10)
+## 5. Planejado e ainda não implementado
 
-- **Diagramas em SVG inline**, largura total, até uma página, na ordem de retorno:
-  - art. 129 (gradação das lesões);
-  - art. 109 (tabela de prazos);
-  - art. 7º (extraterritorialidade como árvore de decisão);
-  - art. 117 (linha do tempo das interrupções);
-  - art. 107 (causas de extinção agrupadas).
-- **Flashcards** em arquivo separado `<slug>-cards.pdf`:
-  - grade 2×4 em A4, impressão frente e verso;
-  - frente: rubrica + verbo nuclear; verso: pena + elemento distintivo;
-  - cerca de 55 cartões (Parte Especial com preceito secundário);
-  - **não entram no corpo do vade mecum**.
+Diagramas em SVG inline (arts. 129, 109, 7º, 117 e 107) e flashcards em PDF separado viraram os itens #21 e #22 de [PENDENCIAS](../PENDENCIAS.md), com o detalhe da sessão de 22/10.
 
 ## 6. Capa e avisos de leitura
 
@@ -133,19 +136,15 @@ A amostra completa tinha **15 quadros**. Recuperei 11 do histórico:
 4. **Selo de data da compilação:** o texto foi capturado em 26/10/2026, e o edital considera a legislação até 19/10/2026.
 5. **Legenda de cores** (seção 3) e o aviso de que os quadros são material de apoio.
 
-## 7. Correções de extração já identificadas (verificar no extrator novo)
+## 7. Lições da referência visual
 
-**Da amostra (fonte PDF → docx):**
-- art. 129 §2º, III sumido;
-- rubrica do art. 109 reduzida a "o";
-- "§" sem ordinal (109, 110, 121, 129, 311-A);
-- parágrafos colados: 7º, I, a; 107, IX; 114, II; 296, II;
-- acentos em NFD.
+A `referencia-visual.pdf` é a saída do protótipo (`render_html.py` pelo Chromium, com o CSS que está em `prototipo.css`). O plano do protótipo registra seis defeitos dela, que o `renderizar` não repete:
 
-**Do `recorte_oj26.json` (fonte HTML Planalto, análise de 02/11):**
-- notas duplicadas em 12 nós (6º–11, 121 §2º IX, 298 p.ú.…);
-- "Vigência" e "(Vigência)" misturados;
-- ordinal "1o" em 6 trechos;
-- pena por remissão no art. 304;
-- "Detenção" com maiúscula no 326;
-- "Capítulo V" em caixa baixa.
+1. **Sumário sem número de página:** o Chromium não implementa `target-counter()`. O sumário fica em links.
+2. **~1/4 de página em branco no pé (pp. 13 a 15):** causa provável, `column-fill` e `column-span: all`. O quadro quebra entre linhas, com o cabeçalho repetido; só a linha é indivisível.
+3. **Capa com cabeçalho e número de página:** a capa sai sem os dois (`@page :first`).
+4. **Página do sumário com duas linhas:** mesma causa do 2.
+5. **Rios na justificação em coluna estreita (pp. 4 e 15):** texto alinhado à esquerda, com `lang="pt-BR"` e `hyphens: auto`.
+6. **Notas dominando a página** (15 "(Redação dada pela Lei nº 7.209…)" no art. 7º): notas compactas, na seção 2.
+
+As correções de extração identificadas na amostra e no recorte viraram o item #23 de [PENDENCIAS](../PENDENCIAS.md).
