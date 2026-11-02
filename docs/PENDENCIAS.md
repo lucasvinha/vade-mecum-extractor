@@ -11,10 +11,9 @@ confirmadas, P3 foi decidida no M4 (pergunta 5) e P4–P7 estão em "Riscos acom
 
 ## Agora
 
-- **Em curso:** item 20, o vade mecum por curadoria (ADR-006), pela spec
-  [render-vade-mecum](processo/specs/render-vade-mecum.md).
+- **Em curso:** nada.
 - **Próximo sugerido:** M7 (item 13), pelo `/spec`. Cada perfil novo destrava a matéria da norma
-  no `/vade-mecum`.
+  no `/vade-mecum`, que agora sai pela curadoria e pelo `renderizar` (ADR-006).
 - **Meta:** a base do CP no M4 e as normas do edital que estão no Planalto no M7. Prova em
   14/03/2027. Do Planalto: CP, CPP, CPC, CC, LINDB, CF e Leis 9.099, 8.429, 6.830 e 13.146. Fora
   dele, no M9: NSCGJ, Leis SP 10.261 e 11.608 e Res. CNJ 354. Os artigos de cada tópico estão em
@@ -22,9 +21,6 @@ confirmadas, P3 foi decidida no M4 (pergunta 5) e P4–P7 estão em "Riscos acom
 
 ## Fila
 
-- [ ] **20. Vade mecum por curadoria.** A LLM escreve `dados/curadoria/<edital>/<materia>.json`
-      e o `renderizar` gera o HTML no estilo da referência (`docs/etapa3/estilo.md`), com as
-      penas dos quadros conferidas (ADR-006). Em curso.
 - [ ] **M7 · 13. Perfis das normas do Planalto.** `cpp`, `cpc`, `cc` (com a LINDB, DL 4.657),
       `cf` e as Leis 9.099, 8.429, 6.830 e 13.146. Um perfil por fase, cada um com casos de
       aceite novos e enxerto real. A conferir na spec: milhar no HTML (`Art. 1.072`, P13), a CF
@@ -89,6 +85,10 @@ Não são itens de trabalho: cada um é tratado pelo item citado.
 
 Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
 
+- ~~**20. Vade mecum por curadoria**~~ — 2026-11-02, `f2dbc10`: ADR-006, `curadoria.py`
+  (`curadoria-vm/1`, marcas em 5 categorias, pena do quadro conferida), `render.py` com o CSS da
+  referência e o subcomando `renderizar`; `dados/curadoria/oj26/penal.json` com 13 quadros e o
+  `penal.html` e `.pdf` regerados, aprovados pelo operador
 - ~~**M6 · 19. Vade mecum em 3 etapas**~~ — 2026-11-02, `4d7d32f`: ADR-005, `dados/`
   versionado com teste de sincronia, tópicos `topicos-oj/2`, `recortar --topicos --materia`,
   `conferir` (negocio/vade-mecum), instruções da Etapa 3 e a skill `/vade-mecum`; piloto
@@ -102,6 +102,3 @@ Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
   segue `aviso` de texto livre (H18)
 - ~~**5. P3: regra temporal do edital**~~ — 2026-11-01, `d803051`: a base guarda norma e ano de
   cada nota, e a conferência contra o corte é da Etapa 3 (negocio/vigencia-e-notas)
-- ~~**M3 · 7. Parser (perfil `cp`) + `extrair`**~~ — 2026-11-01, `cc3d6fd`: `perfil.py`,
-  `notas.py`, `parser.py` (`analisar` → `Analise`) e `extrair`; aceite A1–A4, A6 e A7
-  estruturais, sem linha não classificada no CP
