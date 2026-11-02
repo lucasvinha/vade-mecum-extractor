@@ -15,6 +15,7 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from vademecum import __version__
+from vademecum.conferencia import conferir
 from vademecum.fontes.html import ler_html
 from vademecum.modelo import (
     Base,
@@ -63,6 +64,12 @@ def _parser() -> argparse.ArgumentParser:
     recortar.add_argument("--materia", help="id da matéria nos tópicos; exige --topicos")
     recortar.add_argument("--saida", required=True, type=Path)
 
+    conferir = sub.add_parser("conferir", help="confere o texto legal do HTML contra os recortes")
+    conferir.add_argument(
+        "--recorte", required=True, type=Path, action="append", help="repetível: um por norma"
+    )
+    conferir.add_argument("--html", required=True, type=Path)
+
     return raiz
 
 
@@ -71,8 +78,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         if args.comando == "extrair":
             _extrair(args)
-        else:
+        elif args.comando == "recortar":
             _recortar(args)
+        else:
+            return _conferir(args)
     except ErroFonte as erro:  # erro de entrada: mensagem para o usuário, código 2 (RF06)
         print(f"erro: {erro}", file=sys.stderr)
         return 2
@@ -159,3 +168,12 @@ def _recortar(args: argparse.Namespace) -> None:
     origem = Recorte(expressao=expressao, origem=caminho.name)
     recorte = dataclasses.replace(recorte, recorte=origem)
     _gravar(recorte, relatorio, args.saida)
+
+
+def _conferir(args: argparse.Namespace) -> int:
+    """Recortes + HTML do vade mecum → uma linha por divergência; 0 sem nenhuma, 1 com (ADR-005)."""
+    recortes = [de_json(_ler(caminho, "arquivo do recorte")) for caminho in args.recorte]
+    divergencias = conferir(recortes, _ler(args.html, "arquivo HTML"))
+    for divergencia in divergencias:
+        print(divergencia)
+    return 1 if divergencias else 0

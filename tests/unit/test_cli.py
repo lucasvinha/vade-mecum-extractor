@@ -211,3 +211,34 @@ def test_adr005_recortar_artigos_e_topicos_juntos_e_erro_de_uso(base_enxertos, t
     with pytest.raises(SystemExit) as saida:
         main([*argv, "--materia", "penal", "--saida", str(tmp_path / "r.json")])
     assert saida.value.code == 2
+
+
+@pytest.fixture
+def recorte_121(fixtures_dir, tmp_path):
+    base = fixtures_dir / "snapshots" / "cp_enxertos.json"
+    saida = tmp_path / "recorte" / "cp.json"
+    assert _recortar(base, "121", saida) == 0
+    return saida
+
+
+def _conferir(recorte, html):
+    return main(["conferir", "--recorte", str(recorte), "--html", str(html)])
+
+
+def test_adr005_conferir_html_correto_sai_com_0(fixtures_dir, recorte_121, capsys):
+    assert _conferir(recorte_121, fixtures_dir / "vade-mecum" / "cp_art121.html") == 0
+    assert capsys.readouterr().out == ""
+
+
+def test_adr005_conferir_com_divergencia_sai_com_1(fixtures_dir, recorte_121, tmp_path, capsys):
+    html = (fixtures_dir / "vade-mecum" / "cp_art121.html").read_text(encoding="utf-8")
+    alterado = tmp_path / "alterado.html"
+    alterado.write_text(html.replace("Matar <mark>alguem</mark>:", "Matar alguém:"), "utf-8")
+    assert _conferir(recorte_121, alterado) == 1
+    [linha] = capsys.readouterr().out.splitlines()
+    assert linha.startswith("cp:art121: campo texto divergente")
+
+
+def test_adr005_conferir_arquivo_inexistente_sai_com_2(recorte_121, tmp_path, capsys):
+    assert _conferir(recorte_121, tmp_path / "nao_existe.html") == 2
+    assert "arquivo HTML não encontrado" in capsys.readouterr().err

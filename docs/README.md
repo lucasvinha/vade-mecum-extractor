@@ -42,8 +42,9 @@ Regras e casos são citados pelo **ID** (`H15`, `RF07`, `A2`), nunca pelo númer
 
 Pipeline em módulos puros, cujas dependências só apontam para a direita: fonte (`fontes/`) →
 `segmentador` → `normalizador` → `parser` (com `notas` e `perfil`) → `vigencia` → `validador` →
-JSON; `recorte` lê a base pronta. O contrato central é `LinhaFonte`: tudo à direita dele
-independe da fonte. Diferença entre normas mora em `perfis/*.toml`, nunca no parser (ADR-002).
+JSON; `recorte` lê a base pronta, e `conferencia` confere o HTML da Etapa 3 contra os recortes.
+O contrato central é `LinhaFonte`: tudo à direita dele independe da fonte. Diferença entre
+normas mora em `perfis/*.toml`, nunca no parser (ADR-002).
 O detalhe do pipeline e dos perfis está em
 [negocio/pipeline-e-perfis.md](negocio/pipeline-e-perfis.md).
 
@@ -138,6 +139,7 @@ com até ~72 caracteres. Quebra de contrato (esquema do JSON, CLI) leva `!` depo
 | `parser` | `normalizador`, `notas`, `parser`, `segmentador` |
 | `vigencia` | `vigencia.py`, `validador.py`, relatório |
 | `recorte` | `recorte.py` |
+| `conferencia` | `conferencia.py` |
 | `perfil` | `perfil.py`, `perfis/*.toml` |
 | `cli` | `cli.py` |
 | `docs` | documentação e roteiros |
@@ -159,6 +161,7 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 | `vigencia.py` | `filtrar_vigentes(artigos, perfil, relatorio) -> tuple[No, ...]`: tira o revogado e o vetado e registra o `descarte` (ADR-001, RF14, RF16) | `modelo`, `perfil` |
 | `validador.py` | `validar(base, perfil, relatorio) -> None`: um `aviso` por violação de V1–V6; a V7 é do parser | `modelo`, `perfil` |
 | `recorte.py` | `interpretar(expressao) -> tuple[Item, ...]`; `expressao_dos_topicos(topicos, materia, norma) -> str` (ADR-005); `recortar(base, itens, descartes, relatorio) -> Base`: artigos cobertos na ordem da base, descartes copiados e avisos (RF18, ADR-004) | `modelo` |
+| `conferencia.py` | `conferir(recortes, html) -> tuple[Divergencia, ...]`: texto legal do HTML do vade mecum contra os recortes (ADR-005, [negocio/vade-mecum.md](negocio/vade-mecum.md)) | `modelo` |
 | `cli.py` | argparse → orquestra o pipeline | todos |
 | `perfis/*.toml` | regras por norma (`padrao`, `cp`, `nscgj`, `lei_sp`) | — |
 
