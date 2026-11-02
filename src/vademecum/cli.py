@@ -13,9 +13,11 @@ import re
 import sys
 from collections.abc import Sequence
 from pathlib import Path
+from typing import Any
 
 from vademecum import __version__
 from vademecum.conferencia import conferir
+from vademecum.curadoria import validar_curadoria
 from vademecum.fontes.html import ler_html
 from vademecum.modelo import (
     Base,
@@ -32,6 +34,7 @@ from vademecum.normalizador import normalizar
 from vademecum.parser import analisar
 from vademecum.perfil import carregar_perfil
 from vademecum.recorte import expressao_dos_topicos, interpretar, recortar
+from vademecum.render import renderizar
 from vademecum.validador import validar
 from vademecum.vigencia import filtrar_vigentes
 
@@ -70,6 +73,15 @@ def _parser() -> argparse.ArgumentParser:
     )
     conferir.add_argument("--html", required=True, type=Path)
 
+    renderizar = sub.add_parser("renderizar", help="gera o HTML do vade mecum dos recortes")
+    renderizar.add_argument("--topicos", required=True, type=Path, help="JSON dos tópicos")
+    renderizar.add_argument("--materia", required=True, help="id da matéria nos tópicos")
+    renderizar.add_argument(
+        "--recorte", required=True, type=Path, action="append", help="repetível: um por norma"
+    )
+    renderizar.add_argument("--curadoria", type=Path, help="JSON da curadoria (curadoria-vm/1)")
+    renderizar.add_argument("--saida", required=True, type=Path, help="caminho do HTML")
+
     return raiz
 
 
@@ -80,8 +92,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             _extrair(args)
         elif args.comando == "recortar":
             _recortar(args)
-        else:
+        elif args.comando == "conferir":
             return _conferir(args)
+        else:
+            return _renderizar(args)
     except ErroFonte as erro:  # erro de entrada: mensagem para o usuário, código 2 (RF06)
         print(f"erro: {erro}", file=sys.stderr)
         return 2
@@ -141,6 +155,13 @@ def _ler(caminho: Path, descricao: str) -> str:
         raise ErroFonte(f"{descricao} não encontrado: {caminho}") from None
 
 
+def _ler_json(caminho: Path, descricao: str, nome: str) -> Any:
+    try:
+        return json.loads(_ler(caminho, descricao))
+    except json.JSONDecodeError as erro:
+        raise ErroFonte(f"{nome} com JSON inválido: {caminho} ({erro})") from None
+
+
 def _expressao(args: argparse.Namespace, norma: str) -> str:
     """A de `--artigos`, ou a da matéria nos tópicos para a norma da base (ADR-005)."""
     if args.topicos is None:
@@ -149,10 +170,7 @@ def _expressao(args: argparse.Namespace, norma: str) -> str:
         return args.artigos.strip()
     if args.materia is None:
         raise ErroFonte("--topicos exige --materia")
-    try:
-        topicos = json.loads(_ler(args.topicos, "arquivo dos tópicos"))
-    except json.JSONDecodeError as erro:
-        raise ErroFonte(f"tópicos com JSON inválido: {args.topicos} ({erro})") from None
+    topicos = _ler_json(args.topicos, "arquivo dos tópicos", "tópicos")
     return expressao_dos_topicos(topicos, args.materia, norma)
 
 
@@ -177,3 +195,32 @@ def _conferir(args: argparse.Namespace) -> int:
     for divergencia in divergencias:
         print(divergencia)
     return 1 if divergencias else 0
+
+
+def _renderizar(args: argparse.Namespace) -> int:
+    """Tópicos, recortes e curadoria → HTML do vade mecum (ADR-006).
+
+    Erro de curadoria sai 1, uma linha por erro, sem gravar o HTML; o aviso de teto vai para o
+    stderr e não muda o código de saída.
+    """
+    topicos = _ler_json(args.topicos, "arquivo dos tópicos", "tópicos")
+    recortes = [
+        (
+            de_json(_ler(caminho, "arquivo do recorte")),
+            relatorio_de_json(_ler(_relatorio_de(caminho), "relatório do recorte")),
+        )
+        for caminho in args.recorte
+    ]
+    if args.curadoria is not None:
+        dados = _ler_json(args.curadoria, "arquivo da curadoria", "curadoria")
+        validacao = validar_curadoria(dados, [base for base, _ in recortes])
+        for aviso in validacao.avisos:
+            print(f"aviso: {aviso}", file=sys.stderr)
+        for erro in validacao.erros:
+            print(erro)
+        if validacao.erros:
+            return 1
+    html = renderizar(topicos, args.materia, recortes)
+    args.saida.parent.mkdir(parents=True, exist_ok=True)
+    args.saida.write_text(html, encoding="utf-8", newline="\n")  # LF em qualquer sistema (RNF03)
+    return 0

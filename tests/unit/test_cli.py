@@ -242,3 +242,101 @@ def test_adr005_conferir_com_divergencia_sai_com_1(fixtures_dir, recorte_121, tm
 def test_adr005_conferir_arquivo_inexistente_sai_com_2(recorte_121, tmp_path, capsys):
     assert _conferir(recorte_121, tmp_path / "nao_existe.html") == 2
     assert "arquivo HTML não encontrado" in capsys.readouterr().err
+
+
+@pytest.fixture
+def entrada_render(fixtures_dir, tmp_path):
+    """Recorte dos arts. 78 e 121 do snapshot, com os tópicos que o cobrem inteiro."""
+    recorte = tmp_path / "recorte" / "cp.json"
+    assert _recortar(fixtures_dir / "snapshots" / "cp_enxertos.json", "78; 121", recorte) == 0
+    topicos = tmp_path / "topicos.json"
+    itens = [{"id": "penal:a", "rubrica": "Item", "arts": "78; 121"}]
+    materia = {
+        "id": "penal",
+        "nome": "Direito Penal",
+        "grupos": [{"titulo": "CP", "norma": "cp", "itens": itens}],
+    }
+    topicos.write_text(json.dumps({"schema": "topicos-oj/2", "materias": [materia]}), "utf-8")
+    return recorte, topicos
+
+
+def _renderizar(entrada, saida, *extra):
+    recorte, topicos = entrada
+    argv = [
+        "renderizar",
+        "--topicos",
+        str(topicos),
+        "--materia",
+        "penal",
+        "--recorte",
+        str(recorte),
+    ]
+    return main([*argv, "--saida", str(saida), *extra])
+
+
+def _curadoria(tmp_path, dispositivos):
+    caminho = tmp_path / "curadoria.json"
+    dados = {"schema": "curadoria-vm/1", "edital": "oj26", "materia": "penal",
+             "gerado_em": "2026-11-02", "dispositivos": dispositivos}  # fmt: skip
+    caminho.write_text(json.dumps(dados), "utf-8")
+    return caminho
+
+
+def test_adr006_renderizar_grava_html_que_passa_no_conferir(entrada_render, tmp_path, capsys):
+    saida = tmp_path / "vm" / "penal.html"
+    assert _renderizar(entrada_render, saida) == 0
+    html = saida.read_bytes()
+    assert html.startswith(b"<!DOCTYPE html>") and b"\r\n" not in html
+    assert _conferir(entrada_render[0], saida) == 0
+    assert capsys.readouterr().out == ""
+
+
+def test_adr006_renderizar_teto_de_marcas_so_avisa(entrada_render, tmp_path, capsys):
+    caput = (
+        "Durante o prazo da suspensão, o condenado ficará sujeito à observação e ao cumprimento"
+        " das condições estabelecidas pelo juiz."
+    )
+    curadoria = _curadoria(tmp_path, {"cp:art78": {"marcas": [{"trecho": caput, "cat": "verbo"}]}})
+    saida = tmp_path / "penal.html"
+    assert _renderizar(entrada_render, saida, "--curadoria", str(curadoria)) == 0
+    assert saida.exists()
+    saidas = capsys.readouterr()
+    assert saidas.out == ""
+    assert saidas.err.startswith("aviso: cp:art78: marcas cobrem ")
+
+
+def test_adr006_renderizar_erro_de_curadoria_sai_1_sem_gravar(entrada_render, tmp_path, capsys):
+    curadoria = _curadoria(
+        tmp_path,
+        {
+            "cp:art121": {"marcas": [{"trecho": "Matar alguém", "cat": "verbo"}]},
+            "cp:art999": {},
+        },
+    )
+    saida = tmp_path / "penal.html"
+    assert _renderizar(entrada_render, saida, "--curadoria", str(curadoria)) == 1
+    assert not saida.exists()
+    assert capsys.readouterr().out.splitlines() == [
+        "cp:art121: trecho não encontrado: 'Matar alguém'",
+        "cp:art999: id inexistente no recorte",
+    ]
+
+
+@pytest.mark.parametrize(
+    ("ajuste", "mensagem"),
+    [
+        (lambda r, t: r.with_name("cp.relatorio.json").unlink(), "relatório do recorte não"),
+        (lambda r, t: t.write_text("{", "utf-8"), "tópicos com JSON inválido"),
+        (lambda r, t: None, "curadoria sem o esquema curadoria-vm/1"),
+    ],
+)
+def test_adr006_renderizar_erro_de_entrada_sai_2_sem_gravar(
+    entrada_render, tmp_path, capsys, ajuste, mensagem
+):
+    ajuste(*entrada_render)
+    curadoria = tmp_path / "curadoria.json"
+    curadoria.write_text('{"schema": "curadoria-vm/0"}', "utf-8")
+    saida = tmp_path / "penal.html"
+    assert _renderizar(entrada_render, saida, "--curadoria", str(curadoria)) == 2
+    assert mensagem in capsys.readouterr().err
+    assert not saida.exists()
