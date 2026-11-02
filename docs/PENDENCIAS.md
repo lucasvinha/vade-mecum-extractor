@@ -11,8 +11,8 @@ confirmadas, P3 foi decidida no M4 (pergunta 5) e P4–P7 estão em "Riscos acom
 
 ## Agora
 
-- **Em curso:** nenhum marco; o M6 fechou em 2026-11-02 e o vade mecum de Direito Penal já sai
-  pelas três etapas (ADR-005).
+- **Em curso:** item 20, o vade mecum por curadoria (ADR-006), pela spec
+  [render-vade-mecum](processo/specs/render-vade-mecum.md).
 - **Próximo sugerido:** M7 (item 13), pelo `/spec`. Cada perfil novo destrava a matéria da norma
   no `/vade-mecum`.
 - **Meta:** a base do CP no M4 e as normas do edital que estão no Planalto no M7. Prova em
@@ -22,6 +22,9 @@ confirmadas, P3 foi decidida no M4 (pergunta 5) e P4–P7 estão em "Riscos acom
 
 ## Fila
 
+- [ ] **20. Vade mecum por curadoria.** A LLM escreve `dados/curadoria/<edital>/<materia>.json`
+      e o `renderizar` gera o HTML no estilo da referência (`docs/etapa3/estilo.md`), com as
+      penas dos quadros conferidas (ADR-006). Em curso.
 - [ ] **M7 · 13. Perfis das normas do Planalto.** `cpp`, `cpc`, `cc` (com a LINDB, DL 4.657),
       `cf` e as Leis 9.099, 8.429, 6.830 e 13.146. Um perfil por fase, cada um com casos de
       aceite novos e enxerto real. A conferir na spec: milhar no HTML (`Art. 1.072`, P13), a CF
@@ -44,6 +47,22 @@ confirmadas, P3 foi decidida no M4 (pergunta 5) e P4–P7 estão em "Riscos acom
       ou em anexo) → `questoes-oj/1` ([schema-questoes-json.md](schema-questoes-json.md)).
       Fixture: enxerto de duas páginas. Antes da spec: ADR de escopo (subpacote neste repositório
       ou repositório próprio).
+
+- [ ] **23. Correções de extração vistas na Etapa 3.** Conferir no extrator, caso a caso, se
+      ainda ocorrem e se são da fonte (texto legal literal) ou do parser: notas duplicadas em 12
+      nós (6º–11, 121 § 2º IX, 298 p.u.…); "Vigência" e "(Vigência)" misturados; ordinal "1o"
+      em 6 trechos; pena por remissão no art. 304; "Detenção" com maiúscula no 326; "Capítulo
+      V" em caixa baixa. Da amostra em PDF, a rever no M9: art. 129 § 2º, III sumido, rubrica
+      do 109 reduzida a "o", "§" sem ordinal, parágrafos colados (7º, I, a; 107, IX; 114, II;
+      296, II) e acentos em NFD.
+- [ ] **21. Diagramas em SVG no vade mecum.** Depende do item 20. SVG inline, largura total, até
+      uma página, nesta ordem: art. 129 (gradação das lesões), 109 (tabela de prazos), 7º
+      (extraterritorialidade em árvore de decisão), 117 (linha do tempo das interrupções) e 107
+      (causas de extinção agrupadas). Fonte: `docs/etapa3/estilo.md`, sessão de 22/10.
+- [ ] **22. Flashcards em PDF separado.** Reusa a curadoria do item 20 e não entra no corpo do
+      vade mecum: `<materia>-cards.pdf`, grade 2×4 em A4 frente e verso, frente com rubrica e
+      verbo nuclear, verso com pena e elemento distintivo; cerca de 55 cartões (Parte Especial
+      com preceito secundário).
 
 ## Perguntas em aberto
 

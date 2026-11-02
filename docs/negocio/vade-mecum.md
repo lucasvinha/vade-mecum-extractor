@@ -4,11 +4,56 @@
 [PADRAO_OURO](../PADRAO_OURO.md) e as decisões em [decisoes/](../decisoes/). As âncoras são
 nomes de função ou de módulo. Em divergência com o código, **vale o código**.
 
-O HTML do vade mecum é gerado por uma LLM a partir dos recortes, dos relatórios e dos tópicos do
-edital ([ADR-005](../decisoes/ADR-005-vade-mecum-em-tres-etapas.md)). Este documento é o
-contrato entre esse HTML e o `conferir`, que garante que o texto legal dele é o dos recortes.
-Usado por `conferencia.py` e `cli.py`. Vizinhos: [modelo-de-dados.md](modelo-de-dados.md) (os
-nós e os `id`) e [recorte-e-cli.md](recorte-e-cli.md) (o recorte).
+O HTML do vade mecum é gerado pelo `renderizar` a partir dos recortes, dos relatórios, dos
+tópicos do edital e da curadoria, que uma LLM escreve
+([ADR-005](../decisoes/ADR-005-vade-mecum-em-tres-etapas.md),
+[ADR-006](../decisoes/ADR-006-curadoria-em-json-e-render-deterministico.md)). Este documento
+traz o esquema da curadoria e o contrato entre o HTML e o `conferir`, que garante que o texto
+legal dele é o dos recortes. Usado por `curadoria.py`, `render.py`, `conferencia.py` e `cli.py`.
+Vizinhos: [modelo-de-dados.md](modelo-de-dados.md) (os nós e os `id`) e
+[recorte-e-cli.md](recorte-e-cli.md) (o recorte).
+
+## Curadoria
+
+`dados/curadoria/<edital>/<materia>.json`, esquema `curadoria-vm/1`. Só anotação de estudo:
+texto legal nunca entra aqui.
+
+```json
+{"schema": "curadoria-vm/1", "edital": "oj26", "materia": "penal", "gerado_em": "2026-11-02",
+ "avisos_capa": ["..."],
+ "dispositivos": {"cp:art312": {"marcas": [{"trecho": "Apropriar-se", "cat": "verbo"}],
+                                "atencao": ["..."]}},
+ "quadros": [{"depois_de": "cp:art314", "titulo": "Peculato e figuras próximas",
+              "colunas": ["Dispositivo", "Verbo nuclear", "Elemento distintivo", "Pena"],
+              "linhas": [["Art. 312 — Peculato", "apropriar-se", "tem a posse",
+                          {"pena": "cp:art312.pena1", "texto": "reclusão, 2 a 12 anos, e multa"}],
+                         ["Art. 304 — Uso de documento falso", "fazer uso", "não falsifica",
+                          {"pena": "cp:art304.pena1"}]],
+              "nota": "..."}]}
+```
+
+- **Chave** `<norma>:<id>`, com o `norma.id` e o `id` do nó no recorte: a matéria pode ter mais
+  de uma norma.
+- **`cat`** da marca: `verbo` (conduta nuclear), `sujeito` (quem pode praticar),
+  `especializante` (o que separa o tipo do vizinho), `quantidade` (prazos, frações) e `condicao`
+  (subsidiariedade e procedibilidade). A pena não é categoria: tem caixa própria.
+- **Marca:** o `trecho` é procurado no `texto` do nó, os dois em NFC. Tem de aparecer uma vez
+  só e não pode sobrepor outra marca do nó. Vira `<mark class="hl-<cat>">` dentro do
+  `data-campo="texto"`, o que não muda o texto conferido.
+- **Atenção:** cada texto vira um aside depois do dispositivo, como material de apoio.
+- **Quadro:** sai em largura total logo depois do nó `depois_de`. Célula é texto ou pena.
+- **Pena no quadro:** `{"pena": "<id da pena>", "texto": "..."}` declara uma pena por célula.
+  Espécie, mínimo, máximo, unidade e multa do `texto` têm de bater com as da pena do recorte.
+  "dois", "2" e "2 (dois)" valem o mesmo. A multa é ausente, cumulativa ("e multa", "além da
+  multa") ou alternativa ("ou multa"), e "e" × "ou" conta.
+- **Pena literal:** `{"pena": "<id>"}`, sem `texto`, sai com o texto da pena do recorte, sem
+  conferência. É a saída para a pena com duas faixas ou por remissão: com `texto`, ela é erro.
+- **`gerado_em`** é a data da capa e vem da curadoria, nunca do relógio (RNF03).
+
+| Resultado | Quando |
+|---|---|
+| **Erro** (sai 1, sem gravar) | id inexistente no recorte; trecho não encontrado, ambíguo ou sobreposto; `cat` fora da lista; pena divergente ou, com `texto`, não interpretável |
+| **Aviso** (sai 0) | marcas acima de ~15% dos caracteres do artigo, sem contar a pena |
 
 ## Contrato do HTML
 
@@ -49,7 +94,7 @@ python -m vademecum conferir --recorte dados/recortes/oj26/penal/cp.json --html 
 
 ## Armadilhas e limites conhecidos
 
-- O `conferir` não confere as anotações: um realce errado ou um quadro com pena trocada passa.
-  Quem garante o conteúdo delas é o operador.
+- O `conferir` não confere as anotações. A pena do quadro é conferida pelo `renderizar`, mas a
+  escolha do trecho marcado, o texto das atenções e as demais células são do operador.
 - Tirar o `data-id` de um nó faz os campos dele contarem para o pai, e a divergência aparece no
   pai (`campo texto repetido`).

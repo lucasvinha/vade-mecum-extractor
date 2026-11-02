@@ -1,6 +1,7 @@
 # ADR-005 — Vade mecum em três etapas, com `dados/` versionado
 
-**Status:** aceito em 2026-11-02 (decidido pelo operador na entrevista da spec do M6)
+**Status:** aceito em 2026-11-02 (decidido pelo operador na entrevista da spec do M6); a Etapa 3
+foi emendada pelo [ADR-006](ADR-006-curadoria-em-json-e-render-deterministico.md)
 
 ## Problema
 
@@ -51,3 +52,5 @@ O HTML segue a **ordem dos tópicos do edital**, não a da norma, e leva capa e 
 ## Histórico
 
 - 2026-11-02: grupo dos tópicos com uma norma só e `null` no "Atualidades" (operador, na fase 3).
+- 2026-11-02: a LLM deixa de escrever o HTML e passa a escrever a curadoria em JSON, que o
+  `renderizar` transforma em HTML ([ADR-006](ADR-006-curadoria-em-json-e-render-deterministico.md)).
