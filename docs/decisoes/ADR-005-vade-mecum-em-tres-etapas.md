@@ -27,7 +27,7 @@ O vade mecum sai em **três etapas**, todas dentro deste repositório:
    (qualquer modelo serve). O PDF sai do navegador.
 
 O **`conferir`** (determinístico) compara o texto legal do HTML com o dos recortes, pelo contrato
-`data-*` do HTML (documento `negocio/vade-mecum`). Só o texto legal é guardado; as anotações são
+`data-*` do HTML ([negocio/vade-mecum.md](../negocio/vade-mecum.md)). Só o texto legal é guardado; as anotações são
 da LLM.
 
 `dados/` passa a ser **versionado**: fontes originais, bases, recortes e o vade mecum. O
