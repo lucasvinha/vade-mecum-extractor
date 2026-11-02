@@ -92,7 +92,7 @@ def test_h13_travessao_no_corpo_fica_literal():
 
 
 def test_p9_artigo_1_com_o_prefixo_passado():
-    # Lei SP 11.608 (P9), que vem do PDF do M8: sem fixture HTML, o texto é o literal da P9.
+    # Lei SP 11.608 (P9), que vem do PDF do M9: sem fixture HTML, o texto é o literal da P9.
     (linha,) = normalizar([_linha("Artigo 1° -")], ("Art.", "Artigo"))
     assert linha.texto == "Artigo 1º -"
 

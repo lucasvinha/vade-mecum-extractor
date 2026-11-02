@@ -32,8 +32,9 @@ Segue a notação do edital, que a CLI recebe como está escrita (confirmado na 
 | Depois de `,` ou `;`, texto que não começa com dígito é qualificador do item anterior (P2) | `196, inciso XX`, `282, § 1º` |
 | Qualificador sem item anterior, item vazio, item ilegível ou faixa invertida: erro de entrada | `inciso XX`, `abc`, `121-`, `130-121` |
 
-A CLI não lê o MD do conteúdo programático nem o `topicos-oj2026.json`: quem lê é o modelo ou o
-operador, que chama o `recortar` uma vez por norma.
+A expressão também pode vir dos tópicos do edital (`claude/topicos-oj2026.json`): o `recortar`
+monta a expressão da matéria com os itens dos grupos da norma da base (ADR-005). O MD do conteúdo
+programático a CLI não lê. Uma chamada do `recortar` por norma.
 
 ## §3. Semântica e ordenação
 
@@ -42,7 +43,7 @@ operador, que chama o `recortar` uma vez por norma.
 - **Artigo avulso `121`:** inclui só o art. 121. Artigo com letra entra se for citado (`311-A`) ou se estiver dentro de uma faixa. (P1, confirmada pelo operador em 2026-10-30.)
 - **Ordem da saída:** a da base, cada artigo uma vez, mesmo coberto por mais de um item (`120-125; 121`).
 - Item ou faixa que **não alcança** artigo nenhum, nem na base nem nos descartes, gera aviso, não erro.
-- Granularidade sub-artigo (`196, inciso XX`; `282, § 1º`) **não** é recortada na Etapa 1: o artigo inteiro entra, com aviso do trecho ignorado. (P2, confirmada pelo operador em 2026-10-30.)
+- Granularidade sub-artigo (`196, inciso XX`; `282, § 1º`) **não** é recortada pelo `recortar`: o artigo inteiro entra, com aviso do trecho ignorado. (P2, confirmada pelo operador em 2026-10-30.)
 
 ## §4. Interface de linha de comando
 
@@ -54,7 +55,7 @@ python -m vademecum extrair --fonte "https://www.planalto.gov.br/ccivil_03/decre
 - `--perfil` escolhe as regras da norma ([pipeline-e-perfis.md](pipeline-e-perfis.md)); se omitido, usa `padrao`.
 - `--saida` é o caminho do JSON.
 - O relatório é gravado ao lado, como `base.relatorio.json`. Não há versão em Markdown: quem lê
-  é um LLM (Etapa 2), e o JSON guarda os descartes de forma estruturada (ADR-001).
+  é um LLM (Etapa 3), e o JSON guarda os descartes de forma estruturada (ADR-001).
 
 ```bash
 python -m vademecum extrair --fonte LEI_SECA_OJ26.pdf --perfil-auto --saida-dir dados/legislacao_especial/

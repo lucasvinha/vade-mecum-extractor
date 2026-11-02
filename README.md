@@ -2,7 +2,7 @@
 
 Converte legislação bruta (HTML do Planalto, `.mht` salvo, PDF com texto) em uma base JSON
 hierárquica — artigo › parágrafo › inciso › alínea, com rubricas, penas e notas — e gera
-recortes de artigos a partir dela. A base é lida pela Etapa 2 (material de estudo).
+recortes de artigos a partir dela. A base é lida pela Etapa 3 (material de estudo).
 
 A documentação técnica começa em [docs/README.md](docs/README.md): arquitetura, stack,
 contratos, testes e o mapa do código. Este arquivo só diz por onde entrar.

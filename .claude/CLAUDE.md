@@ -1,7 +1,7 @@
 # vade-mecum-extractor
 
 Parser genérico que converte legislação bruta (HTML do Planalto, `.mht`, PDF com texto) em base
-JSON hierárquica e gera recortes de artigos; o JSON é o contrato lido pela Etapa 2.
+JSON hierárquica e gera recortes de artigos; o JSON é o contrato lido pela Etapa 3.
 
 **Comece por [docs/README.md](../docs/README.md)**: stack, contratos, testes, lint, commits,
 mapa do código e `§ Parâmetros do processo`. Este arquivo só guarda o que é regra inviolável e o
