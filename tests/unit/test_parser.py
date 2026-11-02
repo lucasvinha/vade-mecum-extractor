@@ -5,7 +5,7 @@ from vademecum.normalizador import normalizar
 from vademecum.parser import analisar
 from vademecum.perfil import carregar_perfil
 
-# Linhas reais do CP (`dados/cp/del2848compilado.mht`), com o `p#` da fonte. As rubricas e os
+# Linhas reais do CP (`dados/fontes/cp/del2848compilado.mht`), com o `p#` da fonte. As rubricas e os
 # níveis entre elas ficam de fora: são reconhecidos em outra etapa do parser (H6, H5).
 ART_121 = [
     (575, "Art. 121. Matar alguem:"),

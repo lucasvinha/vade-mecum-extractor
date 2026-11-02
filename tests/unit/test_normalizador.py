@@ -74,8 +74,8 @@ def test_h11_rotulo_ja_normalizado_fica_igual(cp, inicio):
 
 
 def test_h11_ordinal_no_corpo_fica_literal():
-    # CP, art. 129, § 7º (`dados/cp/del2848compilado.mht`, html:p#703): fora da fixture, então o
-    # texto entra literal. Só o `§ 7o` do rótulo muda; os do corpo são texto legal.
+    # CP, art. 129, § 7º (`dados/fontes/cp/del2848compilado.mht`, html:p#703): fora da fixture,
+    # então o texto entra literal. Só o `§ 7o` do rótulo muda; os do corpo são texto legal.
     texto = (
         "§ 7o Aumenta-se a pena de 1/3 (um terço) se ocorrer qualquer das hipóteses dos §§ 4o e "
         "6o do art. 121 deste Código. (Redação dada pela Lei nº 12.720, de 2012)"

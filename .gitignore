@@ -16,9 +16,7 @@ uv.lock
 .coverage
 htmlcov/
 
-# Fontes brutas e saídas geradas (não versionar; ver docs/negocio/recorte-e-cli.md)
-dados/*
-!dados/.gitkeep
+# Cache de download (as fontes e saídas de dados/ são versionadas; ver ADR-005)
 cache/
 
 # SO / editores

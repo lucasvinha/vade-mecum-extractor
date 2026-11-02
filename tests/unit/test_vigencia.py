@@ -6,7 +6,7 @@ from vademecum.parser import analisar
 from vademecum.perfil import carregar_perfil
 from vademecum.vigencia import filtrar_vigentes
 
-# Linhas reais do CP (`dados/cp/del2848compilado.mht`), com o `p#` da fonte.
+# Linhas reais do CP (`dados/fontes/cp/del2848compilado.mht`), com o `p#` da fonte.
 ART_121_P2 = [
     (575, "Art. 121. Matar alguem:"),
     (580, "§ 2º Se o homicídio é cometido:"),

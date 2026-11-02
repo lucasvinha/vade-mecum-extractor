@@ -8,7 +8,7 @@ import pytest
 from vademecum.cli import main
 
 RAIZ = Path(__file__).resolve().parents[2]
-CP_INTEIRO = RAIZ / "dados" / "cp" / "del2848compilado.htm"
+CP_INTEIRO = RAIZ / "dados" / "fontes" / "cp" / "del2848compilado.htm"
 
 
 def extrair(fonte: Path, pasta: Path) -> tuple[dict, dict]:
@@ -55,6 +55,5 @@ def cp_enxertos(tmp_path_factory) -> tuple[dict, dict]:
 
 @pytest.fixture(scope="session")
 def cp_inteiro(tmp_path_factory) -> tuple[dict, dict]:
-    if not CP_INTEIRO.is_file():
-        pytest.skip(f"fonte inteira fora do git, ausente: {CP_INTEIRO.relative_to(RAIZ)}")
+    # A fonte inteira é versionada em `dados/` (ADR-005): ausente, o A1 falha em vez de pular.
     return extrair(CP_INTEIRO, tmp_path_factory.mktemp("cp_inteiro"))

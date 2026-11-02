@@ -68,7 +68,8 @@ Versões em `pyproject.toml`. **Dependência nova só com registro nesta tabela.
 ## Infra e deploy
 
 Não há deploy: é uma CLI local. Roda em Windows sem WSL (RNF02): `pathlib` e `encoding="utf-8"`
-explícito em toda leitura e escrita. Fontes brutas e saídas geradas ficam em `dados/`, fora do git.
+explícito em toda leitura e escrita. Fontes brutas e saídas geradas ficam em `dados/`, versionado
+(ADR-005).
 
 ## Configuração
 
@@ -167,7 +168,7 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 | `docs/` | este README, PADRAO_OURO, PENDENCIAS, `decisoes/`, `negocio/`, `processo/` |
 | `.claude/` | `CLAUDE.md` e `commands/` (carregadores dos roteiros de `docs/processo/`) |
 | `scripts/` | utilitários fora da suíte |
-| `dados/` | fontes brutas e saídas geradas (não versionado) |
+| `dados/` | versionado (ADR-005): `fontes/<norma>/` (originais), `bases/<norma>/`, `recortes/<edital>/<materia>/` e `vade-mecum/<edital>/` |
 
 ## Parâmetros do processo
 
@@ -184,7 +185,7 @@ continuarem iguais entre projetos.
 | Gatilhos de spec além dos gerais | mudança no esquema do JSON; regex de [negocio/parsing.md](negocio/parsing.md); perfil novo; dependência nova |
 | Fase pede Opus quando | contradiz ou completa uma regra de negócio ou ADR; muda o esquema do JSON; semântica de vigência (ADR-001) ou de recorte (ADR-004) |
 | Proibido | `if norma == ...` no parser (ADR-002); corrigir ortografia do texto legal; perda silenciosa de texto (RNF04); timestamp dentro de `artigos` (RNF03); I/O sem `encoding="utf-8"`; regravar snapshot sem justificativa no corpo do commit; teste que acesse a rede sem o marcador `rede`; ler `.env` e arquivos Dynaconf |
-| Untracked tolerados | `dados/` |
+| Untracked tolerados | nenhum |
 | Regressão | `pytest -m regressao` contra `tests/fixtures/snapshots/`, mais antes/depois da base (ver [processo/REGRESSAO.md](processo/REGRESSAO.md)); relatórios em `docs/processo/relatorios/` (gitignored) |
 | Relatório de revisão | `docs/processo/relatorios/` (gitignored) |
 | Relatório de auditoria | `docs/processo/relatorios/` (gitignored) |

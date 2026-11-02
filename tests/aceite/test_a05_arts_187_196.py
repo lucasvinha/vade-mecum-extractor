@@ -2,7 +2,7 @@ import pytest
 
 pytestmark = pytest.mark.aceite
 
-# O enxerto vai até o art. 191; o CP inteiro, em `dados/`, traz o Título III até o 196.
+# O enxerto vai até o art. 191; o CP inteiro, em `dados/fontes/`, traz o Título III até o 196.
 NO_ENXERTO = [f"art{numero}" for numero in range(187, 192)]
 NO_CP_INTEIRO = [f"art{numero}" for numero in range(187, 197)]
 

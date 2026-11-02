@@ -1,0 +1,1530 @@
+{
+  "entradas": [
+    {
+      "origem": "html:p#21",
+      "texto": "(Redação dada pela Lei nº 7.209, de 11.7.1984)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#569",
+      "texto": "(Vide Lei nº 7.209, de 1984)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#944",
+      "texto": "(Parágrafo único renumerado pela Lei nº 9.983, de 2000)",
+      "tipo": "nota_outra"
+    },
+    {
+      "origem": "html:p#1370",
+      "texto": "(Redação dada pela Lei nº 12.015, de 2009)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1373",
+      "texto": "(Redação dada pela Lei nº 12.015, de 2009)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1396",
+      "texto": "(Incluído pela Lei nº 13.772, de 2018)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1404",
+      "texto": "(Redação dada pela Lei nº 12.015, de 2009)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1471",
+      "texto": "(Redação dada pela Lei nº 12.015, de 2009)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1524",
+      "texto": "(Incluído pela Lei nº 12.015, de 2009)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1967",
+      "texto": "(Incluído pela Lei 12.550. de 2011)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1969",
+      "texto": "(Incluído pela Lei 12.550. de 2011)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#2143",
+      "texto": "(Incluído pela Lei nº 10.467, de 11.6.2002)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#2158",
+      "texto": "(Incluído pela Lei nº 14.133, de 2021)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#2297",
+      "texto": "(Incluído pela Lei nº 10.028, de 2000)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#2326",
+      "texto": "(Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#2330",
+      "texto": "(Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#2351",
+      "texto": "(Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#2362",
+      "texto": "(Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "aviso"
+    },
+    {
+      "id": null,
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2021,
+          "bruto": "(Incluído pela Lei nº 14.197, de 2021)",
+          "data": null,
+          "norma": "Lei nº 14.197",
+          "tipo": "inclusao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#2367",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "(VETADO) (Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2021,
+          "bruto": "(Incluído pela Lei nº 14.197, de 2021)",
+          "data": null,
+          "norma": "Lei nº 14.197",
+          "tipo": "inclusao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#2372",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "(VETADO) (Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "origem": "html:p#2375",
+      "texto": "(Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#2382",
+      "texto": "(Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "aviso"
+    },
+    {
+      "id": null,
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2021,
+          "bruto": "(Incluído pela Lei nº 14.197, de 2021)",
+          "data": null,
+          "norma": "Lei nº 14.197",
+          "tipo": "inclusao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#2383",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "(VETADO) (Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "origem": "html:p#2385",
+      "texto": "(Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "aviso"
+    },
+    {
+      "id": null,
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2021,
+          "bruto": "(Incluído pela Lei nº 14.197, de 2021)",
+          "data": null,
+          "norma": "Lei nº 14.197",
+          "tipo": "inclusao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#2388",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "(VETADO) (Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art44.p1",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 1998,
+          "bruto": "(Incluído pela Lei nº 9.714, de 1998)",
+          "data": null,
+          "norma": "Lei nº 9.714",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#217",
+      "rotulo": "§ 1º",
+      "rubrica": null,
+      "texto": "§ 1º (VETADO) (Incluído pela Lei nº 9.714, de 1998)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art45.p4",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 1998,
+          "bruto": "(Incluído pela Lei nº 9.714, de 1998)",
+          "data": null,
+          "norma": "Lei nº 9.714",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#227",
+      "rotulo": "§ 4º",
+      "rubrica": null,
+      "texto": "§ 4º (VETADO) (Incluído pela Lei nº 9.714, de 1998)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art51.p1",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.268, de 1º.4.1996)",
+          "data": "1996-04-01",
+          "norma": "Lei nº 9.268",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#259",
+      "rotulo": "§ 1º",
+      "rubrica": null,
+      "texto": "§ 1º (Revogado pela Lei nº 9.268, de 1º.4.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art51.p2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.268, de 1º.4.1996)",
+          "data": "1996-04-01",
+          "norma": "Lei nº 9.268",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#260",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Revogado pela Lei nº 9.268, de 1º.4.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art107.i7",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#510",
+      "rotulo": "VII",
+      "rubrica": null,
+      "texto": "VII (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art107.i8",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#511",
+      "rotulo": "VIII",
+      "rubrica": null,
+      "texto": "VIII (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art110.p2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2010,
+          "bruto": "(Revogado pela Lei nº 12.234, de 2010)",
+          "data": null,
+          "norma": "Lei nº 12.234",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#527",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Revogado pela Lei nº 12.234, de 2010)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art121.p2.i6",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2015,
+          "bruto": "(Incluído pela Lei nº 13.104, de 2015)",
+          "data": null,
+          "norma": "Lei nº 13.104",
+          "tipo": "inclusao"
+        },
+        {
+          "ano": 2024,
+          "bruto": "(Revogado pela Lei nº 14.994, de 2024)",
+          "data": null,
+          "norma": "Lei nº 14.994",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#588",
+      "rotulo": "VI",
+      "rubrica": "Feminicídio",
+      "texto": "VI (Incluído pela Lei nº 13.104, de 2015) (Revogado pela Lei nº 14.994, de 2024)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art121.p2-A",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2024,
+          "bruto": "(Revogado pela Lei nº 14.994, de 2024)",
+          "data": null,
+          "norma": "Lei nº 14.994",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#597",
+      "rotulo": "§ 2º-A",
+      "rubrica": null,
+      "texto": "§ 2º-A (Revogado pela Lei nº 14.994, de 2024)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art121.p7",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2024,
+          "bruto": "(Revogado pela Lei nº 14.994, de 2024)",
+          "data": null,
+          "norma": "Lei nº 14.994",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#614",
+      "rotulo": "§ 7º",
+      "rubrica": null,
+      "texto": "§ 7º (Revogado pela Lei nº 14.994, de 2024)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art150.p2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2019,
+          "bruto": "(Revogado pela Lei nº 13.869, de 2019)",
+          "data": null,
+          "norma": "Lei nº 13.869",
+          "tipo": "revogacao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#907",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Revogado pela Lei nº 13.869, de 2019) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art157.p2-A.i3.e",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2026,
+          "bruto": "(Incluído pela Lei nº 15.517, de 2026)",
+          "data": null,
+          "norma": "Lei nº 15.517",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1043",
+      "rotulo": "e",
+      "rubrica": null,
+      "texto": "e (VETADO) (Incluído pela Lei nº 15.517, de 2026)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art171.p5",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2026,
+          "bruto": "(Redação dada pela Lei nº 15.397, de 2026)",
+          "data": null,
+          "norma": "Lei nº 15.397",
+          "tipo": "redacao"
+        }
+      ],
+      "origem": "html:p#1170",
+      "rotulo": "§ 5º",
+      "rubrica": null,
+      "texto": "§ 5º (Revogado) (Redação dada pela Lei nº 15.397, de 2026)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art171.p5.i1",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2026,
+          "bruto": "(Redação dada pela Lei nº 15.397, de 2026)",
+          "data": null,
+          "norma": "Lei nº 15.397",
+          "tipo": "redacao"
+        }
+      ],
+      "origem": "html:p#1171",
+      "rotulo": "I",
+      "rubrica": null,
+      "texto": "I (Revogado) (Redação dada pela Lei nº 15.397, de 2026)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art171.p5.i2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2026,
+          "bruto": "(Redação dada pela Lei nº 15.397, de 2026)",
+          "data": null,
+          "norma": "Lei nº 15.397",
+          "tipo": "redacao"
+        }
+      ],
+      "origem": "html:p#1172",
+      "rotulo": "II",
+      "rubrica": null,
+      "texto": "II (Revogado) (Redação dada pela Lei nº 15.397, de 2026)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art171.p5.i3",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2026,
+          "bruto": "(Redação dada pela Lei nº 15.397, de 2026)",
+          "data": null,
+          "norma": "Lei nº 15.397",
+          "tipo": "redacao"
+        }
+      ],
+      "origem": "html:p#1173",
+      "rotulo": "III",
+      "rubrica": null,
+      "texto": "III (Revogado) (Redação dada pela Lei nº 15.397, de 2026)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art171.p5.i4",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2026,
+          "bruto": "(Redação dada pela Lei nº 15.397, de 2026)",
+          "data": null,
+          "norma": "Lei nº 15.397",
+          "tipo": "redacao"
+        }
+      ],
+      "origem": "html:p#1174",
+      "rotulo": "IV",
+      "rubrica": null,
+      "texto": "IV (Revogado) (Redação dada pela Lei nº 15.397, de 2026)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art180.p5",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2026,
+          "bruto": "(Redação dada pela Lei nº 15.358, de 2026)",
+          "data": null,
+          "norma": "Lei nº 15.358",
+          "tipo": "redacao"
+        }
+      ],
+      "origem": "html:p#1232",
+      "rotulo": "§ 5º",
+      "rubrica": null,
+      "texto": "§ 5º (Revogado) (Redação dada pela Lei nº 15.358, de 2026)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art185",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2003,
+          "bruto": "(Revogado pela Lei nº 10.695, de 1º.7.2003)",
+          "data": "2003-07-01",
+          "norma": "Lei nº 10.695",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1267",
+      "rotulo": "Art. 185",
+      "rubrica": "Usurpação de nome ou pseudônimo alheio",
+      "texto": "Art. 185 (Revogado pela Lei nº 10.695, de 1º.7.2003)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art187",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1276",
+      "rotulo": "Art 187",
+      "rubrica": "Violação de privilégio de invenção",
+      "texto": "Art 187 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art188",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1278",
+      "rotulo": "Art 188",
+      "rubrica": "Falsa atribuição de privilégio",
+      "texto": "Art 188 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art189",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1280",
+      "rotulo": "Art. 189",
+      "rubrica": "Usurpação ou indevida exploração de modelo ou desenho privilegiado",
+      "texto": "Art. 189 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art190",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1282",
+      "rotulo": "Art. 190",
+      "rubrica": "Falsa declaração de depósito em modelo ou desenho",
+      "texto": "Art. 190 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art191",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1283",
+      "rotulo": "Art. 191",
+      "rubrica": null,
+      "texto": "Art. 191 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art192",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1288",
+      "rotulo": "Art. 192",
+      "rubrica": "Violação do direito de marca",
+      "texto": "Art. 192 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art193",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1290",
+      "rotulo": "Art. 193",
+      "rubrica": "Uso indevido de armas, brasões e distintivos públicos",
+      "texto": "Art. 193 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art194",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1292",
+      "rotulo": "Art. 194",
+      "rubrica": "Marca com falsa indicação de procedência",
+      "texto": "Art. 194 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art195",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1293",
+      "rotulo": "Art. 195",
+      "rubrica": null,
+      "texto": "Art. 195 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art196",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1996,
+          "bruto": "(Revogado pela Lei nº 9.279, de 14.5.1996)",
+          "data": "1996-05-14",
+          "norma": "Lei nº 9.279",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1297",
+      "rotulo": "Art. 196",
+      "rubrica": "Concorrência desleal",
+      "texto": "Art. 196 (Revogado pela Lei nº 9.279, de 14.5.1996)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art214",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2009,
+          "bruto": "(Revogado pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1381",
+      "rotulo": "Art. 214",
+      "rubrica": null,
+      "texto": "Art. 214 (Revogado pela Lei nº 12.015, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art216",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2009,
+          "bruto": "(Revogado pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1389",
+      "rotulo": "Art. 216",
+      "rubrica": null,
+      "texto": "Art. 216 (Revogado pela Lei nº 12.015, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art216-A.pu",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2001,
+          "bruto": "(Incluído pela Lei nº 10.224, de 15 de 2001)",
+          "data": null,
+          "norma": "Lei nº 10.224",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1393",
+      "rotulo": "Parágrafo único",
+      "rubrica": null,
+      "texto": "Parágrafo único (VETADO) (Incluído pela Lei nº 10.224, de 15 de 2001)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art217",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1406",
+      "rotulo": "Art. 217",
+      "rubrica": "Sedução",
+      "texto": "Art. 217 (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art217-A.p2",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2009,
+          "bruto": "(Incluído pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1411",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (VETADO) (Incluído pela Lei nº 12.015, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art218.pu",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2009,
+          "bruto": "(Incluído pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1421",
+      "rotulo": "Parágrafo único",
+      "rubrica": null,
+      "texto": "Parágrafo único (VETADO) (Incluído pela Lei nº 12.015, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art218-B.p1",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2025,
+          "bruto": "(Redação dada pela Lei nº 15.280, de 2025)",
+          "data": null,
+          "norma": "Lei nº 15.280",
+          "tipo": "redacao"
+        }
+      ],
+      "origem": "html:p#1428",
+      "rotulo": "§ 1º",
+      "rubrica": null,
+      "texto": "§ 1º (Revogado) (Redação dada pela Lei nº 15.280, de 2025)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art219",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1443",
+      "rotulo": "Art. 219",
+      "rubrica": "Rapto violento ou mediante fraude",
+      "texto": "Art. 219 (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art220",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1445",
+      "rotulo": "Art. 220",
+      "rubrica": "Rapto consensual",
+      "texto": "Art. 220 (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art221",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1447",
+      "rotulo": "Art. 221",
+      "rubrica": "Diminuição de pena",
+      "texto": "Art. 221 (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art222",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1449",
+      "rotulo": "Art. 222",
+      "rubrica": "Concurso de rapto e outro crime",
+      "texto": "Art. 222 (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art223",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2009,
+          "bruto": "(Revogado pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1452",
+      "rotulo": "Art. 223",
+      "rubrica": null,
+      "texto": "Art. 223 (Revogado pela Lei nº 12.015, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art224",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2009,
+          "bruto": "(Revogado pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1453",
+      "rotulo": "Art. 224",
+      "rubrica": null,
+      "texto": "Art. 224 (Revogado pela Lei nº 12.015, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art225.pu",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2018,
+          "bruto": "(Redação dada pela Lei nº 13.718, de 2018)",
+          "data": null,
+          "norma": "Lei nº 13.718",
+          "tipo": "redacao"
+        }
+      ],
+      "origem": "html:p#1456",
+      "rotulo": "Parágrafo único",
+      "rubrica": null,
+      "texto": "Parágrafo único (Revogado) (Redação dada pela Lei nº 13.718, de 2018)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art226.i3",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1461",
+      "rotulo": "III",
+      "rubrica": null,
+      "texto": "III (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art231",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2009,
+          "bruto": "(Redação dada pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "redacao"
+        },
+        {
+          "ano": 2016,
+          "bruto": "(Revogado pela Lei nº 13.344, de 2016)",
+          "data": null,
+          "norma": "Lei nº 13.344",
+          "tipo": "revogacao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#1499",
+      "rotulo": "Art. 231",
+      "rubrica": "Tráfico internacional de pessoa para fim de exploração sexual",
+      "texto": "Art. 231 (Redação dada pela Lei nº 12.015, de 2009) (Revogado pela Lei nº 13.344, de 2016) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art231-A",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2016,
+          "bruto": "(Revogado pela Lei nº 13.344, de 2016)",
+          "data": null,
+          "norma": "Lei nº 13.344",
+          "tipo": "revogacao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#1500",
+      "rotulo": "Art. 231-A",
+      "rubrica": null,
+      "texto": "Art. 231-A (Revogado pela Lei nº 13.344, de 2016) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art232",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2009,
+          "bruto": "(Revogado pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1501",
+      "rotulo": "Art. 232",
+      "rubrica": null,
+      "texto": "Art. 232 (Revogado pela Lei nº 12.015, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art234-A.i1",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2009,
+          "bruto": "(Incluído pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1527",
+      "rotulo": "I",
+      "rubrica": null,
+      "texto": "I (VETADO) (Incluído pela Lei nº 12.015, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art234-A.i2",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2009,
+          "bruto": "(Incluído pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1528",
+      "rotulo": "II",
+      "rubrica": null,
+      "texto": "II (VETADO) (Incluído pela Lei nº 12.015, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art234-C",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2009,
+          "bruto": "(Incluído pela Lei nº 12.015, de 2009)",
+          "data": null,
+          "norma": "Lei nº 12.015",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1535",
+      "rotulo": "Art. 234-C",
+      "rubrica": null,
+      "texto": "Art. 234-C (VETADO) (Incluído pela Lei nº 12.015, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art240",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1559",
+      "rotulo": "Art. 240",
+      "rubrica": "Adultério",
+      "texto": "Art. 240 (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art279",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1990,
+          "bruto": "(Revogado pela Lei nº 8.137, de 27.12.1990)",
+          "data": "1990-12-27",
+          "norma": "Lei nº 8.137",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1785",
+      "rotulo": "Art. 279",
+      "rubrica": "Substância avariada",
+      "texto": "Art. 279 (Revogado pela Lei nº 8.137, de 27.12.1990)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art281",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1971,
+          "bruto": "(Redação dada pela Lei nº 5.726, de 1971)",
+          "data": null,
+          "norma": "Lei nº 5.726",
+          "tipo": "redacao"
+        },
+        {
+          "ano": 1976,
+          "bruto": "(Revogado pela Lei nº 6.368, 1976)",
+          "data": null,
+          "norma": "Lei nº 6.368",
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 1976,
+          "bruto": "(Revogado pela Lei nº 6.368, 1976)",
+          "data": null,
+          "norma": "Lei nº 6.368",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1793",
+      "rotulo": "Art. 281",
+      "rubrica": "COMÉRCIO, POSSE OU USO DE ENTORPECENTE OU SUBSTÂNCIA QUE DETERMINE DEPENDÊNCIA FÍSICA OU PSÍQUICA.",
+      "texto": "Art. 281 (Redação dada pela Lei nº 5.726, de 1971) (Revogado pela Lei nº 6.368, 1976) (Revogado pela Lei nº 6.368, 1976)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art337-A.p2.i1",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2000,
+          "bruto": "(Incluído pela Lei nº 9.983, de 2000)",
+          "data": null,
+          "norma": "Lei nº 9.983",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#2136",
+      "rotulo": "I",
+      "rubrica": null,
+      "texto": "I (VETADO) (Incluído pela Lei nº 9.983, de 2000)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art350",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2019,
+          "bruto": "(Revogado pela Lei nº 13.869, de 2019)",
+          "data": null,
+          "norma": "Lei nº 13.869",
+          "tipo": "revogacao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#2260",
+      "rotulo": "Art. 350",
+      "rubrica": "Exercício arbitrário ou abuso de poder",
+      "texto": "Art. 350 (Revogado pela Lei nº 13.869, de 2019) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art359-O",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2021,
+          "bruto": "(Incluído pela Lei nº 14.197, de 2021)",
+          "data": null,
+          "norma": "Lei nº 14.197",
+          "tipo": "inclusao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#2368",
+      "rotulo": "Art. 359-O",
+      "rubrica": null,
+      "texto": "Art. 359-O (VETADO) (Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art359-Q",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2021,
+          "bruto": "(Incluído pela Lei nº 14.197, de 2021)",
+          "data": null,
+          "norma": "Lei nº 14.197",
+          "tipo": "inclusao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#2373",
+      "rotulo": "Art. 359-Q",
+      "rubrica": null,
+      "texto": "Art. 359-Q (VETADO) (Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art359-U",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2021,
+          "bruto": "(Incluído pela Lei nº 14.197, de 2021)",
+          "data": null,
+          "norma": "Lei nº 14.197",
+          "tipo": "inclusao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#2389",
+      "rotulo": "Art. 359-U",
+      "rubrica": null,
+      "texto": "Art. 359-U (VETADO) (Incluído pela Lei nº 14.197, de 2021) (Vigência)",
+      "tipo": "descarte"
+    },
+    {
+      "origem": "html:p#1276",
+      "texto": "RNF04: nível sem artigo vigente: CAPÍTULO II — DOS CRIMES CONTRA O PRIVILÉGIO DE INVENÇÃO",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1288",
+      "texto": "RNF04: nível sem artigo vigente: CAPÍTULO III — DOS CRIMES CONTRA AS MARCAS DE INDÚSTRIA E COMÉRCIO",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1297",
+      "texto": "RNF04: nível sem artigo vigente: CAPÍTULO IV — DOS CRIMES DE CONCORRÊNCIA DESLEAL",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1443",
+      "texto": "RNF04: nível sem artigo vigente: CAPÍTULO III — DO RAPTO",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1747",
+      "texto": "V4: art272.p1 fora de ordem, depois de art272.p1-A",
+      "tipo": "aviso"
+    }
+  ]
+}
