@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from vademecum.conferencia import conferir
+from vademecum.curadoria import CATEGORIAS, validar_curadoria
 from vademecum.modelo import (
     EntradaRelatorio,
     ErroFonte,
@@ -192,3 +193,88 @@ def test_adr006_titulo_do_grupo_fora_das_colunas():
     html = _render([("78", {})], [("121 a 130", {})])
     assert html.count('<div class="colunas">') == 2
     assert '<h2>Grupo 2</h2>\n<div class="colunas">\n<section class="item"' in html
+
+
+def _curadoria(base, **extra):
+    dados = {"schema": "curadoria-vm/1", "edital": "oj26", "materia": "penal",
+             "gerado_em": "2026-11-02", "dispositivos": {}} | extra  # fmt: skip
+    validacao = validar_curadoria(dados, [base])
+    assert validacao.erros == ()
+    return validacao.curadoria
+
+
+_QUADRO_121 = {
+    "depois_de": "cp:art121.p1",
+    "titulo": "Homicídio",
+    "colunas": ["Dispositivo", "Pena"],
+    "linhas": [
+        ["Art. 121", {"pena": "cp:art121.pena1", "texto": "reclusão, 6 a 20 anos"}],
+        ["Art. 121 (literal)", {"pena": "cp:art121.pena1"}],
+    ],
+    "nota": "Nota do quadro",
+}
+
+
+def test_adr006_marcas_dentro_do_campo_texto_passam_no_conferir():
+    base = _so("121")
+    marcas = [{"trecho": "Matar", "cat": "verbo"}, {"trecho": "alguem", "cat": "sujeito"}]
+    curadoria = _curadoria(base, dispositivos={"cp:art121": {"marcas": marcas}})
+    html = renderizar(_topicos([("121", {})]), "penal", [(base, RELATORIO)], curadoria)
+    assert (
+        '<span data-campo="texto"><mark class="hl-verbo">Matar</mark> '
+        '<mark class="hl-sujeito">alguem</mark>:</span>'
+    ) in html
+    assert conferir([base], html) == ()
+
+
+def test_adr006_atencao_e_quadro_logo_depois_do_no():
+    base = _so("121")
+    curadoria = _curadoria(
+        base,
+        dispositivos={"cp:art121.p1": {"atencao": ["Privilégio: <reduz> a pena"]}},
+        quadros=[_QUADRO_121],
+    )
+    html = renderizar(_topicos([("121", {})]), "penal", [(base, RELATORIO)], curadoria)
+    p1, aside, quadro, p2 = (
+        html.index(s)
+        for s in (
+            'data-id="art121.p1"',
+            '<aside class="atencao">Privilégio: &lt;reduz&gt; a pena</aside>',
+            '<div class="quadro">',
+            'data-id="art121.p2"',
+        )
+    )
+    assert p1 < aside < quadro < p2
+    assert "<th>Dispositivo</th><th>Pena</th>" in html
+    # A pena resumida sai como está no quadro; a literal, com o texto do recorte.
+    assert '<td class="pena-celula">reclusão, 6 a 20 anos</td>' in html
+    assert '<td class="pena-celula">reclusão, de seis a vinte anos.</td>' in html
+    assert '<p class="rodape">Nota do quadro</p>' in html
+    assert "não é texto de lei" in html[quadro:p2]
+    assert conferir([base], html) == ()
+
+
+def test_adr006_capa_e_legenda_da_curadoria():
+    base = _so("121")
+    curadoria = _curadoria(base, avisos_capa=["Aviso da curadoria"])
+    html = renderizar(_topicos([("121", {})]), "penal", [(base, RELATORIO)], curadoria)
+    capa = html[: html.index('<nav class="sumario">')]
+    assert "<li>Aviso da curadoria</li>" in capa
+    assert '<p class="edital">Gerado em 02/11/2026</p>' in capa
+    legenda = html[html.index('<section class="legenda">') : html.index('<main class="corpo">')]
+    assert re.findall(r'class="hl-(\w+)"', legenda) == list(CATEGORIAS)
+    assert "não é texto de lei" in legenda
+
+
+def test_adr006_sem_curadoria_nao_ha_legenda_nem_data():
+    # RNF03: sem curadoria, nada vem do relógio.
+    html = _render([("121", {})], base=_so("121"))
+    assert '<section class="legenda">' not in html
+    assert "Gerado em" not in html
+
+
+def test_adr006_curadoria_fora_dos_recortes_e_erro():
+    # RNF04: o quadro ancorado num nó que não sai no HTML não some em silêncio.
+    curadoria = _curadoria(BASE, quadros=[_QUADRO_121])
+    with pytest.raises(ErroFonte, match=r"curadoria fora dos recortes: cp:art121\.p1"):
+        renderizar(_topicos([("78", {})]), "penal", [(_so("78"), RELATORIO)], curadoria)

@@ -211,6 +211,7 @@ def _renderizar(args: argparse.Namespace) -> int:
         )
         for caminho in args.recorte
     ]
+    curadoria = None
     if args.curadoria is not None:
         dados = _ler_json(args.curadoria, "arquivo da curadoria", "curadoria")
         validacao = validar_curadoria(dados, [base for base, _ in recortes])
@@ -220,7 +221,8 @@ def _renderizar(args: argparse.Namespace) -> int:
             print(erro)
         if validacao.erros:
             return 1
-    html = renderizar(topicos, args.materia, recortes)
+        curadoria = validacao.curadoria
+    html = renderizar(topicos, args.materia, recortes, curadoria)
     args.saida.parent.mkdir(parents=True, exist_ok=True)
     args.saida.write_text(html, encoding="utf-8", newline="\n")  # LF em qualquer sistema (RNF03)
     return 0

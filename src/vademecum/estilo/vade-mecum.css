@@ -96,6 +96,10 @@ p { margin: 0; }
 .legenda p { margin: .8mm 0; }
 .legenda mark { font-family: Georgia, serif; font-size: 8.4pt; color: var(--tinta); }
 .legenda .apoio { margin-top: 2.5mm; font-style: italic; }
+.pena-amostra {
+  padding: 0 1.5mm; background: var(--pena-bg); border-left: 2.5pt solid var(--pena-borda);
+  font-size: 6.4pt; font-weight: 700; letter-spacing: .18em; color: var(--pena-borda);
+}
 
 /* ---------- sumário ---------- */
 /* Sem quebra forçada depois do sumário nem antes do grupo: as poucas linhas que sobram de uma
