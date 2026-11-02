@@ -31,6 +31,8 @@ Falta o recorte de uma norma da matéria? Gere-o antes (etapas 1 e 2, em
 - **Todo artigo do recorte aparece uma vez só.** Coberto por dois itens, ele fica no primeiro, e
   o segundo traz uma remissão ("ver art. 121, acima") sem `data-id`.
 - Em cada artigo, os filhos seguem a ordem do JSON (`filhos`), com as penas intercaladas.
+- A localização do artigo (`local`: parte, título, capítulo) vai numa linha discreta só quando
+  muda, e no começo de cada item.
 
 ## 3. Contrato do texto legal
 
@@ -52,6 +54,9 @@ O contrato completo está em [negocio/vade-mecum.md](../negocio/vade-mecum.md). 
   `rotulo`, `rubrica` e `texto`, só quando o nó tem o campo.
 - Copie o texto do campo **byte a byte**: "alguem", "conseqüências" e "futil" ficam como estão.
   Não corrija ortografia, não atualize valores, não troque aspas nem traços.
+- **Podendo rodar código, gere o texto legal por script**, lendo o JSON do recorte, e escreva à
+  mão só as anotações. No piloto (90 artigos do CP), o script saiu com o `conferir` em 0 na
+  primeira execução; copiar à mão é onde a LLM erra.
 - Realce dentro do campo só com marcação que não muda o texto (`<mark>`, `<strong>`, `<em>`).
 - Anotação, quadro, remissão e o "Pena –" nunca levam `data-id` nem `data-campo`.
 
@@ -63,7 +68,8 @@ O contrato completo está em [negocio/vade-mecum.md](../negocio/vade-mecum.md). 
 - **Pontos de atenção:** pegadinhas de prova, dispositivo com redação recente (nota `redacao` ou
   `inclusao` dos últimos anos), artigo `parcial: true`.
 - **Vigência:** as notas de cada nó (`notas`, com `tipo`, `norma` e `ano`) viram uma linha
-  discreta abaixo do dispositivo, ex.: "Redação dada pela Lei nº 15.134, de 2025".
+  discreta abaixo do dispositivo, ex.: "Redação dada pela Lei nº 15.134, de 2025". A fonte às
+  vezes repete a mesma nota no nó: mostre uma vez.
 - **Descartes:** os `descarte` do relatório viram um aviso no artigo deles ("§ 2º, VI revogado
   pela Lei nº 14.994, de 2024"). O relatório não diz para onde o dispositivo foi (P4): cite o
   destino só quando ele for certo, como anotação (o feminicídio virou o art. 121-A).
@@ -78,7 +84,9 @@ O contrato completo está em [negocio/vade-mecum.md](../negocio/vade-mecum.md). 
 - **Rodapé** de toda página impressa: a assinatura, o link do repositório
   (`github.com/lucasvinha/vade-mecum-extractor`) e o número da página.
 - Um arquivo só, sem recurso externo: CSS no `<style>`, sem script e sem fonte da web.
-- CSS de impressão, para o PDF sair do navegador (Ctrl+P, "Salvar como PDF"):
+- CSS de impressão, para o PDF sair do navegador (Ctrl+P, "Salvar como PDF", sem cabeçalhos e
+  rodapés do navegador). O artigo inteiro **não** leva `break-inside: avoid`: no piloto, os
+  artigos longos (7, 293, 297) deixavam meia página em branco.
 
 ```css
 @page {
@@ -88,9 +96,10 @@ O contrato completo está em [negocio/vade-mecum.md](../negocio/vade-mecum.md). 
   @bottom-right { content: "github.com/lucasvinha/vade-mecum-extractor · p. " counter(page); font-size: 8pt; }
 }
 @page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
-.capa { break-after: page; }
-.artigo, table { break-inside: avoid-page; }
-h2, h3 { break-after: avoid-page; }
+.capa, nav { break-after: page; }
+.grupo { break-before: page; }
+table, aside, .inciso, .alinea, .pena { break-inside: avoid-page; }
+h2, h3, h4 { break-after: avoid-page; }
 ```
 
 ## 6. Saída e conferência
