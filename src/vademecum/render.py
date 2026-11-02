@@ -418,7 +418,8 @@ def _legenda() -> list[str]:
     return [
         *linhas,
         '<p><span class="pena-amostra">PENA</span> — caixa âmbar: a pena do dispositivo</p>',
-        f'<p class="apoio">Quadros comparativos e pontos de atenção: {_APOIO}</p>',
+        '<p class="apoio">Quadros comparativos e pontos de atenção são material de apoio elaborado'
+        " para estudo — não são texto de lei.</p>",
         "</section>",
     ]
 

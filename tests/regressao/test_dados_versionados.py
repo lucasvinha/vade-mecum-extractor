@@ -3,7 +3,9 @@
 A fonte de `dados/bases/<norma>/` é o `.mht` de `dados/fontes/<norma>/` (ADR-005): o
 `capturado_em` dele vem do `Date` da captura, e o do `.htm` é o `mtime`, que muda a cada
 checkout. O perfil é o que a própria base registra em `norma.perfil`. O recorte
-`dados/recortes/<edital>/<materia>/<norma>.json` sai da base da norma e dos tópicos do edital.
+`dados/recortes/<edital>/<materia>/<norma>.json` sai da base da norma e dos tópicos do edital. O
+vade mecum `dados/vade-mecum/<edital>/<materia>.html` sai dos recortes da matéria, dos tópicos e
+da curadoria `dados/curadoria/<edital>/<materia>.json` (ADR-006), e o `conferir` o aceita.
 Divergente, se regrava com o mesmo comando, com a justificativa no corpo do commit.
 """
 
@@ -20,12 +22,18 @@ RAIZ = Path(__file__).resolve().parents[2]
 BASES = RAIZ / "dados" / "bases"
 FONTES = RAIZ / "dados" / "fontes"
 RECORTES = RAIZ / "dados" / "recortes"
+CURADORIAS = RAIZ / "dados" / "curadoria"
+VADE_MECUM = RAIZ / "dados" / "vade-mecum"
 NORMAS = sorted(pasta.name for pasta in BASES.iterdir() if pasta.is_dir())
 TOPICOS = {"oj26": RAIZ / "claude" / "topicos-oj2026.json"}
 RECORTES_VERSIONADOS = sorted(
     caminho.relative_to(RECORTES).as_posix()
     for caminho in RECORTES.glob("*/*/*.json")
     if not caminho.name.endswith(".relatorio.json")
+)
+CURADORIAS_VERSIONADAS = sorted(
+    caminho.relative_to(CURADORIAS).with_suffix("").as_posix()
+    for caminho in CURADORIAS.glob("*/*.json")
 )
 
 
@@ -53,3 +61,22 @@ def test_recorte_versionado_bate_com_a_base_e_os_topicos(recorte, tmp_path):
     assert main([*argv, "--topicos", str(TOPICOS[edital]), "--materia", materia]) == 0
     for nome in (arquivo, f"{norma}.relatorio.json"):
         assert (tmp_path / nome).read_bytes() == (RECORTES / edital / materia / nome).read_bytes()
+
+
+@pytest.mark.parametrize("materia", CURADORIAS_VERSIONADAS)
+def test_vade_mecum_versionado_bate_com_recortes_e_curadoria(materia, tmp_path, capsys):
+    edital, nome = materia.split("/")
+    recortes = sorted(
+        caminho
+        for caminho in (RECORTES / edital / nome).glob("*.json")
+        if not caminho.name.endswith(".relatorio.json")
+    )
+    saida = tmp_path / f"{nome}.html"
+    argv = ["renderizar", "--topicos", str(TOPICOS[edital]), "--materia", nome]
+    opcoes_recorte = [arg for caminho in recortes for arg in ("--recorte", str(caminho))]
+    argv += opcoes_recorte
+    argv += ["--curadoria", str(CURADORIAS / f"{materia}.json"), "--saida", str(saida)]
+    assert main(argv) == 0
+    assert capsys.readouterr().err == ""  # sem aviso de teto na curadoria versionada
+    assert saida.read_bytes() == (VADE_MECUM / f"{materia}.html").read_bytes()
+    assert main(["conferir", *opcoes_recorte, "--html", str(saida)]) == 0
