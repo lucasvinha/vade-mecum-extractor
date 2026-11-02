@@ -42,7 +42,11 @@ Formato canônico de saída: **JSON hierárquico**, UTF-8. CSV é rejeitado porq
 
 - `metadados` guarda o que fica fora da árvore de artigos (H17). É a única parte que pode diferir entre leituras da mesma página por `.mht` e por URL (A14).
 - PDF multi-norma: o comando gera **um arquivo por norma**, com o mesmo envelope.
-- No recorte, `"recorte": {"expressao": "121-130; 311-A", "origem": "base_cp.json"}`.
+- No recorte, `"recorte": {"expressao": "121-130; 311-A", "origem": "base_cp.json"}`: a expressão
+  sem espaço nas pontas e o nome do arquivo da base, sem a pasta (RNF03).
+- O recorte tem relatório próprio (`<recorte>.relatorio.json`), no mesmo esquema do relatório da
+  base: os avisos do recorte e os `descarte` da base dos artigos recortados
+  ([recorte-e-cli.md](recorte-e-cli.md)).
 
 ## §4. Nós (exemplo real — art. 121, trecho)
 
