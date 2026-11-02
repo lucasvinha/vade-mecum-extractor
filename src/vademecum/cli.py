@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import dataclasses
+import json
 import re
 import sys
 from collections.abc import Sequence
@@ -29,7 +30,7 @@ from vademecum.modelo import (
 from vademecum.normalizador import normalizar
 from vademecum.parser import analisar
 from vademecum.perfil import carregar_perfil
-from vademecum.recorte import interpretar, recortar
+from vademecum.recorte import expressao_dos_topicos, interpretar, recortar
 from vademecum.validador import validar
 from vademecum.vigencia import filtrar_vigentes
 
@@ -56,7 +57,10 @@ def _parser() -> argparse.ArgumentParser:
 
     recortar = sub.add_parser("recortar", help="filtra uma base existente")
     recortar.add_argument("--base", required=True, type=Path)
-    recortar.add_argument("--artigos", required=True, help='ex.: "1-12; 121; 311-A"')
+    selecao = recortar.add_mutually_exclusive_group(required=True)
+    selecao.add_argument("--artigos", help='ex.: "1-12; 121; 311-A"')
+    selecao.add_argument("--topicos", type=Path, help="JSON dos tópicos do edital (topicos-oj/2)")
+    recortar.add_argument("--materia", help="id da matéria nos tópicos; exige --topicos")
     recortar.add_argument("--saida", required=True, type=Path)
 
     return raiz
@@ -128,12 +132,27 @@ def _ler(caminho: Path, descricao: str) -> str:
         raise ErroFonte(f"{descricao} não encontrado: {caminho}") from None
 
 
+def _expressao(args: argparse.Namespace, norma: str) -> str:
+    """A de `--artigos`, ou a da matéria nos tópicos para a norma da base (ADR-005)."""
+    if args.topicos is None:
+        if args.materia is not None:
+            raise ErroFonte("--materia exige --topicos")
+        return args.artigos.strip()
+    if args.materia is None:
+        raise ErroFonte("--topicos exige --materia")
+    try:
+        topicos = json.loads(_ler(args.topicos, "arquivo dos tópicos"))
+    except json.JSONDecodeError as erro:
+        raise ErroFonte(f"tópicos com JSON inválido: {args.topicos} ({erro})") from None
+    return expressao_dos_topicos(topicos, args.materia, norma)
+
+
 def _recortar(args: argparse.Namespace) -> None:
     """Base e relatório gravados → recorte e relatório do recorte, sem reler a fonte (RF18)."""
     caminho: Path = args.base
     base = de_json(_ler(caminho, "arquivo da base"))
     relatorio_base = relatorio_de_json(_ler(_relatorio_de(caminho), "relatório da base"))
-    expressao = args.artigos.strip()
+    expressao = _expressao(args, base.norma.id)
     relatorio = Relatorio()
     recorte = recortar(base, interpretar(expressao), relatorio_base.entradas, relatorio)
     # Só o nome do arquivo: o recorte não pode depender da pasta de onde se roda (RNF03).

@@ -5,8 +5,9 @@ Etapa pura: recebe a expressão e a base já lidas, sem I/O. A semântica da fai
 
 import dataclasses
 import re
-from collections.abc import Iterable
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
+from typing import Any
 
 from vademecum.modelo import (
     Base,
@@ -72,6 +73,22 @@ def interpretar(expressao: str) -> tuple[Item, ...]:
         else:
             raise ErroFonte(f"qualificador sem artigo antes na expressão de artigos: {texto!r}")
     return tuple(itens)
+
+
+def expressao_dos_topicos(topicos: Mapping[str, Any], materia: str, norma: str) -> str:
+    """Expressão da `materia` para a `norma`, montada dos tópicos do edital (ADR-005).
+
+    É a junção, com `"; "`, dos `arts` dos itens dos grupos da matéria cuja `norma` é a dada, na
+    ordem do arquivo (`topicos-oj/2`, ver negocio/recorte-e-cli). Item sem `arts` fica de fora.
+    `ErroFonte` quando a matéria não existe ou nenhum grupo dela é da norma.
+    """
+    materias = [m for m in topicos.get("materias", ()) if m.get("id") == materia]
+    if not materias:
+        raise ErroFonte(f"matéria inexistente nos tópicos: {materia!r}")
+    grupos = [g for m in materias for g in m.get("grupos", ()) if g.get("norma") == norma]
+    if not grupos:
+        raise ErroFonte(f"nenhum grupo da matéria {materia!r} é da norma {norma!r}")
+    return "; ".join(item["arts"] for grupo in grupos for item in grupo["itens"] if "arts" in item)
 
 
 def _cobre(item: Item, chave: Chave) -> bool:

@@ -80,11 +80,18 @@ python -m vademecum extrair --fonte LEI_SECA_OJ26.pdf --perfil-auto --saida-dir 
 
 ```bash
 python -m vademecum recortar --base dados/bases/cp/base.json --artigos "1-12; 100-120; 121; 129; 150; 154; 293-305" --saida dados/recortes/oj26/penal/cp.json
+python -m vademecum recortar --base dados/bases/cp/base.json --topicos claude/topicos-oj2026.json --materia penal --saida dados/recortes/oj26/penal/cp.json
 ```
 `recortar` filtra uma base existente sem reler a fonte.
 - `--base` é o JSON gravado pelo `extrair`; o relatório dele (`<base>.relatorio.json`) tem de
   estar ao lado.
 - `--artigos` recebe a expressão da sintaxe de entrada acima.
+- `--topicos` e `--materia`, juntos e no lugar de `--artigos`: a expressão é a junção, com `"; "`,
+  dos `arts` dos itens dos grupos da matéria cuja `norma` é o `norma.id` da base, na ordem do
+  arquivo; item sem `arts` fica de fora (ADR-005). Matéria inexistente ou sem grupo da norma da
+  base é erro de entrada.
+- O recorte do edital fica em `dados/recortes/<edital>/<materia>/<norma>.json`, e o teste de
+  sincronia o refaz pelos tópicos.
 - `--saida` recebe o JSON do recorte, com o mesmo esquema da base; `norma` e `metadados` vêm da
   base, e `recorte` guarda a expressão e o nome do arquivo da base, sem a pasta
   ([modelo-de-dados.md](modelo-de-dados.md)).
@@ -92,8 +99,9 @@ python -m vademecum recortar --base dados/bases/cp/base.json --artigos "1-12; 10
   Traz um `aviso` por item que não alcança artigo e por qualificador ignorado, com `origem` igual
   ao item escrito, e os `descarte` da base cujo artigo cai no recorte, copiados sem mudança (P4).
   Item que só existe nos descartes (`189` no CP) não gera aviso: o descarte já diz que ele saiu.
-- Erro de entrada: base ou relatório da base ausente, `schema_version` diferente do atual e
-  expressão inválida. A mensagem cita o arquivo ou o item.
+- Erro de entrada: base, relatório da base ou tópicos ausentes, `schema_version` diferente do
+  atual, expressão inválida, matéria inexistente ou sem grupo da norma, e `--topicos` sem
+  `--materia` (ou o contrário). A mensagem cita o arquivo, o item ou a matéria.
 
 `python -m vademecum` executa o pacote `vademecum` como programa: roda o `__main__.py` dele, que despacha os subcomandos.
 

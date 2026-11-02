@@ -153,3 +153,61 @@ def test_rf06_recortar_expressao_invalida_sai_com_2_citando_o_item(
     assert _recortar(base_enxertos, artigos, tmp_path / "r.json") == 2
     assert repr(artigos) in capsys.readouterr().err
     assert not (tmp_path / "r.json").exists()
+
+
+def _recortar_topicos(base, topicos, materia, saida):
+    argv = ["recortar", "--base", str(base), "--topicos", str(topicos), "--saida", str(saida)]
+    return main([*argv, "--materia", materia] if materia else argv)
+
+
+@pytest.fixture
+def topicos(tmp_path):
+    caminho = tmp_path / "topicos.json"
+    grupos = [
+        {"titulo": "CP", "norma": "cp", "itens": [{"id": "a", "arts": "121"}, {"id": "b"}]},
+        {"titulo": "CPP", "norma": "cpp", "itens": [{"id": "c", "arts": "24"}]},
+        {"titulo": "CP", "norma": "cp", "itens": [{"id": "d", "arts": "187-191"}]},
+    ]
+    materias = [
+        {"id": "penal", "tipo": "lei", "grupos": grupos},
+        {"id": "civil", "tipo": "lei", "grupos": [grupos[1]]},
+    ]
+    caminho.write_text(json.dumps({"schema": "topicos-oj/2", "materias": materias}), "utf-8")
+    return caminho
+
+
+def test_adr005_recortar_pela_materia_dos_topicos(base_enxertos, topicos, tmp_path):
+    saida = tmp_path / "r.json"
+    assert _recortar_topicos(base_enxertos, topicos, "penal", saida) == 0
+    recorte = json.loads(saida.read_text(encoding="utf-8"))
+    assert recorte["recorte"] == {"expressao": "121; 187-191", "origem": "cp_base.json"}
+    assert [a["id"] for a in recorte["artigos"]] == ["art121"]
+
+
+@pytest.mark.parametrize(
+    ("materia", "mensagem"),
+    [
+        ("xx", "matéria inexistente nos tópicos: 'xx'"),
+        ("civil", "nenhum grupo da matéria 'civil' é da norma 'cp'"),
+        (None, "--topicos exige --materia"),
+    ],
+)
+def test_adr005_recortar_topicos_com_erro_sai_com_2(
+    base_enxertos, topicos, tmp_path, capsys, materia, mensagem
+):
+    assert _recortar_topicos(base_enxertos, topicos, materia, tmp_path / "r.json") == 2
+    assert mensagem in capsys.readouterr().err
+    assert not (tmp_path / "r.json").exists()
+
+
+def test_adr005_recortar_materia_sem_topicos_sai_com_2(base_enxertos, tmp_path, capsys):
+    argv = ["recortar", "--base", str(base_enxertos), "--artigos", "121", "--materia", "penal"]
+    assert main([*argv, "--saida", str(tmp_path / "r.json")]) == 2
+    assert "--materia exige --topicos" in capsys.readouterr().err
+
+
+def test_adr005_recortar_artigos_e_topicos_juntos_e_erro_de_uso(base_enxertos, topicos, tmp_path):
+    argv = ["recortar", "--base", str(base_enxertos), "--artigos", "121", "--topicos", str(topicos)]
+    with pytest.raises(SystemExit) as saida:
+        main([*argv, "--materia", "penal", "--saida", str(tmp_path / "r.json")])
+    assert saida.value.code == 2
