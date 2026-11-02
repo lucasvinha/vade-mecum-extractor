@@ -133,6 +133,10 @@ def interpretar_pena(texto: str) -> Pena | None:
     Oração depois da faixa ("se o fato não constitui crime mais grave") não é conferida.
     """
     t = unicodedata.normalize("NFC", texto).lower()
+    for repeticao in _ALGARISMO_E_EXTENSO.finditer(t):
+        extensos = _EXTENSO.finditer(repeticao[2])
+        if any(repeticao[1] != _numero_do_extenso(extenso) for extenso in extensos):
+            return None
     t = _ALGARISMO_E_EXTENSO.sub(_sem_extenso_repetido, t)
     t = _EXTENSO.sub(_numero_do_extenso, t)
     especie = _ESPECIE.match(t)
@@ -337,7 +341,7 @@ def validar_curadoria(dados: Mapping[str, Any], recortes: Sequence[Base]) -> Val
         dispositivos[chave] = Dispositivo(tuple(marcas), _lista(bruto, "atencao", str, chave))
     quadros = tuple(
         _quadro(bruto, n, indice, erros)
-        for n, bruto in enumerate(dados.get("quadros", ()), start=1)
+        for n, bruto in enumerate(_lista(dados, "quadros", Mapping, "curadoria"), start=1)
     )
     curadoria = Curadoria(
         edital=_exigir(dados, "edital", str, "curadoria"),
