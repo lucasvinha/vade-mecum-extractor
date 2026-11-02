@@ -48,8 +48,8 @@ confirmadas, P3 foi decidida no M4 (pergunta 5) e P4–P7 estão em "Riscos acom
 
 ## Perguntas em aberto
 
-Nenhuma. As 4 leis "de 2026" no CP (15.358, 15.384, 15.402, 15.425) ficam para o operador
-conferir à mão contra o corte de 19/10/2026; não bloqueiam marco nenhum (pergunta 5).
+Nenhuma. As 4 leis "de 2026" no CP (15.358, 15.384, 15.402, 15.425) não bloqueiam marco nenhum:
+quem confere contra o corte está em [negocio/vigencia-e-notas §4](negocio/vigencia-e-notas.md).
 
 ## Riscos acompanhados
 

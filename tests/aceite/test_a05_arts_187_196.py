@@ -25,3 +25,15 @@ def test_a5_arts_187_a_191_ausentes_e_registrados_no_enxerto(cp_enxertos):
 
 def test_a5_arts_187_a_196_ausentes_e_registrados_no_cp_inteiro(cp_inteiro):
     _confere(*cp_inteiro, NO_CP_INTEIRO)
+
+
+def test_a5_capitulos_sem_artigo_vigente_ficam_no_relatorio(cp_inteiro):
+    # RNF04: o nome dos Caps. II a IV do Título III só existia no `local` dos artigos revogados.
+    _, relatorio = cp_inteiro
+    avisos = [e["texto"] for e in relatorio["entradas"] if e["tipo"] == "aviso"]
+    for capitulo in (
+        "CAPÍTULO II — DOS CRIMES CONTRA O PRIVILÉGIO DE INVENÇÃO",
+        "CAPÍTULO III — DOS CRIMES CONTRA AS MARCAS DE INDÚSTRIA E COMÉRCIO",
+        "CAPÍTULO IV — DOS CRIMES DE CONCORRÊNCIA DESLEAL",
+    ):
+        assert f"RNF04: nível sem artigo vigente: {capitulo}" in avisos

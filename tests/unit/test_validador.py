@@ -106,6 +106,39 @@ def test_v2_descarte_de_artigo_preenche_a_lacuna():
     ]
 
 
+def test_v2_linha_tachada_sem_id_conta_pelo_rotulo_no_texto():
+    # RF16: o leitor HTML descarta a linha tachada sem `id`; Lei 8.429, arts. 4º a 6º (`p#30` a
+    # `p#32`), com o `°` da fonte, que acusavam lacuna falsa. O parágrafo tachado não conta.
+    tachados = [
+        (30, "Art. 4° Os agentes públicos de qualquer nível ou hierarquia são obrigados a velar"),
+        (
+            31,
+            "Art. 5° Ocorrendo lesão ao patrimônio público por ação ou omissão, dolosa ou culposa",
+        ),
+        (32, "Art. 6° No caso de enriquecimento ilícito, perderá o agente público ou terceiro"),
+        (36, "Parágrafo único. A indisponibilidade a que se refere o caput deste artigo recairá"),
+    ]
+    entradas = [
+        EntradaRelatorio(tipo="descarte", origem=f"html:p#{p}", texto=texto, motivo="vazio")
+        for p, texto in tachados
+    ]
+    artigos = (_artigo(1), _artigo(2), _artigo(3), _artigo(7))
+    assert _avisos(artigos, perfil="padrao", entradas=entradas) == []
+
+
+def test_v2_base_sem_artigo_ainda_confere_os_descartes():
+    # Sem artigo na base, a origem da lacuna é a do descarte logo depois dela.
+    entradas = (_descarte_de_artigo(1), _descarte_de_artigo(3))
+    assert _avisos((), entradas=entradas) == [("V2: lacuna na numeração-base: art. 2", "html:p#3")]
+
+
+def test_v2_origem_e_o_numero_presente_seguinte_mesmo_descartado():
+    # CP, enxertos: depois do art. 121-B, o próximo número presente é o 187, só no descarte.
+    artigos = (_artigo(121), _artigo(121, sufixo=("B",)))
+    avisos = _avisos(artigos, entradas=(_descarte_de_artigo(187),))
+    assert ("V2: lacuna na numeração-base: art. 186", "html:p#187") in avisos
+
+
 def test_v2_desligada_pelo_perfil():
     perfil = replace(carregar_perfil("cp"), lacunas=False)
     relatorio = Relatorio()

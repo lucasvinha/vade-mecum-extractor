@@ -39,6 +39,8 @@ O vocabulário de cada tipo vem do perfil da norma ([pipeline-e-perfis.md](pipel
   Sem dispositivo (o `(VETADO)` solto do parser, a linha tachada do leitor HTML), `id`, `rotulo`
   e `rubrica` saem `null`. O leitor HTML não classifica notas: a linha tachada sai com `motivo`
   `vazio` (fora do tachado não sobra texto, H8), `notas` vazio e a nota inteira no `texto`.
+  A V2 tira o número desse artigo do rótulo no começo do `texto`. O nome de nível que fica sem
+  artigo vigente só existia no `local` dos artigos e vai ao relatório como `aviso` (RNF04).
 
 A revogação é identificada pela **nota** e pelo conteúdo vazio. A única formatação que conta é
 o tachado, que o leitor HTML já tira da linha (H8). `Art. 4° (Revogado…)` com o texto tachado

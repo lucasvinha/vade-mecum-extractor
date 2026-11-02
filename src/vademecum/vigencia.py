@@ -3,12 +3,13 @@
 Etapa pura. O nó sai quando o texto sem notas é vazio ou só `Revogado.`, com um gatilho de
 `notas.revogacao` do perfil (P12), e todos os filhos também saem (RF14). Nó vazio com filho
 vigente fica, para a V5 acusar: não se descarta texto vigente. A pena nunca sai. A rubrica sai com
-o nó (H16), e ids e penas restantes não são renumerados.
+o nó (H16), e ids e penas restantes não são renumerados. O nome de nível só existe no `local` dos
+artigos: o nível que fica sem artigo vigente vai ao relatório como `aviso` (RNF04).
 """
 
-from dataclasses import replace
+from dataclasses import fields, replace
 
-from vademecum.modelo import EntradaRelatorio, No, Relatorio
+from vademecum.modelo import EntradaRelatorio, Local, No, Relatorio
 from vademecum.perfil import Perfil
 
 _PENA = "pena"
@@ -31,7 +32,38 @@ def filtrar_vigentes(
             vigentes.append(vigente)
     for descarte in descartes:
         relatorio.registrar(descarte)
+    for aviso in _niveis_sem_vigente(artigos, vigentes):
+        relatorio.registrar(aviso)
     return tuple(vigentes)
+
+
+def _niveis(artigo: No) -> list[tuple[str | None, ...]]:
+    """O caminho de cada nível do `local`, da raiz até ele.
+
+    O caminho, e não só o nome, distingue o `CAPÍTULO I` que se repete em cada título.
+    """
+    if artigo.local is None:
+        return []
+    valores = tuple(getattr(artigo.local, campo.name) for campo in fields(Local))
+    return [valores[: i + 1] for i, valor in enumerate(valores) if valor is not None]
+
+
+def _niveis_sem_vigente(artigos: tuple[No, ...], vigentes: list[No]) -> list[EntradaRelatorio]:
+    # RNF04: sem artigo vigente, o nome do nível sairia da base sem entrar no relatório
+    # (CP, Título III, Caps. II a IV, arts. 187 a 196).
+    # A `origem` é a do primeiro artigo descartado do nível.
+    restantes = {caminho for artigo in vigentes for caminho in _niveis(artigo)}
+    perdidos: dict[tuple[str | None, ...], str] = {}
+    for artigo in artigos:
+        for caminho in _niveis(artigo):
+            if caminho not in restantes:
+                perdidos.setdefault(caminho, artigo.origem)
+    return [
+        EntradaRelatorio(
+            tipo="aviso", origem=origem, texto=f"RNF04: nível sem artigo vigente: {caminho[-1]}"
+        )
+        for caminho, origem in perdidos.items()
+    ]
 
 
 def _filtrar(no: No, revogado: tuple[str, ...], descartes: list[EntradaRelatorio]) -> No | None:
