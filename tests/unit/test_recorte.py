@@ -1,7 +1,23 @@
+from pathlib import Path
+
 import pytest
 
-from vademecum.modelo import ErroFonte
-from vademecum.recorte import Item, interpretar
+from vademecum.modelo import (
+    Base,
+    EntradaRelatorio,
+    ErroFonte,
+    Metadados,
+    No,
+    Norma,
+    Relatorio,
+    chave_de_texto,
+    de_json,
+    id_artigo,
+    relatorio_de_json,
+)
+from vademecum.recorte import Item, interpretar, recortar
+
+SNAPSHOTS = Path(__file__).resolve().parents[1] / "fixtures" / "snapshots"
 
 
 def _faixas(expressao):
@@ -117,3 +133,105 @@ def test_itens_saem_na_ordem_escrita():
 def test_expressao_invalida_levanta_erro_fonte_com_o_item(expressao, mensagem):
     with pytest.raises(ErroFonte, match=mensagem):
         interpretar(expressao)
+
+
+def _artigo(rotulo):
+    numero, sufixo = chave_de_texto(rotulo)
+    return No(
+        id=id_artigo(numero, sufixo),
+        tipo="artigo",
+        texto=f"texto do art. {rotulo}",
+        origem="",
+        rotulo=f"Art. {rotulo}",
+        numero=numero,
+        sufixo=sufixo,
+    )
+
+
+def _base(*rotulos):
+    norma = Norma("cp", "Código Penal", None, "html", "cp.htm", "2026-10-26T02:03:12Z", "0", "cp")
+    return Base(norma=norma, metadados=Metadados(), artigos=tuple(map(_artigo, rotulos)))
+
+
+def _recortar(base, expressao, descartes=()):
+    relatorio = Relatorio()
+    recorte = recortar(base, interpretar(expressao), descartes, relatorio)
+    return [artigo.rotulo.removeprefix("Art. ") for artigo in recorte.artigos], relatorio.entradas
+
+
+def _descarte(id_, origem="html:p#9"):
+    return EntradaRelatorio(
+        tipo="descarte", origem=origem, texto=f"{id_} (Revogado)", id=id_, motivo="revogado"
+    )
+
+
+def test_p1_avulso_nao_traz_o_artigo_com_letra():
+    artigos, entradas = _recortar(_base("120", "121", "121-A", "122"), "121")
+    assert (artigos, entradas) == (["121"], ())
+
+
+def test_p1_artigo_com_letra_entra_se_citado():
+    artigos, _ = _recortar(_base("311", "311-A", "312"), "311-A")
+    assert artigos == ["311-A"]
+
+
+def test_rf18_saida_na_ordem_da_base_e_cada_artigo_uma_vez():
+    base = _base("120", "121", "122", "123", "124", "125", "126")
+    artigos, entradas = _recortar(base, "125; 120-125; 121")
+    assert (artigos, entradas) == (["120", "121", "122", "123", "124", "125"], ())
+
+
+def test_rf18_recorte_mantem_norma_e_metadados_da_base():
+    base = _base("1", "2")
+    recorte = recortar(base, interpretar("2"), (), Relatorio())
+    assert (recorte.norma, recorte.metadados, recorte.recorte) == (base.norma, base.metadados, None)
+
+
+@pytest.mark.parametrize("expressao", ["999", "200-210"])
+def test_item_que_nao_alcanca_artigo_gera_aviso(expressao):
+    artigos, [aviso] = _recortar(_base("121", "122"), f"121; {expressao}")
+    assert artigos == ["121"]
+    assert (aviso.tipo, aviso.origem) == ("aviso", expressao)
+    assert expressao in aviso.texto
+
+
+def test_p2_qualificador_gera_aviso_e_o_artigo_entra_inteiro():
+    artigos, [aviso] = _recortar(_base("195", "196", "197"), "196, inciso XX")
+    assert artigos == ["196"]
+    assert (aviso.tipo, aviso.origem) == ("aviso", "196")
+    assert "P2" in aviso.texto and "inciso XX" in aviso.texto
+
+
+def test_p4_descarte_do_artigo_recortado_e_copiado_sem_mudanca():
+    descartes = (
+        EntradaRelatorio(tipo="aviso", origem="html:p#1", texto="outro aviso"),
+        _descarte("art121.p2-A"),
+        _descarte("art122.p1"),
+    )
+    _, entradas = _recortar(_base("121", "122"), "121", descartes)
+    assert entradas == (descartes[1],)
+
+
+def test_p4_item_so_nos_descartes_entra_sem_aviso():
+    # CP: o art. 189 está revogado; o descarte dele já diz isso à Etapa 2.
+    descartes = (_descarte("art188"), _descarte("art189"), _descarte("art190"))
+    artigos, entradas = _recortar(_base("186", "200"), "189", descartes)
+    assert (artigos, entradas) == ([], (descartes[1],))
+
+
+def test_p4_descarte_sem_id_nao_e_ligado_a_artigo():
+    sem_id = EntradaRelatorio(tipo="descarte", origem="html:p#3", texto="Art. 121", motivo="vazio")
+    _, entradas = _recortar(_base("121"), "121", (sem_id,))
+    assert entradas == ()
+
+
+def test_rf18_recorte_dos_enxertos_do_cp():
+    base = de_json((SNAPSHOTS / "cp_enxertos.json").read_text(encoding="utf-8"))
+    relatorio_base = relatorio_de_json(
+        (SNAPSHOTS / "cp_enxertos.relatorio.json").read_text(encoding="utf-8")
+    )
+    relatorio = Relatorio()
+    recorte = recortar(base, interpretar("121; 187-189"), relatorio_base.entradas, relatorio)
+    assert [artigo.id for artigo in recorte.artigos] == ["art121"]
+    ids = [entrada.id for entrada in relatorio.entradas]
+    assert ids == ["art121.p2.i6", "art121.p2-A", "art121.p7", "art187", "art188", "art189"]

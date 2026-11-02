@@ -3,10 +3,19 @@
 Etapa pura: recebe a expressão e a base já lidas, sem I/O. A semântica da faixa é a do ADR-004.
 """
 
+import dataclasses
 import re
+from collections.abc import Iterable
 from dataclasses import dataclass
 
-from vademecum.modelo import ErroFonte, chave_de_texto
+from vademecum.modelo import (
+    Base,
+    EntradaRelatorio,
+    ErroFonte,
+    Relatorio,
+    chave_de_texto,
+    chave_ordenacao,
+)
 
 # Edital: `8º; 9º; 18`, `12, 13`.
 _SEPARADOR_ITEM = re.compile(r"[;,]")
@@ -63,3 +72,52 @@ def interpretar(expressao: str) -> tuple[Item, ...]:
         else:
             raise ErroFonte(f"qualificador sem artigo antes na expressão de artigos: {texto!r}")
     return tuple(itens)
+
+
+def _cobre(item: Item, chave: Chave) -> bool:
+    return item.inicio <= chave <= item.fim  # ADR-004
+
+
+def _chave_do_descarte(entrada: EntradaRelatorio) -> Chave | None:
+    """Chave do artigo do dispositivo descartado (`art121.p2-A` → 121); `None` sem `id`."""
+    if entrada.id is None:
+        return None
+    return chave_de_texto(entrada.id.split(".", 1)[0].removeprefix("art"))
+
+
+def recortar(
+    base: Base,
+    itens: tuple[Item, ...],
+    descartes: Iterable[EntradaRelatorio],
+    relatorio: Relatorio,
+) -> Base:
+    """Os artigos da base cobertos por algum item, na ordem da base e cada um uma vez (RF18).
+
+    `descartes` são as entradas do relatório da base: os `descarte` de artigo coberto vão ao
+    `relatorio` do recorte sem mudança. Item que não alcança nada, nem na base nem nos descartes,
+    e qualificador ignorado (P2) viram `aviso` com `origem` igual ao item escrito.
+    O campo `recorte` da base não muda: quem o preenche é a CLI, que sabe de onde a base veio.
+    """
+    chaves = [chave_ordenacao(artigo.numero, artigo.sufixo) for artigo in base.artigos]
+    descartados = [
+        (entrada, _chave_do_descarte(entrada))
+        for entrada in descartes
+        if entrada.tipo == "descarte"
+    ]
+    alcancaveis = [*chaves, *(chave for _, chave in descartados if chave is not None)]
+    for item in itens:
+        for qualificador in item.qualificadores:
+            texto = f"P2: trecho abaixo do artigo ignorado, o artigo entra inteiro: {qualificador}"
+            relatorio.registrar(EntradaRelatorio(tipo="aviso", origem=item.texto, texto=texto))
+        if not any(_cobre(item, chave) for chave in alcancaveis):
+            texto = f"item do recorte sem artigo na base nem nos descartes: {item.texto}"
+            relatorio.registrar(EntradaRelatorio(tipo="aviso", origem=item.texto, texto=texto))
+    for entrada, chave in descartados:
+        if chave is not None and any(_cobre(item, chave) for item in itens):
+            relatorio.registrar(entrada)
+    artigos = tuple(
+        artigo
+        for artigo, chave in zip(base.artigos, chaves, strict=True)
+        if any(_cobre(item, chave) for item in itens)
+    )
+    return dataclasses.replace(base, artigos=artigos)
