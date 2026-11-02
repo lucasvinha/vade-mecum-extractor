@@ -38,5 +38,6 @@ Roteiros em [docs/processo/](../docs/processo/README.md).
   faz `git commit -F` com a mensagem do FASE §4 e `git push` na branch da sessão. Neste projeto,
   isso prevalece sobre o FASE §4.5 e §5.1 ("Não commita e não faz push"). Seguem valendo o
   §5.2 (não avança para a fase seguinte) e o §5.4 (não reescreve histórico).
-- `.claude/CLAUDE.md` e `.claude/commands/` são versionados; os comandos só carregam os roteiros
-  de `docs/processo/`. `settings.local.json` é pessoal e fica fora do git.
+- `.claude/CLAUDE.md`, `.claude/commands/` e `.claude/skills/` são versionados; os comandos só
+  carregam os roteiros de `docs/processo/`, e a skill `vade-mecum` só carrega
+  `docs/etapa3/INSTRUCOES.md`. `settings.local.json` é pessoal e fica fora do git.

@@ -168,8 +168,8 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 | Caminho | Papel |
 |---|---|
 | `tests/` | `unit/`, `aceite/`, `regressao/`; `fixtures/` com trechos reais e `snapshots/` |
-| `docs/` | este README, PADRAO_OURO, PENDENCIAS, `decisoes/`, `negocio/`, `processo/` |
-| `.claude/` | `CLAUDE.md` e `commands/` (carregadores dos roteiros de `docs/processo/`) |
+| `docs/` | este README, PADRAO_OURO, PENDENCIAS, `decisoes/`, `negocio/`, `processo/` e `etapa3/` (instruções da LLM) |
+| `.claude/` | `CLAUDE.md`, `commands/` (carregadores dos roteiros de `docs/processo/`) e `skills/vade-mecum/` (carregador de `docs/etapa3/`) |
 | `scripts/` | utilitários fora da suíte |
 | `dados/` | versionado (ADR-005): `fontes/<norma>/` (originais), `bases/<norma>/`, `recortes/<edital>/<materia>/` e `vade-mecum/<edital>/` |
 

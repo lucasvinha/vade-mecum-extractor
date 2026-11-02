@@ -106,7 +106,7 @@ ausente sai como `null` e lista vazia como `[]`; chave de outro tipo não aparec
 - Nota: `data` é texto ISO `AAAA-MM-DD`, ou `null` quando a fonte só traz o ano; o texto
   original da nota fica em `bruto` ([vigencia-e-notas.md](vigencia-e-notas.md)).
 - `filhos` preserva a **ordem do texto**. Penas e dispositivos ficam intercalados, como na lei (H14).
-- O texto vem **literal**, inclusive grafias antigas ("alguem", "conseqüências"). Normalizar ortografia é decisão da Etapa 3.
+- O texto vem **literal**, inclusive grafias antigas ("alguem", "conseqüências"). Nem a Etapa 3 normaliza: o `conferir` exige o literal (ADR-005).
 
 ## §5. Armadilhas e limites conhecidos
 
