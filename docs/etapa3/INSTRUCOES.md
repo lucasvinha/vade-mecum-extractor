@@ -1,122 +1,96 @@
 # Etapa 3 — instruções para gerar o vade mecum de uma matéria
 
-Executável por qualquer LLM. Gera o HTML do material de estudo de **uma matéria** do edital a
-partir dos recortes das etapas 1 e 2 ([ADR-005](../decisoes/ADR-005-vade-mecum-em-tres-etapas.md)).
-O texto legal é copiado **sem nenhuma alteração** e conferido pelo `conferir`; a contribuição da
-LLM está na organização e nas anotações.
+Executável por qualquer LLM. Gera o material de estudo de **uma matéria** do edital a partir dos
+recortes das etapas 1 e 2 ([ADR-005](../decisoes/ADR-005-vade-mecum-em-tres-etapas.md)).
+A LLM escreve **só a curadoria**, em JSON: marcas, pontos de atenção, quadros comparativos e
+avisos da capa. O HTML sai do `renderizar`, determinístico, que copia o texto legal do recorte e
+aplica o estilo; o `conferir` prova que o texto legal é o do recorte
+([ADR-006](../decisoes/ADR-006-curadoria-em-json-e-render-deterministico.md)).
 
 Argumento: o `id` da matéria em `claude/topicos-oj2026.json` (ex.: `penal`). Os caminhos valem a
 partir da raiz do repositório. `<edital>` é `oj26`.
 
-## 1. Entradas
+## 1. Entradas e saída
 
 | Arquivo | O que tem |
 |---|---|
 | `claude/topicos-oj2026.json` | a matéria: grupos (cada um com a `norma`) e itens (`rubrica`, `arts`, `nota`, `oj`), no esquema `topicos-oj/2` de [negocio/recorte-e-cli.md](../negocio/recorte-e-cli.md) |
-| `dados/recortes/<edital>/<materia>/<norma>.json` | os artigos de cada norma da matéria, na árvore de [negocio/modelo-de-dados.md](../negocio/modelo-de-dados.md) |
-| `dados/recortes/<edital>/<materia>/<norma>.relatorio.json` | os `descarte` (revogados e vetados dos artigos recortados) e os `aviso` do recorte |
+| `dados/recortes/<edital>/<materia>/<norma>.json` | os artigos de cada norma da matéria, na árvore de [negocio/modelo-de-dados.md](../negocio/modelo-de-dados.md): é daqui que saem os `id` e os trechos |
+| `dados/recortes/<edital>/<materia>/<norma>.relatorio.json` | os `descarte` (revogados e vetados) e os `aviso` do recorte |
+| `docs/etapa3/estilo.md` | o que cada cor marca, o teto de grifo, os quadros já previstos e os avisos de capa |
+| **`dados/curadoria/<edital>/<materia>.json`** | **a saída da LLM**, no esquema `curadoria-vm/1` de [negocio/vade-mecum.md](../negocio/vade-mecum.md) |
 
 Falta o recorte de uma norma da matéria? Gere-o antes (etapas 1 e 2, em
-[negocio/recorte-e-cli.md](../negocio/recorte-e-cli.md)); não escreva texto legal de memória.
+[negocio/recorte-e-cli.md](../negocio/recorte-e-cli.md)). Texto legal nunca entra na curadoria
+nem é escrito de memória.
 
-## 2. Organização
+## 2. O que o `renderizar` já faz (não repita na curadoria)
 
-- **Ordem dos tópicos do edital**, não a da norma: um bloco por grupo, na ordem do arquivo, e
-  dentro dele uma seção por item.
-- Título da seção: a `rubrica` do item. A `nota` do item vira um aviso logo abaixo do título.
-  Item com `oj: true` ganha um selo "cobrado para Oficial de Justiça".
-- Artigos de cada item: os do recorte cobertos pela expressão `arts` do item, pela regra de
-  faixa do [ADR-004](../decisoes/ADR-004-faixa-inclui-artigos-com-letra.md) (`121 a 130` inclui
-  121-A e 121-B, não 130-A). Item sem `arts` vira só o título e a nota.
-- **Todo artigo do recorte aparece uma vez só.** Coberto por dois itens, ele fica no primeiro, e
-  o segundo traz uma remissão ("ver art. 121, acima") sem `data-id`.
-- Em cada artigo, os filhos seguem a ordem do JSON (`filhos`), com as penas intercaladas.
-- A localização do artigo (`local`: parte, título, capítulo) vai numa linha discreta só quando
-  muda, e no começo de cada item.
+- A ordem dos tópicos do edital, as seções por item, a `nota` do item, o selo `oj` e a remissão
+  do artigo coberto por dois itens ([ADR-004](../decisoes/ADR-004-faixa-inclui-artigos-com-letra.md)).
+- Capa, sumário em links, legenda das cores, rodapé de página, duas colunas na impressão.
+- A pena em caixa âmbar, as notas de redação e inclusão na linha "Alterações", os revogados do
+  relatório entre os irmãos, os saltos "fora do edital" e os `aviso` do relatório.
+- A data de captura do recorte e a nota de conferência nos avisos da capa.
 
-## 3. Contrato do texto legal
+## 3. Como escrever a curadoria
 
-O contrato completo está em [negocio/vade-mecum.md](../negocio/vade-mecum.md). Em resumo:
+O esquema e as regras de erro estão em [negocio/vade-mecum.md](../negocio/vade-mecum.md); o
+critério de estudo, no [estilo.md](estilo.md). A chave de tudo é `<norma>:<id>`, com o `id` do nó
+no recorte (`cp:art312`, `cp:art121.p2.i1`, `cp:art312.pena1`).
 
-```html
-<section data-norma="cp">
-  <div class="artigo" data-id="art121">
-    <h4 data-campo="rubrica">Homicídio simples</h4>
-    <p><strong data-campo="rotulo">Art. 121</strong> <span data-campo="texto">Matar alguem:</span></p>
-    <div class="pena" data-id="art121.pena1">
-      <p><span class="rotulo-pena">Pena –</span> <span data-campo="texto">reclusão, de seis a vinte anos.</span></p>
-    </div>
-  </div>
-</section>
-```
+- **`gerado_em`:** a data de hoje, `AAAA-MM-DD`, informada pelo operador ou pelo sistema. É a
+  data da capa; o `renderizar` não lê o relógio.
+- **Marcas** (`dispositivos.<chave>.marcas`): `{"trecho", "cat"}`, com `cat` entre `verbo`,
+  `sujeito`, `especializante`, `quantidade` e `condicao`.
+  - O `trecho` é copiado do `texto` do nó, sem mudar uma letra, e tem de aparecer **uma vez só**
+    nele. Repetido no mesmo nó? Estenda o trecho até ficar único.
+  - Duas marcas do mesmo nó não se sobrepõem. A pena não é marca: já tem caixa própria.
+  - Teto de ~15% dos caracteres do artigo: acima disso, o `renderizar` avisa. Enxugue.
+- **Atenção** (`dispositivos.<chave>.atencao`): lista de textos curtos, cada um vira um aside
+  logo depois do nó. Pegadinha de prova, redação recente (nota `redacao` ou `inclusao` dos
+  últimos anos), artigo `parcial: true`, destino de dispositivo revogado quando for certo (o
+  feminicídio virou o art. 121-A).
+- **Quadros** (`quadros`): onde a banca confunde figuras vizinhas (tabela do `estilo.md`).
+  - `depois_de` é o nó depois do qual o quadro sai, em geral o último artigo comparado.
+  - Cada linha tem uma célula por coluna. A célula de pena é `{"pena": "<chave da pena>",
+    "texto": "reclusão, 2 a 12 anos, e multa"}`: o `renderizar` confere espécie, faixa, unidade
+    e multa contra o recorte. A pena com duas faixas ou por remissão (arts. 299, 304 e 305 do
+    CP) vai sem `texto`, e sai literal do recorte.
+  - Uma pena por célula: figuras com penas diferentes ocupam linhas diferentes.
+- **`avisos_capa`:** o que o leitor precisa saber antes de estudar: artigos com letra que ficam
+  fora da faixa do edital, leis recentes a conferir contra a data de corte do edital, limites
+  conhecidos do recorte.
 
-- `data-norma` é o `norma.id` do recorte; `data-id`, o `id` do nó; `data-campo`, um de
-  `rotulo`, `rubrica` e `texto`, só quando o nó tem o campo.
-- Copie o texto do campo **byte a byte**: "alguem", "conseqüências" e "futil" ficam como estão.
-  Não corrija ortografia, não atualize valores, não troque aspas nem traços.
-- **Podendo rodar código, gere o texto legal por script**, lendo o JSON do recorte, e escreva à
-  mão só as anotações. No piloto (90 artigos do CP), o script saiu com o `conferir` em 0 na
-  primeira execução; copiar à mão é onde a LLM erra.
-- Realce dentro do campo só com marcação que não muda o texto (`<mark>`, `<strong>`, `<em>`).
-- Anotação, quadro, remissão e o "Pena –" nunca levam `data-id` nem `data-campo`.
+## 4. Gerar e conferir
 
-## 4. Anotações de estudo
+1. Grave a curadoria em `dados/curadoria/<edital>/<materia>.json`, em UTF-8.
+2. Gere o HTML, com um `--recorte` por norma da matéria:
 
-- **Realces:** núcleo do tipo, elementares, prazos, quantidades e exceções ("salvo", "exceto").
-- **Quadros comparativos** onde o edital põe figuras vizinhas lado a lado: tipo simples ×
-  qualificado × privilegiado, penas de crimes próximos, prazos que confundem.
-- **Pontos de atenção:** pegadinhas de prova, dispositivo com redação recente (nota `redacao` ou
-  `inclusao` dos últimos anos), artigo `parcial: true`.
-- **Vigência:** as notas de cada nó (`notas`, com `tipo`, `norma` e `ano`) viram uma linha
-  discreta abaixo do dispositivo, ex.: "Redação dada pela Lei nº 15.134, de 2025". A fonte às
-  vezes repete a mesma nota no nó: mostre uma vez.
-- **Descartes:** os `descarte` do relatório viram um aviso no artigo deles ("§ 2º, VI revogado
-  pela Lei nº 14.994, de 2024"). O relatório não diz para onde o dispositivo foi (P4): cite o
-  destino só quando ele for certo, como anotação (o feminicídio virou o art. 121-A).
-- Os `aviso` do relatório do recorte (item sem artigo, trecho abaixo do artigo ignorado) viram
-  uma nota na seção do item. Não esconda nenhum.
+   ```bash
+   python -m vademecum renderizar --topicos claude/topicos-oj2026.json --materia penal \
+     --recorte dados/recortes/oj26/penal/cp.json --curadoria dados/curadoria/oj26/penal.json \
+     --saida dados/vade-mecum/oj26/penal.html
+   ```
 
-## 5. Capa, rodapé e impressão
-
-- **Capa** (primeira página): nome da matéria, edital (`edital` do arquivo dos tópicos), data
-  da geração e a assinatura **"Lucas Vinha Teixeira · github.com/lucasvinha"**.
-- **Sumário** com os grupos e os itens, em links para as seções.
-- **Rodapé** de toda página impressa: a assinatura, o link do repositório
-  (`github.com/lucasvinha/vade-mecum-extractor`) e o número da página.
-- Um arquivo só, sem recurso externo: CSS no `<style>`, sem script e sem fonte da web.
-- CSS de impressão, para o PDF sair do navegador (Ctrl+P, "Salvar como PDF", sem cabeçalhos e
-  rodapés do navegador). O artigo inteiro **não** leva `break-inside: avoid`: no piloto, os
-  artigos longos (7, 293, 297) deixavam meia página em branco.
-
-```css
-@page {
-  size: A4;
-  margin: 18mm 16mm 20mm;
-  @bottom-left { content: "Lucas Vinha Teixeira · github.com/lucasvinha"; font-size: 8pt; }
-  @bottom-right { content: "github.com/lucasvinha/vade-mecum-extractor · p. " counter(page); font-size: 8pt; }
-}
-@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
-.capa, nav { break-after: page; }
-.grupo { break-before: page; }
-table, aside, .inciso, .alinea, .pena { break-inside: avoid-page; }
-h2, h3, h4 { break-after: avoid-page; }
-```
-
-## 6. Saída e conferência
-
-1. Grave `dados/vade-mecum/<edital>/<materia>.html`, em UTF-8.
-2. Rode o `conferir`, com um `--recorte` por norma da matéria:
+   - `--topicos` e `--materia` escolhem a matéria; `--recorte` aponta o recorte de uma norma e
+     se repete para cada norma; `--curadoria` é o JSON do passo 1; `--saida`, o HTML.
+   - Retorno esperado: código 0 e o HTML gravado. O aviso de teto (`aviso: cp:art313-A: marcas
+     cobrem 22% do artigo…`) sai no stderr e não impede a gravação: enxugue as marcas e rode de
+     novo.
+   - Código 1: uma linha por erro de curadoria (`cp:art312: trecho não encontrado: '…'`,
+     `quadro 2, linha 3: cp:art316.pena1: pena divergente: …`), e o HTML **não** é gravado.
+     Corrija a curadoria, nunca o recorte, e rode de novo até sair 0.
+   - Código 2: erro de entrada (arquivo ausente, JSON inválido, matéria inexistente).
+3. Confira o texto legal do HTML:
 
    ```bash
    python -m vademecum conferir --recorte dados/recortes/oj26/penal/cp.json --html dados/vade-mecum/oj26/penal.html
    ```
 
-   - `--recorte` aponta o recorte de uma norma; repita a opção para cada norma da matéria.
-   - `--html` aponta o vade mecum gerado.
-   - Retorno esperado: nada impresso e código 0. Com divergência, uma linha por problema
-     (`cp:art121.p2.i2: campo texto divergente: …`) e código 1.
-
-3. Corrija cada linha **no HTML**, copiando de novo do recorte, e rode outra vez até sair 0.
-   Divergência nunca se resolve mexendo no recorte.
-4. Entregue ao operador o caminho do HTML. Ele abre no navegador, salva
-   `dados/vade-mecum/<edital>/<materia>.pdf` ao lado e confere capa e rodapé.
+   - `--recorte` repete-se por norma, como no passo 2; `--html` é o HTML gerado.
+   - Retorno esperado: nada impresso e código 0. Como o texto legal vem do `renderizar`, uma
+     divergência aqui é defeito do programa: relate, não edite o HTML à mão.
+4. Entregue ao operador o caminho do HTML. Ele abre no navegador, imprime com Ctrl+P → "Salvar
+   como PDF", sem os cabeçalhos e rodapés do navegador, grava
+   `dados/vade-mecum/<edital>/<materia>.pdf` ao lado e confere capa, cores e rodapé.

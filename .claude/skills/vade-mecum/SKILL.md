@@ -1,6 +1,6 @@
 ---
 name: vade-mecum
-description: Gera o vade mecum em HTML de uma matéria do edital (Etapa 3) a partir dos recortes, confere o texto legal com o `conferir` até sair 0 e pede o PDF ao operador. Use quando o operador pedir o vade mecum, o material de estudo ou o HTML de uma matéria (`/vade-mecum penal`).
+description: Gera o vade mecum de uma matéria do edital (Etapa 3) - escreve a curadoria em JSON, roda o `renderizar` até sair 0, confere o texto legal com o `conferir` e pede o PDF ao operador. Use quando o operador pedir o vade mecum, o material de estudo, a curadoria ou o HTML de uma matéria (`/vade-mecum penal`).
 ---
 
 # Vade mecum — carregador
@@ -17,7 +17,9 @@ Argumento: o `id` da matéria em `claude/topicos-oj2026.json` (ex.: `penal`).
      `python -m vademecum recortar --base dados/bases/<norma>/base.json --topicos claude/topicos-oj2026.json --materia <materia> --saida dados/recortes/oj26/<materia>/<norma>.json`.
 
    Norma sem fonte `.mht` ou sem perfil: pare e diga ao operador qual falta (perfis no M7).
-2. **Leia `docs/etapa3/INSTRUCOES.md` inteiro e siga-o**, inclusive o laço do `conferir`.
-3. Não termine com o `conferir` saindo diferente de 0. Ao fim, mostre a última execução dele e
-   peça ao operador que abra o HTML no navegador, salve o PDF ao lado e confira capa e rodapé.
+2. **Leia `docs/etapa3/INSTRUCOES.md` inteiro e siga-o.** Escreva só a curadoria; o HTML é do
+   `renderizar`. Nunca edite o HTML à mão.
+3. Não termine com o `renderizar` ou o `conferir` saindo diferente de 0. Ao fim, mostre a última
+   execução de cada um e peça ao operador que abra o HTML no navegador, salve o PDF ao lado e
+   confira capa, cores e rodapé.
 4. Não commita: o commit é do operador, ou da fase que chamou a skill.
