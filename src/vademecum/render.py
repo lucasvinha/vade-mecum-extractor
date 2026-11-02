@@ -14,6 +14,7 @@ from html import escape
 from importlib.resources import files
 from typing import Any
 
+from vademecum.curadoria import CATEGORIAS, CelulaPena, Curadoria, Dispositivo, Marca, Quadro
 from vademecum.modelo import Base, EntradaRelatorio, ErroFonte, Local, No, Relatorio, chave_de_texto
 from vademecum.recorte import interpretar
 
@@ -22,6 +23,16 @@ _COMPACTAS = ("redacao", "inclusao")  # viram a linha "Alterações" no fim do a
 _NIVEIS_LOCAL = ("parte", "livro", "titulo", "capitulo", "secao", "subsecao", "rotulo_livre")
 # Último segmento do `id`, para pôr o revogado entre os irmãos (`p2-A`, `pu`, `i6`, `a`).
 _SEGMENTO = re.compile(r"p(?P<p>\d+)(?P<suf>(?:-[A-Z])*)|(?P<pu>pu)|i(?P<i>\d+)|(?P<a>[a-z])")
+_APOIO = "Material de apoio elaborado para estudo — não é texto de lei."
+# Amostra e descrição de cada categoria de marca (estilo.md).
+_LEGENDA = {
+    "verbo": ("conduta nuclear", "o verbo do tipo"),
+    "sujeito": ("sujeito", "quem pode praticar, a qualidade exigida"),
+    "especializante": ("elemento especializante", "o detalhe que separa o tipo do vizinho"),
+    "quantidade": ("quantidade", "prazos, frações e quantidades"),
+    "condicao": ("condição", "subsidiariedade e procedibilidade"),
+}
+_DATA_ISO = re.compile(r"(\d{4})-(\d{2})-(\d{2})")
 _CONFERENCIA = (
     "O texto legal foi copiado do recorte e conferido contra ele pelo conferir; as notas "
     "legislativas vêm da fonte, sem verificação independente."
@@ -40,6 +51,27 @@ class _Entrada:
     descarte: EntradaRelatorio | None = None
     remissao: No | None = None
     salto: str | None = None  # linha "fora do edital" que fecha esta entrada
+
+
+@dataclass(frozen=True)
+class _Anotacoes:
+    """A curadoria de uma norma, pelo `id` do nó (sem o prefixo `<norma>:`)."""
+
+    dispositivos: Mapping[str, Dispositivo] = field(default_factory=dict)
+    quadros: Mapping[str, Sequence[Quadro]] = field(default_factory=dict)
+
+    def marcas(self, id_: str) -> Sequence[Marca]:
+        dispositivo = self.dispositivos.get(id_)
+        return dispositivo.marcas if dispositivo else ()
+
+    def depois(self, id_: str) -> list[str]:
+        """As atenções e os quadros que vêm logo depois do nó."""
+        dispositivo = self.dispositivos.get(id_)
+        atencoes = dispositivo.atencao if dispositivo else ()
+        linhas = [f'<aside class="atencao">{_e(texto)}</aside>' for texto in atencoes]
+        for quadro in self.quadros.get(id_, ()):
+            linhas += _quadro(quadro)
+        return linhas
 
 
 @dataclass
@@ -211,33 +243,52 @@ def _alteracoes(artigo: No) -> str:
     return f'<p class="alteracoes">Alterações: {_e(texto)}</p>'
 
 
-def _campo(nome: str, valor: str | None, classe: str = "", tag: str = "span") -> str:
+def _marcado(texto: str, marcas: Sequence[Marca]) -> str:
+    """O texto escapado, com cada marca num `<mark>`: o texto conferido não muda (ADR-006)."""
+    partes, posicao = [], 0
+    for marca in marcas:
+        partes.append(_e(texto[posicao : marca.inicio]))
+        partes.append(f'<mark class="hl-{marca.cat}">{_e(texto[marca.inicio : marca.fim])}</mark>')
+        posicao = marca.fim
+    partes.append(_e(texto[posicao:]))
+    return "".join(partes)
+
+
+def _campo(
+    nome: str, valor: str | None, classe: str = "", tag: str = "span", marcas: Sequence[Marca] = ()
+) -> str:
     if not valor:
         return ""
     atributo = f' class="{classe}"' if classe else ""
-    return f'<{tag}{atributo} data-campo="{nome}">{_e(valor)}</{tag}>'
+    return f'<{tag}{atributo} data-campo="{nome}">{_marcado(valor, marcas)}</{tag}>'
 
 
-def _dispositivo(
-    no: No, nivel: int, por_pai: Mapping[str, Sequence[EntradaRelatorio]]
-) -> list[str]:
-    linhas = []
+@dataclass(frozen=True)
+class _Contexto:
+    """O que o artigo em curso precisa: os revogados por pai e a curadoria da norma."""
+
+    por_pai: Mapping[str, Sequence[EntradaRelatorio]]
+    anotacoes: _Anotacoes
+
+
+def _dispositivo(no: No, nivel: int, ctx: _Contexto) -> list[str]:
+    marcas = ctx.anotacoes.marcas(no.id)
     if no.tipo == "pena":
-        linhas.append(
+        linhas = [
             f'<div class="pena n{nivel}" data-id="{_e(no.id)}">'
             f'<span class="rotulo-pena">PENA</span> {_campo("rotulo", no.rotulo)}'
-            f"{_campo('texto', no.texto)}{_notas_do_no(no)}</div>"
-        )
+            f"{_campo('texto', no.texto, marcas=marcas)}{_notas_do_no(no)}</div>"
+        ]
     else:
-        linhas.append(
+        linhas = [
             f'<div class="disp {no.tipo} n{nivel}" data-id="{_e(no.id)}">'
             f"{_campo('rubrica', no.rubrica, 'rubrica', 'p')}"
             f'<p class="linha">{_campo("rotulo", no.rotulo, "marca")} '
-            f"{_campo('texto', no.texto, 'conteudo')}{_notas_do_no(no)}</p></div>"
-        )
-    for filho in _filhos_com_revogados(no, por_pai.get(no.id, ())):
-        linhas.extend(_filho(filho, nivel + 1, por_pai))
-    return linhas
+            f"{_campo('texto', no.texto, 'conteudo', marcas=marcas)}{_notas_do_no(no)}</p></div>"
+        ]
+    for filho in _filhos_com_revogados(no, ctx.por_pai.get(no.id, ())):
+        linhas.extend(_filho(filho, nivel + 1, ctx))
+    return linhas + ctx.anotacoes.depois(no.id)
 
 
 def _revogado(entrada: EntradaRelatorio, nivel: int) -> str:
@@ -251,24 +302,47 @@ def _revogado(entrada: EntradaRelatorio, nivel: int) -> str:
     )
 
 
-def _filho(filho: No | EntradaRelatorio, nivel: int, por_pai) -> list[str]:
+def _filho(filho: No | EntradaRelatorio, nivel: int, ctx: _Contexto) -> list[str]:
     if isinstance(filho, EntradaRelatorio):
         return [_revogado(filho, nivel)]
-    return _dispositivo(filho, nivel, por_pai)
+    return _dispositivo(filho, nivel, ctx)
 
 
-def _artigo(norma: str, artigo: No, relatorio: Relatorio) -> list[str]:
-    por_pai = _revogados_por_pai(artigo, relatorio)
+def _artigo(norma: str, artigo: No, relatorio: Relatorio, anotacoes: _Anotacoes) -> list[str]:
+    ctx = _Contexto(_revogados_por_pai(artigo, relatorio), anotacoes)
+    texto = _campo("texto", artigo.texto, marcas=anotacoes.marcas(artigo.id))
     linhas = [
         f'<article class="artigo" id="{_ancora(norma, artigo.id)}" data-id="{_e(artigo.id)}">',
         _campo("rubrica", artigo.rubrica, "rubrica", "h4"),
         f'<p class="caput">{_campo("rotulo", artigo.rotulo, "num-art")} '
-        f"{_campo('texto', artigo.texto)}{_notas_do_no(artigo)}</p>",
+        f"{texto}{_notas_do_no(artigo)}</p>",
     ]
-    for filho in _filhos_com_revogados(artigo, por_pai.get(artigo.id, ())):
-        linhas.extend(_filho(filho, 1, por_pai))
-    linhas += [_alteracoes(artigo), "</article>"]
+    for filho in _filhos_com_revogados(artigo, ctx.por_pai.get(artigo.id, ())):
+        linhas.extend(_filho(filho, 1, ctx))
+    linhas += [_alteracoes(artigo), *anotacoes.depois(artigo.id), "</article>"]
     return [linha for linha in linhas if linha]
+
+
+def _quadro(quadro: Quadro) -> list[str]:
+    """Quadro comparativo; a pena da célula ancorada já vem conferida da curadoria."""
+    cabecalho = "".join(f"<th>{_e(coluna)}</th>" for coluna in quadro.colunas)
+    linhas = [
+        '<div class="quadro">',
+        f"<h3>{_e(quadro.titulo)}</h3>",
+        f"<table><thead><tr>{cabecalho}</tr></thead><tbody>",
+    ]
+    for linha in quadro.linhas:
+        celulas = "".join(
+            f'<td class="pena-celula">{_e(c.texto)}</td>'
+            if isinstance(c, CelulaPena)
+            else f"<td>{_e(c)}</td>"
+            for c in linha
+        )
+        linhas.append(f"<tr>{celulas}</tr>")
+    linhas.append("</tbody></table>")
+    if quadro.nota:
+        linhas.append(f'<p class="rodape">{_e(quadro.nota)}</p>')
+    return [*linhas, f'<p class="apoio">{_APOIO}</p>', "</div>"]
 
 
 def _local(local: Local | None) -> str:
@@ -278,7 +352,11 @@ def _local(local: Local | None) -> str:
     return f'<p class="local">{_e(" · ".join(niveis))}</p>' if niveis else ""
 
 
-def _item(item: _Item, recortes: Mapping[str, tuple[Base, Relatorio]]) -> list[str]:
+def _item(
+    item: _Item,
+    recortes: Mapping[str, tuple[Base, Relatorio]],
+    anotacoes: Mapping[str, _Anotacoes],
+) -> list[str]:
     dados = item.dados
     selo = (
         ' <span class="selo-oj">cobrado para Oficial de Justiça</span>' if dados.get("oj") else ""
@@ -302,7 +380,8 @@ def _item(item: _Item, recortes: Mapping[str, tuple[Base, Relatorio]]) -> list[s
             if local and local != local_atual:
                 linhas.append(local)
                 local_atual = local
-            linhas += _artigo(entrada.norma, entrada.artigo, recortes[entrada.norma][1])
+            relatorio = recortes[entrada.norma][1]
+            linhas += _artigo(entrada.norma, entrada.artigo, relatorio, anotacoes[entrada.norma])
         else:
             assert entrada.descarte is not None
             linhas.append(_revogado(entrada.descarte, 0))
@@ -331,19 +410,47 @@ def _sumario(fluxo) -> list[str]:
     return linhas
 
 
-def _capa(topicos, materia, recortes, avisos_sem_item: Sequence[str]) -> list[str]:
+def _legenda() -> list[str]:
+    linhas = ['<section class="legenda">', "<h2>Como ler os destaques</h2>"]
+    for cat in CATEGORIAS:
+        amostra, descricao = _LEGENDA[cat]
+        linhas.append(f'<p><mark class="hl-{cat}">{amostra}</mark> — {descricao}</p>')
+    return [
+        *linhas,
+        '<p><span class="pena-amostra">PENA</span> — caixa âmbar: a pena do dispositivo</p>',
+        f'<p class="apoio">Quadros comparativos e pontos de atenção: {_APOIO}</p>',
+        "</section>",
+    ]
+
+
+def _data(gerado_em: str) -> str:
+    casamento = _DATA_ISO.fullmatch(gerado_em)
+    return f"{casamento[3]}/{casamento[2]}/{casamento[1]}" if casamento else gerado_em
+
+
+def _capa(
+    topicos, materia, recortes, avisos_sem_item: Sequence[str], curadoria: Curadoria | None
+) -> list[str]:
     normas = [base.norma.titulo or base.norma.id for base, _ in recortes.values()]
     avisos = [
         f"Texto da norma {base.norma.id} capturado do Planalto em {base.norma.capturado_em[:10]}."
         for base, _ in recortes.values()
     ]
-    avisos += [_CONFERENCIA, *avisos_sem_item]
+    avisos.append(_CONFERENCIA)
+    if curadoria is not None:
+        avisos += curadoria.avisos_capa
+    avisos += avisos_sem_item
+    # A data vem da curadoria, nunca do relógio (RNF03); sem curadoria, a capa sai sem data.
+    datas = (
+        [f'<p class="edital">Gerado em {_e(_data(curadoria.gerado_em))}</p>'] if curadoria else []
+    )
     return [
         '<section class="capa">',
         f'<p class="selo">{_e(" · ".join(normas))}</p>',
         "<h1>VADE MECUM</h1>",
         f'<p class="sub">{_e(materia["nome"])}</p>',
         f'<p class="edital">{_e(topicos.get("edital", ""))}</p>',
+        *datas,
         '<div class="aviso"><p><strong>Avisos de uso</strong></p><ul>',
         *(f"<li>{_e(aviso)}</li>" for aviso in avisos),
         "</ul></div>",
@@ -352,20 +459,53 @@ def _capa(topicos, materia, recortes, avisos_sem_item: Sequence[str]) -> list[st
     ]
 
 
+def _anotacoes(
+    curadoria: Curadoria | None, recortes: Mapping[str, tuple[Base, Relatorio]]
+) -> dict[str, _Anotacoes]:
+    """A curadoria repartida por norma; a chave que não é nó dos recortes é erro (RNF04)."""
+    if curadoria is None:
+        return {norma: _Anotacoes() for norma in recortes}
+    chaves = {f"{n}:{no.id}" for n, (base, _) in recortes.items() for no in _nos(base.artigos)}
+    soltas = [chave for chave in curadoria.dispositivos if chave not in chaves]
+    soltas += [q.depois_de for q in curadoria.quadros if q.depois_de not in chaves]
+    if soltas:
+        raise ErroFonte(f"curadoria fora dos recortes: {', '.join(soltas)}")
+    anotacoes = {}
+    for norma in recortes:
+        prefixo = f"{norma}:"
+        quadros: dict[str, list[Quadro]] = {}
+        for quadro in curadoria.quadros:
+            if quadro.depois_de.startswith(prefixo):
+                quadros.setdefault(quadro.depois_de.removeprefix(prefixo), []).append(quadro)
+        dispositivos = {
+            chave.removeprefix(prefixo): dispositivo
+            for chave, dispositivo in curadoria.dispositivos.items()
+            if chave.startswith(prefixo)
+        }
+        anotacoes[norma] = _Anotacoes(dispositivos, quadros)
+    return anotacoes
+
+
 def renderizar(
-    topicos: Mapping[str, Any], materia: str, recortes: Sequence[tuple[Base, Relatorio]]
+    topicos: Mapping[str, Any],
+    materia: str,
+    recortes: Sequence[tuple[Base, Relatorio]],
+    curadoria: Curadoria | None = None,
 ) -> str:
     """O HTML do vade mecum da `materia`, com o texto legal dos `recortes` (ADR-006).
 
     `recortes` traz cada recorte com o seu relatório, de onde saem os revogados e os avisos.
-    `ErroFonte` quando a matéria não existe, falta o recorte de uma norma dos grupos ou sobra
-    artigo do recorte que nenhum item cobre (RNF04).
+    A `curadoria`, já validada por `validar_curadoria`, põe as marcas, as atenções, os quadros,
+    a legenda e os avisos e a data da capa. `ErroFonte` quando a matéria não existe, falta o
+    recorte de uma norma dos grupos, sobra artigo do recorte que nenhum item cobre ou a
+    curadoria cita nó fora dos recortes (RNF04).
     """
     materias = [m for m in topicos.get("materias", ()) if m.get("id") == materia]
     if not materias:
         raise ErroFonte(f"matéria inexistente nos tópicos: {materia!r}")
     por_norma = {base.norma.id: (base, relatorio) for base, relatorio in recortes}
     fluxo = _fluxo(materias[0].get("grupos", ()), por_norma)
+    anotacoes = _anotacoes(curadoria, por_norma)
     com_item = {aviso for _, itens in fluxo for item in itens for aviso in item.avisos}
     sem_item = [
         e.texto
@@ -381,7 +521,7 @@ def renderizar(
         # O título fica fora das colunas da impressão, para não ficar sozinho no pé da página.
         corpo.append(f'<h2>{_e(grupo["titulo"])}</h2>\n<div class="colunas">')
         for item in itens:
-            corpo += _item(item, por_norma)
+            corpo += _item(item, por_norma, anotacoes)
         corpo.append("</div>\n</section>")
     linhas = [
         "<!DOCTYPE html>",
@@ -392,8 +532,9 @@ def renderizar(
         f"<style>{_CSS}</style>",
         "</head>",
         "<body>",
-        *_capa(topicos, materias[0], por_norma, sem_item),
+        *_capa(topicos, materias[0], por_norma, sem_item, curadoria),
         *_sumario(fluxo),
+        *(_legenda() if curadoria is not None else ()),
         '<main class="corpo">',
         *corpo,
         "</main>",

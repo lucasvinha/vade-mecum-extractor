@@ -274,12 +274,48 @@ def _renderizar(entrada, saida, *extra):
     return main([*argv, "--saida", str(saida), *extra])
 
 
-def _curadoria(tmp_path, dispositivos):
+def _curadoria(tmp_path, dispositivos, quadros=()):
     caminho = tmp_path / "curadoria.json"
     dados = {"schema": "curadoria-vm/1", "edital": "oj26", "materia": "penal",
-             "gerado_em": "2026-11-02", "dispositivos": dispositivos}  # fmt: skip
+             "gerado_em": "2026-11-02", "dispositivos": dispositivos,
+             "quadros": list(quadros)}  # fmt: skip
     caminho.write_text(json.dumps(dados), "utf-8")
     return caminho
+
+
+def _quadro(celula):
+    return {"depois_de": "cp:art121", "titulo": "Homicídio", "colunas": ["Tipo", "Pena"],
+            "linhas": [["Art. 121", celula]]}  # fmt: skip
+
+
+def test_adr006_renderizar_com_curadoria_marca_e_passa_no_conferir(entrada_render, tmp_path):
+    marcas = {"cp:art121": {"marcas": [{"trecho": "Matar", "cat": "verbo"}]}}
+    quadro = _quadro({"pena": "cp:art121.pena1", "texto": "reclusão, 6 (seis) a 20 anos"})
+    curadoria = _curadoria(tmp_path, marcas, [quadro])
+    saida = tmp_path / "penal.html"
+    assert _renderizar(entrada_render, saida, "--curadoria", str(curadoria)) == 0
+    html = saida.read_text(encoding="utf-8")
+    assert '<mark class="hl-verbo">Matar</mark>' in html
+    assert '<td class="pena-celula">reclusão, 6 (seis) a 20 anos</td>' in html
+    assert _conferir(entrada_render[0], saida) == 0
+
+
+def test_adr006_renderizar_pena_divergente_sai_1_sem_gravar(entrada_render, tmp_path, capsys):
+    quadro = _quadro({"pena": "cp:art121.pena1", "texto": "reclusão, 6 a 12 anos"})
+    curadoria = _curadoria(tmp_path, {}, [quadro])
+    saida = tmp_path / "penal.html"
+    assert _renderizar(entrada_render, saida, "--curadoria", str(curadoria)) == 1
+    assert not saida.exists()
+    [linha] = capsys.readouterr().out.splitlines()
+    assert linha.startswith("quadro 1, linha 1: cp:art121.pena1: pena divergente")
+
+
+def test_adr006_renderizar_pena_literal_sai_sem_conferencia(entrada_render, tmp_path):
+    curadoria = _curadoria(tmp_path, {}, [_quadro({"pena": "cp:art121.pena1"})])
+    saida = tmp_path / "penal.html"
+    assert _renderizar(entrada_render, saida, "--curadoria", str(curadoria)) == 0
+    html = saida.read_text(encoding="utf-8")
+    assert '<td class="pena-celula">reclusão, de seis a vinte anos.</td>' in html
 
 
 def test_adr006_renderizar_grava_html_que_passa_no_conferir(entrada_render, tmp_path, capsys):
