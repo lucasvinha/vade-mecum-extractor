@@ -22,7 +22,7 @@ que é específico do Claude.
 ## Comandos
 - Testes: `pytest` (só aceite: `pytest -m aceite`)
 - Lint: `ruff check . && ruff format --check .`
-- Rodar local: `python -m vademecum extrair --fonte <fonte> --perfil cp --saida dados/cp/base.json`
+- Rodar local: `python -m vademecum extrair --fonte <fonte> --perfil cp --saida dados/bases/cp/base.json`
 
 ## Fluxo
 Mudança que vale mais de um commit começa por `/spec`, nunca pela implementação inteira.

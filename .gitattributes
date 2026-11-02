@@ -3,3 +3,5 @@
 tests/fixtures/** -text
 # O README das fixtures é texto comum e segue a normalização do resto do repositório.
 tests/fixtures/README.md text
+# dados/ guarda bytes da fonte e da saída, conferidos pelo teste de sincronia (ADR-005).
+dados/** -text

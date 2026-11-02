@@ -1,7 +1,7 @@
 # Fixtures
 
 Enxertos **reais** das fontes, de poucas páginas, nunca o arquivo inteiro (ver
-`docs/PADRAO_OURO.md`). A fonte inteira e as extrações geradas ficam em `dados/`, fora do git.
+`docs/PADRAO_OURO.md`). A fonte inteira e as extrações geradas ficam em `dados/` (ADR-005).
 
 - `html/` — trechos do HTML do Planalto (ex.: `cp_enxertos.mht`), recortados em bytes e no
   charset original da fonte (windows-1252 no Planalto, H1).

@@ -48,7 +48,7 @@ programático a CLI não lê. Uma chamada do `recortar` por norma.
 ## §4. Interface de linha de comando
 
 ```bash
-python -m vademecum extrair --fonte "https://www.planalto.gov.br/ccivil_03/decreto-lei/del2848compilado.htm" --perfil cp --saida dados/cp/base.json
+python -m vademecum extrair --fonte "https://www.planalto.gov.br/ccivil_03/decreto-lei/del2848compilado.htm" --perfil cp --saida dados/bases/cp/base.json
 ```
 `extrair` lê a fonte e gera a base completa.
 - `--fonte` aceita URL, `.htm`, `.mht` ou `.pdf`.
@@ -64,7 +64,7 @@ python -m vademecum extrair --fonte LEI_SECA_OJ26.pdf --perfil-auto --saida-dir 
 - `--saida-dir` recebe um JSON por norma.
 
 ```bash
-python -m vademecum recortar --base dados/cp/base.json --artigos "1-12; 100-120; 121; 129; 150; 154; 293-305" --saida dados/cp/recorte_oj26.json
+python -m vademecum recortar --base dados/bases/cp/base.json --artigos "1-12; 100-120; 121; 129; 150; 154; 293-305" --saida dados/recortes/oj26/penal/cp.json
 ```
 `recortar` filtra uma base existente sem reler a fonte.
 - `--base` é o JSON gravado pelo `extrair`; o relatório dele (`<base>.relatorio.json`) tem de
