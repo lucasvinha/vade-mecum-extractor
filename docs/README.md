@@ -146,7 +146,7 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 
 | Módulo | Entrada → Saída | Depende de |
 |---|---|---|
-| `modelo.py` | dataclasses `LinhaFonte`, `FonteLida`, `No`, `Nota`, `Local`, `Norma`, `Base`, `Relatorio`; `ErroFonte`; `chave_ordenacao()`, `chave_de_texto()`; funções de `id`; `para_json()` | — |
+| `modelo.py` | dataclasses `LinhaFonte`, `FonteLida`, `No`, `Nota`, `Local`, `Norma`, `Base`, `Relatorio`; `ErroFonte`; `chave_ordenacao()`, `chave_de_texto()`; funções de `id`; `para_json()` e o inverso, `de_json()` e `relatorio_de_json()` | — |
 | `perfil.py` | `carregar_perfil(nome) -> Perfil` (merge `padrao.toml` + específico) | `modelo` |
 | `fontes/html.py` | `ler_html(caminho, relatorio)`: `.htm`/`.mht` local → `FonteLida` (linhas + `tipo_fonte`, `fonte`, `capturado_em`, `sha256`); URL no M7 | `modelo` |
 | `fontes/pdf.py` | `.pdf` → `list[LinhaFonte]` | `modelo`, `perfil` |
@@ -156,7 +156,7 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 | `parser.py` | `analisar(linhas, perfil, relatorio) -> Analise`: título, ementa, `Metadados` e os artigos (máquina de estados) | `modelo`, `notas`, `perfil` |
 | `vigencia.py` | `filtrar_vigentes(artigos, perfil, relatorio) -> tuple[No, ...]`: tira o revogado e o vetado e registra o `descarte` (ADR-001, RF14, RF16) | `modelo`, `perfil` |
 | `validador.py` | `validar(base, perfil, relatorio) -> None`: um `aviso` por violação de V1–V6; a V7 é do parser | `modelo`, `perfil` |
-| `recorte.py` | `Base` + expressão → `Base` recortada | `modelo` |
+| `recorte.py` | `interpretar(expressao) -> tuple[Item, ...]`; `recortar(base, itens, descartes, relatorio) -> Base`: artigos cobertos na ordem da base, descartes copiados e avisos (RF18, ADR-004) | `modelo` |
 | `cli.py` | argparse → orquestra o pipeline | todos |
 | `perfis/*.toml` | regras por norma (`padrao`, `cp`, `nscgj`, `lei_sp`) | — |
 

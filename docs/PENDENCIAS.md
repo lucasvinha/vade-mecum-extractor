@@ -11,8 +11,8 @@ confirmadas, P3 foi decidida no M4 (pergunta 5) e P4–P7 estão em "Riscos acom
 
 ## Agora
 
-- **Em curso:** nenhum marco; o M4 fechou em 2026-11-01 e a base do CP já é usável.
-- **Próximo sugerido:** M5 (item 15), pelo `/spec`.
+- **Em curso:** nenhum marco; o M5 fechou em 2026-11-02 e o recorte do CP já sai pelo `recortar`.
+- **Próximo sugerido:** M6 (item 13), pelo `/spec`.
 - **Meta:** a base do CP no M4 e as normas do edital que estão no Planalto no M6. Prova em
   14/03/2027. Do Planalto: CP, CPP, CPC, CC, LINDB, CF e Leis 9.099, 8.429, 6.830 e 13.146. Fora
   dele, no M8: NSCGJ, Leis SP 10.261 e 11.608 e Res. CNJ 354. Os artigos de cada tópico estão em
@@ -20,12 +20,6 @@ confirmadas, P3 foi decidida no M4 (pergunta 5) e P4–P7 estão em "Riscos acom
 
 ## Fila
 
-- [ ] **M5 · 15. Recorte + `recortar`.** `recorte.py` e o subcomando (RF18, ADR-004, P1, P2).
-      Aceite: A13. Em 2026-10-31 o operador decidiu: o Python recorta e o Claude recebe só o
-      recorte (RF18 e ADR-003 mantidos). Nas cinco normas maiores, o edital cobra 686 dos 4.540
-      artigos da numeração-base, uns 15%. Casos reais do `arts` dos tópicos: ordinal (`1º a 12`,
-      `8º; 9º`), milhar (`1.169 a 1.173`) e letra (`396-A`, `798-A`). A conferir na spec: se a
-      entrada sai do `arts` e o §6 de [recorte-e-cli.md](negocio/recorte-e-cli.md) (2026-10-29).
 - [ ] **M6 · 13. Perfis das normas do Planalto.** `cpp`, `cpc`, `cc` (com a LINDB, DL 4.657),
       `cf` e as Leis 9.099, 8.429, 6.830 e 13.146. Um perfil por fase, cada um com casos de
       aceite novos e enxerto real. A conferir na spec: milhar no HTML (`Art. 1.072`, P13), a CF
@@ -71,17 +65,17 @@ Não são itens de trabalho: cada um é tratado pelo item citado.
 
 Os últimos cinco, mais novo primeiro; o histórico completo é o `git log`.
 
+- ~~**M5 · 15. Recorte + `recortar`**~~ — 2026-11-02, `a57499b`: `recorte.py` (`interpretar`,
+  `recortar`), `de_json` e o subcomando `recortar`, com relatório próprio que copia os descartes
+  da base; aceite A13. A CLI não lê o MD nem os tópicos do edital (negocio/recorte-e-cli)
 - ~~**M4 · 8. Vigência e validação**~~ — 2026-11-01, `d803051`: `vigencia.py`
   (`filtrar_vigentes`), `validador.py` (V1–V6) e o `descarte` estruturado do RF16; aceite A1–A8
   e snapshot dos enxertos. No CP, o único aviso V* é a V4 do art. 272 (H20). A nota de nível
   segue `aviso` de texto livre (H18)
 - ~~**5. P3: regra temporal do edital**~~ — 2026-11-01, `d803051`: a base guarda norma e ano de
   cada nota, e a conferência contra o corte é da Etapa 2 (negocio/vigencia-e-notas)
-
 - ~~**M3 · 7. Parser (perfil `cp`) + `extrair`**~~ — 2026-11-01, `cc3d6fd`: `perfil.py`,
   `notas.py`, `parser.py` (`analisar` → `Analise`) e `extrair`; aceite A1–A4, A6 e A7
   estruturais, sem linha não classificada no CP
 - ~~**18. H8: tachado só pelo CSS**~~ — 2026-11-01, `12a1e6b`: `line-through` no `style` de
   qualquer ancestral conta como `<strike>`
-- ~~**16. RF19 × esquema por tipo**~~ — 2026-11-01, `9e441f2`: `origem` fica na memória e no
-  relatório, fora do JSON da base
