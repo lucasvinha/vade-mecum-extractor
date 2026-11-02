@@ -1,0 +1,355 @@
+{
+  "schema": "curadoria-vm/1",
+  "edital": "oj26",
+  "materia": "penal",
+  "gerado_em": "2026-11-02",
+  "avisos_capa": [
+    "Artigos com letra dentro das faixas do edital, incluídos: 313-A, 313-B e 319-A. São 90 artigos ao todo.",
+    "Artigos com letra fora: 121-A e 121-B (inclusive o feminicídio, que saiu do art. 121, § 2º, VI, pela Lei nº 14.994/2024), 154-A e 154-B, 337-A a 337-P e 359-A a 359-U. Vêm depois do último número da faixa, que é a leitura literal do edital.",
+    "O edital considera a legislação até 19/10/2026. As alterações das Leis nº 15.358/2026, 15.438/2026 e 15.455/2026, presentes no texto capturado em 26/10/2026, devem ser conferidas contra essa data de corte."
+  ],
+  "dispositivos": {
+    "cp:art1": {"marcas": [{"trecho": "lei anterior", "cat": "especializante"}]},
+    "cp:art2": {
+      "marcas": [{"trecho": "efeitos penais", "cat": "especializante"}],
+      "atencao": ["Abolitio criminis (art. 2º) apaga a execução e os efeitos penais; os efeitos civis ficam."]
+    },
+    "cp:art2.pu": {"marcas": [{"trecho": "transitada em julgado", "cat": "especializante"}]},
+    "cp:art3": {
+      "marcas": [{"trecho": "durante sua vigência", "cat": "especializante"}],
+      "atencao": ["Lei excepcional ou temporária (art. 3º) é ultra-ativa: alcança o fato da vigência mesmo depois de cessada."]
+    },
+    "cp:art4": {"marcas": [{"trecho": "ação ou omissão", "cat": "especializante"}]},
+    "cp:art5": {"marcas": [{"trecho": "no território nacional", "cat": "especializante"}]},
+    "cp:art5.p1": {"marcas": [{"trecho": "de natureza pública ou a serviço do governo brasileiro", "cat": "especializante"}]},
+    "cp:art6": {
+      "marcas": [{"trecho": "no todo ou em parte", "cat": "especializante"}],
+      "atencao": ["Tempo do crime (art. 4º): teoria da atividade. Lugar do crime (art. 6º): teoria da ubiquidade, ação ou resultado. Mnemônico: LUTA (Lugar–Ubiquidade, Tempo–Atividade)."]
+    },
+    "cp:art7.i1.c": {"marcas": [{"trecho": "por quem está a seu serviço", "cat": "sujeito"}]},
+    "cp:art7.i1.d": {"marcas": [{"trecho": "quando o agente for brasileiro ou domiciliado no Brasil", "cat": "sujeito"}]},
+    "cp:art7.p1": {"marcas": [{"trecho": "ainda que absolvido ou condenado no estrangeiro", "cat": "condicao"}]},
+    "cp:art7.p3": {"marcas": [{"trecho": "por estrangeiro contra brasileiro", "cat": "sujeito"}]},
+    "cp:art7.p3.b": {"marcas": [{"trecho": "requisição do Ministro da Justiça", "cat": "condicao"}]},
+    "cp:art8": {"marcas": [{"trecho": "quando idênticas", "cat": "especializante"}]},
+    "cp:art10": {
+      "marcas": [{"trecho": "dia do começo", "cat": "quantidade"}],
+      "atencao": ["Prazo penal (art. 10) inclui o dia do começo, ao contrário do prazo processual."]
+    },
+    "cp:art11": {"marcas": [{"trecho": "as frações de dia", "cat": "quantidade"}]},
+    "cp:art12": {"marcas": [{"trecho": "de modo diverso", "cat": "condicao"}]},
+    "cp:art100": {
+      "marcas": [{"trecho": "salvo quando a lei expressamente a declara", "cat": "condicao"}],
+      "atencao": ["A regra é a ação pública; a privada depende de a lei dizer \"somente se procede mediante queixa\"."]
+    },
+    "cp:art100.p3": {"marcas": [{"trecho": "não oferece denúncia no prazo legal", "cat": "condicao"}]},
+    "cp:art102": {"atencao": ["Representação: retratável até o oferecimento da denúncia (art. 102)."]},
+    "cp:art103": {
+      "marcas": [
+        {"trecho": "6 (seis) meses", "cat": "quantidade"},
+        {"trecho": "veio a saber quem é o autor do crime", "cat": "especializante"}
+      ],
+      "atencao": ["Decadência: 6 meses contados do dia em que se soube quem é o autor (art. 103)."]
+    },
+    "cp:art103.pu": {"marcas": [{"trecho": "12 (doze) meses", "cat": "quantidade"}]},
+    "cp:art104": {"marcas": [{"trecho": "expressa ou tacitamente", "cat": "especializante"}]},
+    "cp:art106.i1": {"marcas": [{"trecho": "a todos aproveita", "cat": "especializante"}]},
+    "cp:art106.p2": {"marcas": [{"trecho": "depois que passa em julgado", "cat": "condicao"}]},
+    "cp:art109": {"marcas": [{"trecho": "pelo máximo", "cat": "especializante"}]},
+    "cp:art109.i1": {"marcas": [{"trecho": "em vinte anos", "cat": "quantidade"}]},
+    "cp:art109.i2": {"marcas": [{"trecho": "em dezesseis anos", "cat": "quantidade"}]},
+    "cp:art109.i3": {"marcas": [{"trecho": "em doze anos", "cat": "quantidade"}]},
+    "cp:art109.i4": {"marcas": [{"trecho": "em oito anos", "cat": "quantidade"}]},
+    "cp:art109.i5": {"marcas": [{"trecho": "em quatro anos", "cat": "quantidade"}]},
+    "cp:art109.i6": {"marcas": [{"trecho": "em 3 (três) anos", "cat": "quantidade"}]},
+    "cp:art110": {
+      "marcas": [
+        {"trecho": "pela pena aplicada", "cat": "especializante"},
+        {"trecho": "aumentam de um terço", "cat": "quantidade"},
+        {"trecho": "reincidente", "cat": "condicao"}
+      ],
+      "atencao": ["Prescrição antes do trânsito: pelo máximo da pena cominada (art. 109). Depois do trânsito para a acusação: pela pena aplicada (art. 110)."]
+    },
+    "cp:art111.i1": {"marcas": [{"trecho": "se consumou", "cat": "especializante"}]},
+    "cp:art111.i3": {"marcas": [{"trecho": "cessou a permanência", "cat": "especializante"}]},
+    "cp:art111.i5": {"marcas": [{"trecho": "18 (dezoito) anos", "cat": "quantidade"}]},
+    "cp:art113": {"marcas": [{"trecho": "tempo que resta", "cat": "especializante"}]},
+    "cp:art114.i1": {"marcas": [{"trecho": "2 (dois) anos", "cat": "quantidade"}]},
+    "cp:art115": {
+      "marcas": [
+        {"trecho": "de metade", "cat": "quantidade"},
+        {"trecho": "menor de 21", "cat": "quantidade"},
+        {"trecho": "maior de 70", "cat": "quantidade"}
+      ],
+      "atencao": ["Art. 115: prazos pela metade para menor de 21 na data do fato ou maior de 70 na data da sentença, salvo violência sexual contra a mulher."]
+    },
+    "cp:art116.i2": {"marcas": [{"trecho": "cumpre pena no exterior", "cat": "especializante"}]},
+    "cp:art116.i4": {"marcas": [{"trecho": "acordo de não persecução penal", "cat": "especializante"}]},
+    "cp:art117": {"atencao": ["Art. 116 (impeditivas: o prazo não corre) × art. 117 (interruptivas: o prazo recomeça do zero)."]},
+    "cp:art117.i1": {"marcas": [{"trecho": "recebimento da denúncia ou da queixa", "cat": "especializante"}]},
+    "cp:art117.p2": {"marcas": [{"trecho": "todo o prazo começa a correr, novamente", "cat": "quantidade"}]},
+    "cp:art119": {"marcas": [{"trecho": "isoladamente", "cat": "especializante"}]},
+    "cp:art121": {"marcas": [{"trecho": "Matar", "cat": "verbo"}]},
+    "cp:art121.p1": {
+      "marcas": [
+        {"trecho": "relevante valor social ou moral", "cat": "especializante"},
+        {"trecho": "de um sexto a um terço", "cat": "quantidade"}
+      ]
+    },
+    "cp:art121.p2": {"atencao": ["Feminicídio: o § 2º, VI do art. 121 foi revogado pela Lei nº 14.994/2024, e o crime passou a ser o art. 121-A, que está fora do recorte do edital."]},
+    "cp:art121.p2.i1": {"marcas": [{"trecho": "motivo torpe", "cat": "especializante"}]},
+    "cp:art121.p2.i2": {"marcas": [{"trecho": "motivo futil", "cat": "especializante"}]},
+    "cp:art121.p2.i3": {"marcas": [{"trecho": "meio insidioso ou cruel", "cat": "especializante"}]},
+    "cp:art121.p2.i5": {"marcas": [{"trecho": "assegurar a execução", "cat": "especializante"}]},
+    "cp:art121.p2.i7.b": {"marcas": [{"trecho": "oficial de justiça", "cat": "sujeito"}]},
+    "cp:art121.p2.i9": {"marcas": [{"trecho": "menor de 14 (quatorze) anos", "cat": "quantidade"}]},
+    "cp:art121.p2-D": {"marcas": [{"trecho": "organização criminosa ultraviolenta", "cat": "sujeito"}]},
+    "cp:art121.p3": {"marcas": [{"trecho": "culposo", "cat": "especializante"}]},
+    "cp:art121.p4": {
+      "marcas": [
+        {"trecho": "deixa de prestar imediato socorro à vítima", "cat": "especializante"},
+        {"trecho": "maior de 60 (sessenta) anos", "cat": "quantidade"}
+      ]
+    },
+    "cp:art121.p5": {"marcas": [{"trecho": "o juiz poderá deixar de aplicar a pena", "cat": "especializante"}]},
+    "cp:art121.p6": {"marcas": [{"trecho": "milícia privada", "cat": "sujeito"}]},
+    "cp:art129": {"marcas": [{"trecho": "Ofender a integridade corporal ou a saúde", "cat": "verbo"}]},
+    "cp:art129.p1.i1": {"marcas": [{"trecho": "por mais de trinta dias", "cat": "quantidade"}]},
+    "cp:art129.p1.i2": {"marcas": [{"trecho": "perigo de vida", "cat": "especializante"}]},
+    "cp:art129.p2.i1": {"marcas": [{"trecho": "Incapacidade permanente para o trabalho", "cat": "especializante"}]},
+    "cp:art129.p2.i2": {"marcas": [{"trecho": "enfermidade incuravel", "cat": "especializante"}]},
+    "cp:art129.p3": {
+      "marcas": [{"trecho": "não quís o resultado, nem assumiu o risco de produzí-lo", "cat": "especializante"}],
+      "atencao": ["Lesão corporal seguida de morte (art. 129, § 3º) é preterdolosa: dolo na lesão, culpa na morte."]
+    },
+    "cp:art129.p6": {"marcas": [{"trecho": "culposa", "cat": "especializante"}]},
+    "cp:art129.p9": {"marcas": [{"trecho": "ascendente, descendente, irmão, cônjuge ou companheiro", "cat": "sujeito"}]},
+    "cp:art129.p12.i1.b": {"marcas": [{"trecho": "oficial de justiça", "cat": "sujeito"}]},
+    "cp:art129.p13": {"marcas": [{"trecho": "por razões da condição do sexo feminino", "cat": "especializante"}]},
+    "cp:art150": {
+      "marcas": [
+        {"trecho": "Entrar ou permanecer", "cat": "verbo"},
+        {"trecho": "clandestina ou astuciosamente", "cat": "especializante"}
+      ]
+    },
+    "cp:art150.p1": {"marcas": [{"trecho": "durante a noite", "cat": "especializante"}]},
+    "cp:art150.p3.i1": {"marcas": [{"trecho": "durante o dia", "cat": "condicao"}]},
+    "cp:art150.p3.i2": {"marcas": [{"trecho": "a qualquer hora do dia ou da noite", "cat": "condicao"}]},
+    "cp:art150.p5": {"atencao": ["\"Casa\" (art. 150, §§ 4º e 5º) inclui o aposento ocupado de habitação coletiva e o compartimento não aberto ao público onde se exerce profissão; não inclui hospedaria aberta nem taverna."]},
+    "cp:art154": {
+      "marcas": [
+        {"trecho": "Revelar", "cat": "verbo"},
+        {"trecho": "sem justa causa", "cat": "especializante"}
+      ],
+      "atencao": ["Violação do segredo profissional (art. 154): ação pública condicionada à representação."]
+    },
+    "cp:art293": {"marcas": [{"trecho": "Falsificar", "cat": "verbo"}]},
+    "cp:art293.p2": {
+      "marcas": [
+        {"trecho": "Suprimir", "cat": "verbo"},
+        {"trecho": "com o fim de torná-los novamente utilizáveis", "cat": "especializante"}
+      ]
+    },
+    "cp:art293.p4": {
+      "marcas": [
+        {"trecho": "embora recebido de boa-fé", "cat": "especializante"},
+        {"trecho": "depois de conhecer a falsidade ou alteração", "cat": "especializante"}
+      ]
+    },
+    "cp:art294": {"marcas": [{"trecho": "especialmente", "cat": "especializante"}]},
+    "cp:art295": {"marcas": [{"trecho": "sexta parte", "cat": "quantidade"}]},
+    "cp:art296": {"marcas": [{"trecho": "Falsificar", "cat": "verbo"}]},
+    "cp:art296.p1.i2": {"marcas": [{"trecho": "selo ou sinal verdadeiro", "cat": "especializante"}]},
+    "cp:art296.p2": {"marcas": [{"trecho": "sexta parte", "cat": "quantidade"}]},
+    "cp:art297": {
+      "marcas": [
+        {"trecho": "Falsificar", "cat": "verbo"},
+        {"trecho": "no todo ou em parte, documento público", "cat": "especializante"}
+      ]
+    },
+    "cp:art297.p1": {"marcas": [{"trecho": "sexta parte", "cat": "quantidade"}]},
+    "cp:art297.p2": {
+      "marcas": [
+        {"trecho": "equiparam-se a documento público", "cat": "especializante"},
+        {"trecho": "testamento particular", "cat": "especializante"}
+      ]
+    },
+    "cp:art298.pu": {"marcas": [{"trecho": "cartão de crédito ou débito", "cat": "especializante"}]},
+    "cp:art299": {
+      "marcas": [
+        {"trecho": "Omitir", "cat": "verbo"},
+        {"trecho": "inserir ou fazer inserir", "cat": "verbo"},
+        {"trecho": "fato juridicamente relevante", "cat": "especializante"}
+      ],
+      "atencao": ["Falsidade material (arts. 297 e 298): a forma do documento é falsa. Falsidade ideológica (art. 299): o documento é verdadeiro na forma e falso no conteúdo."]
+    },
+    "cp:art300": {"marcas": [{"trecho": "Reconhecer", "cat": "verbo"}]},
+    "cp:art301": {
+      "marcas": [
+        {"trecho": "Atestar ou certificar falsamente", "cat": "verbo"},
+        {"trecho": "em razão de função pública", "cat": "sujeito"}
+      ]
+    },
+    "cp:art301.p2": {"marcas": [{"trecho": "com o fim de lucro", "cat": "especializante"}]},
+    "cp:art302": {"marcas": [{"trecho": "o médico", "cat": "sujeito"}]},
+    "cp:art303": {
+      "marcas": [
+        {"trecho": "valor para coleção", "cat": "especializante"},
+        {"trecho": "visivelmente anotada", "cat": "condicao"}
+      ]
+    },
+    "cp:art304": {
+      "marcas": [{"trecho": "Fazer uso", "cat": "verbo"}],
+      "atencao": ["Uso de documento falso (art. 304) não tem pena própria: é a do crime de falsificação."]
+    },
+    "cp:art305": {"marcas": [{"trecho": "de que não podia dispor", "cat": "especializante"}]},
+    "cp:art307": {
+      "marcas": [{"trecho": "Atribuir-se", "cat": "verbo"}],
+      "atencao": ["Falsa identidade (art. 307) é subsidiária: só se o fato não for elemento de crime mais grave."]
+    },
+    "cp:art307.pena1": {"marcas": [{"trecho": "se o fato não constitui elemento de crime mais grave", "cat": "condicao"}]},
+    "cp:art308": {"marcas": [{"trecho": "Usar, como próprio", "cat": "verbo"}]},
+    "cp:art308.pena1": {"marcas": [{"trecho": "se o fato não constitui elemento de crime mais grave", "cat": "condicao"}]},
+    "cp:art311-A": {
+      "marcas": [
+        {"trecho": "Utilizar ou divulgar, indevidamente", "cat": "verbo"},
+        {"trecho": "conteúdo sigiloso", "cat": "especializante"}
+      ],
+      "atencao": ["Fraude em certame (art. 311-A) protege concurso, vestibular e exame: tema próximo da própria prova."]
+    },
+    "cp:art311-A.p3": {"marcas": [{"trecho": "1/3 (um terço)", "cat": "quantidade"}]},
+    "cp:art312": {
+      "marcas": [
+        {"trecho": "Apropriar-se", "cat": "verbo"},
+        {"trecho": "o funcionário público", "cat": "sujeito"},
+        {"trecho": "de que tem a posse em razão do cargo", "cat": "especializante"},
+        {"trecho": "desviá-lo", "cat": "verbo"}
+      ]
+    },
+    "cp:art312.p2": {"marcas": [{"trecho": "culposamente", "cat": "especializante"}]},
+    "cp:art312.p3": {"atencao": ["Peculato culposo (art. 312, § 2º): reparar o dano antes da sentença irrecorrível extingue a punibilidade; depois, reduz a pena pela metade (§ 3º). Não vale para o peculato doloso."]},
+    "cp:art313": {"marcas": [{"trecho": "erro de outrem", "cat": "especializante"}]},
+    "cp:art313-A": {
+      "marcas": [
+        {"trecho": "funcionário autorizado", "cat": "sujeito"},
+        {"trecho": "dados falsos", "cat": "especializante"}
+      ]
+    },
+    "cp:art313-B": {
+      "marcas": [
+        {"trecho": "Modificar ou alterar", "cat": "verbo"},
+        {"trecho": "sem autorização", "cat": "especializante"}
+      ]
+    },
+    "cp:art314": {"marcas": [{"trecho": "tem a guarda", "cat": "especializante"}]},
+    "cp:art314.pena1": {"marcas": [{"trecho": "se o fato não constitui crime mais grave", "cat": "condicao"}]},
+    "cp:art316": {
+      "marcas": [
+        {"trecho": "Exigir", "cat": "verbo"},
+        {"trecho": "vantagem indevida", "cat": "especializante"}
+      ]
+    },
+    "cp:art316.p1": {"marcas": [{"trecho": "tributo ou contribuição social", "cat": "especializante"}]},
+    "cp:art316.p2": {"marcas": [{"trecho": "desvia", "cat": "verbo"}]},
+    "cp:art317": {
+      "marcas": [
+        {"trecho": "Solicitar ou receber", "cat": "verbo"},
+        {"trecho": "aceitar promessa", "cat": "verbo"}
+      ]
+    },
+    "cp:art317.p2": {"marcas": [{"trecho": "cedendo a pedido ou influência de outrem", "cat": "especializante"}]},
+    "cp:art319": {"marcas": [{"trecho": "sentimento pessoal", "cat": "especializante"}]},
+    "cp:art319-A": {"marcas": [{"trecho": "Diretor de Penitenciária", "cat": "sujeito"}]},
+    "cp:art320": {"marcas": [{"trecho": "por indulgência", "cat": "especializante"}]},
+    "cp:art321": {"marcas": [{"trecho": "Patrocinar", "cat": "verbo"}]},
+    "cp:art322": {"marcas": [{"trecho": "a pretexto", "cat": "especializante"}]},
+    "cp:art323.p2": {"marcas": [{"trecho": "faixa de fronteira", "cat": "especializante"}]},
+    "cp:art324": {"marcas": [{"trecho": "saber oficialmente", "cat": "especializante"}]},
+    "cp:art325": {
+      "marcas": [
+        {"trecho": "Revelar", "cat": "verbo"},
+        {"trecho": "em razão do cargo", "cat": "especializante"}
+      ]
+    },
+    "cp:art325.pena1": {"marcas": [{"trecho": "se o fato não constitui crime mais grave", "cat": "condicao"}]},
+    "cp:art325.p1.i1": {"marcas": [{"trecho": "acesso de pessoas não autorizadas", "cat": "especializante"}]},
+    "cp:art326": {"marcas": [{"trecho": "Devassar", "cat": "verbo"}]},
+    "cp:art327": {
+      "marcas": [{"trecho": "embora transitoriamente ou sem remuneração", "cat": "especializante"}],
+      "atencao": ["Conceito penal de funcionário público (art. 327) é amplo: basta exercer função pública, mesmo transitoriamente ou sem remuneração."]
+    },
+    "cp:art327.p1": {"marcas": [{"trecho": "Equipara-se a funcionário público", "cat": "especializante"}]},
+    "cp:art327.p2": {"marcas": [{"trecho": "aumentada da terça parte", "cat": "quantidade"}]},
+    "cp:art328": {"marcas": [{"trecho": "Usurpar", "cat": "verbo"}]},
+    "cp:art329": {
+      "marcas": [{"trecho": "violência ou ameaça", "cat": "especializante"}],
+      "atencao": ["Na resistência, quem auxilia o funcionário também é protegido (art. 329). Se o ato não se executa, a pena sobe para reclusão (§ 1º), sem prejuízo da pena da violência (§ 2º)."]
+    },
+    "cp:art329.p1": {"marcas": [{"trecho": "não se executa", "cat": "especializante"}]},
+    "cp:art331": {
+      "marcas": [{"trecho": "Desacatar", "cat": "verbo"}],
+      "atencao": ["Matéria do dia a dia do Oficial de Justiça. Resistência exige violência ou ameaça; desobediência é só o descumprimento da ordem legal; desacato é a ofensa ao funcionário no exercício da função."]
+    },
+    "cp:art332": {"marcas": [{"trecho": "a pretexto de influir", "cat": "especializante"}]},
+    "cp:art332.pu": {"marcas": [{"trecho": "da metade", "cat": "quantidade"}]},
+    "cp:art333": {
+      "marcas": [
+        {"trecho": "Oferecer ou prometer", "cat": "verbo"},
+        {"trecho": "vantagem indevida", "cat": "especializante"}
+      ]
+    },
+    "cp:art336": {
+      "marcas": [
+        {"trecho": "Rasgar", "cat": "verbo"},
+        {"trecho": "edital afixado", "cat": "especializante"},
+        {"trecho": "selo ou sinal", "cat": "especializante"}
+      ],
+      "atencao": ["Inutilizar edital afixado por ordem de funcionário ou violar selo de lacre é o art. 336."]
+    },
+    "cp:art337": {
+      "marcas": [
+        {"trecho": "Subtrair", "cat": "verbo"},
+        {"trecho": "custódia", "cat": "especializante"}
+      ]
+    },
+    "cp:art337.pena1": {"marcas": [{"trecho": "se o fato não constitui crime mais grave", "cat": "condicao"}]},
+    "cp:art339": {
+      "marcas": [
+        {"trecho": "Dar causa à instauração", "cat": "verbo"},
+        {"trecho": "de que o sabe inocente", "cat": "especializante"}
+      ]
+    },
+    "cp:art339.p2": {"marcas": [{"trecho": "diminuída de metade", "cat": "quantidade"}]},
+    "cp:art340": {"marcas": [{"trecho": "Provocar a ação", "cat": "verbo"}]},
+    "cp:art341": {"marcas": [{"trecho": "Acusar-se", "cat": "verbo"}]},
+    "cp:art342": {"marcas": [{"trecho": "Fazer afirmação falsa, ou negar ou calar a verdade", "cat": "verbo"}]},
+    "cp:art342.p2": {
+      "marcas": [
+        {"trecho": "antes da sentença", "cat": "condicao"},
+        {"trecho": "se retrata", "cat": "especializante"}
+      ],
+      "atencao": ["Retratação no falso testemunho (art. 342, § 2º): até a sentença do processo em que se mentiu."]
+    },
+    "cp:art343": {"marcas": [{"trecho": "Dar, oferecer ou prometer", "cat": "verbo"}]},
+    "cp:art343.pu": {"marcas": [{"trecho": "um sexto a um terço", "cat": "quantidade"}]},
+    "cp:art344": {"marcas": [{"trecho": "violência ou grave ameaça", "cat": "especializante"}]},
+    "cp:art344.pu": {"marcas": [{"trecho": "dignidade sexual", "cat": "especializante"}]},
+    "cp:art345": {
+      "marcas": [{"trecho": "embora legítima", "cat": "especializante"}],
+      "atencao": ["Exercício arbitrário das próprias razões (art. 345) sem violência: ação privada."]
+    },
+    "cp:art346": {"marcas": [{"trecho": "coisa própria", "cat": "especializante"}]},
+    "cp:art347": {
+      "marcas": [{"trecho": "Inovar artificiosamente", "cat": "verbo"}],
+      "atencao": ["Fraude processual (art. 347): em dobro se voltada a processo penal, ainda que não iniciado."]
+    },
+    "cp:art347.pu": {"marcas": [{"trecho": "em dobro", "cat": "quantidade"}]},
+    "cp:art357": {
+      "marcas": [
+        {"trecho": "Solicitar ou receber", "cat": "verbo"},
+        {"trecho": "a pretexto de influir", "cat": "especializante"}
+      ]
+    },
+    "cp:art359": {"marcas": [{"trecho": "decisão judicial", "cat": "especializante"}]}
+  }
+}

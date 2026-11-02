@@ -263,7 +263,7 @@ def test_adr006_capa_e_legenda_da_curadoria():
     assert '<p class="edital">Gerado em 02/11/2026</p>' in capa
     legenda = html[html.index('<section class="legenda">') : html.index('<main class="corpo">')]
     assert re.findall(r'class="hl-(\w+)"', legenda) == list(CATEGORIAS)
-    assert "não é texto de lei" in legenda
+    assert "não são texto de lei" in legenda
 
 
 def test_adr006_sem_curadoria_nao_ha_legenda_nem_data():
