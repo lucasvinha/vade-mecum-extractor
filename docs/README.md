@@ -14,7 +14,7 @@ relatórios e dos tópicos do edital; o `conferir`, também determinístico, gar
 do HTML é o dos recortes. O PDF sai do navegador. O consumidor do JSON é, portanto, um LLM: as
 etapas 1 e 2 preservam o que ele vai precisar (notas, penas e o relatório de descartes). Os
 artigos de cada tópico do edital estão em
-[claude/topicos-oj2026.json](../claude/topicos-oj2026.json) (schema `topicos-oj/1`).
+[claude/topicos-oj2026.json](../claude/topicos-oj2026.json) (schema `topicos-oj/2`).
 
 - **Dentro:** leitura de HTML do Planalto (URL, `.htm`/`.html` ou `.mht`) e de PDF com texto,
   inclusive PDF com várias normas; normalização, parsing hierárquico, classificação de notas,

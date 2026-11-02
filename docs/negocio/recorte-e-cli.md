@@ -36,6 +36,21 @@ A expressão também pode vir dos tópicos do edital (`claude/topicos-oj2026.jso
 monta a expressão da matéria com os itens dos grupos da norma da base (ADR-005). O MD do conteúdo
 programático a CLI não lê. Uma chamada do `recortar` por norma.
 
+**Tópicos do edital (`topicos-oj/2`).** Primeiro esquema documentado do arquivo:
+
+| Nível | Campos |
+|---|---|
+| raiz | `schema` (`"topicos-oj/2"`), `edital`, `gerado_em`, `materias` |
+| matéria | `id`, `nome`, `bloco`, `tipo` (`"lei"` ou `"conteudo"`), `grupos`; opcionais `total`, `questoes` |
+| grupo | `titulo`, `itens`; na matéria `lei`, também `norma` |
+| item | `id` (estável, citado pelas questões), `rubrica`; opcionais `arts`, `n`, `oj`, `nota` |
+
+- `norma` é o id do perfil da norma, igual ao nome da pasta em `dados/fontes/`. Um grupo tem uma
+  norma só; vale `null` apenas no grupo sem item com `arts` (o "Atualidades").
+- `arts` segue a sintaxe acima; `"integral"` é a norma inteira, que o `recortar` não lê.
+- Os ids `nscgj`, `lei_sp10261`, `lei_sp11608` e `res_cnj354` são provisórios até o marco do
+  PDF (ADR-005).
+
 ## §3. Semântica e ordenação
 
 - **Chave de ordenação:** `(numero, sufixo)`, com sufixo como tupla e sufixo vazio antes de qualquer letra. Assim: `121 < 121-A < 121-B < 122` e `359-M < 359-M-A < 359-M-B < 359-N`.

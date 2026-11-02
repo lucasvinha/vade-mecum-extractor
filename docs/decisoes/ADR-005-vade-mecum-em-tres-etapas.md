@@ -42,5 +42,12 @@ O HTML segue a **ordem dos tópicos do edital**, não a da norma, e leva capa e 
 - A antiga "Etapa 2" deixa de existir com esse nome: o material de estudo é a Etapa 3.
 - Os tópicos ganham o esquema `topicos-oj/2`, com a `norma` de cada grupo
   ([negocio/recorte-e-cli.md](../negocio/recorte-e-cli.md)).
-- Os ids `nscgj` e `lei_sp10261` nos tópicos são provisórios até o marco do PDF.
+- Um grupo dos tópicos tem uma norma só: o antigo "Demais normas" virou um grupo por norma, e
+  o "Atualidades", que não é lei, tem `norma: null`.
+- Os ids `nscgj`, `lei_sp10261`, `lei_sp11608` e `res_cnj354` nos tópicos são provisórios até o
+  marco do PDF.
 - Fixtures de teste continuam sendo enxertos; a fonte inteira mora em `dados/fontes/`.
+
+## Histórico
+
+- 2026-11-02: grupo dos tópicos com uma norma só e `null` no "Atualidades" (operador, na fase 3).

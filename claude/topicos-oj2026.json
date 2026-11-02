@@ -1,5 +1,5 @@
 {
- "schema": "topicos-oj/1",
+ "schema": "topicos-oj/2",
  "edital": "TJSP Oficial de Justiça 2026 — Edital de Abertura n.º 01/2026, Anexo VIII",
  "gerado_em": "2026-10-27",
  "materias": [
@@ -12,6 +12,7 @@
    "grupos": [
     {
      "titulo": "Código Penal · Parte Geral",
+     "norma": "cp",
      "itens": [
       {
        "id": "penal:aplicacao",
@@ -36,6 +37,7 @@
     },
     {
      "titulo": "Código Penal · Parte Especial · Título I — Dos crimes contra a pessoa",
+     "norma": "cp",
      "itens": [
       {
        "id": "penal:vida-lesoes",
@@ -54,6 +56,7 @@
     },
     {
      "titulo": "Código Penal · Parte Especial · Título X — Dos crimes contra a fé pública",
+     "norma": "cp",
      "itens": [
       {
        "id": "penal:falsidade-papeis",
@@ -78,6 +81,7 @@
     },
     {
      "titulo": "Código Penal · Parte Especial · Título XI — Dos crimes contra a administração pública",
+     "norma": "cp",
      "itens": [
       {
        "id": "penal:func-publico",
@@ -113,6 +117,7 @@
    "grupos": [
     {
      "titulo": "CPP · Livro I — Do processo em geral",
+     "norma": "cpp",
      "itens": [
       {
        "id": "pp:acao-penal",
@@ -137,6 +142,7 @@
     },
     {
      "titulo": "CPP · Livro I · Título VI — Das questões e processos incidentes",
+     "norma": "cpp",
      "itens": [
       {
        "id": "pp:impedimentos",
@@ -154,6 +160,7 @@
     },
     {
      "titulo": "CPP · Livro I · Título VII — Da prova",
+     "norma": "cpp",
      "itens": [
       {
        "id": "pp:prova-geral",
@@ -184,6 +191,7 @@
     },
     {
      "titulo": "CPP · Livro I · Título VIII — Do juiz, do MP, do acusado e defensor, dos assistentes e auxiliares da justiça",
+     "norma": "cpp",
      "itens": [
       {
        "id": "pp:funcionarios",
@@ -196,6 +204,7 @@
     },
     {
      "titulo": "CPP · Livro I · Título IX — Da prisão, das medidas cautelares e da liberdade provisória",
+     "norma": "cpp",
      "itens": [
       {
        "id": "pp:prisao-geral",
@@ -213,6 +222,7 @@
     },
     {
      "titulo": "CPP · Livro I · Título X — Das citações e intimações",
+     "norma": "cpp",
      "itens": [
       {
        "id": "pp:citacoes",
@@ -232,6 +242,7 @@
     },
     {
      "titulo": "CPP · Livro II — Dos processos em espécie",
+     "norma": "cpp",
      "itens": [
       {
        "id": "pp:instrucao",
@@ -256,6 +267,7 @@
     },
     {
      "titulo": "CPP · Livro III — Das nulidades e dos recursos em geral",
+     "norma": "cpp",
      "itens": [
       {
        "id": "pp:nulidades",
@@ -279,6 +291,7 @@
     },
     {
      "titulo": "CPP · Livros IV e VI",
+     "norma": "cpp",
      "itens": [
       {
        "id": "pp:medidas-seg",
@@ -296,6 +309,7 @@
     },
     {
      "titulo": "Lei n.º 9.099/1995 — Juizados Especiais Criminais",
+     "norma": "lei9099",
      "itens": [
       {
        "id": "pp:jecrim-geral",
@@ -322,6 +336,7 @@
    "grupos": [
     {
      "titulo": "CPC · Parte Geral · Livro I — Das normas processuais civis",
+     "norma": "cpc",
      "itens": [
       {
        "id": "pc:normas-fund",
@@ -339,6 +354,7 @@
     },
     {
      "titulo": "CPC · Parte Geral · Livro II — Da função jurisdicional",
+     "norma": "cpc",
      "itens": [
       {
        "id": "pc:jurisdicao",
@@ -370,6 +386,7 @@
     },
     {
      "titulo": "CPC · Parte Geral · Livro III — Dos sujeitos do processo",
+     "norma": "cpc",
      "itens": [
       {
        "id": "pc:capacidade",
@@ -433,6 +450,7 @@
     },
     {
      "titulo": "CPC · Parte Geral · Livro IV — Dos atos processuais",
+     "norma": "cpc",
      "itens": [
       {
        "id": "pc:forma-atos",
@@ -479,6 +497,7 @@
     },
     {
      "titulo": "CPC · Parte Especial · Livro I — Do processo de conhecimento e do cumprimento de sentença",
+     "norma": "cpc",
      "itens": [
       {
        "id": "pc:testemunhal",
@@ -528,6 +547,7 @@
     },
     {
      "titulo": "CPC · Parte Especial · Livro II — Do processo de execução",
+     "norma": "cpc",
      "itens": [
       {
        "id": "pc:exec-competencia",
@@ -561,6 +581,7 @@
     },
     {
      "titulo": "CPC · Parte Especial · Livro III — Dos processos nos tribunais e dos meios de impugnação",
+     "norma": "cpc",
      "itens": [
       {
        "id": "pc:recursos",
@@ -578,6 +599,7 @@
     },
     {
      "titulo": "Lei n.º 9.099/1995 — Juizados Especiais Cíveis",
+     "norma": "lei9099",
      "itens": [
       {
        "id": "pc:jec",
@@ -599,6 +621,7 @@
    "grupos": [
     {
      "titulo": "Constituição Federal · Títulos I e II",
+     "norma": "cf",
      "itens": [
       {
        "id": "cf:principios",
@@ -629,6 +652,7 @@
     },
     {
      "titulo": "Constituição Federal · Título III — Da organização do Estado",
+     "norma": "cf",
      "itens": [
       {
        "id": "cf:organizacao",
@@ -646,6 +670,7 @@
     },
     {
      "titulo": "Constituição Federal · Título IV — Da organização dos Poderes",
+     "norma": "cf",
      "itens": [
       {
        "id": "cf:judiciario",
@@ -674,6 +699,7 @@
    "grupos": [
     {
      "titulo": "Lei Estadual n.º 10.261/1968 — Estatuto dos Funcionários Públicos Civis de SP",
+     "norma": "lei_sp10261",
      "itens": [
       {
        "id": "adm:preliminares",
@@ -721,6 +747,7 @@
     },
     {
      "titulo": "Lei Federal n.º 8.429/1992 — Improbidade administrativa",
+     "norma": "lei8429",
      "itens": [
       {
        "id": "adm:improbidade",
@@ -742,6 +769,7 @@
    "grupos": [
     {
      "titulo": "Código Civil · Parte Geral · Livro I — Das pessoas",
+     "norma": "cc",
      "itens": [
       {
        "id": "cc:personalidade",
@@ -783,6 +811,7 @@
     },
     {
      "titulo": "Código Civil · Parte Geral · Livro II — Dos bens",
+     "norma": "cc",
      "itens": [
       {
        "id": "cc:bens-si",
@@ -806,6 +835,7 @@
     },
     {
      "titulo": "Código Civil · Parte Geral · Livro III — Dos fatos jurídicos",
+     "norma": "cc",
      "itens": [
       {
        "id": "cc:representacao",
@@ -848,6 +878,7 @@
     },
     {
      "titulo": "Código Civil · Parte Especial",
+     "norma": "cc",
      "itens": [
       {
        "id": "cc:mandato",
@@ -896,6 +927,7 @@
     },
     {
      "titulo": "Decreto-Lei n.º 4.657/1942 — LINDB, cobrada integralmente",
+     "norma": "lindb",
      "itens": [
       {
        "id": "cc:lindb-vigencia",
@@ -929,6 +961,7 @@
    "grupos": [
     {
      "titulo": "NSCGJ — Normas de Serviço da Corregedoria Geral da Justiça, Tomo I",
+     "norma": "nscgj",
      "itens": [
       {
        "id": "le:nscgj-cap1",
@@ -965,7 +998,8 @@
      ]
     },
     {
-     "titulo": "Demais normas",
+     "titulo": "Lei n.º 11.608/2003 — Taxa judiciária",
+     "norma": "lei_sp11608",
      "itens": [
       {
        "id": "le:taxa",
@@ -973,14 +1007,26 @@
        "arts": "integral",
        "n": 11,
        "nota": "Cobrada integralmente; contagem estimada"
-      },
+      }
+     ]
+    },
+    {
+     "titulo": "Lei n.º 6.830/1980 — Execução fiscal",
+     "norma": "lei6830",
+     "itens": [
       {
        "id": "le:lef",
        "rubrica": "Lei n.º 6.830/1980 — Execução fiscal",
        "arts": "1º; 2º; 7º; 8º; 11; 37",
        "n": 6,
        "oj": true
-      },
+      }
+     ]
+    },
+    {
+     "titulo": "Resolução CNJ n.º 354/2020 — Cumprimento digital de ato processual e de ordem judicial",
+     "norma": "res_cnj354",
+     "itens": [
       {
        "id": "le:cnj354",
        "rubrica": "Resolução CNJ n.º 354/2020 — Cumprimento digital de ato processual e de ordem judicial",
@@ -1073,6 +1119,7 @@
    "grupos": [
     {
      "titulo": "Atualidades",
+     "norma": null,
      "itens": [
       {
        "id": "at:atualidades",
@@ -1082,6 +1129,7 @@
     },
     {
      "titulo": "Lei n.º 13.146/2015 — Estatuto da Pessoa com Deficiência",
+     "norma": "lei13146",
      "itens": [
       {
        "id": "at:pcd-gerais",
