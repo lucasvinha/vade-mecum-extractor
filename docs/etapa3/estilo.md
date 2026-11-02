@@ -93,7 +93,8 @@ No `curadoria-vm/1` ([negocio/vade-mecum.md](../negocio/vade-mecum.md)):
 **Gatilho:** dois ou mais tipos que a banca historicamente confunde.
 **Formato:** título "▸ QUADRO COMPARATIVO — …" em azul, tabela com cabeçalho e uma **nota de rodapé** com a distinção-chave. Negrito marca o elemento que diferencia.
 
-A amostra completa tinha **15 quadros**. Recuperei 11 do histórico:
+A amostra completa tinha **15 quadros**. Recuperei 11 do histórico; o 12 saiu dos candidatos
+na curadoria do penal (`depois_de: cp:art106`):
 
 | # | Quadro | Âncora (depois de) | Colunas | Nota-chave |
 |---|---|---|---|---|
@@ -107,13 +108,14 @@ A amostra completa tinha **15 quadros**. Recuperei 11 do histórico:
 | 8 | Resistência × desobediência × desacato — 329 × 330 × 331 | art. 331 | Tipo · Conduta · Meio · Pena | há violência/ameaça? Resistência §1º (ato não se executa) e §2º (concurso com a violência) |
 | 9 | Imputações e declarações falsas — 339 × 340 × 341 × 342 | art. 343 | Tipo · O que faz · Contra quem · Pena | só o 342 admite retratação (§2º); 343 = suborno |
 | 10 | Homicídio qualificado × causas de aumento × §2º-D | art. 121 | — | — |
-| 11 | Lesão corporal por resultado (§§1º a 3º) | art. 129 | — | grave × gravíssima × seguida de morte |
+| 11 | Lesão corporal por resultado (§§1º a 3º-A) | art. 129 | — | grave × gravíssima × seguida de morte |
+| 12 | Decadência × renúncia × perdão — 103 × 104 × 105–106 | art. 106 | Instituto · Quando ocorre · Depende de aceitação? · Ponto de prova | os três extinguem a punibilidade (107, IV e V); a decadência alcança também a representação |
 
 **Os outros 4** não apareceram no histórico que consegui recuperar. [Provável] São os da Parte Geral, entregues no bloco 1 (arts. 1º–12, 100–120). Para recuperá-los, abra o `.docx` ANOTADO.
 
 **Candidatos previstos e ainda não feitos:**
-- decadência (103) × renúncia (104) × perdão (105–106);
-- prescrição retroativa × intercorrente (110 §1º × 117);
+- prescrição retroativa × intercorrente (110 §1º × 117): os dois nomes são da doutrina, e o
+  quadro dependeria dela, não do texto do recorte;
 - art. 327 (conceito de funcionário público).
 
 > ⚠️ As penas digitadas dentro dos quadros são **curadoria escrita à mão**, não texto extraído. Na curadoria, cada uma é ancorada no nó `pena` e conferida pelo `renderizar` (ADR-006). Em especial, o art. 129 §9º e as penas alteradas pelas leis de 2024–2026.
