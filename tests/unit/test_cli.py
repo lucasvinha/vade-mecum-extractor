@@ -376,3 +376,33 @@ def test_adr006_renderizar_erro_de_entrada_sai_2_sem_gravar(
     assert _renderizar(entrada_render, saida, "--curadoria", str(curadoria)) == 2
     assert mensagem in capsys.readouterr().err
     assert not saida.exists()
+
+
+@pytest.mark.parametrize(
+    ("dispositivos", "quadros", "extra", "mensagem"),
+    [
+        ({"cp:art121": {"marcas": ["Matar"]}}, (), {}, "marcas"),
+        ({"cp:art121": {"atencao": "Cuidado"}}, (), {}, "atencao"),
+        ({}, (), {"avisos_capa": "Aviso"}, "avisos_capa"),
+        ({}, [dict(_quadro({"pena": "cp:art121.pena1"}), colunas=[1, 2])], {}, "colunas"),
+        ({}, [dict(_quadro({"pena": "cp:art121.pena1"}), nota=5)], {}, "nota"),
+        ({}, (), {"materia": "processo_penal"}, "curadoria da matéria 'processo_penal'"),
+    ],
+)
+def test_adr006_renderizar_curadoria_com_forma_errada_sai_2_sem_gravar(
+    entrada_render, tmp_path, capsys, dispositivos, quadros, extra, mensagem
+):
+    caminho = _curadoria(tmp_path, dispositivos, quadros)
+    caminho.write_text(json.dumps(json.loads(caminho.read_text("utf-8")) | extra), "utf-8")
+    saida = tmp_path / "penal.html"
+    assert _renderizar(entrada_render, saida, "--curadoria", str(caminho)) == 2
+    assert mensagem in capsys.readouterr().err
+    assert not saida.exists()
+
+
+def test_adr006_renderizar_recorte_repetido_sai_2_sem_gravar(entrada_render, tmp_path, capsys):
+    saida = tmp_path / "penal.html"
+    repetido = ("--recorte", str(entrada_render[0]))
+    assert _renderizar(entrada_render, saida, *repetido) == 2
+    assert "recorte repetido da norma 'cp'" in capsys.readouterr().err
+    assert not saida.exists()

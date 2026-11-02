@@ -98,6 +98,7 @@ def test_adr006_pena_divergente(a, b):
         "particular.",
         "a cominada à falsificação ou à alteração.",  # 304: remissão
         "reclusão, 2 a 12 anos + multa",
+        "reclusão e multa, de dois a doze anos.",  # "multa" antes da faixa
     ],
 )
 def test_adr006_pena_nao_interpretavel(texto):
@@ -121,6 +122,20 @@ def test_adr006_marca_em_nfc_aponta_o_texto_original():
     validacao = _validar(dispositivos, recortes=(recorte,))
     (marca,) = validacao.curadoria.dispositivos["cp:art121"].marcas
     assert artigo.texto[marca.inicio : marca.fim] == "à instauração"
+
+
+def test_adr006_marca_que_termina_em_nfd_leva_o_acento():
+    # art. 339 do CP em NFD: o acento combinante fica com a letra, na marca que a contém.
+    artigo = dataclasses.replace(RECORTE.artigos[0], texto="Dar causa à instauração")
+    recorte = dataclasses.replace(RECORTE, artigos=(artigo,))
+    marcas = [
+        {"trecho": "Dar causa à", "cat": "verbo"},
+        {"trecho": " instauração", "cat": "condicao"},
+    ]
+    validacao = _validar({"cp:art121": {"marcas": marcas}}, recortes=(recorte,))
+    primeira, segunda = validacao.curadoria.dispositivos["cp:art121"].marcas
+    assert artigo.texto[primeira.inicio : primeira.fim] == "Dar causa à"
+    assert artigo.texto[segunda.inicio : segunda.fim] == " instauração"
 
 
 @pytest.mark.parametrize(
@@ -229,8 +244,27 @@ def test_adr006_quadro_depois_de_inexistente():
         {k: v for k, v in _curadoria().items() if k != "gerado_em"},
         dict(_curadoria(), dispositivos=[]),
         dict(_curadoria(), quadros=[dict(_quadro("a", "b"), linhas=[["a"]])]),
+        # A LLM escreve o JSON à mão: tipo trocado não pode passar calado nem dar traceback.
+        dict(_curadoria(), dispositivos={"cp:art121": {"atencao": "Cuidado"}}),
+        dict(_curadoria(), dispositivos={"cp:art121": {"atencao": ["ok", 5]}}),
+        dict(_curadoria(), avisos_capa="Aviso"),
+        dict(_curadoria(), avisos_capa=["ok", None]),
+        dict(_curadoria(), dispositivos={"cp:art121": {"marcas": ["Matar"]}}),
+        dict(_curadoria(), dispositivos={"cp:art121": {"marcas": {"trecho": "Matar"}}}),
+        dict(_curadoria(), dispositivos={"cp:art121": "Matar"}),
+        _curadoria(quadros=[dict(_quadro("a", "b"), colunas=[1, 2])]),
+        _curadoria(quadros=[dict(_quadro("a"), nota=5)]),
+        _curadoria(quadros=["quadro"]),
+        _curadoria(quadros=[_quadro(5)]),
+        _curadoria(quadros=[_quadro({"pena": "cp:art121.pena1", "texto": 5})]),
     ],
 )
 def test_adr006_forma_invalida_e_erro_de_entrada(dados):
-    with pytest.raises(ErroFonte):
+    with pytest.raises(ErroFonte, match="curadoria"):
         validar_curadoria(dados, (RECORTE,))
+
+
+def test_adr006_recorte_repetido_da_mesma_norma_e_erro():
+    # RNF04: o segundo recorte da norma não pode esconder o primeiro.
+    with pytest.raises(ErroFonte, match="recorte repetido da norma 'cp'"):
+        validar_curadoria(_curadoria(), (RECORTE, RECORTE))
