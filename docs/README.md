@@ -7,21 +7,22 @@ alínea, com rubricas, penas e notas legislativas. Sobre essa base, um segundo c
 `python -m vademecum`; o contrato é o JSON da base, descrito em
 [negocio/modelo-de-dados.md](negocio/modelo-de-dados.md).
 
-Este projeto é a **Etapa 1 de 2**. A Etapa 2 (material de estudo: realces, quadros comparativos,
-pontos de atenção) consome a base e está fora de escopo, mas a Etapa 1 preserva o que ela vai
-precisar (notas, penas e o relatório de descartes). A Etapa 2 roda no Claude (Opus): o `recortar`
-separa os artigos do edital, o operador sobe só os recortes JSON num projeto do Claude.ai, e o
-modelo monta o vade mecum em HTML, convertido depois em PDF. O consumidor do JSON é, portanto, um
-LLM. Os artigos de cada tópico do edital estão em
+O vade mecum sai em **três etapas**, todas neste repositório (ADR-005). **1** `extrair` e **2**
+`recortar` são determinísticas e versionadas em `dados/`. **3** é uma LLM gerando o HTML do
+material de estudo (realces, quadros comparativos, pontos de atenção) a partir dos recortes, dos
+relatórios e dos tópicos do edital; o `conferir`, também determinístico, garante que o texto legal
+do HTML é o dos recortes. O PDF sai do navegador. O consumidor do JSON é, portanto, um LLM: as
+etapas 1 e 2 preservam o que ele vai precisar (notas, penas e o relatório de descartes). Os
+artigos de cada tópico do edital estão em
 [claude/topicos-oj2026.json](../claude/topicos-oj2026.json) (schema `topicos-oj/1`).
 
 - **Dentro:** leitura de HTML do Planalto (URL, `.htm`/`.html` ou `.mht`) e de PDF com texto,
   inclusive PDF com várias normas; normalização, parsing hierárquico, classificação de notas,
   filtro de vigência; exportação da base e do recorte em JSON; relatório de extração (avisos,
   descartes, inconsistências).
-- **Fora:** OCR de PDF escaneado; material de estudo (Etapa 2); reconstrução de redações
-  anteriores; resolução automática da data exata de leis alteradoras (ver PENDENCIAS); por ora, o
-  extrator de questões de concurso (marco M9 em PENDENCIAS; contrato em
+- **Fora:** OCR de PDF escaneado; layout do material de estudo em Python (é da LLM); reconstrução
+  de redações anteriores; resolução automática da data exata de leis alteradoras (ver
+  PENDENCIAS); por ora, o extrator de questões de concurso (marco M10 em PENDENCIAS; contrato em
   [schema-questoes-json.md](schema-questoes-json.md)).
 
 Ordem de leitura: este arquivo → o documento que o problema pede (tabela abaixo) → o código.
@@ -148,7 +149,7 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 |---|---|---|
 | `modelo.py` | dataclasses `LinhaFonte`, `FonteLida`, `No`, `Nota`, `Local`, `Norma`, `Base`, `Relatorio`; `ErroFonte`; `chave_ordenacao()`, `chave_de_texto()`; funções de `id`; `para_json()` e o inverso, `de_json()` e `relatorio_de_json()` | — |
 | `perfil.py` | `carregar_perfil(nome) -> Perfil` (merge `padrao.toml` + específico) | `modelo` |
-| `fontes/html.py` | `ler_html(caminho, relatorio)`: `.htm`/`.mht` local → `FonteLida` (linhas + `tipo_fonte`, `fonte`, `capturado_em`, `sha256`); URL no M7 | `modelo` |
+| `fontes/html.py` | `ler_html(caminho, relatorio)`: `.htm`/`.mht` local → `FonteLida` (linhas + `tipo_fonte`, `fonte`, `capturado_em`, `sha256`); URL no M8 | `modelo` |
 | `fontes/pdf.py` | `.pdf` → `list[LinhaFonte]` | `modelo`, `perfil` |
 | `segmentador.py` | `list[LinhaFonte]` → `list[DocumentoFonte]` (P5) | `modelo`, `perfil` |
 | `normalizador.py` | `normalizar(linhas, prefixos_artigo) -> tuple[LinhaFonte, ...]`: ordinal e travessão do rótulo inicial | `modelo` |
@@ -178,7 +179,7 @@ continuarem iguais entre projetos.
 | Portões (rodam ao fim de toda fase e na revisão) | na raiz: `ruff check . && ruff format --check . && pytest` |
 | Cobertura (revisão e auditoria; informa, não reprova) | `pytest --cov=vademecum --cov-report=term-missing`; diff: `coverage xml` e `diff-cover coverage.xml --compare-branch=main --include-untracked` |
 | Conferência manual quando a suíte não cobre | `python -m vademecum extrair --fonte <fonte> --perfil <perfil> --saida <base.json>` e abrir o relatório |
-| Contrato e consumidores | esquema do JSON ([negocio/modelo-de-dados.md](negocio/modelo-de-dados.md) e § Contratos acima); relatório de extração; opções e códigos de saída da CLI ([negocio/recorte-e-cli.md](negocio/recorte-e-cli.md)); perfil `.toml`; Etapa 2 |
+| Contrato e consumidores | esquema do JSON ([negocio/modelo-de-dados.md](negocio/modelo-de-dados.md) e § Contratos acima); relatório de extração; opções e códigos de saída da CLI ([negocio/recorte-e-cli.md](negocio/recorte-e-cli.md)); perfil `.toml`; Etapa 3 |
 | Repositórios relacionados | nenhum |
 | Gatilhos de spec além dos gerais | mudança no esquema do JSON; regex de [negocio/parsing.md](negocio/parsing.md); perfil novo; dependência nova |
 | Fase pede Opus quando | contradiz ou completa uma regra de negócio ou ADR; muda o esquema do JSON; semântica de vigência (ADR-001) ou de recorte (ADR-004) |

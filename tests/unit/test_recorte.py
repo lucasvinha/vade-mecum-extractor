@@ -213,7 +213,7 @@ def test_p4_descarte_do_artigo_recortado_e_copiado_sem_mudanca():
 
 
 def test_p4_item_so_nos_descartes_entra_sem_aviso():
-    # CP: o art. 189 está revogado; o descarte dele já diz isso à Etapa 2.
+    # CP: o art. 189 está revogado; o descarte dele já diz isso à Etapa 3.
     descartes = (_descarte("art188"), _descarte("art189"), _descarte("art190"))
     artigos, entradas = _recortar(_base("186", "200"), "189", descartes)
     assert (artigos, entradas) == ([], (descartes[1],))

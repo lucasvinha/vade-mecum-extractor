@@ -4,7 +4,7 @@
 [PADRAO_OURO](../PADRAO_OURO.md) e as decisões em [decisoes/](../decisoes/). As âncoras são
 nomes de função ou de módulo. Em divergência com o código, **vale o código**.
 
-O formato da base e do recorte: é o contrato do projeto, lido pela Etapa 2. Usado por `modelo.py`
+O formato da base e do recorte: é o contrato do projeto, lido pela Etapa 3. Usado por `modelo.py`
 e `segmentador.py`. A serialização (chaves ordenadas, bytes estáveis) está em
 [docs/README.md § Contratos](../README.md#contratos). Vizinhos:
 [vigencia-e-notas.md](vigencia-e-notas.md) (o objeto nota) e [recorte-e-cli.md](recorte-e-cli.md).
@@ -102,11 +102,11 @@ ausente sai como `null` e lista vazia como `[]`; chave de outro tipo não aparec
   `art359-M-A`, `art1091-A`. O `id` do filho é o do pai seguido do segmento: `.p2`, `.p2-B`,
   `.pu` (parágrafo único), `.i7` (inciso romano em inteiro), `.a` (alínea), `.pena1`, `.pena2`
   (contadas entre as penas do mesmo pai, a partir de 1). Ex.: `art121.p2.i7.a`. O `id` do item
-  numérico fica para o marco do PDF (M8).
+  numérico fica para o marco do PDF (M9).
 - Nota: `data` é texto ISO `AAAA-MM-DD`, ou `null` quando a fonte só traz o ano; o texto
   original da nota fica em `bruto` ([vigencia-e-notas.md](vigencia-e-notas.md)).
 - `filhos` preserva a **ordem do texto**. Penas e dispositivos ficam intercalados, como na lei (H14).
-- O texto vem **literal**, inclusive grafias antigas ("alguem", "conseqüências"). Normalizar ortografia é decisão da Etapa 2.
+- O texto vem **literal**, inclusive grafias antigas ("alguem", "conseqüências"). Normalizar ortografia é decisão da Etapa 3.
 
 ## §5. Armadilhas e limites conhecidos
 
