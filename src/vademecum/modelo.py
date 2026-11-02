@@ -271,3 +271,73 @@ def para_json(obj: Base | Relatorio) -> str:
     else:
         dados = {"schema_version": SCHEMA_VERSION, **_para_dict(obj)}
     return json.dumps(dados, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+
+
+def _nota_de_dict(dados: dict) -> Nota:
+    return Nota(**dados)
+
+
+def _no_de_dict(dados: dict) -> No:
+    chaves = _CHAVES_POR_TIPO.get(dados["tipo"])
+    if chaves is None:
+        raise ValueError(f"tipo de nó sem esquema: {dados['tipo']!r} em {dados.get('id')!r}")
+    valores = {chave: dados[chave] for chave in chaves}
+    valores["notas"] = tuple(_nota_de_dict(n) for n in valores["notas"])
+    if "filhos" in valores:
+        valores["filhos"] = tuple(_no_de_dict(f) for f in valores["filhos"])
+    if "sufixo" in valores:
+        valores["sufixo"] = tuple(valores["sufixo"])
+    if valores.get("local") is not None:
+        valores["local"] = Local(**valores["local"])
+    return No(origem="", **valores)  # RF19: a origem do nó não vai ao JSON
+
+
+def _entrada_de_dict(dados: dict) -> EntradaRelatorio:
+    chaves = _CHAVES_DESCARTE if dados["tipo"] == "descarte" else _CHAVES_ENTRADA
+    valores = {chave: dados[chave] for chave in chaves}
+    if "notas" in valores:
+        valores["notas"] = tuple(_nota_de_dict(n) for n in valores["notas"])
+    return EntradaRelatorio(**valores)
+
+
+def _carregar(texto: str, descricao: str) -> dict:
+    try:
+        dados = json.loads(texto)
+    except json.JSONDecodeError as erro:
+        raise ErroFonte(f"{descricao} não é JSON válido: {erro}") from erro
+    if not isinstance(dados, dict):
+        raise ErroFonte(f"{descricao} não é um objeto JSON")
+    return dados
+
+
+def de_json(texto: str) -> Base:
+    """Inverso de `para_json` para a base ou o recorte; os nós lidos têm `origem` vazia (RF19).
+
+    Levanta `ErroFonte` se o texto não for uma base no esquema atual.
+    """
+    dados = _carregar(texto, "base")
+    versao = dados.get("schema_version")
+    if versao != SCHEMA_VERSION:
+        raise ErroFonte(f"schema_version da base é {versao!r}; o atual é {SCHEMA_VERSION!r}")
+    try:
+        recorte = dados["recorte"]
+        return Base(
+            norma=Norma(**dados["norma"]),
+            metadados=Metadados(**dados["metadados"]),
+            artigos=tuple(_no_de_dict(a) for a in dados["artigos"]),
+            recorte=None if recorte is None else Recorte(**recorte),
+        )
+    except (KeyError, TypeError, ValueError) as erro:
+        raise ErroFonte(f"base fora do esquema: {erro!r}") from erro
+
+
+def relatorio_de_json(texto: str) -> Relatorio:
+    """Inverso de `para_json` para o relatório; `ErroFonte` se ele estiver fora do esquema."""
+    dados = _carregar(texto, "relatório")
+    relatorio = Relatorio()
+    try:
+        for entrada in dados["entradas"]:
+            relatorio.registrar(_entrada_de_dict(entrada))
+    except (KeyError, TypeError, ValueError) as erro:
+        raise ErroFonte(f"relatório fora do esquema: {erro!r}") from erro
+    return relatorio
