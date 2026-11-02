@@ -14,7 +14,15 @@ from html import escape
 from importlib.resources import files
 from typing import Any
 
-from vademecum.curadoria import CATEGORIAS, CelulaPena, Curadoria, Dispositivo, Marca, Quadro
+from vademecum.curadoria import (
+    CATEGORIAS,
+    CelulaPena,
+    Curadoria,
+    Dispositivo,
+    Marca,
+    Quadro,
+    exigir_normas_distintas,
+)
 from vademecum.modelo import Base, EntradaRelatorio, ErroFonte, Local, No, Relatorio, chave_de_texto
 from vademecum.recorte import interpretar
 
@@ -94,8 +102,11 @@ def _numero(entrada: _Entrada) -> tuple[int, tuple[str, ...]]:
 def _salto(anterior: tuple[int, tuple[str, ...]], seguinte: tuple[int, tuple[str, ...]]) -> str:
     """O buraco da numeração-base entre dois artigos; vazio no recuo ou sem buraco.
 
-    O número-base do artigo com letra entra no buraco: 308 → 311-A dá "arts. 309 a 311".
+    O número-base do artigo com letra entra no buraco: 308 → 311-A dá "arts. 309 a 311". No mesmo
+    número, o buraco é o das letras: 313 → 313-B dá "art. 313-A".
     """
+    if anterior[0] == seguinte[0]:
+        return _salto_de_letra(anterior[0], anterior[1], seguinte[1])
     inicio = anterior[0] + 1
     fim = seguinte[0] if seguinte[1] else seguinte[0] - 1
     if fim < inicio:
@@ -103,6 +114,22 @@ def _salto(anterior: tuple[int, tuple[str, ...]], seguinte: tuple[int, tuple[str
     if fim == inicio:
         return f"art. {inicio} — fora do edital"
     return f"arts. {inicio} a {fim} — fora do edital"
+
+
+def _salto_de_letra(numero: int, anterior: tuple[str, ...], seguinte: tuple[str, ...]) -> str:
+    """As letras puladas entre dois artigos do mesmo número; vazio sem buraco.
+
+    Só a primeira letra conta: o sufixo composto (`359-M-A`) não abre buraco aqui.
+    """
+    if len(anterior) > 1 or len(seguinte) != 1:
+        return ""
+    inicio = chr(ord(anterior[0]) + 1) if anterior else "A"
+    fim = chr(ord(seguinte[0]) - 1)
+    if fim < inicio:
+        return ""
+    if fim == inicio:
+        return f"art. {numero}-{inicio} — fora do edital"
+    return f"arts. {numero}-{inicio} a {numero}-{fim} — fora do edital"
 
 
 def _fluxo(
@@ -498,12 +525,15 @@ def renderizar(
     `recortes` traz cada recorte com o seu relatório, de onde saem os revogados e os avisos.
     A `curadoria`, já validada por `validar_curadoria`, põe as marcas, as atenções, os quadros,
     a legenda e os avisos e a data da capa. `ErroFonte` quando a matéria não existe, falta o
-    recorte de uma norma dos grupos, sobra artigo do recorte que nenhum item cobre ou a
-    curadoria cita nó fora dos recortes (RNF04).
+    recorte de uma norma dos grupos ou ele vem repetido, sobra artigo do recorte que nenhum item
+    cobre, a curadoria é de outra matéria ou cita nó fora dos recortes (RNF04).
     """
     materias = [m for m in topicos.get("materias", ()) if m.get("id") == materia]
     if not materias:
         raise ErroFonte(f"matéria inexistente nos tópicos: {materia!r}")
+    if curadoria is not None and curadoria.materia != materia:
+        raise ErroFonte(f"curadoria da matéria {curadoria.materia!r}, e não de {materia!r}")
+    exigir_normas_distintas([base for base, _ in recortes])
     por_norma = {base.norma.id: (base, relatorio) for base, relatorio in recortes}
     fluxo = _fluxo(materias[0].get("grupos", ()), por_norma)
     anotacoes = _anotacoes(curadoria, por_norma)

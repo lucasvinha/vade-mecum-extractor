@@ -95,8 +95,9 @@ python -m vademecum renderizar --topicos claude/topicos-oj2026.json --materia pe
 - Sai 0 e grava o HTML; o aviso de teto vai para o stderr (`aviso: <norma>:<id>: <motivo>`) e
   não muda o código. Erro de curadoria sai 1, uma linha por erro na saída padrão, **sem gravar
   o HTML**. Erro de entrada sai 2: tópicos, recorte, relatório ou curadoria ausentes ou com JSON
-  inválido, curadoria sem o esquema ou com forma errada, matéria inexistente, norma de grupo sem
-  recorte e artigo do recorte que nenhum item cobre.
+  inválido, curadoria sem o esquema, com forma errada (lista que não é lista, texto que não é
+  texto) ou de outra matéria, matéria inexistente, norma de grupo sem recorte, dois recortes da
+  mesma norma e artigo do recorte que nenhum item cobre.
 
 ```bash
 python -m vademecum conferir --recorte dados/recortes/oj26/penal/cp.json --html dados/vade-mecum/oj26/penal.html

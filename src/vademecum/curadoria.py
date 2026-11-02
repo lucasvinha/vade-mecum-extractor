@@ -165,8 +165,18 @@ def _nos(nos: Sequence[No]) -> Iterator[No]:
         yield from _nos(no.filhos)
 
 
+def exigir_normas_distintas(recortes: Sequence[Base]) -> None:
+    """`ErroFonte` com dois recortes da mesma norma: o segundo esconderia o primeiro (RNF04)."""
+    vistas: set[str] = set()
+    for recorte in recortes:
+        if recorte.norma.id in vistas:
+            raise ErroFonte(f"recorte repetido da norma {recorte.norma.id!r}")
+        vistas.add(recorte.norma.id)
+
+
 def _indice(recortes: Sequence[Base]) -> dict[str, tuple[No, No]]:
     """Chave `<norma>:<id>` → (nó, artigo do nó)."""
+    exigir_normas_distintas(recortes)
     return {
         f"{recorte.norma.id}:{no.id}": (no, artigo)
         for recorte in recortes
@@ -181,7 +191,9 @@ def _posicoes_originais(texto: str) -> list[int]:
     if nfc == texto:
         return list(range(len(texto) + 1))
     mapa = [0] * (len(nfc) + 1)
-    for i in range(len(texto), -1, -1):  # de trás para a frente: fica a menor posição
+    # Fica a maior posição: o acento combinante (NFD) vai com a letra que o precede, e a marca
+    # que termina nela o leva, em vez de deixá-lo para a marca seguinte.
+    for i in range(len(texto) + 1):
         mapa[len(unicodedata.normalize("NFC", texto[:i]))] = i
     return mapa
 
@@ -193,7 +205,18 @@ def _exigir(dados: Mapping[str, Any], chave: str, tipo: type, onde: str) -> Any:
     return valor
 
 
-def _marcas(chave: str, no: No, brutas: Sequence[Any], erros: list[Problema]) -> list[Marca]:
+def _lista(dados: Mapping[str, Any], chave: str, tipo: type, onde: str) -> tuple[Any, ...]:
+    """A lista opcional `chave`, com cada elemento do `tipo`; vazia quando ausente."""
+    valor = dados.get(chave, [])
+    if not isinstance(valor, list) or not all(isinstance(v, tipo) for v in valor):
+        nome = "objetos" if tipo is Mapping else "textos"
+        raise ErroFonte(f"curadoria inválida: {onde}.{chave} não é lista de {nome}")
+    return tuple(valor)
+
+
+def _marcas(
+    chave: str, no: No, brutas: Sequence[Mapping[str, Any]], erros: list[Problema]
+) -> list[Marca]:
     nfc = unicodedata.normalize("NFC", no.texto)
     mapa = _posicoes_originais(no.texto)
     marcas: list[Marca] = []
@@ -278,13 +301,16 @@ def _quadro(
     depois_de = _exigir(bruto, "depois_de", str, onde)
     if depois_de not in indice:
         erros.append(Problema(onde, f"depois_de inexistente no recorte: {depois_de}"))
-    colunas = tuple(_exigir(bruto, "colunas", list, onde))
+    _exigir(bruto, "colunas", list, onde)
+    colunas = _lista(bruto, "colunas", str, onde)
     linhas = []
     for n, linha in enumerate(_exigir(bruto, "linhas", list, onde), start=1):
         if not isinstance(linha, list) or len(linha) != len(colunas):
             raise ErroFonte(f"curadoria inválida: {onde}, linha {n}, fora do número de colunas")
         linhas.append(tuple(_celula(c, f"{onde}, linha {n}", indice, erros) for c in linha))
     nota = bruto.get("nota")
+    if nota is not None and not isinstance(nota, str):
+        raise ErroFonte(f"curadoria inválida: {onde}.nota de tipo errado")
     return Quadro(depois_de, _exigir(bruto, "titulo", str, onde), colunas, tuple(linhas), nota)
 
 
@@ -306,9 +332,9 @@ def validar_curadoria(dados: Mapping[str, Any], recortes: Sequence[Base]) -> Val
         if chave not in indice:
             erros.append(Problema(chave, "id inexistente no recorte"))
             continue
-        marcas = _marcas(chave, indice[chave][0], bruto.get("marcas", ()), erros)
-        atencao = tuple(bruto.get("atencao", ()))
-        dispositivos[chave] = Dispositivo(tuple(marcas), atencao)
+        brutas = _lista(bruto, "marcas", Mapping, chave)
+        marcas = _marcas(chave, indice[chave][0], brutas, erros)
+        dispositivos[chave] = Dispositivo(tuple(marcas), _lista(bruto, "atencao", str, chave))
     quadros = tuple(
         _quadro(bruto, n, indice, erros)
         for n, bruto in enumerate(dados.get("quadros", ()), start=1)
@@ -317,7 +343,7 @@ def validar_curadoria(dados: Mapping[str, Any], recortes: Sequence[Base]) -> Val
         edital=_exigir(dados, "edital", str, "curadoria"),
         materia=_exigir(dados, "materia", str, "curadoria"),
         gerado_em=_exigir(dados, "gerado_em", str, "curadoria"),
-        avisos_capa=tuple(dados.get("avisos_capa", ())),
+        avisos_capa=_lista(dados, "avisos_capa", str, "curadoria"),
         dispositivos=dispositivos,
         quadros=quadros,
     )

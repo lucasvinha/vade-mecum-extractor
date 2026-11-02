@@ -104,6 +104,56 @@ def test_adr006_artigo_com_letra_poe_o_numero_base_no_salto():
     assert _saltos(html) == ["art. 307 — fora do edital", "arts. 309 a 311 — fora do edital"]
 
 
+@pytest.mark.parametrize(
+    ("numeros", "saltos"),
+    [
+        # O item cobre o 313 e o 313-B, mas não o 313-A, que fica entre os dois.
+        (((313, ()), (313, ("B",))), ["art. 313-A — fora do edital"]),
+        (((313, ("A",)), (313, ("D",))), ["arts. 313-B a 313-C — fora do edital"]),
+        (((359, ("M",)), (359, ("M", "A"))), []),  # sufixo composto não abre buraco
+    ],
+)
+def test_adr006_artigo_com_letra_pulado_no_mesmo_numero_gera_salto(numeros, saltos):
+    base = _base_com(*numeros)
+    ids = "; ".join(artigo.id.removeprefix("art") for artigo in base.artigos)
+    assert _saltos(_render([(ids, {})], base=base)) == saltos
+
+
+def test_adr006_artigo_inteiro_revogado_sai_como_linha_de_revogado():
+    # Os arts. 187 a 189 estão nos descartes do relatório, sem nó na base.
+    html = _render([("78; 187 a 189", {})], base=_so("78"))
+    linhas = re.findall(r'<p class="revogado n0"><span class="marca">(.*?)</span>', html)
+    assert linhas == ["Art 187", "Art 188", "Art. 189"]
+    assert "Violação de privilégio de invenção" in html
+    assert conferir([_so("78")], html) == ()
+
+
+def test_adr006_paragrafo_unico_e_alinea_revogados_na_ordem():
+    revogados = Relatorio()
+    for id_, rotulo in (("art78.pu", "Parágrafo único"), ("art78.p2.d", "d)")):
+        revogados.registrar(
+            EntradaRelatorio(tipo="descarte", origem="html:p#1", texto=rotulo, id=id_,
+                             rotulo=rotulo, motivo="revogado")
+        )  # fmt: skip
+    html = _render([("78", {})], base=_so("78"), relatorio=revogados)
+    pu, p1, c, d = (
+        html.index(s) for s in ("Parágrafo único", 'data-id="art78.p1"', 'data-id="art78.p2.c"',
+                                ">d)<")
+    )  # fmt: skip
+    assert pu < p1 and c < d
+
+
+def test_adr006_norma_do_grupo_sem_recorte_e_erro():
+    with pytest.raises(ErroFonte, match="falta o recorte da norma 'cp'"):
+        renderizar(_topicos([("78", {})]), "penal", [])
+
+
+def test_adr006_recorte_repetido_da_mesma_norma_e_erro():
+    # RNF04: com dois recortes da norma, o primeiro não pode sumir sem aviso.
+    with pytest.raises(ErroFonte, match="recorte repetido da norma 'cp'"):
+        renderizar(_topicos([("78", {})]), "penal", [(BASE, RELATORIO), (BASE, RELATORIO)])
+
+
 def test_adr006_artigo_coberto_por_dois_itens_vira_remissao():
     base = _so("121")
     html = _render([("121", {}), ("121", {})], base=base)
@@ -271,6 +321,14 @@ def test_adr006_sem_curadoria_nao_ha_legenda_nem_data():
     html = _render([("121", {})], base=_so("121"))
     assert '<section class="legenda">' not in html
     assert "Gerado em" not in html
+
+
+def test_adr006_curadoria_de_outra_materia_e_erro():
+    # As marcas, os quadros e a capa do penal não podem sair no material de outra matéria.
+    base = _so("121")
+    curadoria = dataclasses.replace(_curadoria(base), materia="processo_penal")
+    with pytest.raises(ErroFonte, match="curadoria da matéria 'processo_penal'"):
+        renderizar(_topicos([("121", {})]), "penal", [(base, RELATORIO)], curadoria)
 
 
 def test_adr006_curadoria_fora_dos_recortes_e_erro():
