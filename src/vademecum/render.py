@@ -11,6 +11,7 @@ import re
 from collections.abc import Iterator, Mapping, Sequence
 from dataclasses import dataclass, field
 from html import escape
+from importlib.resources import files
 from typing import Any
 
 from vademecum.modelo import Base, EntradaRelatorio, ErroFonte, Local, No, Relatorio, chave_de_texto
@@ -25,18 +26,9 @@ _CONFERENCIA = (
     "O texto legal foi copiado do recorte e conferido contra ele pelo conferir; as notas "
     "legislativas vêm da fonte, sem verificação independente."
 )
-_CSS = """
-@page { size: A4; margin: 18mm 16mm 20mm;
-  @bottom-left { content: "Lucas Vinha Teixeira · github.com/lucasvinha"; font-size: 8pt; }
-  @bottom-right { content: "github.com/lucasvinha/vade-mecum-extractor · p. " counter(page);
-    font-size: 8pt; } }
-@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
-body { font-family: Georgia, serif; line-height: 1.4; }
-.capa, .sumario { break-after: page; }
-.n1 { margin-left: 1.5em; } .n2 { margin-left: 3em; } .n3 { margin-left: 4.5em; }
-.pena { background: #fdf4e3; border-left: 3px solid #d9a441; padding: 2px 6px; }
-.nota, .alteracoes, .local, .salto, .revogado { color: #6b7280; font-size: 0.85em; }
-"""
+# Recurso do pacote, lido uma vez: o HTML leva o CSS embutido, sem arquivo externo (INSTRUCOES).
+# `read_text` troca CRLF por LF, e o HTML sai igual em qualquer checkout (RNF03).
+_CSS = files("vademecum").joinpath("estilo", "vade-mecum.css").read_text(encoding="utf-8")
 
 
 @dataclass
@@ -386,10 +378,11 @@ def renderizar(
         norma = grupo.get("norma")
         atributo = f' data-norma="{_e(norma)}"' if norma else ""
         corpo.append(f'<section class="grupo" id="g{numero}"{atributo}>')
-        corpo.append(f"<h2>{_e(grupo['titulo'])}</h2>")
+        # O título fica fora das colunas da impressão, para não ficar sozinho no pé da página.
+        corpo.append(f'<h2>{_e(grupo["titulo"])}</h2>\n<div class="colunas">')
         for item in itens:
             corpo += _item(item, por_norma)
-        corpo.append("</section>")
+        corpo.append("</div>\n</section>")
     linhas = [
         "<!DOCTYPE html>",
         '<html lang="pt-BR">',

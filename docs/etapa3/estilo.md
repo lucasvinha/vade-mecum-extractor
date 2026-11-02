@@ -138,7 +138,7 @@ Diagramas em SVG inline (arts. 129, 109, 7º, 117 e 107) e flashcards em PDF sep
 
 ## 7. Lições da referência visual
 
-A `referencia-visual.pdf` é a saída do protótipo (`render_html.py` pelo Chromium, com o CSS que está em `prototipo.css`). O plano do protótipo registra seis defeitos dela, que o `renderizar` não repete:
+A `referencia-visual.pdf` é a saída do protótipo (`render_html.py` pelo Chromium, com o CSS que deu origem a `src/vademecum/estilo/vade-mecum.css`). O plano do protótipo registra seis defeitos dela, que o `renderizar` não repete:
 
 1. **Sumário sem número de página:** o Chromium não implementa `target-counter()`. O sumário fica em links.
 2. **~1/4 de página em branco no pé (pp. 13 a 15):** causa provável, `column-fill` e `column-span: all`. O quadro quebra entre linhas, com o cabeçalho repetido; só a linha é indivisível.

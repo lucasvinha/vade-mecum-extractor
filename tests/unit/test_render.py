@@ -178,3 +178,17 @@ def test_adr006_artigo_sem_item_e_erro():
 def test_adr006_materia_inexistente_e_erro():
     with pytest.raises(ErroFonte, match="matéria inexistente"):
         renderizar(_topicos([("78", {})]), "civil", [(BASE, RELATORIO)])
+
+
+def test_adr006_css_do_pacote_embutido_sem_recurso_externo():
+    html = _render([("78; 121 a 130", {})])
+    css = re.search(r"<style>(.*)</style>", html, re.DOTALL)[1]
+    assert ".pena {" in css and "@page :first" in css
+    assert "\r" not in css
+    assert not re.search(r"<link|<script|url\(", html)
+
+
+def test_adr006_titulo_do_grupo_fora_das_colunas():
+    html = _render([("78", {})], [("121 a 130", {})])
+    assert html.count('<div class="colunas">') == 2
+    assert '<h2>Grupo 2</h2>\n<div class="colunas">\n<section class="item"' in html
