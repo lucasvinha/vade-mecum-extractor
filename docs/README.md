@@ -165,6 +165,7 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 | `validador.py` | `validar(base, perfil, relatorio) -> None`: um `aviso` por violação de V1–V6; a V7 é do parser | `modelo`, `perfil` |
 | `recorte.py` | `interpretar(expressao) -> tuple[Item, ...]`; `expressao_dos_topicos(topicos, materia, norma) -> str` (ADR-005); `recortar(base, itens, descartes, relatorio) -> Base`: artigos cobertos na ordem da base, descartes copiados e avisos (RF18, ADR-004) | `modelo` |
 | `conferencia.py` | `conferir(recortes, html) -> tuple[Divergencia, ...]`: texto legal do HTML do vade mecum contra os recortes (ADR-005, [negocio/vade-mecum.md](negocio/vade-mecum.md)) | `modelo` |
+| `curadoria.py` | `validar_curadoria(dados, recortes) -> Validacao`: a curadoria `curadoria-vm/1` contra os recortes, com marcas em posição do texto, erros e avisos; `interpretar_pena(texto)` (ADR-006, [negocio/vade-mecum.md](negocio/vade-mecum.md)) | `modelo` |
 | `cli.py` | argparse → orquestra o pipeline | todos |
 | `perfis/*.toml` | regras por norma (`padrao`, `cp`, `nscgj`, `lei_sp`) | — |
 
