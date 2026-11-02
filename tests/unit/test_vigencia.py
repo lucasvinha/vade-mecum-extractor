@@ -1,6 +1,6 @@
 import pytest
 
-from vademecum.modelo import LinhaFonte, No, Relatorio
+from vademecum.modelo import LinhaFonte, Local, No, Relatorio
 from vademecum.normalizador import normalizar
 from vademecum.parser import analisar
 from vademecum.perfil import carregar_perfil
@@ -169,3 +169,48 @@ def test_rf16_veto_e_revogacao_vale_a_primeira_nota(cp):
     pares = [(2368, "Art. 359-O. (Revogado) (VETADO)")]
     _, [descarte] = _filtrar(pares, cp)
     assert descarte.motivo == "revogado"
+
+
+# CP, Título III da Parte Especial: os Caps. II a IV (arts. 187 a 196) foram revogados inteiros.
+_TITULO_III = "TÍTULO III — DOS CRIMES CONTRA A PROPRIEDADE IMATERIAL"
+_CAP_I = "CAPÍTULO I — DOS CRIMES CONTRA A PROPRIEDADE INTELECTUAL"
+_CAP_II = "CAPÍTULO II — DOS CRIMES CONTRA O PRIVILÉGIO DE INVENÇÃO"
+_CAP_III = "CAPÍTULO III — DOS CRIMES CONTRA AS MARCAS DE INDÚSTRIA E COMÉRCIO"
+
+
+def _artigo_em(numero, origem, titulo, capitulo, texto=""):
+    """Artigo já analisado; `texto` vazio é o `Art 187 (Revogado pela Lei nº 9.279…)` sem a nota."""
+    local = Local(parte="PARTE ESPECIAL", titulo=titulo, capitulo=capitulo)
+    return No(
+        id=f"art{numero}", tipo="artigo", texto=texto, origem=origem, numero=numero, local=local
+    )
+
+
+def test_rnf04_nivel_sem_artigo_vigente_vai_ao_relatorio_como_aviso(cp):
+    artigos = (
+        _artigo_em(186, "html:art186", _TITULO_III, _CAP_I, texto="Violar direitos de autor:"),
+        _artigo_em(187, "html:p#1276", _TITULO_III, _CAP_II),
+        _artigo_em(188, "html:p#1278", _TITULO_III, _CAP_II),
+        _artigo_em(192, "html:p#1288", _TITULO_III, _CAP_III),
+    )
+    relatorio = Relatorio()
+    vigentes = filtrar_vigentes(artigos, cp, relatorio)
+    assert [artigo.id for artigo in vigentes] == ["art186"]
+    # Título III e Cap. I seguem no `local` do art. 186; a origem é a do primeiro descartado.
+    assert [(e.texto, e.origem) for e in relatorio.entradas if e.tipo == "aviso"] == [
+        (f"RNF04: nível sem artigo vigente: {_CAP_II}", "html:p#1276"),
+        (f"RNF04: nível sem artigo vigente: {_CAP_III}", "html:p#1288"),
+    ]
+
+
+def test_rnf04_capitulo_de_mesmo_nome_em_outro_titulo_nao_esconde_a_perda(cp):
+    artigos = (
+        _artigo_em(1, "html:p#1", "TÍTULO I — A", "CAPÍTULO I — DISPOSIÇÕES GERAIS"),
+        _artigo_em(2, "html:p#2", "TÍTULO II — B", "CAPÍTULO I — DISPOSIÇÕES GERAIS", texto="x."),
+    )
+    relatorio = Relatorio()
+    filtrar_vigentes(artigos, cp, relatorio)
+    assert [e.texto for e in relatorio.entradas if e.tipo == "aviso"] == [
+        "RNF04: nível sem artigo vigente: TÍTULO I — A",
+        "RNF04: nível sem artigo vigente: CAPÍTULO I — DISPOSIÇÕES GERAIS",
+    ]

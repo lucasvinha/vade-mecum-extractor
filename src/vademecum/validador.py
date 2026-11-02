@@ -4,11 +4,20 @@ Etapa pura, que não muda a base. Cada aviso começa pelo ID da regra (`V2: …`
 do nó mais próximo. A V7 (linha não classificada) é do parser, que já registra `nao_classificada`.
 """
 
+import re
 from collections import Counter
 from collections.abc import Iterator
 from itertools import pairwise
 
-from vademecum.modelo import Base, EntradaRelatorio, No, Relatorio, chave_de_texto, chave_ordenacao
+from vademecum.modelo import (
+    NUMERO_DISPOSITIVO,
+    Base,
+    EntradaRelatorio,
+    No,
+    Relatorio,
+    chave_de_texto,
+    chave_ordenacao,
+)
 from vademecum.perfil import Perfil
 
 _PENA = "pena"
@@ -20,7 +29,7 @@ def validar(base: Base, perfil: Perfil, relatorio: Relatorio) -> None:
     avisos: list[EntradaRelatorio] = []
     _v1_ordem(base.artigos, avisos)
     if perfil.lacunas:
-        _v2_lacunas(base.artigos, relatorio, avisos)
+        _v2_lacunas(base.artigos, perfil, relatorio, avisos)
     _v3_ids(base.artigos, avisos)
     for artigo in base.artigos:
         for no in _pre_ordem(artigo):
@@ -59,24 +68,49 @@ def _v1_ordem(artigos: tuple[No, ...], avisos: list[EntradaRelatorio]) -> None:
 
 
 def _v2_lacunas(
-    artigos: tuple[No, ...], relatorio: Relatorio, avisos: list[EntradaRelatorio]
+    artigos: tuple[No, ...], perfil: Perfil, relatorio: Relatorio, avisos: list[EntradaRelatorio]
 ) -> None:
     # H19, ADR-003: o artigo revogado sai da base (ADR-001), mas conta pelo descarte de artigo.
-    descartados = {
-        chave_de_texto(e.id.removeprefix("art"))[0]
-        for e in relatorio.entradas
-        if e.tipo == "descarte" and e.id is not None and "." not in e.id
-    }
-    presentes = {artigo.numero for artigo in artigos if artigo.numero is not None} | descartados
-    if not presentes or not artigos:
-        return
-    seguinte = {}  # número que falta → artigo da base logo depois dele, para a `origem`
-    for numero in range(max(presentes), 0, -1):
-        if numero in presentes:
-            continue
-        seguinte[numero] = next((a for a in artigos if (a.numero or 0) > numero), artigos[-1])
-    for numero in sorted(seguinte):
-        avisos.append(_aviso("V2", seguinte[numero], f"lacuna na numeração-base: art. {numero}"))
+    # A `origem` da lacuna é a do número presente logo depois dela, na base ou no descarte.
+    # A base vem antes do descarte, e o `art121` antes do `art121-A`.
+    origens: dict[int, str] = {}
+    for artigo in artigos:
+        if artigo.numero is not None:
+            origens.setdefault(artigo.numero, artigo.origem)
+    for entrada in relatorio.entradas:
+        if (
+            entrada.tipo == "descarte"
+            and (numero := _numero_descartado(entrada, perfil)) is not None
+        ):
+            origens.setdefault(numero, entrada.origem)
+    proxima = ""  # nunca fica vazia: a contagem desce a partir de um número presente
+    lacunas = []
+    for numero in range(max(origens, default=0), 0, -1):
+        if numero in origens:
+            proxima = origens[numero]
+        else:
+            lacunas.append((numero, proxima))
+    for numero, origem in reversed(lacunas):
+        avisos.append(
+            EntradaRelatorio(
+                tipo="aviso", origem=origem, texto=f"V2: lacuna na numeração-base: art. {numero}"
+            )
+        )
+
+
+def _numero_descartado(entrada: EntradaRelatorio, perfil: Perfil) -> int | None:
+    """O número do artigo descartado inteiro; `None` para o descarte de outro dispositivo."""
+    if entrada.id is not None:
+        return None if "." in entrada.id else chave_de_texto(entrada.id.removeprefix("art"))[0]
+    # RF16: a linha tachada do leitor HTML sai sem `id` (Lei 8.429, `Art. 4° Os agentes…`); o número
+    # vem do rótulo no começo do `texto`, ainda sem normalizar (`°`, `o`).
+    alternativas = "|".join(
+        re.escape(p) for p in sorted(perfil.prefixos_artigo, key=len, reverse=True)
+    )
+    casamento = re.match(
+        rf"(?:{alternativas})\s*(?P<fragmento>{NUMERO_DISPOSITIVO.pattern})", entrada.texto
+    )
+    return None if casamento is None else chave_de_texto(casamento["fragmento"])[0]
 
 
 def _v3_ids(artigos: tuple[No, ...], avisos: list[EntradaRelatorio]) -> None:
