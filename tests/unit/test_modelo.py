@@ -1,6 +1,7 @@
 import dataclasses
 import json
 import typing
+from pathlib import Path
 
 import pytest
 
@@ -19,12 +20,14 @@ from vademecum.modelo import (
     Relatorio,
     chave_de_texto,
     chave_ordenacao,
+    de_json,
     id_alinea,
     id_artigo,
     id_inciso,
     id_paragrafo,
     id_pena,
     para_json,
+    relatorio_de_json,
 )
 
 
@@ -520,3 +523,62 @@ def test_rf16_descarte_aceita_os_tres_motivos(motivo):
 def test_rf16_descarte_rejeita_motivo_fora_dos_tres(motivo):
     with pytest.raises(ValueError, match="motivo de descarte"):
         EntradaRelatorio(tipo="descarte", origem="html:p#1", texto="x", motivo=motivo)
+
+
+SNAPSHOTS = Path(__file__).resolve().parents[1] / "fixtures" / "snapshots"
+
+
+def test_de_json_volta_aos_mesmos_bytes_da_base():
+    texto = (SNAPSHOTS / "cp_enxertos.json").read_text(encoding="utf-8")
+    assert para_json(de_json(texto)) == texto
+
+
+def test_relatorio_de_json_volta_aos_mesmos_bytes():
+    texto = (SNAPSHOTS / "cp_enxertos.relatorio.json").read_text(encoding="utf-8")
+    assert para_json(relatorio_de_json(texto)) == texto
+
+
+def _nos_lidos(no):
+    yield no
+    for filho in no.filhos:
+        yield from _nos_lidos(filho)
+
+
+def test_de_json_reconstroi_tuplas_e_dataclasses():
+    base = de_json((SNAPSHOTS / "cp_enxertos.json").read_text(encoding="utf-8"))
+    nos = [no for artigo in base.artigos for no in _nos_lidos(artigo)]
+    assert all(isinstance(no, No) and isinstance(no.filhos, tuple) for no in nos)
+    assert all(isinstance(nota, Nota) for no in nos for nota in no.notas)
+    assert all(isinstance(a.sufixo, tuple) and isinstance(a.local, Local) for a in base.artigos)
+    assert isinstance(base.norma, Norma) and isinstance(base.metadados, Metadados)
+
+
+def test_rf19_de_json_deixa_a_origem_dos_nos_vazia():
+    base = de_json((SNAPSHOTS / "cp_enxertos.json").read_text(encoding="utf-8"))
+    assert {no.origem for artigo in base.artigos for no in _nos_lidos(artigo)} == {""}
+
+
+def test_de_json_do_recorte():
+    recorte = Recorte(expressao="121-130; 311-A", origem="base_cp.json")
+    base = dataclasses.replace(_base_do_art_121(), recorte=recorte)
+    assert de_json(para_json(base)).recorte == recorte
+
+
+@pytest.mark.parametrize("versao", ["0.9", "2.0", None])
+def test_de_json_rejeita_schema_version_diferente(versao):
+    dados = json.loads(para_json(_base_do_art_121()))
+    dados["schema_version"] = versao
+    with pytest.raises(ErroFonte, match="schema_version"):
+        de_json(json.dumps(dados))
+
+
+@pytest.mark.parametrize("texto", ["não é json", "[]", '{"schema_version": "1.0"}'])
+def test_de_json_rejeita_texto_fora_do_esquema(texto):
+    with pytest.raises(ErroFonte):
+        de_json(texto)
+
+
+@pytest.mark.parametrize("texto", ["{", '{"entradas": [{"tipo": "outro"}]}', "{}"])
+def test_relatorio_de_json_rejeita_texto_fora_do_esquema(texto):
+    with pytest.raises(ErroFonte):
+        relatorio_de_json(texto)
