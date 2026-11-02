@@ -99,6 +99,7 @@ def test_adr006_pena_divergente(a, b):
         "a cominada à falsificação ou à alteração.",  # 304: remissão
         "reclusão, 2 a 12 anos + multa",
         "reclusão e multa, de dois a doze anos.",  # "multa" antes da faixa
+        "reclusão, de 6 (dois) a 20 (doze) anos.",
     ],
 )
 def test_adr006_pena_nao_interpretavel(texto):
@@ -252,6 +253,10 @@ def test_adr006_quadro_depois_de_inexistente():
         dict(_curadoria(), dispositivos={"cp:art121": {"marcas": ["Matar"]}}),
         dict(_curadoria(), dispositivos={"cp:art121": {"marcas": {"trecho": "Matar"}}}),
         dict(_curadoria(), dispositivos={"cp:art121": "Matar"}),
+        dict(_curadoria(), quadros=None),
+        dict(_curadoria(), quadros=1),
+        dict(_curadoria(), quadros={}),
+        dict(_curadoria(), quadros=""),
         _curadoria(quadros=[dict(_quadro("a", "b"), colunas=[1, 2])]),
         _curadoria(quadros=[dict(_quadro("a"), nota=5)]),
         _curadoria(quadros=["quadro"]),
