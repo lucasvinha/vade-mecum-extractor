@@ -1,0 +1,278 @@
+/*
+ * Estilo do vade mecum, embutido no <style> pelo render (ver ADR-006). Vem do CSS do protótipo
+ * que gerou o docs/etapa3/referencia-visual.pdf, sem os defeitos que o docs/etapa3/estilo.md
+ * lista como lições: o sumário fica em links, a capa sai sem rodapé, o texto vai alinhado à
+ * esquerda com hifenização, e nada que pode passar de uma página é indivisível.
+ */
+@page {
+  size: A4;
+  margin: 16mm 14mm 18mm;
+  @bottom-left {
+    content: "Lucas Vinha Teixeira · github.com/lucasvinha";
+    font-family: "Segoe UI", Arial, sans-serif; font-size: 7.5pt; color: #8a8f98;
+  }
+  @bottom-right {
+    content: "github.com/lucasvinha/vade-mecum-extractor · p. " counter(page);
+    font-family: "Segoe UI", Arial, sans-serif; font-size: 7.5pt; color: #8a8f98;
+  }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+
+:root {
+  --tinta: #1a1d23;
+  --tinta-suave: #4a5058;
+  --nota: #868c96;
+  --azul: #1f4e79;
+  --azul-claro: #e8eef5;
+  --pena-bg: #fdf4e3;
+  --pena-borda: #d9a441;
+  --pena-tinta: #7a5410;
+  --selo-bg: #eef2f7;
+  --selo-tinta: #2f5f8f;
+  --regra: #dde2e8;
+  --rotulos: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  /* Marca-texto: uma cor por função do trecho (estilo.md). A pena tem caixa própria. */
+  --hl-verbo: #fff0a0;
+  --hl-sujeito: #ccefc4;
+  --hl-especializante: #c4ecf5;
+  --hl-quantidade: #f7cdeb;
+  --hl-condicao: #e3e5e8;
+}
+
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: var(--tinta);
+  background: #fff;
+  max-width: 190mm;
+  margin: 0 auto;
+  padding: 8mm 6mm;
+  text-align: left;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+a { color: inherit; }
+p { margin: 0; }
+
+/* ---------- capa ---------- */
+.capa { break-after: page; text-align: center; padding-top: 45mm; }
+.capa .selo {
+  font-family: var(--rotulos); font-size: 8pt; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--azul); margin-bottom: 8mm;
+}
+.capa h1 {
+  font-size: 34pt; margin: 0; letter-spacing: .14em; font-weight: 600; color: var(--azul);
+}
+.capa .sub { font-size: 13pt; color: var(--tinta-suave); margin-top: 4mm; font-style: italic; }
+.capa .sub::after {
+  content: ""; display: block; width: 38mm; height: 2px; background: var(--pena-borda);
+  margin: 10mm auto;
+}
+.capa .edital {
+  font-family: var(--rotulos); font-size: 9pt; color: var(--tinta-suave); line-height: 1.8;
+}
+.capa .aviso {
+  margin: 14mm auto 0; max-width: 125mm; padding: 4mm 5mm;
+  background: var(--pena-bg); border-left: 3px solid var(--pena-borda);
+  font-family: var(--rotulos); font-size: 7.8pt; color: var(--pena-tinta);
+  text-align: left; line-height: 1.5;
+}
+.capa .aviso ul { margin: 1.5mm 0 0; padding-left: 4mm; }
+.capa .aviso li { margin: .8mm 0; }
+.capa .assinatura {
+  margin-top: 14mm; font-family: var(--rotulos); font-size: 8pt; color: var(--tinta-suave);
+  letter-spacing: .05em;
+}
+
+/* ---------- legenda dos destaques ---------- */
+.legenda {
+  margin: 8mm auto 0; max-width: 125mm; text-align: left;
+  font-family: var(--rotulos); font-size: 7.8pt; color: var(--tinta-suave);
+}
+.legenda h2 { font-size: 9pt; color: var(--azul); letter-spacing: .08em; margin: 0 0 2mm; }
+.legenda p { margin: .8mm 0; }
+.legenda mark { font-family: Georgia, serif; font-size: 8.4pt; color: var(--tinta); }
+.legenda .apoio { margin-top: 2.5mm; font-style: italic; }
+
+/* ---------- sumário ---------- */
+/* Sem quebra forçada depois do sumário nem antes do grupo: as poucas linhas que sobram de uma
+   página não ficam sozinhas numa página nova (a da p. 3 da referência). */
+.sumario { columns: 2; column-gap: 8mm; margin-bottom: 8mm; }
+.sumario h2 {
+  column-span: all; font-family: var(--rotulos); color: var(--azul);
+  font-size: 13pt; letter-spacing: .12em; border-bottom: 1.5pt solid var(--azul);
+  padding-bottom: 2mm; margin: 0 0 4mm;
+}
+.sumario .item { font-family: var(--rotulos); font-size: 7.6pt; line-height: 1.3; margin: .3mm 0; }
+.sumario .item.h {
+  font-weight: 700; color: var(--azul); margin-top: 3mm; break-after: avoid;
+  text-transform: uppercase; letter-spacing: .04em; font-size: 7.2pt;
+}
+.sumario .item.i { font-weight: 600; margin-top: 1.5mm; break-after: avoid; }
+.sumario .item:not(.h):not(.i) { padding-left: 3mm; color: var(--tinta-suave); }
+.sumario a { text-decoration: none; }
+
+/* ---------- grupos e itens dos tópicos ---------- */
+.grupo { margin-top: 6mm; }
+.grupo > h2 {
+  text-align: center; margin: 2mm 0 6mm;
+  font-family: var(--rotulos); font-size: 12pt; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--azul); line-height: 1.35;
+  border-top: 2px solid var(--azul); border-bottom: 2px solid var(--azul); padding: 2.5mm 6mm;
+}
+section.item > h3 {
+  text-align: center; margin: 5mm 0 2.5mm; break-after: avoid; break-inside: avoid;
+  font-family: var(--rotulos); font-size: 9.6pt; font-weight: 700; letter-spacing: .06em;
+  color: var(--azul); line-height: 1.35;
+}
+.selo-oj {
+  display: inline-block; margin-left: 1.5mm; padding: 0 1.5mm; border-radius: 1mm;
+  background: var(--pena-bg); color: var(--pena-tinta); border: .5pt solid var(--pena-borda);
+  font-size: 6.4pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  vertical-align: middle;
+}
+.aviso-item, .aviso-relatorio {
+  margin: 1.5mm 0 2.5mm; padding: 1.5mm 2.5mm; border-left: 2.5pt solid var(--regra);
+  background: #f6f7f9; font-family: var(--rotulos); font-size: 7.6pt; color: var(--tinta-suave);
+}
+.local {
+  text-align: center; margin: 3.5mm 0 2mm; break-after: avoid; break-inside: avoid;
+  font-family: var(--rotulos); font-size: 7.4pt; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--tinta-suave);
+}
+
+/* ---------- salto de faixa e remissão ---------- */
+.salto {
+  text-align: center; margin: 4mm 0; padding: 1.5mm 0; break-inside: avoid;
+  font-family: var(--rotulos); font-size: 7.2pt; color: var(--nota); font-style: italic;
+  border-top: .5pt dashed var(--regra); border-bottom: .5pt dashed var(--regra);
+}
+.remissao { margin: 2mm 0; font-family: var(--rotulos); font-size: 8pt; color: var(--selo-tinta); }
+
+/* ---------- artigo ---------- */
+.artigo { margin: 0 0 3.5mm; }
+.rubrica {
+  font-family: var(--rotulos); font-size: 8.8pt; font-weight: 700; color: var(--tinta);
+  margin: 3mm 0 .8mm; break-after: avoid; break-inside: avoid; line-height: 1.3;
+  border-left: 2.5pt solid var(--pena-borda); padding-left: 2mm;
+}
+.disp > .rubrica { font-size: 8pt; margin-top: 2mm; }
+.caput { margin: 0 0 1.2mm; }
+.num-art { font-family: var(--rotulos); font-weight: 700; color: var(--azul); font-size: .95em; }
+
+/* Dispositivos: o rótulo literal vira selo, e o texto fica pendurado à direita dele. */
+.disp { margin: .9mm 0; }
+.disp .linha { padding-left: 9.5mm; text-indent: -9.5mm; }
+.marca {
+  display: inline-block; min-width: 8mm; margin-right: 1.5mm; padding: 0 .8mm;
+  text-indent: 0; text-align: center; border-radius: 1.2mm;
+  font-family: var(--rotulos); font-size: 7pt; font-weight: 700; line-height: 1.6;
+  background: var(--selo-bg); color: var(--selo-tinta); vertical-align: .05em;
+}
+.paragrafo > .linha > .marca { background: var(--azul-claro); color: var(--azul); }
+.alinea > .linha, .disp.item > .linha { padding-left: 6.5mm; text-indent: -6.5mm; }
+.alinea > .linha > .marca, .disp.item > .linha > .marca {
+  min-width: 5mm; border-radius: 2.5mm; background: transparent; font-style: italic;
+  border: .6pt solid var(--selo-tinta); font-size: 6.6pt; line-height: 1.45;
+}
+.n2 { margin-left: 4.5mm; }
+.n3 { margin-left: 9mm; }
+.n4 { margin-left: 13.5mm; }
+
+/* ---------- pena (preceito secundário) ---------- */
+.pena {
+  margin: 1.2mm 0 1.8mm; padding: 1.2mm 2.2mm; break-inside: avoid;
+  background: var(--pena-bg); border-left: 2.5pt solid var(--pena-borda);
+  font-family: var(--rotulos); font-size: 8.4pt; font-weight: 600; color: var(--pena-tinta);
+  line-height: 1.35;
+}
+.rotulo-pena {
+  display: block; margin-bottom: .3mm;
+  font-size: 6.2pt; font-weight: 700; letter-spacing: .18em; color: var(--pena-borda);
+}
+
+/* ---------- notas legislativas e revogados ---------- */
+.nota { font-family: var(--rotulos); font-size: 6.6pt; font-weight: 400; color: var(--nota); }
+.alteracoes {
+  margin-top: 1.2mm; font-family: var(--rotulos); font-size: 6.6pt; color: var(--nota);
+  line-height: 1.4;
+}
+.revogado {
+  margin: .9mm 0; padding-left: 9.5mm; text-indent: -9.5mm;
+  font-family: var(--rotulos); font-size: 7pt; color: var(--nota);
+}
+.revogado .marca { background: #f0f0f0; color: #a0a0a0; }
+.etiqueta {
+  padding: 0 1mm; border-radius: 1mm; background: #ffe8e8; color: #a33;
+  font-size: 6.2pt; font-weight: 700; letter-spacing: .06em;
+}
+
+/* ---------- curadoria: marcas, atenção e quadros (material de apoio) ---------- */
+mark { padding: 0 .3mm; border-radius: .6mm; color: inherit; }
+mark.hl-verbo { background: var(--hl-verbo); }
+mark.hl-sujeito { background: var(--hl-sujeito); }
+mark.hl-especializante { background: var(--hl-especializante); }
+mark.hl-quantidade { background: var(--hl-quantidade); }
+mark.hl-condicao { background: var(--hl-condicao); }
+
+.atencao {
+  margin: 1.5mm 0 2mm; padding: 1.4mm 2.5mm; break-inside: avoid;
+  border-left: 2.5pt solid var(--azul); background: var(--azul-claro);
+  font-family: var(--rotulos); font-size: 7.8pt; color: var(--tinta); line-height: 1.4;
+}
+.atencao::before {
+  content: "ATENÇÃO"; display: block; margin-bottom: .3mm;
+  font-size: 6.2pt; font-weight: 700; letter-spacing: .18em; color: var(--azul);
+}
+
+/* O quadro ocupa as duas colunas e quebra entre as linhas, com o cabeçalho repetido: o quadro
+   inteiro indivisível deixava o pé da página em branco na referência. */
+.quadro { column-span: all; margin: 5mm 0; }
+.quadro h3 {
+  margin: 0; padding: 1.8mm 3mm; break-after: avoid; border-radius: 1.5mm 1.5mm 0 0;
+  background: var(--azul); color: #fff;
+  font-family: var(--rotulos); font-size: 8.6pt; font-weight: 600; letter-spacing: .05em;
+}
+.quadro h3::before {
+  content: "QUADRO COMPARATIVO · "; font-size: 6.4pt; opacity: .75; letter-spacing: .15em;
+}
+.quadro table {
+  width: 100%; border-collapse: collapse; font-size: 7.6pt;
+  border: .8pt solid var(--azul); border-top: none;
+}
+.quadro thead { display: table-header-group; }
+.quadro tr { break-inside: avoid; }
+.quadro th {
+  padding: 1.4mm 2mm; text-align: left; border-bottom: .6pt solid var(--azul);
+  background: var(--azul-claro); color: var(--azul);
+  font-family: var(--rotulos); font-size: 6.8pt; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.quadro td {
+  padding: 1.4mm 2mm; vertical-align: top; line-height: 1.32;
+  border-bottom: .4pt solid var(--regra);
+}
+.quadro td:first-child {
+  font-family: var(--rotulos); font-weight: 600; font-size: 7.2pt; color: var(--azul);
+}
+.quadro td.pena-celula {
+  font-family: var(--rotulos); font-size: 7.2pt; color: var(--pena-tinta);
+}
+.quadro .rodape {
+  padding: 1.6mm 2.5mm; border: .8pt solid var(--azul); border-top: none;
+  background: var(--pena-bg); color: var(--pena-tinta);
+  font-family: var(--rotulos); font-size: 7pt; line-height: 1.4;
+}
+.apoio { font-family: var(--rotulos); font-size: 6.4pt; font-style: italic; color: var(--nota); }
+
+/* ---------- impressão ---------- */
+@media print {
+  body { max-width: none; padding: 0; font-size: 9.4pt; line-height: 1.42; }
+  /* O título do grupo fica fora das colunas: o Chromium ignora o break-after de um column-span,
+     e o título ficava sozinho no pé da página. */
+  .grupo > h2 { break-after: avoid; break-inside: avoid; }
+  .colunas { columns: 2; column-gap: 7mm; column-rule: .5pt solid var(--regra); }
+}
