@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import pytest
@@ -15,9 +16,10 @@ from vademecum.modelo import (
     id_artigo,
     relatorio_de_json,
 )
-from vademecum.recorte import Item, interpretar, recortar
+from vademecum.recorte import Item, expressao_dos_topicos, interpretar, recortar
 
-SNAPSHOTS = Path(__file__).resolve().parents[1] / "fixtures" / "snapshots"
+RAIZ = Path(__file__).resolve().parents[2]
+SNAPSHOTS = RAIZ / "tests" / "fixtures" / "snapshots"
 
 
 def _faixas(expressao):
@@ -235,3 +237,41 @@ def test_rf18_recorte_dos_enxertos_do_cp():
     assert [artigo.id for artigo in recorte.artigos] == ["art121"]
     ids = [entrada.id for entrada in relatorio.entradas]
     assert ids == ["art121.p2.i6", "art121.p2-A", "art121.p7", "art187", "art188", "art189"]
+
+
+def _topicos(*grupos, materia="m"):
+    return {"materias": [{"id": materia, "tipo": "lei", "grupos": list(grupos)}]}
+
+
+def _grupo(norma, *arts):
+    return {"titulo": norma, "norma": norma, "itens": [{"id": a, "arts": a} for a in arts]}
+
+
+def test_adr005_expressao_junta_os_itens_da_norma_na_ordem_do_arquivo():
+    topicos = _topicos(_grupo("cpp", "24 a 42"), _grupo("lei9099", "1º; 2º"), _grupo("cpp", "112"))
+    assert expressao_dos_topicos(topicos, "m", "cpp") == "24 a 42; 112"
+
+
+def test_adr005_item_sem_arts_fica_de_fora():
+    grupo = _grupo("lei13146", "1º a 3º")
+    grupo["itens"].insert(0, {"id": "at:atualidades", "rubrica": "Fatos políticos"})
+    assert expressao_dos_topicos(_topicos(grupo), "m", "lei13146") == "1º a 3º"
+
+
+def test_adr005_materia_inexistente_levanta_erro_fonte():
+    with pytest.raises(ErroFonte, match="matéria inexistente nos tópicos: 'x'"):
+        expressao_dos_topicos(_topicos(_grupo("cp", "121")), "x", "cp")
+
+
+def test_adr005_materia_sem_grupo_da_norma_levanta_erro_fonte():
+    with pytest.raises(ErroFonte, match="nenhum grupo da matéria 'm' é da norma 'cp'"):
+        expressao_dos_topicos(_topicos(_grupo("cpp", "24")), "m", "cp")
+
+
+def test_adr005_expressao_da_materia_penal_do_edital():
+    # A expressão do piloto: a de `dados/recortes/oj26/penal/cp.json`.
+    topicos = json.loads((RAIZ / "claude" / "topicos-oj2026.json").read_text(encoding="utf-8"))
+    assert expressao_dos_topicos(topicos, "penal", "cp") == (
+        "1º a 12; 100 a 106; 107 a 120; 121; 129; 150; 154; 293 a 295; 296 a 305; 307; 308; "
+        "311-A; 312 a 317; 319 a 327; 328 a 333; 336; 337; 339 a 347; 357; 359"
+    )

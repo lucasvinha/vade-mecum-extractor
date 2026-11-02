@@ -158,7 +158,7 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 | `parser.py` | `analisar(linhas, perfil, relatorio) -> Analise`: título, ementa, `Metadados` e os artigos (máquina de estados) | `modelo`, `notas`, `perfil` |
 | `vigencia.py` | `filtrar_vigentes(artigos, perfil, relatorio) -> tuple[No, ...]`: tira o revogado e o vetado e registra o `descarte` (ADR-001, RF14, RF16) | `modelo`, `perfil` |
 | `validador.py` | `validar(base, perfil, relatorio) -> None`: um `aviso` por violação de V1–V6; a V7 é do parser | `modelo`, `perfil` |
-| `recorte.py` | `interpretar(expressao) -> tuple[Item, ...]`; `recortar(base, itens, descartes, relatorio) -> Base`: artigos cobertos na ordem da base, descartes copiados e avisos (RF18, ADR-004) | `modelo` |
+| `recorte.py` | `interpretar(expressao) -> tuple[Item, ...]`; `expressao_dos_topicos(topicos, materia, norma) -> str` (ADR-005); `recortar(base, itens, descartes, relatorio) -> Base`: artigos cobertos na ordem da base, descartes copiados e avisos (RF18, ADR-004) | `modelo` |
 | `cli.py` | argparse → orquestra o pipeline | todos |
 | `perfis/*.toml` | regras por norma (`padrao`, `cp`, `nscgj`, `lei_sp`) | — |
 

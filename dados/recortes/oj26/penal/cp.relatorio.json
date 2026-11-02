@@ -1,0 +1,144 @@
+{
+  "entradas": [
+    {
+      "id": "art107.i7",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#510",
+      "rotulo": "VII",
+      "rubrica": null,
+      "texto": "VII (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art107.i8",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.106, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.106",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#511",
+      "rotulo": "VIII",
+      "rubrica": null,
+      "texto": "VIII (Revogado pela Lei nº 11.106, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art110.p2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2010,
+          "bruto": "(Revogado pela Lei nº 12.234, de 2010)",
+          "data": null,
+          "norma": "Lei nº 12.234",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#527",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Revogado pela Lei nº 12.234, de 2010)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art121.p2.i6",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2015,
+          "bruto": "(Incluído pela Lei nº 13.104, de 2015)",
+          "data": null,
+          "norma": "Lei nº 13.104",
+          "tipo": "inclusao"
+        },
+        {
+          "ano": 2024,
+          "bruto": "(Revogado pela Lei nº 14.994, de 2024)",
+          "data": null,
+          "norma": "Lei nº 14.994",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#588",
+      "rotulo": "VI",
+      "rubrica": "Feminicídio",
+      "texto": "VI (Incluído pela Lei nº 13.104, de 2015) (Revogado pela Lei nº 14.994, de 2024)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art121.p2-A",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2024,
+          "bruto": "(Revogado pela Lei nº 14.994, de 2024)",
+          "data": null,
+          "norma": "Lei nº 14.994",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#597",
+      "rotulo": "§ 2º-A",
+      "rubrica": null,
+      "texto": "§ 2º-A (Revogado pela Lei nº 14.994, de 2024)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art121.p7",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2024,
+          "bruto": "(Revogado pela Lei nº 14.994, de 2024)",
+          "data": null,
+          "norma": "Lei nº 14.994",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#614",
+      "rotulo": "§ 7º",
+      "rubrica": null,
+      "texto": "§ 7º (Revogado pela Lei nº 14.994, de 2024)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art150.p2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2019,
+          "bruto": "(Revogado pela Lei nº 13.869, de 2019)",
+          "data": null,
+          "norma": "Lei nº 13.869",
+          "tipo": "revogacao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "origem": "html:p#907",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Revogado pela Lei nº 13.869, de 2019) (Vigência)",
+      "tipo": "descarte"
+    }
+  ]
+}
