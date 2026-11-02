@@ -351,5 +351,184 @@
       ]
     },
     "cp:art359": {"marcas": [{"trecho": "decisão judicial", "cat": "especializante"}]}
-  }
+  },
+  "quadros": [
+    {
+      "depois_de": "cp:art106",
+      "titulo": "Decadência, renúncia e perdão",
+      "colunas": ["Instituto", "Quando ocorre", "Depende de aceitação?", "Ponto de prova"],
+      "linhas": [
+        ["Art. 103 — Decadência", "o ofendido não exerce a queixa ou a representação em 6 meses do dia em que soube quem é o autor (na subsidiária, do fim do prazo para a denúncia, art. 100, § 3º; 12 meses na violência doméstica e familiar contra a mulher, p. ú.)", "não: é o prazo que corre", "alcança a queixa e a representação"],
+        ["Art. 104 — Renúncia", "antes da queixa", "não: é ato só do ofendido", "expressa ou tácita; receber a indenização do dano NÃO é renúncia tácita (p. ú.)"],
+        ["Arts. 105 e 106 — Perdão", "depois de iniciada a ação, até o trânsito em julgado da condenação (art. 106, § 2º)", "SIM: o querelado pode recusá-lo (art. 106, III)", "só nos crimes em que somente se procede mediante queixa; concedido a um querelado, a todos aproveita (art. 106, I)"]
+      ],
+      "nota": "Os três extinguem a punibilidade (art. 107, IV e V). A decadência atinge também a representação; renúncia e perdão, só a queixa."
+    },
+    {
+      "depois_de": "cp:art109",
+      "titulo": "Prazos prescricionais — art. 109",
+      "colunas": ["Máximo da pena privativa de liberdade", "Prazo prescricional"],
+      "linhas": [
+        ["superior a 12 anos", "20 anos"],
+        ["superior a 8 e não excede 12", "16 anos"],
+        ["superior a 4 e não excede 8", "12 anos"],
+        ["superior a 2 e não excede 4", "8 anos"],
+        ["igual a 1 ano, ou superior sem exceder 2", "4 anos"],
+        ["inferior a 1 ano", "3 anos"]
+      ],
+      "nota": "As restritivas de direito prescrevem nos mesmos prazos (p. ú.). Art. 115: prazos reduzidos de METADE se o agente era menor de 21 anos ao tempo do crime ou maior de 70 na data da sentença, salvo se o crime envolver violência sexual contra a mulher (Lei nº 15.160/2025)."
+    },
+    {
+      "depois_de": "cp:art121",
+      "titulo": "Homicídio — qualificadoras e causas de aumento",
+      "colunas": ["Dispositivo", "Hipótese", "Efeito", "Pena"],
+      "linhas": [
+        ["Art. 121, caput — Homicídio simples", "matar alguém", "—", {"pena": "cp:art121.pena1", "texto": "reclusão, 6 a 20 anos"}],
+        ["§ 1º — Diminuição de pena", "relevante valor social ou moral; violenta emoção logo em seguida a injusta provocação da vítima", "o juiz pode reduzir de 1/6 a 1/3", "—"],
+        ["§ 2º, I a V — Qualificado", "motivo torpe ou fútil; meio insidioso ou cruel; recurso que dificulta a defesa; conexão com outro crime", "nova faixa", {"pena": "cp:art121.p2.pena1", "texto": "reclusão, 12 a 30 anos"}],
+        ["§ 2º, VII a X — Qualificado", "vítima agente de segurança, juiz, MP, Defensoria, Advocacia Pública ou OFICIAL DE JUSTIÇA (VII); arma de uso restrito ou proibido; menor de 14 anos; instituição de ensino", "nova faixa", {"pena": "cp:art121.p2.pena2", "texto": "reclusão, 12 a 30 anos"}],
+        ["§ 2º-B — Menor de 14 anos", "vítima com deficiência ou doença (I); autor com autoridade sobre ela (II); instituição de educação básica (III)", "aumenta de 1/3 até a metade (I) ou de 2/3 (II e III)", "—"],
+        ["§ 2º-C — Instituição de ensino", "vítima com deficiência ou doença (I); autor com autoridade sobre ela, professor ou funcionário da instituição (II)", "aumenta de 1/3 até a metade (I) ou de 2/3 (II)", "—"],
+        ["§ 2º-D — Organização criminosa ultraviolenta", "integrante de organização criminosa ultraviolenta, grupo paramilitar ou milícia privada, no contexto do marco legal do combate ao crime organizado", "nova faixa", {"pena": "cp:art121.p2-D.pena1", "texto": "reclusão, 20 a 40 anos"}],
+        ["§ 3º — Culposo", "homicídio culposo", "—", {"pena": "cp:art121.p3.pena1", "texto": "detenção, 1 a 3 anos"}],
+        ["§ 4º — Aumento", "culposo: regra técnica, omissão de socorro, fuga do flagrante; doloso: vítima menor de 14 ou maior de 60 anos", "aumenta de 1/3", "—"],
+        ["§ 6º — Milícia ou extermínio", "milícia privada a pretexto de segurança, ou grupo de extermínio", "aumenta de 1/3 até a metade", "—"]
+      ],
+      "nota": "Qualificadora troca a faixa da pena (§ 2º e § 2º-D); causa de aumento incide sobre a pena já fixada (§§ 2º-B, 2º-C, 4º e 6º)."
+    },
+    {
+      "depois_de": "cp:art129",
+      "titulo": "Lesão corporal pelo resultado",
+      "colunas": ["Dispositivo", "Resultado", "Pena"],
+      "linhas": [
+        ["Art. 129, caput — Lesão leve", "ofensa à integridade corporal ou à saúde", {"pena": "cp:art129.pena1", "texto": "detenção, 3 meses a 1 ano"}],
+        ["§ 1º — Lesão grave", "incapacidade para as ocupações habituais por mais de 30 dias; perigo de vida; DEBILIDADE permanente de membro, sentido ou função; ACELERAÇÃO de parto", {"pena": "cp:art129.p1.pena1", "texto": "reclusão, 1 a 5 anos"}],
+        ["§ 2º — Lesão gravíssima", "incapacidade PERMANENTE para o trabalho; enfermidade incurável; PERDA ou inutilização de membro, sentido ou função; deformidade permanente; ABORTO", {"pena": "cp:art129.p2.pena1", "texto": "reclusão, 2 a 8 anos"}],
+        ["§ 3º — Lesão seguida de morte", "morte que o agente não quis nem assumiu o risco de produzir", {"pena": "cp:art129.p3.pena1", "texto": "reclusão, 4 a 12 anos"}],
+        ["§ 3º-A — Lesão seguida de morte (crime organizado)", "a do § 3º, no contexto do marco legal do combate ao crime organizado", {"pena": "cp:art129.p3-A.pena1", "texto": "reclusão, 20 a 40 anos"}]
+      ],
+      "nota": "Debilidade (§ 1º) × perda ou inutilização (§ 2º); aceleração de parto (§ 1º) × aborto (§ 2º). O § 3º-A é qualificadora: troca a faixa da pena, como o § 2º-D do art. 121. \"Gravíssima\" é o nome da doutrina: a lei não rubrica o § 2º."
+    },
+    {
+      "depois_de": "cp:art150",
+      "titulo": "Violação de domicílio — quando a entrada não é crime",
+      "colunas": ["Situação", "Enquadramento", "Base"],
+      "linhas": [
+        ["entrar ou permanecer em casa alheia, às escondidas ou contra a vontade de quem de direito", "crime", "art. 150, caput"],
+        ["à noite, em lugar ermo, com violência ou arma, ou por duas ou mais pessoas", "crime qualificado", "§ 1º"],
+        ["durante o dia, com as formalidades legais, para prisão ou outra diligência", "NÃO é crime", "§ 3º, I"],
+        ["a qualquer hora, quando um crime está sendo praticado ali ou está na iminência de o ser", "NÃO é crime", "§ 3º, II"],
+        ["compartimento habitado; aposento ocupado de habitação coletiva; compartimento fechado ao público onde se exerce profissão", "é \"casa\"", "§ 4º"],
+        ["hospedaria ou habitação coletiva aberta (salvo o aposento ocupado); taverna, casa de jogo", "não é \"casa\"", "§ 5º"]
+      ],
+      "nota": "No cumprimento de mandado, a entrada é de dia e com as formalidades legais (§ 3º, I). À noite, sem o consentimento do morador, só se entra em flagrante delito, desastre ou para prestar socorro (CF, art. 5º, XI)."
+    },
+    {
+      "depois_de": "cp:art305",
+      "titulo": "Falsidade documental",
+      "colunas": ["Dispositivo", "Verbo nuclear", "Elemento distintivo", "Pena"],
+      "linhas": [
+        ["Art. 296 — Selo ou sinal público", "falsificar (fabricar ou alterar)", "selo público ou sinal de entidade pública, autoridade ou tabelião", {"pena": "cp:art296.pena1", "texto": "reclusão, 2 a 6 anos, e multa"}],
+        ["Art. 297 — Documento público", "falsificar / alterar", "falsidade MATERIAL; documento público", {"pena": "cp:art297.pena1", "texto": "reclusão, 2 a 6 anos, e multa"}],
+        ["Art. 298 — Documento particular", "falsificar / alterar", "falsidade MATERIAL; particular (equipara-se o cartão de crédito ou débito)", {"pena": "cp:art298.pena1", "texto": "reclusão, 1 a 5 anos, e multa"}],
+        ["Art. 299 — Falsidade ideológica", "omitir / inserir / fazer inserir", "documento VERDADEIRO na forma; o conteúdo é falso", {"pena": "cp:art299.pena1"}],
+        ["Art. 300 — Falso reconhecimento de firma ou letra", "reconhecer como verdadeira", "no exercício de função pública; a firma ou letra é falsa", {"pena": "cp:art300.pena1"}],
+        ["Art. 304 — Uso de documento falso", "fazer uso", "não falsifica; apenas USA o papel falsificado ou alterado (arts. 297 a 302)", {"pena": "cp:art304.pena1"}],
+        ["Art. 305 — Supressão de documento", "destruir / suprimir / ocultar", "documento VERDADEIRO de que não podia dispor", {"pena": "cp:art305.pena1"}]
+      ],
+      "nota": "Os arts. 299, 300 e 305 têm duas faixas de pena: documento público × particular. O art. 304 toma a pena do papel usado."
+    },
+    {
+      "depois_de": "cp:art311-A",
+      "titulo": "Identidade e documento alheio",
+      "colunas": ["Dispositivo", "Conduta", "Há documento falso?", "Pena"],
+      "linhas": [
+        ["Art. 307 — Falsa identidade", "atribuir-se ou atribuir a terceiro falsa identidade, para obter vantagem ou causar dano", "NÃO: basta a identidade falsa", {"pena": "cp:art307.pena1", "texto": "detenção, 3 meses a 1 ano, ou multa"}],
+        ["Art. 308 — Documento de identidade alheio", "usar como próprio documento de identidade alheio, ou cedê-lo para que outro o use", "NÃO: o documento é verdadeiro, mas de outra pessoa", {"pena": "cp:art308.pena1", "texto": "detenção, 4 meses a 2 anos, e multa"}],
+        ["Art. 304 — Uso de documento falso", "fazer uso de papel falsificado ou alterado (arts. 297 a 302)", "SIM", {"pena": "cp:art304.pena1"}]
+      ],
+      "nota": "Os arts. 307 e 308 são expressamente subsidiários: só se aplicam \"se o fato não constitui elemento de crime mais grave\"."
+    },
+    {
+      "depois_de": "cp:art314",
+      "titulo": "Peculato e figuras próximas",
+      "colunas": ["Dispositivo", "Verbo nuclear", "Elemento distintivo", "Pena"],
+      "linhas": [
+        ["Art. 312, caput — Peculato-apropriação e peculato-desvio", "apropriar-se / desviar", "tem a posse do bem em razão do cargo", {"pena": "cp:art312.pena1", "texto": "reclusão, 2 a 12 anos, e multa"}],
+        ["Art. 312, § 1º — Peculato-furto", "subtrair / concorrer para a subtração", "NÃO tem a posse; vale-se da facilidade do cargo", {"pena": "cp:art312.pena1", "texto": "reclusão, 2 a 12 anos, e multa"}],
+        ["Art. 312, § 2º — Peculato culposo", "concorrer culposamente", "culpa; a reparação do dano antes da sentença irrecorrível extingue a punibilidade (§ 3º)", {"pena": "cp:art312.p2.pena1", "texto": "detenção, 3 meses a 1 ano"}],
+        ["Art. 313 — Peculato mediante erro de outrem", "apropriar-se", "recebeu por erro de outrem", {"pena": "cp:art313.pena1", "texto": "reclusão, 1 a 4 anos, e multa"}],
+        ["Art. 313-A — Inserção de dados falsos", "inserir / facilitar a inserção / alterar / excluir", "funcionário AUTORIZADO; sistema da Administração Pública; fim de obter vantagem ou causar dano", {"pena": "cp:art313-A.pena1", "texto": "reclusão, 2 a 12 anos, e multa"}],
+        ["Art. 313-B — Modificação não autorizada", "modificar / alterar", "funcionário SEM autorização ou solicitação de autoridade competente", {"pena": "cp:art313-B.pena1", "texto": "detenção, 3 meses a 2 anos, e multa"}],
+        ["Art. 314 — Extravio, sonegação ou inutilização", "extraviar / sonegar / inutilizar", "livro ou documento de que tem a GUARDA em razão do cargo", {"pena": "cp:art314.pena1", "texto": "reclusão, 1 a 4 anos"}]
+      ],
+      "nota": "O 313-A é o único com fim especial (obter vantagem indevida ou causar dano); o 313-B se contenta com a modificação não autorizada. O § 1º do 312 aplica \"a mesma pena\" do caput."
+    },
+    {
+      "depois_de": "cp:art317",
+      "titulo": "Vantagem indevida — cinco tipos que a banca confunde",
+      "colunas": ["Dispositivo", "Verbo nuclear", "Elemento distintivo", "Pena"],
+      "linhas": [
+        ["Art. 316 — Concussão", "exigir", "funcionário EXIGE (impõe); a vítima cede por temor", {"pena": "cp:art316.pena1", "texto": "reclusão, 2 a 12 anos, e multa"}],
+        ["Art. 317 — Corrupção passiva", "solicitar / receber / aceitar promessa", "funcionário PEDE ou ACEITA; não impõe", {"pena": "cp:art317.pena1", "texto": "reclusão, 2 a 12 anos, e multa"}],
+        ["Art. 333 — Corrupção ativa", "oferecer / prometer", "praticado pelo PARTICULAR contra a Administração", {"pena": "cp:art333.pena1", "texto": "reclusão, 2 a 12 anos, e multa"}],
+        ["Art. 332 — Tráfico de influência", "solicitar / exigir / cobrar / obter", "a pretexto de INFLUIR em ato de funcionário público", {"pena": "cp:art332.pena1", "texto": "reclusão, 2 a 5 anos, e multa"}],
+        ["Art. 357 — Exploração de prestígio", "solicitar / receber", "a pretexto de influir em juiz, jurado, MP, funcionário de justiça, perito, tradutor, intérprete ou testemunha", {"pena": "cp:art357.pena1", "texto": "reclusão, 1 a 5 anos, e multa"}]
+      ],
+      "nota": "EXIGIR (concussão) × SOLICITAR, RECEBER ou ACEITAR (corrupção passiva) × OFERECER ou PROMETER (corrupção ativa, do particular)."
+    },
+    {
+      "depois_de": "cp:art327",
+      "titulo": "Omissões e desvios do dever funcional",
+      "colunas": ["Dispositivo", "Verbo nuclear", "Elemento distintivo", "Pena"],
+      "linhas": [
+        ["Art. 315 — Emprego irregular de verbas ou rendas públicas", "dar aplicação diversa", "verba ou renda pública aplicada fora do que a lei estabelece", {"pena": "cp:art315.pena1", "texto": "detenção, 1 a 3 meses, ou multa"}],
+        ["Art. 319 — Prevaricação", "retardar / deixar de praticar / praticar contra lei", "para satisfazer interesse ou sentimento PESSOAL", {"pena": "cp:art319.pena1", "texto": "detenção, 3 meses a 1 ano, e multa"}],
+        ["Art. 319-A — Omissão do Diretor de Penitenciária", "deixar de vedar", "acesso do preso a aparelho telefônico, de rádio ou similar", {"pena": "cp:art319-A.pena1", "texto": "detenção, 3 meses a 1 ano"}],
+        ["Art. 320 — Condescendência criminosa", "deixar de responsabilizar / não levar ao conhecimento", "por INDULGÊNCIA com o subordinado infrator", {"pena": "cp:art320.pena1", "texto": "detenção, 15 dias a 1 mês, ou multa"}],
+        ["Art. 321 — Advocacia administrativa", "patrocinar interesse privado", "vale-se da qualidade de funcionário", {"pena": "cp:art321.pena1", "texto": "detenção, 1 a 3 meses, ou multa"}],
+        ["Art. 321, p. ú. — Interesse ilegítimo", "patrocinar interesse privado", "o interesse patrocinado é ILEGÍTIMO", {"pena": "cp:art321.pu.pena1", "texto": "detenção, 3 meses a 1 ano, além da multa"}],
+        ["Art. 323 — Abandono de função", "abandonar cargo público", "fora dos casos permitidos em lei", {"pena": "cp:art323.pena1", "texto": "detenção, 15 dias a 1 mês, ou multa"}],
+        ["Art. 324 — Exercício funcional ilegalmente antecipado ou prolongado", "entrar no exercício / continuar a exercer", "antes das exigências legais, ou depois de saber oficialmente do afastamento", {"pena": "cp:art324.pena1", "texto": "detenção, 15 dias a 1 mês, ou multa"}]
+      ],
+      "nota": "Prevaricação: interesse ou sentimento PESSOAL. Condescendência: INDULGÊNCIA com o subordinado. Advocacia administrativa: interesse ALHEIO, patrocinado com a qualidade de funcionário."
+    },
+    {
+      "depois_de": "cp:art331",
+      "titulo": "Resistência, desobediência e desacato",
+      "colunas": ["Dispositivo", "Conduta", "Violência ou ameaça?", "Pena"],
+      "linhas": [
+        ["Art. 329 — Resistência", "opor-se à execução de ato legal", "SIM, contra o funcionário competente ou quem o auxilia", {"pena": "cp:art329.pena1", "texto": "detenção, 2 meses a 2 anos"}],
+        ["Art. 329, § 1º — Resistência qualificada", "o ato, em razão da resistência, não se executa", "SIM", {"pena": "cp:art329.p1.pena1", "texto": "reclusão, 1 a 3 anos"}],
+        ["Art. 330 — Desobediência", "desobedecer a ordem legal de funcionário público", "NÃO", {"pena": "cp:art330.pena1", "texto": "detenção, 15 dias a 6 meses, e multa"}],
+        ["Art. 331 — Desacato", "desacatar funcionário no exercício da função ou em razão dela", "não é exigida: o núcleo é a ofensa ao funcionário", {"pena": "cp:art331.pena1", "texto": "detenção, 6 meses a 2 anos, ou multa"}]
+      ],
+      "nota": "Só a resistência soma a pena da violência (art. 329, § 2º)."
+    },
+    {
+      "depois_de": "cp:art337",
+      "titulo": "Supressão e extravio de documento",
+      "colunas": ["Dispositivo", "Quem pratica", "Relação com o documento", "Pena"],
+      "linhas": [
+        ["Art. 305 — Supressão de documento", "qualquer pessoa", "destrói, suprime ou oculta documento VERDADEIRO de que não podia dispor", {"pena": "cp:art305.pena1"}],
+        ["Art. 314 — Extravio, sonegação ou inutilização", "FUNCIONÁRIO público", "tem a GUARDA do livro ou documento em razão do cargo", {"pena": "cp:art314.pena1", "texto": "reclusão, 1 a 4 anos"}],
+        ["Art. 336 — Inutilização de edital ou de sinal", "qualquer pessoa", "rasga ou inutiliza EDITAL afixado por ordem de funcionário; viola SELO ou sinal oficial", {"pena": "cp:art336.pena1", "texto": "detenção, 1 mês a 1 ano, ou multa"}],
+        ["Art. 337 — Subtração ou inutilização de livro ou documento", "qualquer pessoa (crime de particular contra a Administração)", "livro, processo ou documento CONFIADO à custódia de funcionário ou de particular em serviço público", {"pena": "cp:art337.pena1", "texto": "reclusão, 2 a 5 anos"}]
+      ],
+      "nota": "O 336 é o do cumprimento de mandado: edital afixado e lacre. Os arts. 314 e 337 são subsidiários (\"se o fato não constitui crime mais grave\")."
+    },
+    {
+      "depois_de": "cp:art343",
+      "titulo": "Falsas imputações e falso testemunho",
+      "colunas": ["Dispositivo", "Verbo nuclear", "Elemento distintivo", "Pena"],
+      "linhas": [
+        ["Art. 339 — Denunciação caluniosa", "dar causa à instauração", "imputa a pessoa DETERMINADA crime, infração ético-disciplinar ou ato ímprobo de que a sabe inocente", {"pena": "cp:art339.pena1", "texto": "reclusão, 2 a 8 anos, e multa"}],
+        ["Art. 340 — Comunicação falsa de crime ou de contravenção", "provocar a ação de autoridade", "comunica crime ou contravenção que NÃO ocorreu, sem imputá-lo a alguém", {"pena": "cp:art340.pena1", "texto": "detenção, 1 a 6 meses, ou multa"}],
+        ["Art. 341 — Auto-acusação falsa", "acusar-se", "acusa a SI MESMO de crime inexistente ou praticado por outrem", {"pena": "cp:art341.pena1", "texto": "detenção, 3 meses a 2 anos, ou multa"}],
+        ["Art. 342 — Falso testemunho ou falsa perícia", "fazer afirmação falsa / negar / calar a verdade", "testemunha, perito, contador, tradutor ou intérprete", {"pena": "cp:art342.pena1", "texto": "reclusão, 2 a 4 anos, e multa"}],
+        ["Art. 343 — Suborno de testemunha ou perito", "dar / oferecer / prometer", "corrompe quem vai depor, periciar, calcular, traduzir ou interpretar", {"pena": "cp:art343.pena1", "texto": "reclusão, 3 a 4 anos, e multa"}]
+      ],
+      "nota": "Só o falso testemunho admite retratação (art. 342, § 2º). O 343 é o lado de quem suborna a testemunha."
+    }
+  ]
 }
