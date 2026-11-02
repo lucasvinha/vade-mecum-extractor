@@ -1,13 +1,13 @@
 """Interface de linha de comando (ver docs/negocio/recorte-e-cli.md).
 
-Os subcomandos já têm a assinatura definitiva; cada um é ligado ao pipeline no
-marco que o implementa, na fila de docs/PENDENCIAS.md. Com `fontes/*`, é o único
-módulo que faz I/O.
+Os subcomandos já têm a assinatura definitiva; o que ainda falta de cada um está
+na fila de docs/PENDENCIAS.md. Com `fontes/*`, é o único módulo que faz I/O.
 """
 
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import re
 import sys
 from collections.abc import Sequence
@@ -15,10 +15,21 @@ from pathlib import Path
 
 from vademecum import __version__
 from vademecum.fontes.html import ler_html
-from vademecum.modelo import Base, EntradaRelatorio, ErroFonte, Norma, Relatorio, para_json
+from vademecum.modelo import (
+    Base,
+    EntradaRelatorio,
+    ErroFonte,
+    Norma,
+    Recorte,
+    Relatorio,
+    de_json,
+    para_json,
+    relatorio_de_json,
+)
 from vademecum.normalizador import normalizar
 from vademecum.parser import analisar
 from vademecum.perfil import carregar_perfil
+from vademecum.recorte import interpretar, recortar
 from vademecum.validador import validar
 from vademecum.vigencia import filtrar_vigentes
 
@@ -53,10 +64,11 @@ def _parser() -> argparse.ArgumentParser:
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = _parser().parse_args(argv)
-    if args.comando != "extrair":
-        raise NotImplementedError(f"subcomando '{args.comando}' ainda não implementado")
     try:
-        _extrair(args)
+        if args.comando == "extrair":
+            _extrair(args)
+        else:
+            _recortar(args)
     except ErroFonte as erro:  # erro de entrada: mensagem para o usuário, código 2 (RF06)
         print(f"erro: {erro}", file=sys.stderr)
         return 2
@@ -95,8 +107,36 @@ def _extrair(args: argparse.Namespace) -> None:
         artigos=filtrar_vigentes(analise.artigos, perfil, relatorio),  # ADR-001
     )
     validar(base, perfil, relatorio)  # V1–V6: só avisa, não muda o código de saída
-    saida: Path = args.saida
+    _gravar(base, relatorio, args.saida)
+
+
+def _relatorio_de(caminho: Path) -> Path:
+    return caminho.with_name(caminho.name.removesuffix(".json") + _SUFIXO_RELATORIO)
+
+
+def _gravar(base: Base, relatorio: Relatorio, saida: Path) -> None:
+    """Base e relatório lado a lado, com quebra de linha LF em qualquer sistema (RNF02, RNF03)."""
     saida.parent.mkdir(parents=True, exist_ok=True)
     saida.write_text(para_json(base), encoding="utf-8", newline="\n")
-    relatorio_json = saida.with_name(saida.name.removesuffix(".json") + _SUFIXO_RELATORIO)
-    relatorio_json.write_text(para_json(relatorio), encoding="utf-8", newline="\n")
+    _relatorio_de(saida).write_text(para_json(relatorio), encoding="utf-8", newline="\n")
+
+
+def _ler(caminho: Path, descricao: str) -> str:
+    try:
+        return caminho.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        raise ErroFonte(f"{descricao} não encontrado: {caminho}") from None
+
+
+def _recortar(args: argparse.Namespace) -> None:
+    """Base e relatório gravados → recorte e relatório do recorte, sem reler a fonte (RF18)."""
+    caminho: Path = args.base
+    base = de_json(_ler(caminho, "arquivo da base"))
+    relatorio_base = relatorio_de_json(_ler(_relatorio_de(caminho), "relatório da base"))
+    expressao = args.artigos.strip()
+    relatorio = Relatorio()
+    recorte = recortar(base, interpretar(expressao), relatorio_base.entradas, relatorio)
+    # Só o nome do arquivo: o recorte não pode depender da pasta de onde se roda (RNF03).
+    origem = Recorte(expressao=expressao, origem=caminho.name)
+    recorte = dataclasses.replace(recorte, recorte=origem)
+    _gravar(recorte, relatorio, args.saida)

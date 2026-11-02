@@ -87,3 +87,69 @@ def test_aviso_do_validador_nao_muda_o_codigo_de_saida(fixtures_dir, tmp_path):
     relatorio = json.loads((tmp_path / "base.relatorio.json").read_text(encoding="utf-8"))
     avisos = [e["texto"] for e in relatorio["entradas"] if e["tipo"] == "aviso"]
     assert "V2: lacuna na numeração-base: art. 1" in avisos
+
+
+def _recortar(base, artigos, saida):
+    return main(["recortar", "--base", str(base), "--artigos", artigos, "--saida", str(saida)])
+
+
+@pytest.fixture
+def base_enxertos(fixtures_dir, tmp_path):
+    base = tmp_path / "extracao" / "cp_base.json"
+    assert _extrair(fixtures_dir / "html" / "cp_enxertos.mht", base) == 0
+    return base
+
+
+def test_rf18_recortar_grava_recorte_e_relatorio_lado_a_lado(base_enxertos, tmp_path):
+    saida = tmp_path / "recorte" / "cp_recorte.json"
+    assert _recortar(base_enxertos, " 121-130; 189, inciso I ", saida) == 0
+    recorte = json.loads(saida.read_text(encoding="utf-8"))
+    relatorio = json.loads(
+        (tmp_path / "recorte" / "cp_recorte.relatorio.json").read_text(encoding="utf-8")
+    )
+    base = json.loads(base_enxertos.read_text(encoding="utf-8"))
+    assert [a["id"] for a in recorte["artigos"]] == ["art121", "art121-A", "art121-B"]
+    assert (recorte["norma"], recorte["metadados"]) == (base["norma"], base["metadados"])
+    # RNF03: a origem é só o nome do arquivo, sem a pasta de onde se rodou.
+    assert recorte["recorte"] == {"expressao": "121-130; 189, inciso I", "origem": "cp_base.json"}
+    tipos = [(e["tipo"], e.get("id")) for e in relatorio["entradas"]]
+    assert ("aviso", None) in tipos and ("descarte", "art189") in tipos
+    assert ("descarte", "art187") not in tipos
+
+
+def test_rnf03_recortar_duas_vezes_byte_a_byte_igual(base_enxertos, tmp_path):
+    for pasta in ("a", "b"):
+        assert _recortar(base_enxertos, "121; 187-191", tmp_path / pasta / "r.json") == 0
+    for nome in ("r.json", "r.relatorio.json"):
+        primeiro = (tmp_path / "a" / nome).read_bytes()
+        assert primeiro == (tmp_path / "b" / nome).read_bytes()
+        assert b"\r\n" not in primeiro
+
+
+def test_rf06_recortar_base_inexistente_sai_com_2(tmp_path, capsys):
+    assert _recortar(tmp_path / "nao_existe.json", "121", tmp_path / "r.json") == 2
+    assert "arquivo da base não encontrado" in capsys.readouterr().err
+    assert not (tmp_path / "r.json").exists()
+
+
+def test_rf06_recortar_sem_relatorio_da_base_sai_com_2(base_enxertos, tmp_path, capsys):
+    (base_enxertos.parent / "cp_base.relatorio.json").unlink()
+    assert _recortar(base_enxertos, "121", tmp_path / "r.json") == 2
+    assert "relatório da base não encontrado" in capsys.readouterr().err
+
+
+def test_rf06_recortar_schema_version_diferente_sai_com_2(base_enxertos, tmp_path, capsys):
+    dados = json.loads(base_enxertos.read_text(encoding="utf-8"))
+    dados["schema_version"] = "0.9"
+    base_enxertos.write_text(json.dumps(dados), encoding="utf-8")
+    assert _recortar(base_enxertos, "121", tmp_path / "r.json") == 2
+    assert "schema_version" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize("artigos", ["abc", "121-", "130-121"])
+def test_rf06_recortar_expressao_invalida_sai_com_2_citando_o_item(
+    base_enxertos, tmp_path, capsys, artigos
+):
+    assert _recortar(base_enxertos, artigos, tmp_path / "r.json") == 2
+    assert repr(artigos) in capsys.readouterr().err
+    assert not (tmp_path / "r.json").exists()
