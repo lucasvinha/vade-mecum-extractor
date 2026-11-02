@@ -3,7 +3,7 @@
 > **Para que serve este arquivo:** é o contrato entre o extrator de questões (parte do projeto do vade mecum) e o painel **Estudo OJ 2026**. Se o formato mudar, mude aqui e na validação do painel ao mesmo tempo.
 
 - **Painel:** https://claude.ai/artifact/RWiMPK8Xr4uw4ALscyaxcr (criado em 27.10.2026)
-- **Tópicos:** `claude/topicos-oj2026.json` (schema `topicos-oj/1`). São 163 itens: um por capítulo da lei nas matérias de direito e um por tópico do edital nas demais. Os ids são estáveis (`pc:citacao`, `penal:particular`…).
+- **Tópicos:** `claude/topicos-oj2026.json` (schema `topicos-oj/2`). São 163 itens: um por capítulo da lei nas matérias de direito e um por tópico do edital nas demais. Os ids são estáveis (`pc:citacao`, `penal:particular`…).
 
 ## Arquivo de entrada
 
