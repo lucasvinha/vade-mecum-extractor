@@ -1,0 +1,213 @@
+/*
+ * CSS do protótipo: a constante CSS do render_html.py (22 e 23/10/2026), que gerou o
+ * referencia-visual.pdf pelo Chromium. Ponto de partida da fase 5 da spec
+ * render-vade-mecum, que o porta para src/vademecum/estilo/vade-mecum.css e apaga este
+ * arquivo. Os defeitos 1 a 6 listados na spec saíram daqui: leia a lista antes de copiar.
+ */
+@page {
+  size: A4;
+  margin: 16mm 14mm 18mm 14mm;
+  @bottom-center {
+    content: counter(page);
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 8pt; color: #8a8f98;
+  }
+  @top-center {
+    content: "CÓDIGO PENAL — recorte do edital TJSP · Oficial de Justiça 2026";
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    font-size: 7.5pt; color: #a8adb5; letter-spacing: .04em;
+  }
+}
+@page :first { @top-center { content: none } @bottom-center { content: none } }
+
+:root {
+  --tinta:        #1a1d23;
+  --tinta-suave:  #4a5058;
+  --nota:         #9298a2;
+  --azul:         #1f4e79;
+  --azul-claro:   #e8eef5;
+  --pena-bg:      #fdf4e3;
+  --pena-borda:   #d9a441;
+  --pena-tinta:   #7a5410;
+  --inciso-bg:    #eef2f7;
+  --inciso-tinta: #2f5f8f;
+  --regra:        #dde2e8;
+  --destaque:     #fff3b8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Source Serif 4", "Georgia", "Times New Roman", serif;
+  font-size: 9.2pt;
+  line-height: 1.42;
+  color: var(--tinta);
+  margin: 0;
+  hyphens: auto; -webkit-hyphens: auto;
+  text-align: left;
+}
+/* O Chromium recebe este bloco para não duplicar cabeçalho/rodapé, que ele
+   desenha por conta própria. O WeasyPrint ignora (seletor inexistente). */
+html[data-motor="chromium"] { }
+
+/* ---------- capa ---------- */
+.capa {
+  page-break-after: always;
+  text-align: center;
+  padding-top: 55mm;
+}
+.capa .selo {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 8pt; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--azul); margin-bottom: 8mm;
+}
+.capa h1 {
+  font-size: 34pt; margin: 0; letter-spacing: .14em; font-weight: 600;
+  color: var(--azul);
+}
+.capa .sub { font-size: 13pt; color: var(--tinta-suave); margin-top: 4mm; font-style: italic; }
+.capa .regra { width: 38mm; height: 2px; background: var(--pena-borda); margin: 10mm auto; }
+.capa .edital {
+  font-family: "Source Sans 3", sans-serif; font-size: 9pt;
+  color: var(--tinta-suave); line-height: 1.8; text-align: center;
+}
+.capa .aviso {
+  margin: 18mm auto 0; max-width: 120mm; padding: 5mm;
+  background: var(--pena-bg); border-left: 3px solid var(--pena-borda);
+  font-family: "Source Sans 3", sans-serif; font-size: 7.6pt;
+  color: var(--pena-tinta); text-align: left; line-height: 1.5;
+}
+
+/* ---------- corpo em duas colunas ---------- */
+.corpo { column-count: 2; column-gap: 7mm; column-rule: .5pt solid var(--regra); }
+
+/* ---------- hierarquia ---------- */
+.parte {
+  column-span: all; text-align: center; margin: 8mm 0 6mm;
+  page-break-before: always; break-after: avoid;
+}
+.parte span {
+  font-family: "Source Sans 3", sans-serif; font-size: 15pt; font-weight: 700;
+  letter-spacing: .24em; color: var(--azul);
+  border-top: 2px solid var(--azul); border-bottom: 2px solid var(--azul);
+  padding: 2.5mm 8mm; display: inline-block;
+}
+.titulo, .capitulo, .secao {
+  text-align: center; break-after: avoid; break-inside: avoid;
+  font-family: "Source Sans 3", sans-serif; color: var(--azul);
+}
+.titulo { margin: 6mm 0 3mm; font-size: 10pt; font-weight: 700; letter-spacing: .1em; }
+.titulo .rot { display: block; font-size: 8pt; letter-spacing: .2em; color: var(--tinta-suave); }
+.capitulo { margin: 5mm 0 2.5mm; font-size: 9pt; font-weight: 600; letter-spacing: .07em; }
+.capitulo .rot, .secao .rot { display: block; font-size: 7.4pt; letter-spacing: .18em; color: var(--nota); }
+.secao { margin: 4mm 0 2mm; font-size: 8.4pt; font-weight: 600; font-style: italic; }
+
+/* ---------- salto de faixa ---------- */
+.salto {
+  text-align: center; margin: 4mm 0; font-family: "Source Sans 3", sans-serif;
+  font-size: 7.2pt; color: var(--nota); font-style: italic;
+  border-top: .5pt dashed var(--regra); border-bottom: .5pt dashed var(--regra);
+  padding: 1.5mm 0; break-inside: avoid;
+}
+
+/* ---------- artigo ---------- */
+.artigo { margin: 0 0 3.5mm; break-inside: auto; }
+.rubrica {
+  font-family: "Source Sans 3", sans-serif; font-size: 8.6pt; font-weight: 700;
+  color: var(--tinta); margin: 3mm 0 .8mm; break-after: avoid; text-align: left;
+  border-left: 2.5pt solid var(--pena-borda); padding-left: 2mm;
+}
+.caput { margin: 0 0 1.2mm; text-indent: 0; text-align: justify; }
+.num-art {
+  font-family: "Source Sans 3", sans-serif; font-weight: 700;
+  color: var(--azul); font-size: 8.8pt; letter-spacing: .01em;
+}
+
+/* ---------- pena (preceito secundário) ---------- */
+.pena {
+  background: var(--pena-bg); border-left: 2.5pt solid var(--pena-borda);
+  padding: 1.2mm 2mm; margin: 1.2mm 0 1.8mm; break-inside: avoid;
+  font-family: "Source Sans 3", sans-serif; font-size: 8.2pt;
+  color: var(--pena-tinta); font-weight: 600; text-align: left;
+}
+.pena::before {
+  content: "PENA"; display: block; font-size: 6.2pt; letter-spacing: .18em;
+  color: var(--pena-borda); font-weight: 700; margin-bottom: .4mm;
+}
+
+/* ---------- incisos com numeral em arte ---------- */
+.disp { display: flex; gap: 1.8mm; margin: .8mm 0; align-items: flex-start; }
+.disp .marca {
+  flex: 0 0 auto; min-width: 7.2mm; text-align: center;
+  font-family: "Source Sans 3", sans-serif; font-size: 7pt; font-weight: 700;
+  line-height: 1.5; padding: .3mm .8mm; border-radius: 1.2mm;
+  background: var(--inciso-bg); color: var(--inciso-tinta);
+  letter-spacing: .02em;
+}
+.disp.alinea { margin-left: 5mm; }
+.disp.alinea .marca {
+  min-width: 4.6mm; border-radius: 50%; background: transparent;
+  border: .6pt solid var(--inciso-tinta); font-size: 6.4pt; font-style: italic;
+}
+.disp.paragrafo .marca {
+  background: var(--azul-claro); color: var(--azul); min-width: 9mm;
+}
+.disp .conteudo { flex: 1 1 auto; text-align: left; }  /* colunas estreitas: justificar abre rios */
+.disp.revogado .marca { background: #f0f0f0; color: #a0a0a0; }
+.disp.revogado .conteudo { color: var(--nota); font-style: italic; }
+
+/* ---------- notas legislativas ---------- */
+.nota {
+  font-family: "Source Sans 3", sans-serif; font-size: 6.4pt;
+  color: var(--nota); font-style: normal; white-space: nowrap;
+}
+.nota::before { content: " "; }
+
+/* ---------- destaques ---------- */
+mark.elementar { background: var(--destaque); padding: 0 .3mm; }
+.rev-flag {
+  background: #ffe8e8; color: #a33; font-family: "Source Sans 3", sans-serif;
+  font-size: 6.2pt; padding: 0 1mm; border-radius: 1mm; letter-spacing: .05em;
+}
+
+/* ---------- quadros comparativos ---------- */
+.quadro {
+  column-span: all; break-inside: avoid; margin: 6mm 0;
+  border: .8pt solid var(--azul); border-radius: 1.5mm; overflow: hidden;
+}
+.quadro h3 {
+  margin: 0; background: var(--azul); color: #fff;
+  font-family: "Source Sans 3", sans-serif; font-size: 8.6pt; font-weight: 600;
+  padding: 1.8mm 3mm; letter-spacing: .05em;
+}
+.quadro h3::before { content: "QUADRO COMPARATIVO · "; font-size: 6.4pt; opacity: .7; letter-spacing: .15em; }
+.quadro table { width: 100%; border-collapse: collapse; font-size: 7.4pt; }
+.quadro th {
+  background: var(--azul-claro); color: var(--azul); text-align: left;
+  font-family: "Source Sans 3", sans-serif; font-size: 6.8pt; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; padding: 1.4mm 2mm;
+  border-bottom: .6pt solid var(--azul);
+}
+.quadro td {
+  padding: 1.4mm 2mm; border-bottom: .4pt solid var(--regra);
+  vertical-align: top; text-align: left; line-height: 1.32;
+}
+.quadro tr:last-child td { border-bottom: none; }
+.quadro td:first-child { font-family: "Source Sans 3", sans-serif; font-weight: 600; font-size: 7pt; color: var(--azul); }
+.quadro td:last-child { font-family: "Source Sans 3", sans-serif; color: var(--pena-tinta); font-size: 7pt; }
+.quadro .rodape {
+  padding: 1.6mm 2mm; background: var(--pena-bg); color: var(--pena-tinta);
+  font-family: "Source Sans 3", sans-serif; font-size: 6.6pt; line-height: 1.4;
+}
+
+/* ---------- sumário ---------- */
+.sumario { page-break-after: always; column-count: 2; column-gap: 8mm; }
+.sumario h2 {
+  column-span: all; font-family: "Source Sans 3", sans-serif; color: var(--azul);
+  font-size: 13pt; letter-spacing: .12em; border-bottom: 1.5pt solid var(--azul);
+  padding-bottom: 2mm; margin: 0 0 5mm;
+}
+.sumario .item { font-size: 7.6pt; margin: .6mm 0; font-family: "Source Sans 3", sans-serif; }
+.sumario .item.h { font-weight: 700; color: var(--azul); margin-top: 2.5mm; }
+.sumario .item a { color: inherit; text-decoration: none; }
+.sumario .item a::after { content: leader('.') target-counter(attr(href), page); color: var(--nota); }
