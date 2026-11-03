@@ -1,0 +1,4 @@
+# Código de Processo Penal, DL 3.689/1941 (ver docs/negocio/pipeline-e-perfis.md). Herda o resto do
+# padrao; perfil mínimo para o id casar com a `norma` dos tópicos (M7).
+
+id = "cpp"

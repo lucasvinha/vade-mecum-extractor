@@ -1,4 +1,5 @@
 import re
+from dataclasses import replace
 
 import pytest
 
@@ -19,6 +20,12 @@ def test_cp_herda_o_padrao_e_liga_a_rubrica_sem_negrito():
     tipos = [tipo for tipo, _ in cp.notas]
     assert tipos == ["redacao", "inclusao", "revogacao", "veto", "vigencia", "remissao"]
     assert dict(cp.notas)["redacao"] == ("Redação dada", "NR")  # P16
+
+
+@pytest.mark.parametrize("nome", ["cpp", "lei9099"])
+def test_perfil_minimo_so_troca_o_id_do_padrao(nome):
+    # M7: sem perfil próprio, a base sai com id `padrao` e o recorte não casa com a `norma`.
+    assert carregar_perfil(nome) == replace(carregar_perfil("padrao"), id=nome)
 
 
 def test_padrao_nao_liga_a_rubrica_sem_negrito():

@@ -1,0 +1,4 @@
+# Lei 9.099/1995, Juizados Especiais (ver docs/negocio/pipeline-e-perfis.md). Herda o resto do
+# padrao; perfil mínimo para o id casar com a `norma` dos tópicos (M7).
+
+id = "lei9099"

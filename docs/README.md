@@ -168,7 +168,7 @@ Caminhos dos módulos relativos a `src/vademecum/`.
 | `curadoria.py` | `validar_curadoria(dados, recortes) -> Validacao`: a curadoria `curadoria-vm/1` contra os recortes, com marcas em posição do texto, erros e avisos; `interpretar_pena(texto)` (ADR-006, [negocio/vade-mecum.md](negocio/vade-mecum.md)) | `modelo` |
 | `render.py` | `renderizar(topicos, materia, recortes, curadoria=None) -> str`: o HTML do vade mecum na ordem dos tópicos, com o texto legal no contrato `data-*`, saltos, revogados, notas compactas e, com a curadoria, marcas, atenções, quadros e legenda; CSS de `estilo/vade-mecum.css` embutido (ADR-006) | `modelo`, `recorte`, `curadoria` |
 | `cli.py` | argparse → orquestra o pipeline | todos |
-| `perfis/*.toml` | regras por norma (`padrao`, `cp`, `nscgj`, `lei_sp`) | — |
+| `perfis/*.toml` | regras por norma (`padrao`, `cp`, `cpp`, `lei9099`, `nscgj`, `lei_sp`) | — |
 
 | Caminho | Papel |
 |---|---|
