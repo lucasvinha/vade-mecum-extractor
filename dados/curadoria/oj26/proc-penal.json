@@ -1,0 +1,1920 @@
+{
+  "schema": "curadoria-vm/1",
+  "edital": "oj26",
+  "materia": "proc-penal",
+  "gerado_em": "2026-11-03",
+  "avisos_capa": [
+    "São 158 artigos: 150 do CPP e 8 da Lei nº 9.099/1995. Artigos com letra dentro das faixas, incluídos: 28-A, 222-A, 289-A e 647-A; o 396-A e o 798-A vêm nomeados no edital.",
+    "Artigo com letra fora: 300-A (identificação do perfil genético, Lei nº 15.280/2025). Vem depois do último número da faixa 283 a 300, que é a leitura literal do edital.",
+    "Revogados e vetados dentro das faixas: arts. 35 e 298 (revogados); art. 363, I e II (revogados), e §§ 2º e 3º (vetados).",
+    "O edital considera a legislação até 19/10/2026. O art. 38, §§ 1º e 2º, tem a redação da Lei nº 15.438/2026: confira a data de publicação contra essa data de corte.",
+    "Limites do recorte: no art. 354, o inciso III vem colado ao II (\"Ill - o fim…\"), como grafado na fonte. \"Da Acusação e da Instrução Preliminar\" (art. 406) e \"Disposições Gerais\" (Lei nº 9.099, arts. 1º e 60) são nomes de seção e de capítulo, não rubricas de artigo."
+  ],
+  "dispositivos": {
+    "cpp:art24": {
+      "marcas": [
+        {
+          "trecho": "requisição do Ministro da Justiça",
+          "cat": "condicao"
+        },
+        {
+          "trecho": "representação do ofendido",
+          "cat": "condicao"
+        }
+      ]
+    },
+    "cpp:art24.p1": {
+      "atencao": [
+        "Ordem CADI (cônjuge, ascendente, descendente, irmão): é a mesma do art. 31, para a queixa, e a da preferência do art. 36."
+      ]
+    },
+    "cpp:art25": {
+      "atencao": [
+        "A representação se retrata até o oferecimento da denúncia, não até o recebimento. Na Lei Maria da Penha (art. 16), a renúncia à representação vai até o recebimento, em audiência perante o juiz."
+      ]
+    },
+    "cpp:art26": {
+      "atencao": [
+        "Ação penal iniciada por portaria nas contravenções (procedimento judicialiforme): não foi recepcionada pela CF/88, que dá ao MP a ação penal pública (art. 129, I)."
+      ]
+    },
+    "cpp:art27": {
+      "marcas": [
+        {
+          "trecho": "Qualquer pessoa do povo",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art28": {
+      "marcas": [
+        {
+          "trecho": "comunicará à vítima, ao investigado e à autoridade policial",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "instância de revisão ministerial",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "O STF (ADIs 6.298, 6.299, 6.300 e 6.305, 2023) deu interpretação conforme ao art. 28: o MP submete o arquivamento ao juiz competente, que pode levá-lo à revisão ministerial diante de ilegalidade patente. A prova costuma cobrar a letra da lei."
+      ]
+    },
+    "cpp:art28.p1": {
+      "marcas": [
+        {
+          "trecho": "30 (trinta) dias",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art28-A": {
+      "marcas": [
+        {
+          "trecho": "confessado formal e circunstancialmente",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "sem violência ou grave ameaça",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "pena mínima inferior a 4 (quatro) anos",
+          "cat": "quantidade"
+        }
+      ],
+      "atencao": [
+        "ANPP: os três requisitos do caput são cumulativos. A pena mínima se mede com as causas de aumento e de diminuição (§ 1º)."
+      ]
+    },
+    "cpp:art28-A.p2.i3": {
+      "marcas": [
+        {
+          "trecho": "5 (cinco) anos anteriores",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art28-A.p2.i4": {
+      "marcas": [
+        {
+          "trecho": "violência doméstica ou familiar",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art28-A.p13": {
+      "marcas": [
+        {
+          "trecho": "extinção de punibilidade",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art28-A.p14": {
+      "marcas": [
+        {
+          "trecho": "remessa dos autos a órgão superior",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art29": {
+      "marcas": [
+        {
+          "trecho": "se esta não for intentada no prazo legal",
+          "cat": "condicao"
+        }
+      ],
+      "atencao": [
+        "Ação privada subsidiária: cabe só na inércia do MP, que perdeu o prazo; não cabe quando ele pede o arquivamento."
+      ]
+    },
+    "cpp:art30": {
+      "marcas": [
+        {
+          "trecho": "Ao ofendido",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art32": {
+      "marcas": [
+        {
+          "trecho": "comprovar a sua pobreza",
+          "cat": "condicao"
+        }
+      ]
+    },
+    "cpp:art33": {
+      "marcas": [
+        {
+          "trecho": "curador especial",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art34": {
+      "marcas": [
+        {
+          "trecho": "menor de 21",
+          "cat": "quantidade"
+        }
+      ],
+      "atencao": [
+        "Regra anterior ao Código Civil de 2002, que fixou a maioridade aos 18 anos; a prova pode cobrar a letra."
+      ]
+    },
+    "cpp:art36": {
+      "marcas": [
+        {
+          "trecho": "terá preferência o cônjuge",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art37": {
+      "marcas": [
+        {
+          "trecho": "legalmente constituídas",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art38": {
+      "marcas": [
+        {
+          "trecho": "seis meses",
+          "cat": "quantidade"
+        },
+        {
+          "trecho": "quem é o autor do crime",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Decadência: 6 meses contados do conhecimento da autoria, não do fato. Na subsidiária (art. 29), do fim do prazo da denúncia."
+      ]
+    },
+    "cpp:art38.p2": {
+      "marcas": [
+        {
+          "trecho": "12 (doze) meses",
+          "cat": "quantidade"
+        },
+        {
+          "trecho": "violência doméstica e familiar contra a mulher",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Incluído pela Lei nº 15.438/2026: confira a data de publicação contra a data de corte do edital (19/10/2026). O CP recebeu a mesma regra no art. 103, parágrafo único."
+      ]
+    },
+    "cpp:art39": {
+      "marcas": [
+        {
+          "trecho": "procurador com poderes especiais",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "escrita ou oral",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art39.p5": {
+      "marcas": [
+        {
+          "trecho": "dispensará o inquérito",
+          "cat": "verbo"
+        },
+        {
+          "trecho": "quinze dias",
+          "cat": "quantidade"
+        }
+      ],
+      "atencao": [
+        "O inquérito é dispensável: com a representação bem instruída, o MP denuncia em 15 dias."
+      ]
+    },
+    "cpp:art41": {
+      "marcas": [
+        {
+          "trecho": "quando necessário",
+          "cat": "condicao"
+        }
+      ],
+      "atencao": [
+        "O rol de testemunhas é facultativo na denúncia e na queixa (\"quando necessário\"); a exposição do fato e a qualificação do acusado, não."
+      ]
+    },
+    "cpp:art42": {
+      "atencao": [
+        "Indisponibilidade: o MP não desiste da ação nem do recurso que interpôs (art. 576, fora do edital)."
+      ]
+    },
+    "cpp:art61": {
+      "marcas": [
+        {
+          "trecho": "Em qualquer fase do processo",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "de ofício",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art62": {
+      "marcas": [
+        {
+          "trecho": "certidão de óbito",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art63": {
+      "marcas": [
+        {
+          "trecho": "no juízo cível",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art63.pu": {
+      "atencao": [
+        "O valor mínimo da reparação fixado na sentença (art. 387, IV) se executa direto, sem prejuízo da liquidação do dano efetivo."
+      ]
+    },
+    "cpp:art64": {
+      "marcas": [
+        {
+          "trecho": "responsável civil",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art64.pu": {
+      "marcas": [
+        {
+          "trecho": "poderá suspender",
+          "cat": "verbo"
+        }
+      ]
+    },
+    "cpp:art65": {
+      "marcas": [
+        {
+          "trecho": "Faz coisa julgada no cível",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "ADPF 779 (STF): a tese da \"legítima defesa da honra\" é inconstitucional e não pode ser alegada."
+      ]
+    },
+    "cpp:art66": {
+      "marcas": [
+        {
+          "trecho": "inexistência material",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art67": {
+      "marcas": [
+        {
+          "trecho": "Não impedirão",
+          "cat": "verbo"
+        }
+      ]
+    },
+    "cpp:art68": {
+      "marcas": [
+        {
+          "trecho": "pelo Ministério Público",
+          "cat": "sujeito"
+        }
+      ],
+      "atencao": [
+        "STF: inconstitucionalidade progressiva. O MP só promove a ação civil do pobre enquanto a Defensoria Pública não estiver instalada na comarca."
+      ]
+    },
+    "cpp:art70": {
+      "marcas": [
+        {
+          "trecho": "lugar em que se consumar a infração",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "último ato de execução",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Regra do CPP: teoria do resultado (lugar da consumação); na tentativa, o do último ato de execução. A ubiquidade do art. 6º do CP é para o crime a distância, entre países."
+      ]
+    },
+    "cpp:art70.p4": {
+      "marcas": [
+        {
+          "trecho": "domicílio da vítima",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Estelionato por depósito, cheque sem fundos ou transferência: foro do domicílio da vítima (Lei nº 14.155/2021)."
+      ]
+    },
+    "cpp:art71": {
+      "marcas": [
+        {
+          "trecho": "pela prevenção",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art72.p2": {
+      "marcas": [
+        {
+          "trecho": "primeiro tomar conhecimento",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art73": {
+      "marcas": [
+        {
+          "trecho": "poderá preferir",
+          "cat": "verbo"
+        }
+      ]
+    },
+    "cpp:art74.p1": {
+      "marcas": [
+        {
+          "trecho": "consumados ou tentados",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Júri: crimes dolosos contra a vida. A remissão ao \"122, parágrafo único\" é anterior à Lei nº 13.968/2019, que reescreveu o art. 122 do CP."
+      ]
+    },
+    "cpp:art112": {
+      "marcas": [
+        {
+          "trecho": "incompatibilidade ou impedimento legal",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art125": {
+      "marcas": [
+        {
+          "trecho": "bens imóveis",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art126": {
+      "marcas": [
+        {
+          "trecho": "veementes",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art127": {
+      "marcas": [
+        {
+          "trecho": "ainda antes",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art130.pu": {
+      "marcas": [
+        {
+          "trecho": "antes de passar em julgado a sentença condenatória",
+          "cat": "condicao"
+        }
+      ]
+    },
+    "cpp:art131.i1": {
+      "marcas": [
+        {
+          "trecho": "sessenta dias",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art156": {
+      "marcas": [
+        {
+          "trecho": "incumbirá a quem a fizer",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art156.i1": {
+      "marcas": [
+        {
+          "trecho": "mesmo antes de iniciada a ação penal",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art185": {
+      "marcas": [
+        {
+          "trecho": "na presença de seu defensor",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art185.p2": {
+      "marcas": [
+        {
+          "trecho": "Excepcionalmente",
+          "cat": "condicao"
+        },
+        {
+          "trecho": "decisão fundamentada",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Videoconferência é exceção: decisão fundamentada e uma das quatro finalidades dos incisos."
+      ]
+    },
+    "cpp:art185.p3": {
+      "marcas": [
+        {
+          "trecho": "10 (dez) dias de antecedência",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art185.p5": {
+      "marcas": [
+        {
+          "trecho": "entrevista prévia e reservada",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art203": {
+      "marcas": [
+        {
+          "trecho": "sob palavra de honra",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art204": {
+      "marcas": [
+        {
+          "trecho": "oralmente",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art204.pu": {
+      "marcas": [
+        {
+          "trecho": "breve consulta",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art218": {
+      "marcas": [
+        {
+          "trecho": "conduzida por oficial de justiça",
+          "cat": "sujeito"
+        }
+      ],
+      "atencao": [
+        "Condução coercitiva da testemunha faltosa: cumpre o oficial de justiça, que pode pedir o auxílio da força pública. O STF (ADPFs 395 e 444) vedou a condução do investigado ou réu para interrogatório, não a da testemunha."
+      ]
+    },
+    "cpp:art219": {
+      "marcas": [
+        {
+          "trecho": "crime de desobediência",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art221": {
+      "marcas": [
+        {
+          "trecho": "local, dia e hora previamente ajustados",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art221.p1": {
+      "marcas": [
+        {
+          "trecho": "depoimento por escrito",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Só o Presidente e o Vice-Presidente da República e os presidentes do Senado, da Câmara e do STF podem depor por escrito; as demais autoridades do caput só ajustam local, dia e hora."
+      ]
+    },
+    "cpp:art221.p2": {
+      "marcas": [
+        {
+          "trecho": "requisitados à autoridade superior",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art221.p3": {
+      "marcas": [
+        {
+          "trecho": "chefe da repartição",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art222": {
+      "marcas": [
+        {
+          "trecho": "carta precatória",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art222.p1": {
+      "marcas": [
+        {
+          "trecho": "não suspenderá a instrução criminal",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art222-A": {
+      "marcas": [
+        {
+          "trecho": "imprescindibilidade",
+          "cat": "condicao"
+        }
+      ]
+    },
+    "cpp:art224": {
+      "marcas": [
+        {
+          "trecho": "dentro de um ano",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art225": {
+      "marcas": [
+        {
+          "trecho": "antecipadamente",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art240.p1": {
+      "marcas": [
+        {
+          "trecho": "fundadas razões",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art240.p2": {
+      "marcas": [
+        {
+          "trecho": "fundada suspeita",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art241": {
+      "marcas": [
+        {
+          "trecho": "mandado",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Depois da CF/88 (art. 5º, XI), a busca domiciliar sem consentimento depende de ordem judicial, fora o flagrante, o desastre e o socorro. A dispensa do mandado quando a autoridade policial faz a busca pessoalmente não foi recepcionada."
+      ]
+    },
+    "cpp:art242": {
+      "marcas": [
+        {
+          "trecho": "de ofício",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art243.i1": {
+      "marcas": [
+        {
+          "trecho": "o mais precisamente possível",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art243.p2": {
+      "marcas": [
+        {
+          "trecho": "em poder do defensor do acusado",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art244": {
+      "marcas": [
+        {
+          "trecho": "independerá de mandado",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art245": {
+      "marcas": [
+        {
+          "trecho": "executadas de dia",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "salvo se o morador consentir",
+          "cat": "condicao"
+        },
+        {
+          "trecho": "mostrarão e lerão o mandado",
+          "cat": "verbo"
+        }
+      ],
+      "atencao": [
+        "O CPP não fixa o horário. A Lei nº 13.869/2019 (art. 22, § 1º, III) pune quem cumpre mandado de busca domiciliar após as 21h ou antes das 5h."
+      ]
+    },
+    "cpp:art245.p2": {
+      "marcas": [
+        {
+          "trecho": "arrombada a porta",
+          "cat": "verbo"
+        }
+      ]
+    },
+    "cpp:art245.p3": {
+      "marcas": [
+        {
+          "trecho": "força contra coisas",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art245.p4": {
+      "marcas": [
+        {
+          "trecho": "qualquer vizinho",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art245.p7": {
+      "marcas": [
+        {
+          "trecho": "duas testemunhas presenciais",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art246": {
+      "marcas": [
+        {
+          "trecho": "compartimento não aberto ao público",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art248": {
+      "marcas": [
+        {
+          "trecho": "indispensável",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art249": {
+      "marcas": [
+        {
+          "trecho": "outra mulher",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art250": {
+      "marcas": [
+        {
+          "trecho": "jurisdição alheia",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art274": {
+      "marcas": [
+        {
+          "trecho": "serventuários",
+          "cat": "sujeito"
+        }
+      ],
+      "atencao": [
+        "Alcança o oficial de justiça: as causas de suspeição do juiz (art. 254, fora do edital) valem para ele no que couber."
+      ]
+    },
+    "cpp:art283": {
+      "marcas": [
+        {
+          "trecho": "ordem escrita e fundamentada",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art283.p2": {
+      "marcas": [
+        {
+          "trecho": "qualquer dia e a qualquer hora",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art284": {
+      "marcas": [
+        {
+          "trecho": "indispensável",
+          "cat": "condicao"
+        }
+      ]
+    },
+    "cpp:art285.pu.d": {
+      "marcas": [
+        {
+          "trecho": "valor da fiança arbitrada",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art286": {
+      "marcas": [
+        {
+          "trecho": "em duplicata",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "duas testemunhas",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art287": {
+      "marcas": [
+        {
+          "trecho": "inafiançável",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "audiência de custódia",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art289": {
+      "marcas": [
+        {
+          "trecho": "deprecada",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art289.p3": {
+      "marcas": [
+        {
+          "trecho": "30 (trinta) dias",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art289-A": {
+      "marcas": [
+        {
+          "trecho": "Conselho Nacional de Justiça",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art289-A.p1": {
+      "marcas": [
+        {
+          "trecho": "Qualquer agente policial",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art290": {
+      "marcas": [
+        {
+          "trecho": "no lugar onde o alcançar",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art290.p1.a": {
+      "marcas": [
+        {
+          "trecho": "sem interrupção",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art290.p1.b": {
+      "marcas": [
+        {
+          "trecho": "há pouco tempo",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art292": {
+      "marcas": [
+        {
+          "trecho": "ainda que por parte de terceiros",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art292.pu": {
+      "marcas": [
+        {
+          "trecho": "É vedado o uso de algemas",
+          "cat": "verbo"
+        }
+      ]
+    },
+    "cpp:art293": {
+      "marcas": [
+        {
+          "trecho": "sendo dia, entrará à força na casa",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "logo que amanheça",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "De dia, o executor entra à força com duas testemunhas; de noite, guarda as saídas e espera amanhecer. O morador que esconde o réu responde (parágrafo único)."
+      ]
+    },
+    "cpp:art295.i7": {
+      "atencao": [
+        "ADPF 334 (STF): a prisão especial do diplomado em curso superior não foi recepcionada pela CF."
+      ]
+    },
+    "cpp:art295.p1": {
+      "marcas": [
+        {
+          "trecho": "local distinto da prisão comum",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art300": {
+      "marcas": [
+        {
+          "trecho": "separadas",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art301": {
+      "marcas": [
+        {
+          "trecho": "poderá",
+          "cat": "verbo"
+        },
+        {
+          "trecho": "deverão",
+          "cat": "verbo"
+        }
+      ],
+      "atencao": [
+        "Flagrante facultativo (qualquer do povo \"poderá\") × obrigatório (autoridades policiais e seus agentes \"deverão\")."
+      ]
+    },
+    "cpp:art302.i3": {
+      "marcas": [
+        {
+          "trecho": "logo após",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art302.i4": {
+      "marcas": [
+        {
+          "trecho": "logo depois",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art351": {
+      "marcas": [
+        {
+          "trecho": "por mandado",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art353": {
+      "marcas": [
+        {
+          "trecho": "precatória",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art354.i2": {
+      "atencao": [
+        "O inciso III (\"o fim para que é feita a citação\") vem colado ao II porque a fonte o grafa \"Ill\". Não é omissão."
+      ]
+    },
+    "cpp:art355.p2": {
+      "marcas": [
+        {
+          "trecho": "se oculta para não ser citado",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art356": {
+      "marcas": [
+        {
+          "trecho": "via telegráfica",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art357": {
+      "atencao": [
+        "Requisitos intrínsecos do mandado (art. 352) × extrínsecos da citação (art. 357): o oficial lê o mandado, entrega a contrafé e certifica a entrega e a aceitação ou recusa."
+      ]
+    },
+    "cpp:art357.i1": {
+      "marcas": [
+        {
+          "trecho": "entrega da contrafé",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art362": {
+      "marcas": [
+        {
+          "trecho": "se oculta para não ser citado",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "A remissão é ao CPC/1973; hoje a hora certa segue os arts. 252 a 254 do CPC/2015. O STF validou a citação com hora certa no processo penal (RE 635.145)."
+      ]
+    },
+    "cpp:art362.pu": {
+      "marcas": [
+        {
+          "trecho": "defensor dativo",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art363": {
+      "atencao": [
+        "Fora do edital, o art. 366 suspende o processo e a prescrição quando o citado por edital não comparece nem constitui advogado."
+      ]
+    },
+    "cpp:art370.p1": {
+      "marcas": [
+        {
+          "trecho": "por publicação",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art370.p4": {
+      "marcas": [
+        {
+          "trecho": "será pessoal",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Intimação pessoal: MP e defensor nomeado (§ 4º). Por publicação: defensor constituído, advogado do querelante e assistente (§ 1º)."
+      ]
+    },
+    "cpp:art372": {
+      "marcas": [
+        {
+          "trecho": "desde logo",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art396": {
+      "marcas": [
+        {
+          "trecho": "10 (dez) dias",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art396.pu": {
+      "marcas": [
+        {
+          "trecho": "comparecimento pessoal",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art396-A.p2": {
+      "marcas": [
+        {
+          "trecho": "o juiz nomeará defensor",
+          "cat": "verbo"
+        },
+        {
+          "trecho": "10 (dez) dias",
+          "cat": "quantidade"
+        }
+      ],
+      "atencao": [
+        "A resposta à acusação é obrigatória: sem ela, o juiz nomeia defensor para oferecê-la."
+      ]
+    },
+    "cpp:art406": {
+      "marcas": [
+        {
+          "trecho": "10 (dez) dias",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art406.p2": {
+      "marcas": [
+        {
+          "trecho": "8 (oito)",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art406.p3": {
+      "marcas": [
+        {
+          "trecho": "8 (oito)",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art436": {
+      "marcas": [
+        {
+          "trecho": "18 (dezoito) anos",
+          "cat": "quantidade"
+        },
+        {
+          "trecho": "notória idoneidade",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art436.p2": {
+      "marcas": [
+        {
+          "trecho": "1 (um) a 10 (dez) salários mínimos",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art437.i9": {
+      "marcas": [
+        {
+          "trecho": "70 (setenta) anos",
+          "cat": "quantidade"
+        },
+        {
+          "trecho": "que requeiram sua dispensa",
+          "cat": "condicao"
+        }
+      ]
+    },
+    "cpp:art438": {
+      "marcas": [
+        {
+          "trecho": "suspensão dos direitos políticos",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art440": {
+      "marcas": [
+        {
+          "trecho": "preferência, em igualdade de condições",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art441": {
+      "marcas": [
+        {
+          "trecho": "Nenhum desconto",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art442": {
+      "marcas": [
+        {
+          "trecho": "1 (um) a 10 (dez) salários mínimos",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art443": {
+      "marcas": [
+        {
+          "trecho": "chamada dos jurados",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art445": {
+      "marcas": [
+        {
+          "trecho": "juízes togados",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art485": {
+      "marcas": [
+        {
+          "trecho": "o oficial de justiça",
+          "cat": "sujeito"
+        },
+        {
+          "trecho": "sala especial",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "O oficial de justiça está na sala especial da votação e recolhe as cédulas (art. 487)."
+      ]
+    },
+    "cpp:art486": {
+      "marcas": [
+        {
+          "trecho": "papel opaco",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "7 (sete) delas",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art487": {
+      "marcas": [
+        {
+          "trecho": "oficial de justiça",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art513": {
+      "marcas": [
+        {
+          "trecho": "funcionários públicos",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art514": {
+      "marcas": [
+        {
+          "trecho": "crimes afiançáveis",
+          "cat": "condicao"
+        },
+        {
+          "trecho": "quinze dias",
+          "cat": "quantidade"
+        }
+      ],
+      "atencao": [
+        "Defesa preliminar do funcionário público: só nos crimes afiançáveis. Súmula 330 do STJ: é dispensável quando a denúncia vem instruída por inquérito policial."
+      ]
+    },
+    "cpp:art516": {
+      "marcas": [
+        {
+          "trecho": "inexistência do crime",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art563": {
+      "marcas": [
+        {
+          "trecho": "prejuízo",
+          "cat": "condicao"
+        }
+      ],
+      "atencao": [
+        "Pas de nullité sans grief: sem prejuízo para a acusação ou a defesa, não há nulidade."
+      ]
+    },
+    "cpp:art564.i3.f": {
+      "atencao": [
+        "Libelo e contrariedade (alíneas f e h) foram extintos na reforma do júri (Lei nº 11.689/2008); o texto do art. 564 não foi atualizado."
+      ]
+    },
+    "cpp:art564.i3.i": {
+      "marcas": [
+        {
+          "trecho": "15 jurados",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art564.i5": {
+      "marcas": [
+        {
+          "trecho": "carente de fundamentação",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art565": {
+      "marcas": [
+        {
+          "trecho": "a que haja dado causa",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art566": {
+      "marcas": [
+        {
+          "trecho": "verdade substancial",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art567": {
+      "marcas": [
+        {
+          "trecho": "atos decisórios",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art568": {
+      "marcas": [
+        {
+          "trecho": "a todo tempo sanada",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art569": {
+      "marcas": [
+        {
+          "trecho": "antes da sentença final",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art570": {
+      "marcas": [
+        {
+          "trecho": "desde que o interessado compareça",
+          "cat": "condicao"
+        }
+      ],
+      "atencao": [
+        "O comparecimento espontâneo sana a falta ou a nulidade da citação, mesmo que só para argui-la."
+      ]
+    },
+    "cpp:art593": {
+      "marcas": [
+        {
+          "trecho": "5 (cinco) dias",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art593.i3.d": {
+      "marcas": [
+        {
+          "trecho": "manifestamente contrária à prova dos autos",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art593.p3": {
+      "marcas": [
+        {
+          "trecho": "segunda apelação",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Apelação pela alínea d: o tribunal manda o réu a novo júri (soberania dos veredictos) e não cabe segunda apelação pelo mesmo motivo."
+      ]
+    },
+    "cpp:art593.p4": {
+      "marcas": [
+        {
+          "trecho": "recurso em sentido estrito",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art647": {
+      "marcas": [
+        {
+          "trecho": "punição disciplinar",
+          "cat": "condicao"
+        }
+      ],
+      "atencao": [
+        "HC preventivo (iminência) e liberatório (sofre a coação). A ressalva da punição disciplinar militar também está na CF, art. 142, § 2º."
+      ]
+    },
+    "cpp:art647-A": {
+      "marcas": [
+        {
+          "trecho": "de ofício",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "individual ou coletivo",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Incluído pela Lei nº 14.836/2024: qualquer autoridade judicial concede HC de ofício, inclusive coletivo."
+      ]
+    },
+    "cpp:art648.i1": {
+      "marcas": [
+        {
+          "trecho": "justa causa",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art652": {
+      "marcas": [
+        {
+          "trecho": "será renovado",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art653": {
+      "marcas": [
+        {
+          "trecho": "má-fé ou evidente abuso de poder",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art654": {
+      "marcas": [
+        {
+          "trecho": "qualquer pessoa",
+          "cat": "sujeito"
+        }
+      ],
+      "atencao": [
+        "Qualquer pessoa impetra HC, em favor próprio ou de outrem, sem advogado."
+      ]
+    },
+    "cpp:art762.i3": {
+      "marcas": [
+        {
+          "trecho": "prazo mínimo da internação",
+          "cat": "quantidade"
+        }
+      ]
+    },
+    "cpp:art763": {
+      "marcas": [
+        {
+          "trecho": "oficial de justiça",
+          "cat": "sujeito"
+        }
+      ]
+    },
+    "cpp:art792": {
+      "marcas": [
+        {
+          "trecho": "em regra, públicos",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art792.p1": {
+      "marcas": [
+        {
+          "trecho": "a portas fechadas",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art798": {
+      "marcas": [
+        {
+          "trecho": "contínuos e peremptórios",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art798.p1": {
+      "marcas": [
+        {
+          "trecho": "o dia do começo",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "Súmula 310 do STF: intimada a parte na sexta-feira, o prazo começa na segunda-feira, ou no primeiro dia útil seguinte."
+      ]
+    },
+    "cpp:art798.p3": {
+      "marcas": [
+        {
+          "trecho": "dia útil imediato",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "cpp:art798-A": {
+      "marcas": [
+        {
+          "trecho": "20 de dezembro e 20 de janeiro",
+          "cat": "quantidade"
+        }
+      ],
+      "atencao": [
+        "Incluído pela Lei nº 14.365/2022: a suspensão não alcança réu preso, Lei Maria da Penha e medidas urgentes."
+      ]
+    },
+    "lei9099:art2": {
+      "atencao": [
+        "Critérios: oralidade, simplicidade, informalidade, economia processual e celeridade. O art. 62 repete os mesmos para o Juizado Criminal."
+      ]
+    },
+    "lei9099:art60": {
+      "marcas": [
+        {
+          "trecho": "infrações penais de menor potencial ofensivo",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "lei9099:art60.pu": {
+      "marcas": [
+        {
+          "trecho": "transação penal",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "lei9099:art61": {
+      "marcas": [
+        {
+          "trecho": "não superior a 2 (dois) anos",
+          "cat": "quantidade"
+        }
+      ],
+      "atencao": [
+        "Menor potencial ofensivo: toda contravenção e o crime com pena máxima até 2 anos, com ou sem multa. Não se aplica à violência doméstica e familiar contra a mulher (Lei nº 11.340/2006, art. 41)."
+      ]
+    },
+    "lei9099:art62": {
+      "marcas": [
+        {
+          "trecho": "reparação dos danos sofridos pela vítima",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "lei9099:art66": {
+      "marcas": [
+        {
+          "trecho": "será pessoal",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "lei9099:art66.pu": {
+      "marcas": [
+        {
+          "trecho": "Juízo comum",
+          "cat": "especializante"
+        }
+      ],
+      "atencao": [
+        "No Juizado Criminal não há citação por edital: réu não encontrado, as peças vão ao juízo comum."
+      ]
+    },
+    "lei9099:art67": {
+      "marcas": [
+        {
+          "trecho": "por correspondência",
+          "cat": "especializante"
+        },
+        {
+          "trecho": "independentemente de mandado ou carta precatória",
+          "cat": "especializante"
+        }
+      ]
+    },
+    "lei9099:art68": {
+      "marcas": [
+        {
+          "trecho": "acompanhado de advogado",
+          "cat": "especializante"
+        }
+      ]
+    }
+  },
+  "quadros": [
+    {
+      "depois_de": "cpp:art42",
+      "titulo": "Ação penal: quem promove e como",
+      "colunas": [
+        "Espécie",
+        "Titular",
+        "Peça",
+        "Ponto de prova"
+      ],
+      "linhas": [
+        [
+          "Pública incondicionada",
+          "Ministério Público",
+          "denúncia",
+          "é a regra (art. 24); o MP não desiste da ação (art. 42)"
+        ],
+        [
+          "Pública condicionada",
+          "MP, com representação do ofendido ou requisição do Ministro da Justiça",
+          "denúncia",
+          "a representação é irretratável depois de oferecida a denúncia (art. 25); decadência em 6 meses (art. 38)"
+        ],
+        [
+          "Privada",
+          "ofendido ou representante (art. 30); na morte ou ausência, cônjuge, ascendente, descendente ou irmão (art. 31)",
+          "queixa",
+          "decadência em 6 meses (art. 38); 12 meses na violência doméstica e familiar contra a mulher (art. 38, § 2º)"
+        ],
+        [
+          "Privada subsidiária da pública",
+          "ofendido, se o MP não age no prazo legal (art. 29)",
+          "queixa",
+          "o MP pode aditar, repudiar e oferecer denúncia substitutiva, e retoma a ação na negligência do querelante"
+        ]
+      ],
+      "nota": "Crime contra o patrimônio ou interesse da União, Estado e Município: a ação é sempre pública (art. 24, § 2º)."
+    },
+    {
+      "depois_de": "cpp:art67",
+      "titulo": "Sentença penal e ação civil",
+      "colunas": [
+        "Decisão penal",
+        "Efeito no cível",
+        "Base"
+      ],
+      "linhas": [
+        [
+          "Condenação transitada em julgado",
+          "título para executar a reparação; o valor mínimo fixado na sentença se executa direto",
+          "art. 63"
+        ],
+        [
+          "Absolvição por estado de necessidade, legítima defesa, estrito cumprimento de dever legal ou exercício regular de direito",
+          "faz coisa julgada no cível",
+          "art. 65"
+        ],
+        [
+          "Absolvição que reconhece, categoricamente, a inexistência material do fato",
+          "impede a ação civil",
+          "art. 66"
+        ],
+        [
+          "Outra absolvição; arquivamento; extinção da punibilidade; fato que não constitui crime",
+          "não impedem a ação civil",
+          "arts. 66 e 67"
+        ]
+      ],
+      "nota": "A ação civil pode correr junto com a penal; o juiz cível pode suspendê-la até o julgamento definitivo da penal (art. 64, parágrafo único)."
+    },
+    {
+      "depois_de": "cpp:art250",
+      "titulo": "Busca domiciliar × busca pessoal",
+      "colunas": [
+        "Aspecto",
+        "Domiciliar",
+        "Pessoal"
+      ],
+      "linhas": [
+        [
+          "Fundamento",
+          "fundadas razões (art. 240, § 1º)",
+          "fundada suspeita de arma proibida ou dos objetos das alíneas b a f e h (art. 240, § 2º)"
+        ],
+        [
+          "Mandado",
+          "exigido (art. 241); ver CF, art. 5º, XI",
+          "dispensado na prisão, na fundada suspeita e no curso de busca domiciliar (art. 244)"
+        ],
+        [
+          "Horário",
+          "de dia, salvo se o morador consentir (art. 245)",
+          "o CPP não restringe"
+        ],
+        [
+          "Execução",
+          "mostrar e ler o mandado; desobedecido, arrombar a porta; auto com duas testemunhas presenciais (art. 245)",
+          "em mulher, por outra mulher, se não retardar ou prejudicar a diligência (art. 249)"
+        ]
+      ],
+      "nota": "Compartimento não aberto ao público onde alguém exerce profissão ou atividade segue as regras da busca domiciliar (art. 246)."
+    },
+    {
+      "depois_de": "cpp:art290",
+      "titulo": "Seguimento para apreensão (art. 250) × perseguição para prisão (art. 290)",
+      "colunas": [
+        "Aspecto",
+        "Art. 250 — apreensão",
+        "Art. 290 — prisão"
+      ],
+      "linhas": [
+        [
+          "Onde",
+          "território de jurisdição alheia, ainda que de outro Estado",
+          "território de outro município ou comarca"
+        ],
+        [
+          "Seguimento à vista",
+          "conhecimento direto da remoção, seguindo sem interrupção, embora depois a percam de vista (§ 1º, a)",
+          "avistou o réu e o persegue sem interrupção, embora depois o perca de vista (§ 1º, a)"
+        ],
+        [
+          "Sem ver",
+          "informações fidedignas ou circunstâncias indiciárias de que está sendo removida em determinada direção (§ 1º, b)",
+          "indícios ou informações fidedignas de que o réu passou, há pouco tempo, em tal direção (§ 1º, b)"
+        ],
+        [
+          "Dúvida da autoridade local",
+          "pode exigir provas da legitimidade, sem frustrar a diligência (§ 2º)",
+          "pode pôr o réu em custódia até esclarecer a dúvida (§ 2º)"
+        ],
+        [
+          "Apresentação",
+          "à autoridade local, antes ou depois da diligência, conforme a urgência",
+          "imediatamente à autoridade local, que lavra o auto de flagrante, se for o caso"
+        ]
+      ],
+      "nota": "Os dois exigem apresentação à autoridade local; só o art. 290 fala em auto de flagrante."
+    },
+    {
+      "depois_de": "cpp:art303",
+      "titulo": "Espécies de flagrante",
+      "colunas": [
+        "Espécie (doutrina)",
+        "Situação",
+        "Base"
+      ],
+      "linhas": [
+        [
+          "Próprio",
+          "está cometendo ou acaba de cometer a infração",
+          "art. 302, I e II"
+        ],
+        [
+          "Impróprio (quase flagrante)",
+          "é perseguido logo após, em situação que faça presumir a autoria",
+          "art. 302, III"
+        ],
+        [
+          "Presumido (ficto)",
+          "é encontrado logo depois com instrumentos, armas, objetos ou papéis que façam presumir a autoria",
+          "art. 302, IV"
+        ],
+        [
+          "Infração permanente",
+          "há flagrante enquanto não cessar a permanência",
+          "art. 303"
+        ]
+      ],
+      "nota": "Inciso III: perseguido logo após. Inciso IV: encontrado logo depois. A banca troca as duas expressões. Qualquer do povo pode prender; a autoridade policial e seus agentes devem (art. 301)."
+    },
+    {
+      "depois_de": "cpp:art363",
+      "titulo": "Modalidades de citação",
+      "colunas": [
+        "Modalidade",
+        "Quando",
+        "Como",
+        "Base"
+      ],
+      "linhas": [
+        [
+          "Por mandado",
+          "réu no território da jurisdição do juiz",
+          "o oficial lê o mandado, entrega a contrafé e certifica a entrega e a aceitação ou recusa",
+          "arts. 351 e 357"
+        ],
+        [
+          "Por precatória",
+          "réu fora do território da jurisdição",
+          "o juiz deprecado cita por mandado; com urgência, por via telegráfica",
+          "arts. 353 a 356"
+        ],
+        [
+          "Com hora certa",
+          "o oficial certifica que o réu se oculta",
+          "na forma do CPC; sem comparecimento, defensor dativo",
+          "art. 362"
+        ],
+        [
+          "Por edital",
+          "réu não encontrado",
+          "prazo de 15 dias",
+          "arts. 361 e 363, § 1º"
+        ],
+        [
+          "Réu preso",
+          "—",
+          "pessoalmente",
+          "art. 360"
+        ],
+        [
+          "Militar",
+          "—",
+          "por intermédio do chefe do respectivo serviço",
+          "art. 358"
+        ],
+        [
+          "Funcionário público",
+          "dia designado para comparecer como acusado",
+          "notifica-se ele e o chefe da repartição",
+          "art. 359"
+        ]
+      ],
+      "nota": "No Juizado Criminal não há edital: réu não encontrado, as peças vão ao juízo comum (Lei nº 9.099/1995, art. 66, parágrafo único)."
+    },
+    {
+      "depois_de": "cpp:art798-A",
+      "titulo": "Prazos do recorte",
+      "colunas": [
+        "Prazo",
+        "Ato",
+        "Base"
+      ],
+      "linhas": [
+        [
+          "5 dias",
+          "apelação",
+          "art. 593"
+        ],
+        [
+          "10 dias",
+          "resposta à acusação (procedimentos ordinário e sumário; júri)",
+          "arts. 396 e 406"
+        ],
+        [
+          "10 dias",
+          "vista ao defensor nomeado quando falta a resposta",
+          "art. 396-A, § 2º"
+        ],
+        [
+          "10 dias de antecedência",
+          "intimação da decisão de interrogar por videoconferência",
+          "art. 185, § 3º"
+        ],
+        [
+          "15 dias",
+          "citação por edital",
+          "art. 361"
+        ],
+        [
+          "15 dias",
+          "denúncia quando o MP dispensa o inquérito",
+          "art. 39, § 5º"
+        ],
+        [
+          "15 dias",
+          "resposta preliminar do funcionário público",
+          "art. 514"
+        ],
+        [
+          "30 dias",
+          "vítima leva o arquivamento à revisão ministerial",
+          "art. 28, § 1º"
+        ],
+        [
+          "30 dias",
+          "remoção do preso pelo juiz processante",
+          "art. 289, § 3º"
+        ],
+        [
+          "60 dias",
+          "ação penal depois do sequestro, sob pena de levantamento",
+          "art. 131, I"
+        ],
+        [
+          "6 meses",
+          "decadência da queixa e da representação",
+          "art. 38"
+        ],
+        [
+          "12 meses",
+          "decadência na violência doméstica e familiar contra a mulher",
+          "art. 38, § 2º"
+        ],
+        [
+          "1 ano",
+          "testemunha comunica mudança de residência",
+          "art. 224"
+        ],
+        [
+          "5 anos",
+          "benefício anterior que impede novo ANPP",
+          "art. 28-A, § 2º, III"
+        ],
+        [
+          "20/12 a 20/1",
+          "suspensão dos prazos processuais",
+          "art. 798-A"
+        ]
+      ],
+      "nota": "Contagem: exclui o dia do começo e inclui o do vencimento; o prazo que termina em domingo ou feriado vai ao dia útil imediato (art. 798, §§ 1º e 3º)."
+    }
+  ]
+}

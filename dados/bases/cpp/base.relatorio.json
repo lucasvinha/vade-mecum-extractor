@@ -1,0 +1,1349 @@
+{
+  "entradas": [
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#972",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "CAPÍTULO IV",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#973",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "DA APRESENTAÇÃO ESPONTÂNEA DO ACUSADO",
+      "tipo": "descarte"
+    },
+    {
+      "origem": "html:p#1055",
+      "texto": "art. 110 do Código Penal",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#135",
+      "texto": "(Parágrafo único renumerado pela Lei nº 8.699, de 27.8.1993)",
+      "tipo": "nota_outra"
+    },
+    {
+      "origem": "html:p#488",
+      "texto": "(Redação dada pela Lei nº 13.964, de 2019)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#625",
+      "texto": "(Redação dada pela Lei nº 11.690, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#819",
+      "texto": "(Redação dada pela Lei nº 12.403, de 2011).",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#917",
+      "texto": "(Renumerado do parágrafo único pela Lei nº 13.964, de 2019)",
+      "tipo": "nota_outra"
+    },
+    {
+      "origem": "html:p#976",
+      "texto": "(Redação dada pela Lei nº 12.403, de 2011).",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#992",
+      "texto": "(Redação dada pela Lei nº 12.403, de 2011).",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1081",
+      "texto": "(Incluído pela Lei nº 15.280, de 2025)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1299",
+      "texto": "(Redação dada pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1324",
+      "texto": "(Redação dada pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1351",
+      "texto": "(Redação dada pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1360",
+      "texto": "(Redação dada pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1372",
+      "texto": "(Redação dada pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1383",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1394",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1405",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1433",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1453",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1494",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1510",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1532",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1565",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1589",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1612",
+      "texto": "(Incluído pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1752",
+      "texto": "(Revogado pela Lei nº 8.658, de 26.5.1993)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1756",
+      "texto": "(Revogado pela Lei nº 8.658, de 26.5.1993)",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1891",
+      "texto": "(Parágrafo único renumerado pela Lei nº 263, de 23.2.1948)",
+      "tipo": "nota_outra"
+    },
+    {
+      "origem": "html:p#1915",
+      "texto": "(Revogado pela Lei nº 11.689, de 2008)",
+      "tipo": "aviso"
+    },
+    {
+      "id": "art35",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1997,
+          "bruto": "(Revogado pela Lei nº 9.520, de 27.11.1997)",
+          "data": "1997-11-27",
+          "norma": "Lei nº 9.520",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#175",
+      "rotulo": "Art. 35",
+      "rubrica": null,
+      "texto": "Art. 35 (Revogado pela Lei nº 9.520, de 27.11.1997)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art43",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#190",
+      "rotulo": "Art. 43",
+      "rubrica": null,
+      "texto": "Art. 43 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art84.p1",
+      "motivo": "vazio",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Vide ADIN nº 2797)",
+          "data": null,
+          "norma": null,
+          "tipo": "remissao"
+        }
+      ],
+      "origem": "html:p#298",
+      "rotulo": "§ 1º",
+      "rubrica": null,
+      "texto": "§ 1º (Vide ADIN nº 2797)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art84.p2",
+      "motivo": "vazio",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Vide ADIN nº 2797)",
+          "data": null,
+          "norma": null,
+          "tipo": "remissao"
+        }
+      ],
+      "origem": "html:p#299",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Vide ADIN nº 2797)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art122.pu",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2019,
+          "bruto": "(Redação dada pela Lei nº 13.964, de 2019)",
+          "data": null,
+          "norma": "Lei nº 13.964",
+          "tipo": "redacao"
+        }
+      ],
+      "origem": "html:p#391",
+      "rotulo": "Parágrafo único",
+      "rubrica": null,
+      "texto": "Parágrafo único (Revogado) (Redação dada pela Lei nº 13.964, de 2019)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art144-A.p7",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2012,
+          "bruto": "(Incluído pela Lei nº 12.694, de 2012)",
+          "data": null,
+          "norma": "Lei nº 12.694",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#445",
+      "rotulo": "§ 7º",
+      "rubrica": null,
+      "texto": "§ 7º (VETADO) (Incluído pela Lei nº 12.694, de 2012)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art157.p4",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2008,
+          "bruto": "(Incluído pela Lei nº 11.690, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.690",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#483",
+      "rotulo": "§ 4º",
+      "rubrica": null,
+      "texto": "§ 4º (VETADO) (Incluído pela Lei nº 11.690, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art298",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2011,
+          "bruto": "(Revogado pela Lei nº 12.403, de 2011)",
+          "data": null,
+          "norma": "Lei nº 12.403",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#887",
+      "rotulo": "Art. 298",
+      "rubrica": null,
+      "texto": "Art. 298 (Revogado pela Lei nº 12.403, de 2011)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art319.p1",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2011,
+          "bruto": "(Revogado pela Lei nº 12.403, de 2011)",
+          "data": null,
+          "norma": "Lei nº 12.403",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1003",
+      "rotulo": "§ 1º",
+      "rubrica": null,
+      "texto": "§ 1º (Revogado) (Revogado pela Lei nº 12.403, de 2011)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art319.p2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2011,
+          "bruto": "(Revogado pela Lei nº 12.403, de 2011)",
+          "data": null,
+          "norma": "Lei nº 12.403",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1004",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Revogado) (Revogado pela Lei nº 12.403, de 2011)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art319.p3",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2011,
+          "bruto": "(Revogado pela Lei nº 12.403, de 2011)",
+          "data": null,
+          "norma": "Lei nº 12.403",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1005",
+      "rotulo": "§ 3º",
+      "rubrica": null,
+      "texto": "§ 3º (Revogado) (Revogado pela Lei nº 12.403, de 2011)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art363.p2",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2008,
+          "bruto": "(Incluído pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1137",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (VETADO) (Incluído pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art363.p3",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2008,
+          "bruto": "(Incluído pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1138",
+      "rotulo": "§ 3º",
+      "rubrica": null,
+      "texto": "§ 3º (VETADO) (Incluído pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art366.p1",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1149",
+      "rotulo": "§ 1º",
+      "rubrica": null,
+      "texto": "§ 1º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art366.p2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1150",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art393",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2011,
+          "bruto": "(Revogado pela Lei nº 12.403, de 2011)",
+          "data": null,
+          "norma": "Lei nº 12.403",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1241",
+      "rotulo": "Art. 393",
+      "rubrica": null,
+      "texto": "Art. 393 (Revogado pela Lei nº 12.403, de 2011)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art395.pu",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Revogado)",
+          "data": null,
+          "norma": null,
+          "tipo": "revogacao"
+        },
+        {
+          "ano": 2008,
+          "bruto": "(Incluído pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1264",
+      "rotulo": "Parágrafo único",
+      "rubrica": null,
+      "texto": "Parágrafo único (Revogado) (Incluído pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art398",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1275",
+      "rotulo": "Art. 398",
+      "rubrica": null,
+      "texto": "Art. 398 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art498",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1629",
+      "rotulo": "Art. 498",
+      "rubrica": null,
+      "texto": "Art. 498 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art499",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1630",
+      "rotulo": "Art. 499",
+      "rubrica": null,
+      "texto": "Art. 499 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art500",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1631",
+      "rotulo": "Art. 500",
+      "rubrica": null,
+      "texto": "Art. 500 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art501",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1632",
+      "rotulo": "Art. 501",
+      "rubrica": null,
+      "texto": "Art. 501 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art502",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1633",
+      "rotulo": "Art. 502",
+      "rubrica": null,
+      "texto": "Art. 502 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art503",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.101, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.101",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1638",
+      "rotulo": "Art. 503",
+      "rubrica": null,
+      "texto": "Art. 503 (Revogado pela Lei nº 11.101, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art504",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.101, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.101",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1639",
+      "rotulo": "Art. 504",
+      "rubrica": null,
+      "texto": "Art. 504 (Revogado pela Lei nº 11.101, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art505",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.101, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.101",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1640",
+      "rotulo": "Art. 505",
+      "rubrica": null,
+      "texto": "Art. 505 (Revogado pela Lei nº 11.101, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art506",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.101, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.101",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1641",
+      "rotulo": "Art. 506",
+      "rubrica": null,
+      "texto": "Art. 506 (Revogado pela Lei nº 11.101, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art507",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.101, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.101",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1642",
+      "rotulo": "Art. 507",
+      "rubrica": null,
+      "texto": "Art. 507 (Revogado pela Lei nº 11.101, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art508",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.101, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.101",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1643",
+      "rotulo": "Art. 508",
+      "rubrica": null,
+      "texto": "Art. 508 (Revogado pela Lei nº 11.101, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art509",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.101, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.101",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1644",
+      "rotulo": "Art. 509",
+      "rubrica": null,
+      "texto": "Art. 509 (Revogado pela Lei nº 11.101, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art510",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.101, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.101",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1645",
+      "rotulo": "Art. 510",
+      "rubrica": null,
+      "texto": "Art. 510 (Revogado pela Lei nº 11.101, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art511",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.101, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.101",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1646",
+      "rotulo": "Art. 511",
+      "rubrica": null,
+      "texto": "Art. 511 (Revogado pela Lei nº 11.101, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art512",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2005,
+          "bruto": "(Revogado pela Lei nº 11.101, de 2005)",
+          "data": null,
+          "norma": "Lei nº 11.101",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1647",
+      "rotulo": "Art. 512",
+      "rubrica": null,
+      "texto": "Art. 512 (Revogado pela Lei nº 11.101, de 2005)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art533.p1",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1693",
+      "rotulo": "§ 1º",
+      "rubrica": null,
+      "texto": "§ 1º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art533.p2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1694",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art533.p3",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1695",
+      "rotulo": "§ 3º",
+      "rubrica": null,
+      "texto": "§ 3º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art533.p4",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1696",
+      "rotulo": "§ 4º",
+      "rubrica": null,
+      "texto": "§ 4º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art535.p1",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1701",
+      "rotulo": "§ 1º",
+      "rubrica": null,
+      "texto": "§ 1º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art535.p2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1702",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art537",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1704",
+      "rotulo": "Art. 537",
+      "rubrica": null,
+      "texto": "Art. 537 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art538.p1",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1706",
+      "rotulo": "§ 1º",
+      "rubrica": null,
+      "texto": "§ 1º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art538.p2",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1707",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art538.p3",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1708",
+      "rotulo": "§ 3º",
+      "rubrica": null,
+      "texto": "§ 3º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art538.p4",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1709",
+      "rotulo": "§ 4º",
+      "rubrica": null,
+      "texto": "§ 4º (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art539",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1710",
+      "rotulo": "Art. 539",
+      "rubrica": null,
+      "texto": "Art. 539 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art540",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1711",
+      "rotulo": "Art. 540",
+      "rubrica": null,
+      "texto": "Art. 540 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art581.i6",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.689, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.689",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1834",
+      "rotulo": "VI",
+      "rubrica": null,
+      "texto": "VI (Revogado pela Lei nº 11.689, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art594",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1892",
+      "rotulo": "Art. 594",
+      "rubrica": null,
+      "texto": "Art. 594 (Revogado pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art595",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2011,
+          "bruto": "(Revogado pela Lei nº 12.403, de 2011)",
+          "data": null,
+          "norma": "Lei nº 12.403",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1893",
+      "rotulo": "Art. 595",
+      "rubrica": null,
+      "texto": "Art. 595 (Revogado pela Lei nº 12.403, de 2011)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art604",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1948,
+          "bruto": "(Revogado pela Lei nº 263, de 23.2.1948)",
+          "data": "1948-02-23",
+          "norma": "Lei nº 263",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1910",
+      "rotulo": "Art. 604",
+      "rubrica": null,
+      "texto": "Art. 604 (Revogado pela Lei nº 263, de 23.2.1948)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art605",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1948,
+          "bruto": "(Revogado pela Lei nº 263, de 23.2.1948)",
+          "data": "1948-02-23",
+          "norma": "Lei nº 263",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1911",
+      "rotulo": "Art. 605",
+      "rubrica": null,
+      "texto": "Art. 605 (Revogado pela Lei nº 263, de 23.2.1948)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art606",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1948,
+          "bruto": "(Revogado pela Lei nº 263, de 23.2.1948)",
+          "data": "1948-02-23",
+          "norma": "Lei nº 263",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1912",
+      "rotulo": "Art. 606",
+      "rubrica": null,
+      "texto": "Art. 606 (Revogado pela Lei nº 263, de 23.2.1948)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art607",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.689, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.689",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1916",
+      "rotulo": "Art. 607",
+      "rubrica": null,
+      "texto": "Art. 607 (Revogado pela Lei nº 11.689, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art608",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2008,
+          "bruto": "(Revogado pela Lei nº 11.689, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.689",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1917",
+      "rotulo": "Art. 608",
+      "rubrica": null,
+      "texto": "Art. 608 (Revogado pela Lei nº 11.689, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art632",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1958,
+          "bruto": "(Revogado pela Lei nº 3.396, de 2.6.1958)",
+          "data": "1958-06-02",
+          "norma": "Lei nº 3.396",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1977",
+      "rotulo": "Art. 632",
+      "rubrica": null,
+      "texto": "Art. 632 (Revogado pela Lei nº 3.396, de 2.6.1958)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art633",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1958,
+          "bruto": "(Revogado pela Lei nº 3.396, de 2.6.1958)",
+          "data": "1958-06-02",
+          "norma": "Lei nº 3.396",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1978",
+      "rotulo": "Art. 633",
+      "rubrica": null,
+      "texto": "Art. 633 (Revogado pela Lei nº 3.396, de 2.6.1958)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art634",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1958,
+          "bruto": "(Revogado pela Lei nº 3.396, de 2.6.1958)",
+          "data": "1958-06-02",
+          "norma": "Lei nº 3.396",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1979",
+      "rotulo": "Art. 634",
+      "rubrica": null,
+      "texto": "Art. 634 (Revogado pela Lei nº 3.396, de 2.6.1958)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art635",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1958,
+          "bruto": "(Revogado pela Lei nº 3.396, de 2.6.1958)",
+          "data": "1958-06-02",
+          "norma": "Lei nº 3.396",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1980",
+      "rotulo": "Art. 635",
+      "rubrica": null,
+      "texto": "Art. 635 (Revogado pela Lei nº 3.396, de 2.6.1958)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art636",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1958,
+          "bruto": "(Revogado pela Lei nº 3.396, de 2.6.1958)",
+          "data": "1958-06-02",
+          "norma": "Lei nº 3.396",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#1981",
+      "rotulo": "Art. 636",
+      "rubrica": null,
+      "texto": "Art. 636 (Revogado pela Lei nº 3.396, de 2.6.1958)",
+      "tipo": "descarte"
+    },
+    {
+      "origem": "html:p#1629",
+      "texto": "RNF04: nível sem artigo vigente: CAPÍTULO III — DO PROCESSO E DO JULGAMENTO DOS CRIMES DA COMPETÊNCIA DO JUIZ SINGULAR",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1638",
+      "texto": "RNF04: nível sem artigo vigente: CAPÍTULO I — DO PROCESSO E DO JULGAMENTO DOS CRIMES DE FALÊNCIA",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1916",
+      "texto": "RNF04: nível sem artigo vigente: CAPÍTULO IV — DO PROTESTO POR NOVO JÚRI",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#615",
+      "texto": "V2: lacuna na numeração-base: art. 194",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1757",
+      "texto": "V2: lacuna na numeração-base: art. 557",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1757",
+      "texto": "V2: lacuna na numeração-base: art. 558",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1757",
+      "texto": "V2: lacuna na numeração-base: art. 559",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1757",
+      "texto": "V2: lacuna na numeração-base: art. 560",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1762",
+      "texto": "V2: lacuna na numeração-base: art. 562",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1925",
+      "texto": "V2: lacuna na numeração-base: art. 611",
+      "tipo": "aviso"
+    },
+    {
+      "origem": "html:p#1036",
+      "texto": "V5: texto vazio em dispositivo vigente: art325.p2",
+      "tipo": "aviso"
+    }
+  ]
+}

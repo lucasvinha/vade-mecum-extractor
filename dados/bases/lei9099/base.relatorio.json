@@ -1,0 +1,157 @@
+{
+  "entradas": [
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#41",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "§ 1º Somente as pessoas físicas capazes serão admitidas a propor ação perante o Juizado Especial, excluídos os cessionários de direito de pessoas jurídicas.",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#44",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "II - as microempresas, assim definidas pela Lei no 9.841, de 5 de outubro de 1999; (Incluído pela Lei nº 12.126, de 2009)",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#53",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "§ 4º O réu, sendo pessoa jurídica ou titular de firma individual, poderá ser representado por preposto credenciado.",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#98",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "Parágrafo único. Obtida a conciliação, esta será reduzida a escrito e homologada pelo Juiz togado, mediante sentença com eficácia de título executivo.",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#101",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "Art. 23. Não comparecendo o demandado, o Juiz togado proferirá sentença.",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#150",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "Art. 48. Caberão embargos de declaração quando, na sentença ou acórdão, houver obscuridade, contradição, omissão ou dúvida.",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#154",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "Art. 50. Quando interpostos contra sentença, os embargos de declaração suspenderão o prazo para recurso.",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#207",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "Art. 60. O Juizado Especial Criminal, provido por Juízes togados ou togados e leigos, tem competência para a conciliação, o julgamento e a execução das infrações penais de menor potencial ofensivo. (Vide Lei nº 10.259, de 2001)",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#210",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "Art. 61. Consideram-se infrações penais de menor potencial ofensivo, para os efeitos desta Lei, as contravenções penais e os crimes a que a lei comine pena máxima não superior a um ano, excetuados os casos em que a lei preveja procedimento especial. (Vide Lei nº 10.259, de 2001)",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#212",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "Art. 62. O processo perante o Juizado Especial orientar-se-á pelos critérios da oralidade, informalidade, economia processual e celeridade, objetivando, sempre que possível, a reparação dos danos sofridos pela vítima e a aplicação de pena não privativa de liberdade.",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#230",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "Parágrafo único. Ao autor do fato que, após a lavratura do termo, for imediatamente encaminhado ao Juizado ou assumir o compromisso de a ele comparecer, não se imporá prisão em flagrante, nem se exigirá fiança.",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#276",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "Art. 83. Caberão embargos de declaração quando, em sentença ou acórdão, houver obscuridade, contradição, omissão ou dúvida.",
+      "tipo": "descarte"
+    },
+    {
+      "id": null,
+      "motivo": "vazio",
+      "notas": [],
+      "origem": "html:p#279",
+      "rotulo": null,
+      "rubrica": null,
+      "texto": "§ 2º Quando opostos contra sentença, os embargos de declaração suspenderão o prazo para o recurso.",
+      "tipo": "descarte"
+    },
+    {
+      "origem": "html:p#307",
+      "texto": "(Artigo incluído pela Lei nº 9.839, de 27.9.1999)",
+      "tipo": "nota_outra"
+    },
+    {
+      "id": "art47",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        }
+      ],
+      "origem": "html:p#147",
+      "rotulo": "Art. 47",
+      "rubrica": null,
+      "texto": "Art. 47 (VETADO)",
+      "tipo": "descarte"
+    }
+  ]
+}

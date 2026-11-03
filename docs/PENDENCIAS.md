@@ -31,9 +31,16 @@ confirmadas, P3 foi decidida no M4 (pergunta 5) e P4–P7 estão em "Riscos acom
       a `padrao`, que não casa com a `norma` dos tópicos (`lei9099`); a spec decide se cada lei
       ganha perfil, mesmo mínimo, ou se o id vem de outro lugar. A base nova entra em
       `dados/bases/<norma>/`, gerada de um `.mht` (o teste de sincronia não aceita `.htm`).
+      Já há `cpp` e `lei9099` mínimos (só o `id`), com `.mht`, base, recorte e vade mecum, do
+      teste do PROMPT da Etapa 3 em 2026-11-03. O teste mostrou, no
+      CPP e na Lei 9.099, nome de seção ou capítulo em linha própria e caixa mista virando
+      `rubrica` do artigo seguinte (406; 1º e 60), notas em linha própria indo ao relatório como
+      `aviso` (H7) e o inciso III do art. 354, grafado `Ill` na fonte, colado ao II.
 - [ ] **M8 · 10. URL com cache.** Download + cache com data e SHA-256 (RF02). Aceite: A14.
       Opcional: o `.mht` salvo à mão já cobre as normas do Planalto. O Planalto recusa cliente
-      sem User-Agent de navegador (visto no M2, 2026-10-31): a spec decide o cabeçalho.
+      sem User-Agent de navegador (visto no M2, 2026-10-31): a spec decide o cabeçalho. Opção
+      vista em 2026-11-03: o Edge headless salva o `.mht` pelo DevTools (`Page.captureSnapshot`),
+      no mesmo formato do navegador; os `.mht` do CPP e da Lei 9.099 saíram assim.
 - [ ] **M9 · 9. PDF.** `fontes/pdf.py`, `segmentador.py`, perfis `nscgj` e `lei_sp`. Aceite:
       A9–A12. NSCGJ e Lei SP 10.261 vêm em PDF, com o recorte trazido pelo operador
       (2026-10-31). Lei SP 11.608 e Res. CNJ 354 também não estão no Planalto e já estão no PDF

@@ -1,0 +1,3640 @@
+{
+  "artigos": [
+    {
+      "filhos": [],
+      "id": "art1",
+      "local": {
+        "capitulo": "CAPÍTULO I",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 1,
+      "parcial": false,
+      "rotulo": "Art. 1º",
+      "rubrica": "Disposições Gerais",
+      "sufixo": [],
+      "texto": "Os Juizados Especiais Cíveis e Criminais, órgãos da Justiça Ordinária, serão criados pela União, no Distrito Federal e nos Territórios, e pelos Estados, para conciliação, processo, julgamento e execução, nas causas de sua competência.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art2",
+      "local": {
+        "capitulo": "CAPÍTULO I",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 2,
+      "parcial": false,
+      "rotulo": "Art. 2º",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O processo orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, buscando, sempre que possível, a conciliação ou a transação.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art3.i1",
+          "notas": [],
+          "rotulo": "I",
+          "rubrica": null,
+          "texto": "as causas cujo valor não exceda a quarenta vezes o salário mínimo;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art3.i2",
+          "notas": [],
+          "rotulo": "II",
+          "rubrica": null,
+          "texto": "as enumeradas no art. 275, inciso II, do Código de Processo Civil;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art3.i3",
+          "notas": [],
+          "rotulo": "III",
+          "rubrica": null,
+          "texto": "a ação de despejo para uso próprio;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art3.i4",
+          "notas": [],
+          "rotulo": "IV",
+          "rubrica": null,
+          "texto": "as ações possessórias sobre bens imóveis de valor não excedente ao fixado no inciso I deste artigo.",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [
+            {
+              "filhos": [],
+              "id": "art3.p1.i1",
+              "notas": [],
+              "rotulo": "I",
+              "rubrica": null,
+              "texto": "dos seus julgados;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art3.p1.i2",
+              "notas": [],
+              "rotulo": "II",
+              "rubrica": null,
+              "texto": "dos títulos executivos extrajudiciais, no valor de até quarenta vezes o salário mínimo, observado o disposto no § 1º do art. 8º desta Lei.",
+              "tipo": "inciso"
+            }
+          ],
+          "id": "art3.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Compete ao Juizado Especial promover a execução:",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art3.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "Ficam excluídas da competência do Juizado Especial as causas de natureza alimentar, falimentar, fiscal e de interesse da Fazenda Pública, e também as relativas a acidentes de trabalho, a resíduos e ao estado e capacidade das pessoas, ainda que de cunho patrimonial.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art3.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "A opção pelo procedimento previsto nesta Lei importará em renúncia ao crédito excedente ao limite estabelecido neste artigo, excetuada a hipótese de conciliação.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art3",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 3,
+      "parcial": false,
+      "rotulo": "Art. 3º",
+      "rubrica": "Da Competência",
+      "sufixo": [],
+      "texto": "O Juizado Especial Cível tem competência para conciliação, processo e julgamento das causas cíveis de menor complexidade, assim consideradas:",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art4.i1",
+          "notas": [],
+          "rotulo": "I",
+          "rubrica": null,
+          "texto": "do domicílio do réu ou, a critério do autor, do local onde aquele exerça atividades profissionais ou econômicas ou mantenha estabelecimento, filial, agência, sucursal ou escritório;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art4.i2",
+          "notas": [],
+          "rotulo": "II",
+          "rubrica": null,
+          "texto": "do lugar onde a obrigação deva ser satisfeita;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art4.i3",
+          "notas": [],
+          "rotulo": "III",
+          "rubrica": null,
+          "texto": "do domicílio do autor ou do local do ato ou fato, nas ações para reparação de dano de qualquer natureza.",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art4.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Em qualquer hipótese, poderá a ação ser proposta no foro previsto no inciso I deste artigo.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art4",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 4,
+      "parcial": false,
+      "rotulo": "Art. 4º",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "É competente, para as causas previstas nesta Lei, o Juizado do foro:",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art5",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 5,
+      "parcial": false,
+      "rotulo": "Art. 5º",
+      "rubrica": "Do Juiz, dos Conciliadores e dos Juízes Leigos",
+      "sufixo": [],
+      "texto": "O Juiz dirigirá o processo com liberdade para determinar as provas a serem produzidas, para apreciá-las e para dar especial valor às regras de experiência comum ou técnica.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art6",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 6,
+      "parcial": false,
+      "rotulo": "Art. 6º",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O Juiz adotará em cada caso a decisão que reputar mais justa e equânime, atendendo aos fins sociais da lei e às exigências do bem comum.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art7.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Os Juízes leigos ficarão impedidos de exercer a advocacia perante os Juizados Especiais, enquanto no desempenho de suas funções.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art7",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 7,
+      "parcial": false,
+      "rotulo": "Art. 7º",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Os conciliadores e Juízes leigos são auxiliares da Justiça, recrutados, os primeiros, preferentemente, entre os bacharéis em Direito, e os segundos, entre advogados com mais de cinco anos de experiência.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [
+            {
+              "filhos": [],
+              "id": "art8.p1.i1",
+              "notas": [
+                {
+                  "ano": 2009,
+                  "bruto": "(Incluído pela Lei nº 12.126, de 2009)",
+                  "data": null,
+                  "norma": "Lei nº 12.126",
+                  "tipo": "inclusao"
+                }
+              ],
+              "rotulo": "I",
+              "rubrica": null,
+              "texto": "as pessoas físicas capazes, excluídos os cessionários de direito de pessoas jurídicas;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art8.p1.i2",
+              "notas": [
+                {
+                  "ano": 2014,
+                  "bruto": "(Redação dada pela Lei Complementar nº 147, de 2014)",
+                  "data": null,
+                  "norma": "Lei Complementar nº 147",
+                  "tipo": "redacao"
+                }
+              ],
+              "rotulo": "II",
+              "rubrica": null,
+              "texto": "as pessoas enquadradas como microempreendedores individuais, microempresas e empresas de pequeno porte na forma da Lei Complementar no 123, de 14 de dezembro de 2006;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art8.p1.i3",
+              "notas": [
+                {
+                  "ano": 2009,
+                  "bruto": "(Incluído pela Lei nº 12.126, de 2009)",
+                  "data": null,
+                  "norma": "Lei nº 12.126",
+                  "tipo": "inclusao"
+                }
+              ],
+              "rotulo": "III",
+              "rubrica": null,
+              "texto": "as pessoas jurídicas qualificadas como Organização da Sociedade Civil de Interesse Público, nos termos da Lei no 9.790, de 23 de março de 1999;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art8.p1.i4",
+              "notas": [
+                {
+                  "ano": 2009,
+                  "bruto": "(Incluído pela Lei nº 12.126, de 2009)",
+                  "data": null,
+                  "norma": "Lei nº 12.126",
+                  "tipo": "inclusao"
+                }
+              ],
+              "rotulo": "IV",
+              "rubrica": null,
+              "texto": "as sociedades de crédito ao microempreendedor, nos termos do art. 1o da Lei no 10.194, de 14 de fevereiro de 2001.",
+              "tipo": "inciso"
+            }
+          ],
+          "id": "art8.p1",
+          "notas": [
+            {
+              "ano": 2009,
+              "bruto": "(Redação dada pela Lei nº 12.126, de 2009)",
+              "data": null,
+              "norma": "Lei nº 12.126",
+              "tipo": "redacao"
+            }
+          ],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Somente serão admitidas a propor ação perante o Juizado Especial:",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art8.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "O maior de dezoito anos poderá ser autor, independentemente de assistência, inclusive para fins de conciliação.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art8",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 8,
+      "parcial": false,
+      "rotulo": "Art. 8º",
+      "rubrica": "Das Partes",
+      "sufixo": [],
+      "texto": "Não poderão ser partes, no processo instituído por esta Lei, o incapaz, o preso, as pessoas jurídicas de direito público, as empresas públicas da União, a massa falida e o insolvente civil.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art9.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Sendo facultativa a assistência, se uma das partes comparecer assistida por advogado, ou se o réu for pessoa jurídica ou firma individual, terá a outra parte, se quiser, assistência judiciária prestada por órgão instituído junto ao Juizado Especial, na forma da lei local.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art9.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "O Juiz alertará as partes da conveniência do patrocínio por advogado, quando a causa o recomendar.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art9.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "O mandato ao advogado poderá ser verbal, salvo quanto aos poderes especiais.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art9.p4",
+          "notas": [
+            {
+              "ano": 2009,
+              "bruto": "(Redação dada pela Lei nº 12.137, de 2009)",
+              "data": null,
+              "norma": "Lei nº 12.137",
+              "tipo": "redacao"
+            }
+          ],
+          "rotulo": "§ 4º",
+          "rubrica": null,
+          "texto": "O réu, sendo pessoa jurídica ou titular de firma individual, poderá ser representado por preposto credenciado, munido de carta de preposição com poderes para transigir, sem haver necessidade de vínculo empregatício.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art9",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 9,
+      "parcial": false,
+      "rotulo": "Art. 9º",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Nas causas de valor até vinte salários mínimos, as partes comparecerão pessoalmente, podendo ser assistidas por advogado; nas de valor superior, a assistência é obrigatória.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art10",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 10,
+      "parcial": false,
+      "rotulo": "Art. 10",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Não se admitirá, no processo, qualquer forma de intervenção de terceiro nem de assistência. Admitir-se-á o litisconsórcio.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art11",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 11,
+      "parcial": false,
+      "rotulo": "Art. 11",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O Ministério Público intervirá nos casos previstos em lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art12",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção IV",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 12,
+      "parcial": false,
+      "rotulo": "Art. 12",
+      "rubrica": "Dos atos processuais",
+      "sufixo": [],
+      "texto": "Os atos processuais serão públicos e poderão realizar-se em horário noturno, conforme dispuserem as normas de organização judiciária.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art12-A",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção IV",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2018,
+          "bruto": "(Incluído pela Lei nº 13.728, de 2018)",
+          "data": null,
+          "norma": "Lei nº 13.728",
+          "tipo": "inclusao"
+        }
+      ],
+      "numero": 12,
+      "parcial": false,
+      "rotulo": "Art. 12-A",
+      "rubrica": null,
+      "sufixo": [
+        "A"
+      ],
+      "texto": "Na contagem de prazo em dias, estabelecido por lei ou pelo juiz, para a prática de qualquer ato processual, inclusive para a interposição de recursos, computar-se-ão somente os dias úteis.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art13.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Não se pronunciará qualquer nulidade sem que tenha havido prejuízo.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art13.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "A prática de atos processuais em outras comarcas poderá ser solicitada por qualquer meio idôneo de comunicação.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art13.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "Apenas os atos considerados essenciais serão registrados resumidamente, em notas manuscritas, datilografadas, taquigrafadas ou estenotipadas. Os demais atos poderão ser gravados em fita magnética ou equivalente, que será inutilizada após o trânsito em julgado da decisão.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art13.p4",
+          "notas": [],
+          "rotulo": "§ 4º",
+          "rubrica": null,
+          "texto": "As normas locais disporão sobre a conservação das peças do processo e demais documentos que o instruem.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art13",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção IV",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 13,
+      "parcial": false,
+      "rotulo": "Art. 13",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Os atos processuais serão válidos sempre que preencherem as finalidades para as quais forem realizados, atendidos os critérios indicados no art. 2º desta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [
+            {
+              "filhos": [],
+              "id": "art14.p1.i1",
+              "notas": [],
+              "rotulo": "I",
+              "rubrica": null,
+              "texto": "o nome, a qualificação e o endereço das partes;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art14.p1.i2",
+              "notas": [],
+              "rotulo": "II",
+              "rubrica": null,
+              "texto": "os fatos e os fundamentos, de forma sucinta;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art14.p1.i3",
+              "notas": [],
+              "rotulo": "III",
+              "rubrica": null,
+              "texto": "o objeto e seu valor.",
+              "tipo": "inciso"
+            }
+          ],
+          "id": "art14.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Do pedido constarão, de forma simples e em linguagem acessível:",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art14.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "É lícito formular pedido genérico quando não for possível determinar, desde logo, a extensão da obrigação.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art14.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "O pedido oral será reduzido a escrito pela Secretaria do Juizado, podendo ser utilizado o sistema de fichas ou formulários impressos.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art14",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção V",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 14,
+      "parcial": false,
+      "rotulo": "Art. 14",
+      "rubrica": "Do pedido",
+      "sufixo": [],
+      "texto": "O processo instaurar-se-á com a apresentação do pedido, escrito ou oral, à Secretaria do Juizado.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art15",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção V",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 15,
+      "parcial": false,
+      "rotulo": "Art. 15",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Os pedidos mencionados no art. 3º desta Lei poderão ser alternativos ou cumulados; nesta última hipótese, desde que conexos e a soma não ultrapasse o limite fixado naquele dispositivo.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art16",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção V",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 16,
+      "parcial": false,
+      "rotulo": "Art. 16",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Registrado o pedido, independentemente de distribuição e autuação, a Secretaria do Juizado designará a sessão de conciliação, a realizar-se no prazo de quinze dias.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art17.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Havendo pedidos contrapostos, poderá ser dispensada a contestação formal e ambos serão apreciados na mesma sentença.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art17",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção V",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 17,
+      "parcial": false,
+      "rotulo": "Art. 17",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Comparecendo inicialmente ambas as partes, instaurar-se-á, desde logo, a sessão de conciliação, dispensados o registro prévio de pedido e a citação.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art18.i1",
+          "notas": [],
+          "rotulo": "I",
+          "rubrica": null,
+          "texto": "por correspondência, com aviso de recebimento em mão própria;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art18.i2",
+          "notas": [],
+          "rotulo": "II",
+          "rubrica": null,
+          "texto": "tratando-se de pessoa jurídica ou firma individual, mediante entrega ao encarregado da recepção, que será obrigatoriamente identificado;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art18.i3",
+          "notas": [],
+          "rotulo": "III",
+          "rubrica": null,
+          "texto": "sendo necessário, por oficial de justiça, independentemente de mandado ou carta precatória.",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art18.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "A citação conterá cópia do pedido inicial, dia e hora para comparecimento do citando e advertência de que, não comparecendo este, considerar-se-ão verdadeiras as alegações iniciais, e será proferido julgamento, de plano.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art18.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "Não se fará citação por edital.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art18.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "O comparecimento espontâneo suprirá a falta ou nulidade da citação.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art18",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 18,
+      "parcial": false,
+      "rotulo": "Art. 18",
+      "rubrica": "Das Citações e Intimações",
+      "sufixo": [],
+      "texto": "A citação far-se-á:",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art19.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Dos atos praticados na audiência, considerar-se-ão desde logo cientes as partes.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art19.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "As partes comunicarão ao juízo as mudanças de endereço ocorridas no curso do processo, reputando-se eficazes as intimações enviadas ao local anteriormente indicado, na ausência da comunicação.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art19",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 19,
+      "parcial": false,
+      "rotulo": "Art. 19",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "As intimações serão feitas na forma prevista para citação, ou por qualquer outro meio idôneo de comunicação.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art20",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 20,
+      "parcial": false,
+      "rotulo": "Art. 20",
+      "rubrica": "Da Revelia",
+      "sufixo": [],
+      "texto": "Não comparecendo o demandado à sessão de conciliação ou à audiência de instrução e julgamento, reputar-se-ão verdadeiros os fatos alegados no pedido inicial, salvo se o contrário resultar da convicção do Juiz.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art21",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VIII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 21,
+      "parcial": false,
+      "rotulo": "Art. 21",
+      "rubrica": "Da Conciliação e do Juízo Arbitral",
+      "sufixo": [],
+      "texto": "Aberta a sessão, o Juiz togado ou leigo esclarecerá as partes presentes sobre as vantagens da conciliação, mostrando-lhes os riscos e as conseqüências do litígio, especialmente quanto ao disposto no § 3º do art. 3º desta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art22.p1",
+          "notas": [
+            {
+              "ano": 2020,
+              "bruto": "(Incluído pela Lei nº 13.994, de 2020)",
+              "data": null,
+              "norma": "Lei nº 13.994",
+              "tipo": "inclusao"
+            }
+          ],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Obtida a conciliação, esta será reduzida a escrito e homologada pelo Juiz togado mediante sentença com eficácia de título executivo.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art22.p2",
+          "notas": [
+            {
+              "ano": 2020,
+              "bruto": "(Incluído pela Lei nº 13.994, de 2020)",
+              "data": null,
+              "norma": "Lei nº 13.994",
+              "tipo": "inclusao"
+            }
+          ],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "É cabível a conciliação não presencial conduzida pelo Juizado mediante o emprego dos recursos tecnológicos disponíveis de transmissão de sons e imagens em tempo real, devendo o resultado da tentativa de conciliação ser reduzido a escrito com os anexos pertinentes.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art22",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VIII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 22,
+      "parcial": false,
+      "rotulo": "Art. 22",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A conciliação será conduzida pelo Juiz togado ou leigo ou por conciliador sob sua orientação.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art23",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VIII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2020,
+          "bruto": "(Redação dada pela Lei nº 13.994, de 2020)",
+          "data": null,
+          "norma": "Lei nº 13.994",
+          "tipo": "redacao"
+        }
+      ],
+      "numero": 23,
+      "parcial": false,
+      "rotulo": "Art. 23",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Se o demandado não comparecer ou recusar-se a participar da tentativa de conciliação não presencial, o Juiz togado proferirá sentença.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art24.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "O juízo arbitral considerar-se-á instaurado, independentemente de termo de compromisso, com a escolha do árbitro pelas partes. Se este não estiver presente, o Juiz convocá-lo-á e designará, de imediato, a data para a audiência de instrução.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art24.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "O árbitro será escolhido dentre os juízes leigos.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art24",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VIII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 24,
+      "parcial": false,
+      "rotulo": "Art. 24",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Não obtida a conciliação, as partes poderão optar, de comum acordo, pelo juízo arbitral, na forma prevista nesta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art25",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VIII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 25,
+      "parcial": false,
+      "rotulo": "Art. 25",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O árbitro conduzirá o processo com os mesmos critérios do Juiz, na forma dos arts. 5º e 6º desta Lei, podendo decidir por eqüidade.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art26",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VIII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 26,
+      "parcial": false,
+      "rotulo": "Art. 26",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Ao término da instrução, ou nos cinco dias subseqüentes, o árbitro apresentará o laudo ao Juiz togado para homologação por sentença irrecorrível.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art27.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Não sendo possível a sua realização imediata, será a audiência designada para um dos quinze dias subseqüentes, cientes, desde logo, as partes e testemunhas eventualmente presentes.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art27",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção IX",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 27,
+      "parcial": false,
+      "rotulo": "Art. 27",
+      "rubrica": "Da Instrução e Julgamento",
+      "sufixo": [],
+      "texto": "Não instituído o juízo arbitral, proceder-se-á imediatamente à audiência de instrução e julgamento, desde que não resulte prejuízo para a defesa.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art28",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção IX",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 28,
+      "parcial": false,
+      "rotulo": "Art. 28",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Na audiência de instrução e julgamento serão ouvidas as partes, colhida a prova e, em seguida, proferida a sentença.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art29.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Sobre os documentos apresentados por uma das partes, manifestar-se-á imediatamente a parte contrária, sem interrupção da audiência.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art29",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção IX",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 29,
+      "parcial": false,
+      "rotulo": "Art. 29",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Serão decididos de plano todos os incidentes que possam interferir no regular prosseguimento da audiência. As demais questões serão decididas na sentença.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art30",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção X",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 30,
+      "parcial": false,
+      "rotulo": "Art. 30",
+      "rubrica": "Da Resposta do Réu",
+      "sufixo": [],
+      "texto": "A contestação, que será oral ou escrita, conterá toda matéria de defesa, exceto argüição de suspeição ou impedimento do Juiz, que se processará na forma da legislação em vigor.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art31.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "O autor poderá responder ao pedido do réu na própria audiência ou requerer a designação da nova data, que será desde logo fixada, cientes todos os presentes.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art31",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção X",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 31,
+      "parcial": false,
+      "rotulo": "Art. 31",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Não se admitirá a reconvenção. É lícito ao réu, na contestação, formular pedido em seu favor, nos limites do art. 3º desta Lei, desde que fundado nos mesmos fatos que constituem objeto da controvérsia.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art32",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 32,
+      "parcial": false,
+      "rotulo": "Art. 32",
+      "rubrica": "Das Provas",
+      "sufixo": [],
+      "texto": "Todos os meios de prova moralmente legítimos, ainda que não especificados em lei, são hábeis para provar a veracidade dos fatos alegados pelas partes.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art33",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 33,
+      "parcial": false,
+      "rotulo": "Art. 33",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Todas as provas serão produzidas na audiência de instrução e julgamento, ainda que não requeridas previamente, podendo o Juiz limitar ou excluir as que considerar excessivas, impertinentes ou protelatórias.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art34.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "O requerimento para intimação das testemunhas será apresentado à Secretaria no mínimo cinco dias antes da audiência de instrução e julgamento.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art34.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "Não comparecendo a testemunha intimada, o Juiz poderá determinar sua imediata condução, valendo-se, se necessário, do concurso da força pública.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art34",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 34,
+      "parcial": false,
+      "rotulo": "Art. 34",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "As testemunhas, até o máximo de três para cada parte, comparecerão à audiência de instrução e julgamento levadas pela parte que as tenha arrolado, independentemente de intimação, ou mediante esta, se assim for requerido.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art35.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "No curso da audiência, poderá o Juiz, de ofício ou a requerimento das partes, realizar inspeção em pessoas ou coisas, ou determinar que o faça pessoa de sua confiança, que lhe relatará informalmente o verificado.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art35",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 35,
+      "parcial": false,
+      "rotulo": "Art. 35",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Quando a prova do fato exigir, o Juiz poderá inquirir técnicos de sua confiança, permitida às partes a apresentação de parecer técnico.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art36",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 36,
+      "parcial": false,
+      "rotulo": "Art. 36",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A prova oral não será reduzida a escrito, devendo a sentença referir, no essencial, os informes trazidos nos depoimentos.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art37",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 37,
+      "parcial": false,
+      "rotulo": "Art. 37",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A instrução poderá ser dirigida por Juiz leigo, sob a supervisão de Juiz togado.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art38.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Não se admitirá sentença condenatória por quantia ilíquida, ainda que genérico o pedido.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art38",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 38,
+      "parcial": false,
+      "rotulo": "Art. 38",
+      "rubrica": "Da Sentença",
+      "sufixo": [],
+      "texto": "A sentença mencionará os elementos de convicção do Juiz, com breve resumo dos fatos relevantes ocorridos em audiência, dispensado o relatório.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art39",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 39,
+      "parcial": false,
+      "rotulo": "Art. 39",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "É ineficaz a sentença condenatória na parte que exceder a alçada estabelecida nesta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art40",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 40,
+      "parcial": false,
+      "rotulo": "Art. 40",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O Juiz leigo que tiver dirigido a instrução proferirá sua decisão e imediatamente a submeterá ao Juiz togado, que poderá homologá-la, proferir outra em substituição ou, antes de se manifestar, determinar a realização de atos probatórios indispensáveis.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art41.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "O recurso será julgado por uma turma composta por três Juízes togados, em exercício no primeiro grau de jurisdição, reunidos na sede do Juizado.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art41.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "No recurso, as partes serão obrigatoriamente representadas por advogado.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art41",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 41,
+      "parcial": false,
+      "rotulo": "Art. 41",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Da sentença, excetuada a homologatória de conciliação ou laudo arbitral, caberá recurso para o próprio Juizado.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art42.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "O preparo será feito, independentemente de intimação, nas quarenta e oito horas seguintes à interposição, sob pena de deserção.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art42.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "Após o preparo, a Secretaria intimará o recorrido para oferecer resposta escrita no prazo de dez dias.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art42",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 42,
+      "parcial": false,
+      "rotulo": "Art. 42",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O recurso será interposto no prazo de dez dias, contados da ciência da sentença, por petição escrita, da qual constarão as razões e o pedido do recorrente.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art43",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 43,
+      "parcial": false,
+      "rotulo": "Art. 43",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O recurso terá somente efeito devolutivo, podendo o Juiz dar-lhe efeito suspensivo, para evitar dano irreparável para a parte.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art44",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 44,
+      "parcial": false,
+      "rotulo": "Art. 44",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "As partes poderão requerer a transcrição da gravação da fita magnética a que alude o § 3º do art. 13 desta Lei, correndo por conta do requerente as despesas respectivas.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art45",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 45,
+      "parcial": false,
+      "rotulo": "Art. 45",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "As partes serão intimadas da data da sessão de julgamento.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art46",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 46,
+      "parcial": false,
+      "rotulo": "Art. 46",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O julgamento em segunda instância constará apenas da ata, com a indicação suficiente do processo, fundamentação sucinta e parte dispositiva. Se a sentença for confirmada pelos próprios fundamentos, a súmula do julgamento servirá de acórdão.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art48.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Os erros materiais podem ser corrigidos de ofício.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art48",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XIII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2015,
+          "bruto": "(Redação dada pela Lei nº 13.105, de 2015)",
+          "data": null,
+          "norma": "Lei nº 13.105",
+          "tipo": "redacao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "numero": 48,
+      "parcial": false,
+      "rotulo": "Art. 48",
+      "rubrica": "Dos Embargos de Declaração",
+      "sufixo": [],
+      "texto": "Caberão embargos de declaração contra sentença ou acórdão nos casos previstos no Código de Processo Civil.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art49",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XIII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 49,
+      "parcial": false,
+      "rotulo": "Art. 49",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Os embargos de declaração serão interpostos por escrito ou oralmente, no prazo de cinco dias, contados da ciência da decisão.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art50",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XIII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2015,
+          "bruto": "(Redação dada pela Lei nº 13.105, de 2015)",
+          "data": null,
+          "norma": "Lei nº 13.105",
+          "tipo": "redacao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "numero": 50,
+      "parcial": false,
+      "rotulo": "Art. 50",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Os embargos de declaração interrompem o prazo para a interposição de recurso.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art51.i1",
+          "notas": [],
+          "rotulo": "I",
+          "rubrica": null,
+          "texto": "quando o autor deixar de comparecer a qualquer das audiências do processo;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art51.i2",
+          "notas": [],
+          "rotulo": "II",
+          "rubrica": null,
+          "texto": "quando inadmissível o procedimento instituído por esta Lei ou seu prosseguimento, após a conciliação;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art51.i3",
+          "notas": [],
+          "rotulo": "III",
+          "rubrica": null,
+          "texto": "quando for reconhecida a incompetência territorial;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art51.i4",
+          "notas": [],
+          "rotulo": "IV",
+          "rubrica": null,
+          "texto": "quando sobrevier qualquer dos impedimentos previstos no art. 8º desta Lei;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art51.i5",
+          "notas": [],
+          "rotulo": "V",
+          "rubrica": null,
+          "texto": "quando, falecido o autor, a habilitação depender de sentença ou não se der no prazo de trinta dias;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art51.i6",
+          "notas": [],
+          "rotulo": "VI",
+          "rubrica": null,
+          "texto": "quando, falecido o réu, o autor não promover a citação dos sucessores no prazo de trinta dias da ciência do fato.",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art51.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "A extinção do processo independerá, em qualquer hipótese, de prévia intimação pessoal das partes.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art51.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "No caso do inciso I deste artigo, quando comprovar que a ausência decorre de força maior, a parte poderá ser isentada, pelo Juiz, do pagamento das custas.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art51",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XIV",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 51,
+      "parcial": false,
+      "rotulo": "Art. 51",
+      "rubrica": "Da Extinção do Processo Sem Julgamento do Mérito",
+      "sufixo": [],
+      "texto": "Extingue-se o processo, além dos casos previstos em lei:",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art52.i1",
+          "notas": [],
+          "rotulo": "I",
+          "rubrica": null,
+          "texto": "as sentenças serão necessariamente líquidas, contendo a conversão em Bônus do Tesouro Nacional - BTN ou índice equivalente;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art52.i2",
+          "notas": [],
+          "rotulo": "II",
+          "rubrica": null,
+          "texto": "os cálculos de conversão de índices, de honorários, de juros e de outras parcelas serão efetuados por servidor judicial;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art52.i3",
+          "notas": [],
+          "rotulo": "III",
+          "rubrica": null,
+          "texto": "a intimação da sentença será feita, sempre que possível, na própria audiência em que for proferida. Nessa intimação, o vencido será instado a cumprir a sentença tão logo ocorra seu trânsito em julgado, e advertido dos efeitos do seu descumprimento (inciso V);",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art52.i4",
+          "notas": [],
+          "rotulo": "IV",
+          "rubrica": null,
+          "texto": "não cumprida voluntariamente a sentença transitada em julgado, e tendo havido solicitação do interessado, que poderá ser verbal, proceder-se-á desde logo à execução, dispensada nova citação;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art52.i5",
+          "notas": [],
+          "rotulo": "V",
+          "rubrica": null,
+          "texto": "nos casos de obrigação de entregar, de fazer, ou de não fazer, o Juiz, na sentença ou na fase de execução, cominará multa diária, arbitrada de acordo com as condições econômicas do devedor, para a hipótese de inadimplemento. Não cumprida a obrigação, o credor poderá requerer a elevação da multa ou a transformação da condenação em perdas e danos, que o Juiz de imediato arbitrará, seguindo-se a execução por quantia certa, incluída a multa vencida de obrigação de dar, quando evidenciada a malícia do devedor na execução do julgado;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art52.i6",
+          "notas": [],
+          "rotulo": "VI",
+          "rubrica": null,
+          "texto": "na obrigação de fazer, o Juiz pode determinar o cumprimento por outrem, fixado o valor que o devedor deve depositar para as despesas, sob pena de multa diária;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art52.i7",
+          "notas": [],
+          "rotulo": "VII",
+          "rubrica": null,
+          "texto": "na alienação forçada dos bens, o Juiz poderá autorizar o devedor, o credor ou terceira pessoa idônea a tratar da alienação do bem penhorado, a qual se aperfeiçoará em juízo até a data fixada para a praça ou leilão. Sendo o preço inferior ao da avaliação, as partes serão ouvidas. Se o pagamento não for à vista, será oferecida caução idônea, nos casos de alienação de bem móvel, ou hipotecado o imóvel;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [],
+          "id": "art52.i8",
+          "notas": [],
+          "rotulo": "VIII",
+          "rubrica": null,
+          "texto": "é dispensada a publicação de editais em jornais, quando se tratar de alienação de bens de pequeno valor;",
+          "tipo": "inciso"
+        },
+        {
+          "filhos": [
+            {
+              "filhos": [],
+              "id": "art52.i9.a",
+              "notas": [],
+              "rotulo": "a",
+              "rubrica": null,
+              "texto": "falta ou nulidade da citação no processo, se ele correu à revelia;",
+              "tipo": "alinea"
+            },
+            {
+              "filhos": [],
+              "id": "art52.i9.b",
+              "notas": [],
+              "rotulo": "b",
+              "rubrica": null,
+              "texto": "manifesto excesso de execução;",
+              "tipo": "alinea"
+            },
+            {
+              "filhos": [],
+              "id": "art52.i9.c",
+              "notas": [],
+              "rotulo": "c",
+              "rubrica": null,
+              "texto": "erro de cálculo;",
+              "tipo": "alinea"
+            },
+            {
+              "filhos": [],
+              "id": "art52.i9.d",
+              "notas": [],
+              "rotulo": "d",
+              "rubrica": null,
+              "texto": "causa impeditiva, modificativa ou extintiva da obrigação, superveniente à sentença.",
+              "tipo": "alinea"
+            }
+          ],
+          "id": "art52.i9",
+          "notas": [],
+          "rotulo": "IX",
+          "rubrica": null,
+          "texto": "o devedor poderá oferecer embargos, nos autos da execução, versando sobre:",
+          "tipo": "inciso"
+        }
+      ],
+      "id": "art52",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XV",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 52,
+      "parcial": false,
+      "rotulo": "Art. 52",
+      "rubrica": "Da Execução",
+      "sufixo": [],
+      "texto": "A execução da sentença processar-se-á no próprio Juizado, aplicando-se, no que couber, o disposto no Código de Processo Civil, com as seguintes alterações:",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art53.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Efetuada a penhora, o devedor será intimado a comparecer à audiência de conciliação, quando poderá oferecer embargos (art. 52, IX), por escrito ou verbalmente.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art53.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "Na audiência, será buscado o meio mais rápido e eficaz para a solução do litígio, se possível com dispensa da alienação judicial, devendo o conciliador propor, entre outras medidas cabíveis, o pagamento do débito a prazo ou a prestação, a dação em pagamento ou a imediata adjudicação do bem penhorado.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art53.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "Não apresentados os embargos em audiência, ou julgados improcedentes, qualquer das partes poderá requerer ao Juiz a adoção de uma das alternativas do parágrafo anterior.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art53.p4",
+          "notas": [],
+          "rotulo": "§ 4º",
+          "rubrica": null,
+          "texto": "Não encontrado o devedor ou inexistindo bens penhoráveis, o processo será imediatamente extinto, devolvendo-se os documentos ao autor.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art53",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XV",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 53,
+      "parcial": false,
+      "rotulo": "Art. 53",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A execução de título executivo extrajudicial, no valor de até quarenta salários mínimos, obedecerá ao disposto no Código de Processo Civil, com as modificações introduzidas por esta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art54.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "O preparo do recurso, na forma do § 1º do art. 42 desta Lei, compreenderá todas as despesas processuais, inclusive aquelas dispensadas em primeiro grau de jurisdição, ressalvada a hipótese de assistência judiciária gratuita.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art54",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XVI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 54,
+      "parcial": false,
+      "rotulo": "Art. 54",
+      "rubrica": "Das Despesas",
+      "sufixo": [],
+      "texto": "O acesso ao Juizado Especial independerá, em primeiro grau de jurisdição, do pagamento de custas, taxas ou despesas.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [
+            {
+              "filhos": [],
+              "id": "art55.pu.i1",
+              "notas": [],
+              "rotulo": "I",
+              "rubrica": null,
+              "texto": "reconhecida a litigância de má-fé;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art55.pu.i2",
+              "notas": [],
+              "rotulo": "II",
+              "rubrica": null,
+              "texto": "improcedentes os embargos do devedor;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art55.pu.i3",
+              "notas": [],
+              "rotulo": "III",
+              "rubrica": null,
+              "texto": "tratar-se de execução de sentença que tenha sido objeto de recurso improvido do devedor.",
+              "tipo": "inciso"
+            }
+          ],
+          "id": "art55.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Na execução não serão contadas custas, salvo quando:",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art55",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XVI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 55,
+      "parcial": false,
+      "rotulo": "Art. 55",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A sentença de primeiro grau não condenará o vencido em custas e honorários de advogado, ressalvados os casos de litigância de má-fé. Em segundo grau, o recorrente, vencido, pagará as custas e honorários de advogado, que serão fixados entre dez por cento e vinte por cento do valor de condenação ou, não havendo condenação, do valor corrigido da causa.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art56",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XVII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 56,
+      "parcial": false,
+      "rotulo": "Art. 56",
+      "rubrica": "Disposições Finais",
+      "sufixo": [],
+      "texto": "Instituído o Juizado Especial, serão implantadas as curadorias necessárias e o serviço de assistência judiciária.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art57.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Valerá como título extrajudicial o acordo celebrado pelas partes, por instrumento escrito, referendado pelo órgão competente do Ministério Público.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art57",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XVII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 57,
+      "parcial": false,
+      "rotulo": "Art. 57",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O acordo extrajudicial, de qualquer natureza ou valor, poderá ser homologado, no juízo competente, independentemente de termo, valendo a sentença como título executivo judicial.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art58",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XVII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 58,
+      "parcial": false,
+      "rotulo": "Art. 58",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "As normas de organização judiciária local poderão estender a conciliação prevista nos arts. 22 e 23 a causas não abrangidas por esta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art59",
+      "local": {
+        "capitulo": "Capítulo II — Dos Juizados Especiais Cíveis",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção XVII",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 59,
+      "parcial": false,
+      "rotulo": "Art. 59",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Não se admitirá ação rescisória nas causas sujeitas ao procedimento instituído por esta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art60.pu",
+          "notas": [
+            {
+              "ano": 2006,
+              "bruto": "(Incluído pela Lei nº 11.313, de 2006)",
+              "data": null,
+              "norma": "Lei nº 11.313",
+              "tipo": "inclusao"
+            }
+          ],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Na reunião de processos, perante o juízo comum ou o tribunal do júri, decorrentes da aplicação das regras de conexão e continência, observar-se-ão os institutos da transação penal e da composição dos danos civis.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art60",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2006,
+          "bruto": "(Redação dada pela Lei nº 11.313, de 2006)",
+          "data": null,
+          "norma": "Lei nº 11.313",
+          "tipo": "redacao"
+        }
+      ],
+      "numero": 60,
+      "parcial": false,
+      "rotulo": "Art. 60",
+      "rubrica": "Disposições Gerais",
+      "sufixo": [],
+      "texto": "O Juizado Especial Criminal, provido por juízes togados ou togados e leigos, tem competência para a conciliação, o julgamento e a execução das infrações penais de menor potencial ofensivo, respeitadas as regras de conexão e continência.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art61",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2006,
+          "bruto": "(Redação dada pela Lei nº 11.313, de 2006)",
+          "data": null,
+          "norma": "Lei nº 11.313",
+          "tipo": "redacao"
+        }
+      ],
+      "numero": 61,
+      "parcial": false,
+      "rotulo": "Art. 61",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Consideram-se infrações penais de menor potencial ofensivo, para os efeitos desta Lei, as contravenções penais e os crimes a que a lei comine pena máxima não superior a 2 (dois) anos, cumulada ou não com multa.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art62",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2018,
+          "bruto": "(Redação dada pela Lei nº 13.603, de 2018)",
+          "data": null,
+          "norma": "Lei nº 13.603",
+          "tipo": "redacao"
+        }
+      ],
+      "numero": 62,
+      "parcial": false,
+      "rotulo": "Art. 62",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O processo perante o Juizado Especial orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, objetivando, sempre que possível, a reparação dos danos sofridos pela vítima e a aplicação de pena não privativa de liberdade.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art63",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 63,
+      "parcial": false,
+      "rotulo": "Art. 63",
+      "rubrica": "Da Competência e dos Atos Processuais",
+      "sufixo": [],
+      "texto": "A competência do Juizado será determinada pelo lugar em que foi praticada a infração penal.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art64",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 64,
+      "parcial": false,
+      "rotulo": "Art. 64",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Os atos processuais serão públicos e poderão realizar-se em horário noturno e em qualquer dia da semana, conforme dispuserem as normas de organização judiciária.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art65.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Não se pronunciará qualquer nulidade sem que tenha havido prejuízo.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art65.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "A prática de atos processuais em outras comarcas poderá ser solicitada por qualquer meio hábil de comunicação.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art65.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "Serão objeto de registro escrito exclusivamente os atos havidos por essenciais. Os atos realizados em audiência de instrução e julgamento poderão ser gravados em fita magnética ou equivalente.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art65",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 65,
+      "parcial": false,
+      "rotulo": "Art. 65",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Os atos processuais serão válidos sempre que preencherem as finalidades para as quais foram realizados, atendidos os critérios indicados no art. 62 desta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art66.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Não encontrado o acusado para ser citado, o Juiz encaminhará as peças existentes ao Juízo comum para adoção do procedimento previsto em lei.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art66",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 66,
+      "parcial": false,
+      "rotulo": "Art. 66",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A citação será pessoal e far-se-á no próprio Juizado, sempre que possível, ou por mandado.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art67.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Dos atos praticados em audiência considerar-se-ão desde logo cientes as partes, os interessados e defensores.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art67",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 67,
+      "parcial": false,
+      "rotulo": "Art. 67",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A intimação far-se-á por correspondência, com aviso de recebimento pessoal ou, tratando-se de pessoa jurídica ou firma individual, mediante entrega ao encarregado da recepção, que será obrigatoriamente identificado, ou, sendo necessário, por oficial de justiça, independentemente de mandado ou carta precatória, ou ainda por qualquer meio idôneo de comunicação.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art68",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 68,
+      "parcial": false,
+      "rotulo": "Art. 68",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Do ato de intimação do autor do fato e do mandado de citação do acusado, constará a necessidade de seu comparecimento acompanhado de advogado, com a advertência de que, na sua falta, ser-lhe-á designado defensor público.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art69.pu",
+          "notas": [
+            {
+              "ano": 2002,
+              "bruto": "(Redação dada pela Lei nº 10.455, de 13.5.2002)",
+              "data": "2002-05-13",
+              "norma": "Lei nº 10.455",
+              "tipo": "redacao"
+            }
+          ],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Ao autor do fato que, após a lavratura do termo, for imediatamente encaminhado ao juizado ou assumir o compromisso de a ele comparecer, não se imporá prisão em flagrante, nem se exigirá fiança. Em caso de violência doméstica, o juiz poderá determinar, como medida de cautela, seu afastamento do lar, domicílio ou local de convivência com a vítima.)",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art69",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 69,
+      "parcial": false,
+      "rotulo": "Art. 69",
+      "rubrica": "Da Fase Preliminar",
+      "sufixo": [],
+      "texto": "A autoridade policial que tomar conhecimento da ocorrência lavrará termo circunstanciado e o encaminhará imediatamente ao Juizado, com o autor do fato e a vítima, providenciando-se as requisições dos exames periciais necessários.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art70",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 70,
+      "parcial": false,
+      "rotulo": "Art. 70",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Comparecendo o autor do fato e a vítima, e não sendo possível a realização imediata da audiência preliminar, será designada data próxima, da qual ambos sairão cientes.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art71",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 71,
+      "parcial": false,
+      "rotulo": "Art. 71",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Na falta do comparecimento de qualquer dos envolvidos, a Secretaria providenciará sua intimação e, se for o caso, a do responsável civil, na forma dos arts. 67 e 68 desta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art72",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 72,
+      "parcial": false,
+      "rotulo": "Art. 72",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Na audiência preliminar, presente o representante do Ministério Público, o autor do fato e a vítima e, se possível, o responsável civil, acompanhados por seus advogados, o Juiz esclarecerá sobre a possibilidade da composição dos danos e da aceitação da proposta de aplicação imediata de pena não privativa de liberdade.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art73.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Os conciliadores são auxiliares da Justiça, recrutados, na forma da lei local, preferentemente entre bacharéis em Direito, excluídos os que exerçam funções na administração da Justiça Criminal.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art73",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 73,
+      "parcial": false,
+      "rotulo": "Art. 73",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A conciliação será conduzida pelo Juiz ou por conciliador sob sua orientação.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art74.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Tratando-se de ação penal de iniciativa privada ou de ação penal pública condicionada à representação, o acordo homologado acarreta a renúncia ao direito de queixa ou representação.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art74",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 74,
+      "parcial": false,
+      "rotulo": "Art. 74",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A composição dos danos civis será reduzida a escrito e, homologada pelo Juiz mediante sentença irrecorrível, terá eficácia de título a ser executado no juízo civil competente.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art75.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "O não oferecimento da representação na audiência preliminar não implica decadência do direito, que poderá ser exercido no prazo previsto em lei.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art75",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 75,
+      "parcial": false,
+      "rotulo": "Art. 75",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Não obtida a composição dos danos civis, será dada imediatamente ao ofendido a oportunidade de exercer o direito de representação verbal, que será reduzida a termo.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art76.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Nas hipóteses de ser a pena de multa a única aplicável, o Juiz poderá reduzi-la até a metade.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [
+            {
+              "filhos": [],
+              "id": "art76.p2.i1",
+              "notas": [],
+              "rotulo": "I",
+              "rubrica": null,
+              "texto": "ter sido o autor da infração condenado, pela prática de crime, à pena privativa de liberdade, por sentença definitiva;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art76.p2.i2",
+              "notas": [],
+              "rotulo": "II",
+              "rubrica": null,
+              "texto": "ter sido o agente beneficiado anteriormente, no prazo de cinco anos, pela aplicação de pena restritiva ou multa, nos termos deste artigo;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art76.p2.i3",
+              "notas": [],
+              "rotulo": "III",
+              "rubrica": null,
+              "texto": "não indicarem os antecedentes, a conduta social e a personalidade do agente, bem como os motivos e as circunstâncias, ser necessária e suficiente a adoção da medida.",
+              "tipo": "inciso"
+            }
+          ],
+          "id": "art76.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "Não se admitirá a proposta se ficar comprovado:",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art76.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "Aceita a proposta pelo autor da infração e seu defensor, será submetida à apreciação do Juiz.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art76.p4",
+          "notas": [],
+          "rotulo": "§ 4º",
+          "rubrica": null,
+          "texto": "Acolhendo a proposta do Ministério Público aceita pelo autor da infração, o Juiz aplicará a pena restritiva de direitos ou multa, que não importará em reincidência, sendo registrada apenas para impedir novamente o mesmo benefício no prazo de cinco anos.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art76.p5",
+          "notas": [],
+          "rotulo": "§ 5º",
+          "rubrica": null,
+          "texto": "Da sentença prevista no parágrafo anterior caberá a apelação referida no art. 82 desta Lei.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art76.p6",
+          "notas": [],
+          "rotulo": "§ 6º",
+          "rubrica": null,
+          "texto": "A imposição da sanção de que trata o § 4º deste artigo não constará de certidão de antecedentes criminais, salvo para os fins previstos no mesmo dispositivo, e não terá efeitos civis, cabendo aos interessados propor ação cabível no juízo cível.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art76",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção II",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 76,
+      "parcial": false,
+      "rotulo": "Art. 76",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Havendo representação ou tratando-se de crime de ação penal pública incondicionada, não sendo caso de arquivamento, o Ministério Público poderá propor a aplicação imediata de pena restritiva de direitos ou multas, a ser especificada na proposta.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art77.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Para o oferecimento da denúncia, que será elaborada com base no termo de ocorrência referido no art. 69 desta Lei, com dispensa do inquérito policial, prescindir-se-á do exame do corpo de delito quando a materialidade do crime estiver aferida por boletim médico ou prova equivalente.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art77.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "Se a complexidade ou circunstâncias do caso não permitirem a formulação da denúncia, o Ministério Público poderá requerer ao Juiz o encaminhamento das peças existentes, na forma do parágrafo único do art. 66 desta Lei.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art77.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "Na ação penal de iniciativa do ofendido poderá ser oferecida queixa oral, cabendo ao Juiz verificar se a complexidade e as circunstâncias do caso determinam a adoção das providências previstas no parágrafo único do art. 66 desta Lei.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art77",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 77,
+      "parcial": false,
+      "rotulo": "Art. 77",
+      "rubrica": "Do Procedimento Sumariíssimo",
+      "sufixo": [],
+      "texto": "Na ação penal de iniciativa pública, quando não houver aplicação de pena, pela ausência do autor do fato, ou pela não ocorrência da hipótese prevista no art. 76 desta Lei, o Ministério Público oferecerá ao Juiz, de imediato, denúncia oral, se não houver necessidade de diligências imprescindíveis.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art78.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Se o acusado não estiver presente, será citado na forma dos arts. 66 e 68 desta Lei e cientificado da data da audiência de instrução e julgamento, devendo a ela trazer suas testemunhas ou apresentar requerimento para intimação, no mínimo cinco dias antes de sua realização.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art78.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "Não estando presentes o ofendido e o responsável civil, serão intimados nos termos do art. 67 desta Lei para comparecerem à audiência de instrução e julgamento.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art78.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "As testemunhas arroladas serão intimadas na forma prevista no art. 67 desta Lei.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art78",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 78,
+      "parcial": false,
+      "rotulo": "Art. 78",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Oferecida a denúncia ou queixa, será reduzida a termo, entregando-se cópia ao acusado, que com ela ficará citado e imediatamente cientificado da designação de dia e hora para a audiência de instrução e julgamento, da qual também tomarão ciência o Ministério Público, o ofendido, o responsável civil e seus advogados.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art79",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 79,
+      "parcial": false,
+      "rotulo": "Art. 79",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "No dia e hora designados para a audiência de instrução e julgamento, se na fase preliminar não tiver havido possibilidade de tentativa de conciliação e de oferecimento de proposta pelo Ministério Público, proceder-se-á nos termos dos arts. 72, 73, 74 e 75 desta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art80",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 80,
+      "parcial": false,
+      "rotulo": "Art. 80",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Nenhum ato será adiado, determinando o Juiz, quando imprescindível, a condução coercitiva de quem deva comparecer.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art81.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Todas as provas serão produzidas na audiência de instrução e julgamento, podendo o Juiz limitar ou excluir as que considerar excessivas, impertinentes ou protelatórias.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [
+            {
+              "filhos": [],
+              "id": "art81.p1-A.i1",
+              "notas": [
+                {
+                  "ano": 2021,
+                  "bruto": "(Incluído pela Lei nº 14.245, de 2021)",
+                  "data": null,
+                  "norma": "Lei nº 14.245",
+                  "tipo": "inclusao"
+                }
+              ],
+              "rotulo": "I",
+              "rubrica": null,
+              "texto": "a manifestação sobre circunstâncias ou elementos alheios aos fatos objeto de apuração nos autos;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art81.p1-A.i2",
+              "notas": [
+                {
+                  "ano": 2021,
+                  "bruto": "(Incluído pela Lei nº 14.245, de 2021)",
+                  "data": null,
+                  "norma": "Lei nº 14.245",
+                  "tipo": "inclusao"
+                }
+              ],
+              "rotulo": "II",
+              "rubrica": null,
+              "texto": "a utilização de linguagem, de informações ou de material que ofendam a dignidade da vítima ou de testemunhas.",
+              "tipo": "inciso"
+            }
+          ],
+          "id": "art81.p1-A",
+          "notas": [
+            {
+              "ano": 2021,
+              "bruto": "(Incluído pela Lei nº 14.245, de 2021)",
+              "data": null,
+              "norma": "Lei nº 14.245",
+              "tipo": "inclusao"
+            }
+          ],
+          "rotulo": "§ 1º-A",
+          "rubrica": null,
+          "texto": "Durante a audiência, todas as partes e demais sujeitos processuais presentes no ato deverão respeitar a dignidade da vítima, sob pena de responsabilização civil, penal e administrativa, cabendo ao juiz garantir o cumprimento do disposto neste artigo, vedadas:",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art81.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "De todo o ocorrido na audiência será lavrado termo, assinado pelo Juiz e pelas partes, contendo breve resumo dos fatos relevantes ocorridos em audiência e a sentença.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art81.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "A sentença, dispensado o relatório, mencionará os elementos de convicção do Juiz.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art81",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 81,
+      "parcial": false,
+      "rotulo": "Art. 81",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Aberta a audiência, será dada a palavra ao defensor para responder à acusação, após o que o Juiz receberá, ou não, a denúncia ou queixa; havendo recebimento, serão ouvidas a vítima e as testemunhas de acusação e defesa, interrogando-se a seguir o acusado, se presente, passando-se imediatamente aos debates orais e à prolação da sentença.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art82.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "A apelação será interposta no prazo de dez dias, contados da ciência da sentença pelo Ministério Público, pelo réu e seu defensor, por petição escrita, da qual constarão as razões e o pedido do recorrente.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art82.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "O recorrido será intimado para oferecer resposta escrita no prazo de dez dias.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art82.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "As partes poderão requerer a transcrição da gravação da fita magnética a que alude o § 3º do art. 65 desta Lei.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art82.p4",
+          "notas": [],
+          "rotulo": "§ 4º",
+          "rubrica": null,
+          "texto": "As partes serão intimadas da data da sessão de julgamento pela imprensa.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art82.p5",
+          "notas": [],
+          "rotulo": "§ 5º",
+          "rubrica": null,
+          "texto": "Se a sentença for confirmada pelos próprios fundamentos, a súmula do julgamento servirá de acórdão.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art82",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 82,
+      "parcial": false,
+      "rotulo": "Art. 82",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Da decisão de rejeição da denúncia ou queixa e da sentença caberá apelação, que poderá ser julgada por turma composta de três Juízes em exercício no primeiro grau de jurisdição, reunidos na sede do Juizado.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art83.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Os embargos de declaração serão opostos por escrito ou oralmente, no prazo de cinco dias, contados da ciência da decisão.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art83.p2",
+          "notas": [
+            {
+              "ano": 2015,
+              "bruto": "(Redação dada pela Lei nº 13.105, de 2015)",
+              "data": null,
+              "norma": "Lei nº 13.105",
+              "tipo": "redacao"
+            },
+            {
+              "ano": null,
+              "bruto": "(Vigência)",
+              "data": null,
+              "norma": null,
+              "tipo": "vigencia"
+            }
+          ],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "Os embargos de declaração interrompem o prazo para a interposição de recurso.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art83.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "Os erros materiais podem ser corrigidos de ofício.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art83",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção III",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2015,
+          "bruto": "(Redação dada pela Lei nº 13.105, de 2015)",
+          "data": null,
+          "norma": "Lei nº 13.105",
+          "tipo": "redacao"
+        },
+        {
+          "ano": null,
+          "bruto": "(Vigência)",
+          "data": null,
+          "norma": null,
+          "tipo": "vigencia"
+        }
+      ],
+      "numero": 83,
+      "parcial": false,
+      "rotulo": "Art. 83",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Cabem embargos de declaração quando, em sentença ou acórdão, houver obscuridade, contradição ou omissão.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art84.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Efetuado o pagamento, o Juiz declarará extinta a punibilidade, determinando que a condenação não fique constando dos registros criminais, exceto para fins de requisição judicial.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art84",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção IV",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 84,
+      "parcial": false,
+      "rotulo": "Art. 84",
+      "rubrica": "Da Execução",
+      "sufixo": [],
+      "texto": "Aplicada exclusivamente pena de multa, seu cumprimento far-se-á mediante pagamento na Secretaria do Juizado.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art85",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção IV",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 85,
+      "parcial": false,
+      "rotulo": "Art. 85",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Não efetuado o pagamento de multa, será feita a conversão em pena privativa da liberdade, ou restritiva de direitos, nos termos previstos em lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art86",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção IV",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 86,
+      "parcial": false,
+      "rotulo": "Art. 86",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A execução das penas privativas de liberdade e restritivas de direitos, ou de multa cumulada com estas, será processada perante o órgão competente, nos termos da lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art87",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção V",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 87,
+      "parcial": false,
+      "rotulo": "Art. 87",
+      "rubrica": "Das Despesas Processuais",
+      "sufixo": [],
+      "texto": "Nos casos de homologação do acordo civil e aplicação de pena restritiva de direitos ou multa (arts. 74 e 76, § 4º), as despesas processuais serão reduzidas, conforme dispuser lei estadual.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art88",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 88,
+      "parcial": false,
+      "rotulo": "Art. 88",
+      "rubrica": "Disposições Finais",
+      "sufixo": [],
+      "texto": "Além das hipóteses do Código Penal e da legislação especial, dependerá de representação a ação penal relativa aos crimes de lesões corporais leves e lesões culposas.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [
+            {
+              "filhos": [],
+              "id": "art89.p1.i1",
+              "notas": [],
+              "rotulo": "I",
+              "rubrica": null,
+              "texto": "reparação do dano, salvo impossibilidade de fazê-lo;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art89.p1.i2",
+              "notas": [],
+              "rotulo": "II",
+              "rubrica": null,
+              "texto": "proibição de freqüentar determinados lugares;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art89.p1.i3",
+              "notas": [],
+              "rotulo": "III",
+              "rubrica": null,
+              "texto": "proibição de ausentar-se da comarca onde reside, sem autorização do Juiz;",
+              "tipo": "inciso"
+            },
+            {
+              "filhos": [],
+              "id": "art89.p1.i4",
+              "notas": [],
+              "rotulo": "IV",
+              "rubrica": null,
+              "texto": "comparecimento pessoal e obrigatório a juízo, mensalmente, para informar e justificar suas atividades.",
+              "tipo": "inciso"
+            }
+          ],
+          "id": "art89.p1",
+          "notas": [],
+          "rotulo": "§ 1º",
+          "rubrica": null,
+          "texto": "Aceita a proposta pelo acusado e seu defensor, na presença do Juiz, este, recebendo a denúncia, poderá suspender o processo, submetendo o acusado a período de prova, sob as seguintes condições:",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art89.p2",
+          "notas": [],
+          "rotulo": "§ 2º",
+          "rubrica": null,
+          "texto": "O Juiz poderá especificar outras condições a que fica subordinada a suspensão, desde que adequadas ao fato e à situação pessoal do acusado.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art89.p3",
+          "notas": [],
+          "rotulo": "§ 3º",
+          "rubrica": null,
+          "texto": "A suspensão será revogada se, no curso do prazo, o beneficiário vier a ser processado por outro crime ou não efetuar, sem motivo justificado, a reparação do dano.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art89.p4",
+          "notas": [],
+          "rotulo": "§ 4º",
+          "rubrica": null,
+          "texto": "A suspensão poderá ser revogada se o acusado vier a ser processado, no curso do prazo, por contravenção, ou descumprir qualquer outra condição imposta.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art89.p5",
+          "notas": [],
+          "rotulo": "§ 5º",
+          "rubrica": null,
+          "texto": "Expirado o prazo sem revogação, o Juiz declarará extinta a punibilidade.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art89.p6",
+          "notas": [],
+          "rotulo": "§ 6º",
+          "rubrica": null,
+          "texto": "Não correrá a prescrição durante o prazo de suspensão do processo.",
+          "tipo": "paragrafo"
+        },
+        {
+          "filhos": [],
+          "id": "art89.p7",
+          "notas": [],
+          "rotulo": "§ 7º",
+          "rubrica": null,
+          "texto": "Se o acusado não aceitar a proposta prevista neste artigo, o processo prosseguirá em seus ulteriores termos.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art89",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 89,
+      "parcial": false,
+      "rotulo": "Art. 89",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Nos crimes em que a pena mínima cominada for igual ou inferior a um ano, abrangidas ou não por esta Lei, o Ministério Público, ao oferecer a denúncia, poderá propor a suspensão do processo, por dois a quatro anos, desde que o acusado não esteja sendo processado ou não tenha sido condenado por outro crime, presentes os demais requisitos que autorizariam a suspensão condicional da pena (art. 77 do Código Penal).",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art90",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(Vide ADIN nº 1.719-9)",
+          "data": null,
+          "norma": null,
+          "tipo": "remissao"
+        }
+      ],
+      "numero": 90,
+      "parcial": false,
+      "rotulo": "Art. 90",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "As disposições desta Lei não se aplicam aos processos penais cuja instrução já estiver iniciada.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art90-A",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 1999,
+          "bruto": "(Artigo incluído pela Lei nº 9.839, de 27.9.1999)",
+          "data": "1999-09-27",
+          "norma": "Lei nº 9.839",
+          "tipo": "outra"
+        }
+      ],
+      "numero": 90,
+      "parcial": false,
+      "rotulo": "Art. 90-A",
+      "rubrica": null,
+      "sufixo": [
+        "A"
+      ],
+      "texto": "As disposições desta Lei não se aplicam no âmbito da Justiça Militar.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art91",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 91,
+      "parcial": false,
+      "rotulo": "Art. 91",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Nos casos em que esta Lei passa a exigir representação para a propositura da ação penal pública, o ofendido ou seu representante legal será intimado para oferecê-la no prazo de trinta dias, sob pena de decadência.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art92",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção VI",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 92,
+      "parcial": false,
+      "rotulo": "Art. 92",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Aplicam-se subsidiariamente as disposições dos Códigos Penal e de Processo Penal, no que não forem incompatíveis com esta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art93",
+      "local": {
+        "capitulo": "Capítulo IV",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 93,
+      "parcial": false,
+      "rotulo": "Art. 93",
+      "rubrica": "Disposições Finais Comuns",
+      "sufixo": [],
+      "texto": "Lei Estadual disporá sobre o Sistema de Juizados Especiais Cíveis e Criminais, sua organização, composição e competência.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art94",
+      "local": {
+        "capitulo": "Capítulo IV",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 94,
+      "parcial": false,
+      "rotulo": "Art. 94",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Os serviços de cartório poderão ser prestados, e as audiências realizadas fora da sede da Comarca, em bairros ou cidades a ela pertencentes, ocupando instalações de prédios públicos, de acordo com audiências previamente anunciadas.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art95.pu",
+          "notas": [
+            {
+              "ano": 2012,
+              "bruto": "(Redação dada pela Lei nº 12.726, de 2012)",
+              "data": null,
+              "norma": "Lei nº 12.726",
+              "tipo": "redacao"
+            }
+          ],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "No prazo de 6 (seis) meses, contado da publicação desta Lei, serão criados e instalados os Juizados Especiais Itinerantes, que deverão dirimir, prioritariamente, os conflitos existentes nas áreas rurais ou nos locais de menor concentração populacional.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art95",
+      "local": {
+        "capitulo": "Capítulo IV",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 95,
+      "parcial": false,
+      "rotulo": "Art. 95",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Os Estados, Distrito Federal e Territórios criarão e instalarão os Juizados Especiais no prazo de seis meses, a contar da vigência desta Lei.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art96",
+      "local": {
+        "capitulo": "Capítulo IV",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 96,
+      "parcial": false,
+      "rotulo": "Art. 96",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Esta Lei entra em vigor no prazo de sessenta dias após a sua publicação.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art97",
+      "local": {
+        "capitulo": "Capítulo IV",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 97,
+      "parcial": false,
+      "rotulo": "Art. 97",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Ficam revogadas a Lei nº 4.611, de 2 de abril de 1965 e a Lei nº 7.244, de 7 de novembro de 1984.",
+      "tipo": "artigo"
+    }
+  ],
+  "metadados": {
+    "preambulo": "Presidência da República\nCasa Civil\nSubchefia para Assuntos Jurídicos\nLEI Nº 9.099, DE 26 DE SETEMBRO DE 1995.\nMensagem de veto\nVigência\nDispõe sobre os Juizados Especiais Cíveis e Criminais e dá outras providências.\nO PRESIDENTE DA REPÚBLICA Faço saber que o Congresso Nacional decreta e eu sanciono a seguinte Lei:",
+    "rodape": "Brasília, 26 de setembro de 1995; 174º da Independência e 107º da República.\nFERNANDO HENRIQUE CARDOSO\nNelson A. Jobim\nEste texto não substitui o publicado no DOU de 27.9.1995\n*"
+  },
+  "norma": {
+    "capturado_em": "2026-11-03T04:24:41Z",
+    "ementa": "Dispõe sobre os Juizados Especiais Cíveis e Criminais e dá outras providências.",
+    "fonte": "https://www.planalto.gov.br/ccivil_03/leis/l9099.htm",
+    "id": "lei9099",
+    "perfil": "lei9099",
+    "sha256": "f0cc2d3f20325cf49a2b80a6b85f7f4031a8577c70b3900014eb27bc35dcc4ac",
+    "tipo_fonte": "html",
+    "titulo": "LEI Nº 9.099, DE 26 DE SETEMBRO DE 1995."
+  },
+  "recorte": null,
+  "schema_version": "1.0"
+}

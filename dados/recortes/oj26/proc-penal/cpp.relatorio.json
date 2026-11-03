@@ -1,0 +1,90 @@
+{
+  "entradas": [
+    {
+      "id": "art35",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 1997,
+          "bruto": "(Revogado pela Lei nº 9.520, de 27.11.1997)",
+          "data": "1997-11-27",
+          "norma": "Lei nº 9.520",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#175",
+      "rotulo": "Art. 35",
+      "rubrica": null,
+      "texto": "Art. 35 (Revogado pela Lei nº 9.520, de 27.11.1997)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art298",
+      "motivo": "revogado",
+      "notas": [
+        {
+          "ano": 2011,
+          "bruto": "(Revogado pela Lei nº 12.403, de 2011)",
+          "data": null,
+          "norma": "Lei nº 12.403",
+          "tipo": "revogacao"
+        }
+      ],
+      "origem": "html:p#887",
+      "rotulo": "Art. 298",
+      "rubrica": null,
+      "texto": "Art. 298 (Revogado pela Lei nº 12.403, de 2011)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art363.p2",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2008,
+          "bruto": "(Incluído pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1137",
+      "rotulo": "§ 2º",
+      "rubrica": null,
+      "texto": "§ 2º (VETADO) (Incluído pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    },
+    {
+      "id": "art363.p3",
+      "motivo": "vetado",
+      "notas": [
+        {
+          "ano": null,
+          "bruto": "(VETADO)",
+          "data": null,
+          "norma": null,
+          "tipo": "veto"
+        },
+        {
+          "ano": 2008,
+          "bruto": "(Incluído pela Lei nº 11.719, de 2008)",
+          "data": null,
+          "norma": "Lei nº 11.719",
+          "tipo": "inclusao"
+        }
+      ],
+      "origem": "html:p#1138",
+      "rotulo": "§ 3º",
+      "rubrica": null,
+      "texto": "§ 3º (VETADO) (Incluído pela Lei nº 11.719, de 2008)",
+      "tipo": "descarte"
+    }
+  ]
+}

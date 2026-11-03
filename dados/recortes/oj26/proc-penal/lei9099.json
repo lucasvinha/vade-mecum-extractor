@@ -1,0 +1,253 @@
+{
+  "artigos": [
+    {
+      "filhos": [],
+      "id": "art1",
+      "local": {
+        "capitulo": "CAPÍTULO I",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 1,
+      "parcial": false,
+      "rotulo": "Art. 1º",
+      "rubrica": "Disposições Gerais",
+      "sufixo": [],
+      "texto": "Os Juizados Especiais Cíveis e Criminais, órgãos da Justiça Ordinária, serão criados pela União, no Distrito Federal e nos Territórios, e pelos Estados, para conciliação, processo, julgamento e execução, nas causas de sua competência.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art2",
+      "local": {
+        "capitulo": "CAPÍTULO I",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 2,
+      "parcial": false,
+      "rotulo": "Art. 2º",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O processo orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, buscando, sempre que possível, a conciliação ou a transação.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art60.pu",
+          "notas": [
+            {
+              "ano": 2006,
+              "bruto": "(Incluído pela Lei nº 11.313, de 2006)",
+              "data": null,
+              "norma": "Lei nº 11.313",
+              "tipo": "inclusao"
+            }
+          ],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Na reunião de processos, perante o juízo comum ou o tribunal do júri, decorrentes da aplicação das regras de conexão e continência, observar-se-ão os institutos da transação penal e da composição dos danos civis.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art60",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2006,
+          "bruto": "(Redação dada pela Lei nº 11.313, de 2006)",
+          "data": null,
+          "norma": "Lei nº 11.313",
+          "tipo": "redacao"
+        }
+      ],
+      "numero": 60,
+      "parcial": false,
+      "rotulo": "Art. 60",
+      "rubrica": "Disposições Gerais",
+      "sufixo": [],
+      "texto": "O Juizado Especial Criminal, provido por juízes togados ou togados e leigos, tem competência para a conciliação, o julgamento e a execução das infrações penais de menor potencial ofensivo, respeitadas as regras de conexão e continência.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art61",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2006,
+          "bruto": "(Redação dada pela Lei nº 11.313, de 2006)",
+          "data": null,
+          "norma": "Lei nº 11.313",
+          "tipo": "redacao"
+        }
+      ],
+      "numero": 61,
+      "parcial": false,
+      "rotulo": "Art. 61",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Consideram-se infrações penais de menor potencial ofensivo, para os efeitos desta Lei, as contravenções penais e os crimes a que a lei comine pena máxima não superior a 2 (dois) anos, cumulada ou não com multa.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art62",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": null,
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [
+        {
+          "ano": 2018,
+          "bruto": "(Redação dada pela Lei nº 13.603, de 2018)",
+          "data": null,
+          "norma": "Lei nº 13.603",
+          "tipo": "redacao"
+        }
+      ],
+      "numero": 62,
+      "parcial": false,
+      "rotulo": "Art. 62",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "O processo perante o Juizado Especial orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, objetivando, sempre que possível, a reparação dos danos sofridos pela vítima e a aplicação de pena não privativa de liberdade.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art66.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Não encontrado o acusado para ser citado, o Juiz encaminhará as peças existentes ao Juízo comum para adoção do procedimento previsto em lei.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art66",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 66,
+      "parcial": false,
+      "rotulo": "Art. 66",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A citação será pessoal e far-se-á no próprio Juizado, sempre que possível, ou por mandado.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [
+        {
+          "filhos": [],
+          "id": "art67.pu",
+          "notas": [],
+          "rotulo": "Parágrafo único",
+          "rubrica": null,
+          "texto": "Dos atos praticados em audiência considerar-se-ão desde logo cientes as partes, os interessados e defensores.",
+          "tipo": "paragrafo"
+        }
+      ],
+      "id": "art67",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 67,
+      "parcial": false,
+      "rotulo": "Art. 67",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "A intimação far-se-á por correspondência, com aviso de recebimento pessoal ou, tratando-se de pessoa jurídica ou firma individual, mediante entrega ao encarregado da recepção, que será obrigatoriamente identificado, ou, sendo necessário, por oficial de justiça, independentemente de mandado ou carta precatória, ou ainda por qualquer meio idôneo de comunicação.",
+      "tipo": "artigo"
+    },
+    {
+      "filhos": [],
+      "id": "art68",
+      "local": {
+        "capitulo": "Capítulo III — Dos Juizados Especiais Criminais",
+        "livro": null,
+        "parte": null,
+        "rotulo_livre": null,
+        "secao": "Seção I",
+        "subsecao": null,
+        "titulo": null
+      },
+      "notas": [],
+      "numero": 68,
+      "parcial": false,
+      "rotulo": "Art. 68",
+      "rubrica": null,
+      "sufixo": [],
+      "texto": "Do ato de intimação do autor do fato e do mandado de citação do acusado, constará a necessidade de seu comparecimento acompanhado de advogado, com a advertência de que, na sua falta, ser-lhe-á designado defensor público.",
+      "tipo": "artigo"
+    }
+  ],
+  "metadados": {
+    "preambulo": "Presidência da República\nCasa Civil\nSubchefia para Assuntos Jurídicos\nLEI Nº 9.099, DE 26 DE SETEMBRO DE 1995.\nMensagem de veto\nVigência\nDispõe sobre os Juizados Especiais Cíveis e Criminais e dá outras providências.\nO PRESIDENTE DA REPÚBLICA Faço saber que o Congresso Nacional decreta e eu sanciono a seguinte Lei:",
+    "rodape": "Brasília, 26 de setembro de 1995; 174º da Independência e 107º da República.\nFERNANDO HENRIQUE CARDOSO\nNelson A. Jobim\nEste texto não substitui o publicado no DOU de 27.9.1995\n*"
+  },
+  "norma": {
+    "capturado_em": "2026-11-03T04:24:41Z",
+    "ementa": "Dispõe sobre os Juizados Especiais Cíveis e Criminais e dá outras providências.",
+    "fonte": "https://www.planalto.gov.br/ccivil_03/leis/l9099.htm",
+    "id": "lei9099",
+    "perfil": "lei9099",
+    "sha256": "f0cc2d3f20325cf49a2b80a6b85f7f4031a8577c70b3900014eb27bc35dcc4ac",
+    "tipo_fonte": "html",
+    "titulo": "LEI Nº 9.099, DE 26 DE SETEMBRO DE 1995."
+  },
+  "recorte": {
+    "expressao": "1º; 2º; 60 a 62; 66 a 68",
+    "origem": "base.json"
+  },
+  "schema_version": "1.0"
+}
